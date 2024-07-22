@@ -3,20 +3,21 @@
 
 format: jb-book
 root: index
-chapters:
-  - file: book/markdown
-  - file: book/notebooks
-  - file: book/bibliography
 
-# Or you organize the TOC by parts
-
-# parts:
-#   - caption: Chapters
-#     numbered: true
-#     maxdepth: 2
-#     chapters:
-#       - file: book/markdown
-#       - file: book/notebooks
-#   - caption: Appendices
-#     chapters:
-#       - file: book/bibliography
+parts:
+  - caption: Preface
+    chapters:
+      - file: book/preface/instructor
+      - file: book/preface/syllabus
+      - file: book/preface/schedule
+      - file: book/preface/software
+  - caption: Python Basics
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: book/python/01_get_started
+  - caption: GeoPython
+    numbered: true
+    maxdepth: 2
+    chapters:
+      - file: book/geospatial/01_get_started
