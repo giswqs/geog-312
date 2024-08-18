@@ -120,7 +120,7 @@ city_attributes["area_km2"] = 2191  # Adding the area of the city in square kilo
 print("Updated city attributes:", city_attributes)
 ```
 
-## Exercise
+## Exercises
 
 Create a dictionary to store attributes of a geographic feature (e.g., a river or mountain). Include keys for the name, length, and location of the feature. Then, add an additional attribute (e.g., the source of the river or the height of the mountain) and print the dictionary.
 

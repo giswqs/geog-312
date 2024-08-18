@@ -145,7 +145,7 @@ centroid = [centroid_lat, centroid_lon]
 print("Centroid of the points is at:", centroid)
 ```
 
-## Exercise
+## Exercises
 
 1. Create a list of tuples, each representing the coordinates (latitude, longitude) of different cities you have visited.
 2. Calculate the centroid of these coordinates.

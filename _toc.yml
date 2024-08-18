@@ -27,6 +27,10 @@ parts:
       - file: book/python/02_variables
       - file: book/python/03_data_structures
       - file: book/python/04_string_operations
+      - file: book/python/05_looping
+      - file: book/python/06_functions_classes
+      - file: book/python/07_files
+
   - caption: GeoPython
     numbered: true
     maxdepth: 2

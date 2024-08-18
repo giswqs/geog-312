@@ -98,7 +98,9 @@ print(f"Parsed coordinates: ({latitude}, {longitude})")
 3. Create a formatted string that includes the name of a location and its coordinates. Use both the `format()` method and f-strings to achieve this.
 4. Replace a substring in the name of a place (e.g., change 'San Francisco' to 'San Diego') and print the result.
 
-+++
+```{code-cell}
+# Type your code here
+```
 
 ## Conclusion
 
