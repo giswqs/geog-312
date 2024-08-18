@@ -1,5 +1,7 @@
 # Google Colab
 
+Google Colab is a free cloud service that supports free GPU and TPU. It is a Jupyter notebook environment that requires no setup to use. It allows you to write and execute Python code in the browser and save your code in Google Drive. It also provides a way to share your code with others.
+
 ## Tips and Tricks
 
 1. **Scratchpad Notebook:** <https://colab.research.google.com/notebooks/empty.ipynb>
