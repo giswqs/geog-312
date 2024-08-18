@@ -14,5 +14,10 @@ kernelspec:
 # Get Started
 
 ```{code-cell} ipython3
-print("Hello World!")
+import leafmap
+```
+
+```{code-cell} ipython3
+m = leafmap.Map()
+m
 ```

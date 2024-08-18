@@ -1,5 +1,6 @@
 ghp-import
 jupyter-book
 jupytext
+leafmap
 matplotlib
 numpy

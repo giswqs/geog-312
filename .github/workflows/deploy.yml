@@ -14,6 +14,8 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         python-version: ["3.11"]
+    env:
+      USE_MKDOCS: ${{ secrets.USE_MKDOCS }}
     steps:
       - uses: actions/checkout@v4
 
