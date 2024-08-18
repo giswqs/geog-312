@@ -1,6 +1,7 @@
+geemap
 ghp-import
 jupyter-book
 jupytext
-leafmap
+leafmap[maplbire]
 matplotlib
 numpy
