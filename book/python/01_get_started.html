@@ -452,7 +452,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -468,6 +470,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-google-colab">1.1. Using Google Colab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-binder">1.2. Using Binder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-locally">1.3. Running Locally</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -479,18 +491,44 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="get-started">
 <h1><span class="section-number">1. </span>Get Started<a class="headerlink" href="#get-started" title="Link to this heading">#</a></h1>
+<p>There are multiple ways to run Jupyter notebooks. You can either run them locally on your machine or use an online service like Google Colab or Binder.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, Python!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World!
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, Python!
 </pre></div>
 </div>
 </div>
 </div>
+<section id="using-google-colab">
+<h2><span class="section-number">1.1. </span>Using Google Colab<a class="headerlink" href="#using-google-colab" title="Link to this heading">#</a></h2>
+<p>Google Colab is a free online service that allows you to run Jupyter notebooks in the cloud. You can access it by visiting <a class="reference external" href="https://colab.research.google.com/">colab.research.google.com</a>.</p>
+<p>To run a Jupyter notebook from this course in Google Colab, hover the mouse over the rocket icon in the top right corner of the notebook and click on the “Colab” link to open the notebook in Google Colab.</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/65e9c75a-5e45-4021-b8c2-a383467a80b7" /></p>
+</section>
+<section id="using-binder">
+<h2><span class="section-number">1.2. </span>Using Binder<a class="headerlink" href="#using-binder" title="Link to this heading">#</a></h2>
+<p>Binder is another free online service that allows you to run Jupyter notebooks in the cloud. You can access it by visiting <a class="reference external" href="https://mybinder.org/">mybinder.org</a>.</p>
+<p>To run a Jupyter notebook from this course in Binder, hover the mouse over the rocket icon in the top right corner of the notebook and click on the “Binder” link to open the notebook in Binder.</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/65c5ea68-4bf4-45c0-94cc-7e59ec8498e9" /></p>
+</section>
+<section id="running-locally">
+<h2><span class="section-number">1.3. </span>Running Locally<a class="headerlink" href="#running-locally" title="Link to this heading">#</a></h2>
+<p>To run Jupyter notebooks locally on your machine, you need to have JupyterLab installed. You can install it using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab
+</pre></div>
+</div>
+<p>Once you have JupyterLab installed, you can run it by executing the following command in your terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p>This will open JupyterLab in your default web browser, where you can navigate to the notebook you want to run.</p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/51863486-0881-470d-a960-990c762cd6bb" /></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -547,6 +585,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-google-colab">1.1. Using Google Colab</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-binder">1.2. Using Binder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-locally">1.3. Running Locally</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
