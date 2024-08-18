@@ -25,6 +25,7 @@ parts:
     chapters:
       - file: book/python/01_get_started
       - file: book/python/02_variables
+      - file: book/python/03_data_structures
   - caption: GeoPython
     numbered: true
     maxdepth: 2
