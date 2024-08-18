@@ -14,15 +14,15 @@ jupytext:
 
     ![](https://i.imgur.com/1bxdiTz.png)
 3. Follow the directions on the lab notebook and write code to complete the exercises.
-4. When you are finished, Click on **Runtime -> Restart and run all**. Make sure that you notebook runs well and all code cell outputs are shown. 
+4. When you are finished, Click on **Runtime -> Restart and run all**. Make sure that you notebook runs well and all code cell outputs are shown.
 
     ![](https://i.imgur.com/6juNLRG.png)
 
-5. Click on the **Share** button in the top right corner and change the notebook general access from Restrcted to **Anyone with the link**. 
+5. Click on the **Share** button in the top right corner and change the notebook general access from Restricted to **Anyone with the link**.
 
     ![](https://i.imgur.com/FmNZSdx.png)
 6. Click on the **Copy link** button.
 
     ![](https://i.imgur.com/3v1DNoj.png)
-7. Open Chrome Incognito mode, paste the link to the address bar and press Enter. Make sure that you can preview the notebook content. Otherwise, you might need to save a copy of the notebook from Colab to your Google Drive. 
+7. Open Chrome Incognito mode, paste the link to the address bar and press Enter. Make sure that you can preview the notebook content. Otherwise, you might need to save a copy of the notebook from Colab to your Google Drive.
 8. Copy the link and paste it to the Lab Submission page on Canvas and submit.
