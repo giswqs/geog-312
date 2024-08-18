@@ -26,3 +26,31 @@ kernelspec:
 - [Google Colab](https://research.google.com/colaboratory)
 - [Amazon SageMaker Studio Lab](https://studiolab.sagemaker.aws)
 - [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com)
+
+## Install Python Packages
+
+There are different ways to install Python packages. The most common methods are using `pip` or `conda`. Here are some examples:
+
+To install packages using `pip`:
+
+```bash
+pip install leafmap
+```
+
+To install packages using `conda`:
+
+```bash
+conda install leafmap -c conda-forge
+```
+
+To install packages from a GitHub repository:
+
+```bash
+pip install git+https://github.com/opengeos/leafmap.git
+```
+
+To install packages from a `requirements.txt` file:
+
+```bash
+pip install -r requirements.txt
+```
