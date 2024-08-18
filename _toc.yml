@@ -11,6 +11,14 @@ parts:
       - file: book/about/syllabus
       - file: book/about/schedule
       - file: book/about/software
+  - caption: Software
+    chapters:
+      - file: book/software/overview
+      - file: book/software/miniconda
+      - file: book/software/vscode
+      - file: book/software/git
+      - file: book/software/colab
+      - file: book/software/jupyterlab
   - caption: Python Basics
     numbered: true
     maxdepth: 2

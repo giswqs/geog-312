@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Software
+# Overview
 
 ## Software Tools
 
@@ -26,7 +26,3 @@ kernelspec:
 - [Google Colab](https://research.google.com/colaboratory)
 - [Amazon SageMaker Studio Lab](https://studiolab.sagemaker.aws)
 - [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com)
-
-```{code-cell} ipython3
-
-```
