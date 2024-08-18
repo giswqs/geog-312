@@ -493,6 +493,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-tools">Software Tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-computing-platforms">Cloud Computing Platforms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-python-packages">Install Python Packages</a></li>
 </ul>
             </nav>
         </div>
@@ -523,6 +524,26 @@ document.write(`
 <li><p><a class="reference external" href="https://studiolab.sagemaker.aws">Amazon SageMaker Studio Lab</a></p></li>
 <li><p><a class="reference external" href="https://planetarycomputer.microsoft.com">Microsoft Planetary Computer</a></p></li>
 </ul>
+</section>
+<section id="install-python-packages">
+<h2>Install Python Packages<a class="headerlink" href="#install-python-packages" title="Link to this heading">#</a></h2>
+<p>There are different ways to install Python packages. The most common methods are using <code class="docutils literal notranslate"><span class="pre">pip</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span></code>. Here are some examples:</p>
+<p>To install packages using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>leafmap
+</pre></div>
+</div>
+<p>To install packages using <code class="docutils literal notranslate"><span class="pre">conda</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>leafmap<span class="w"> </span>-c<span class="w"> </span>conda-forge
+</pre></div>
+</div>
+<p>To install packages from a GitHub repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/opengeos/leafmap.git
+</pre></div>
+</div>
+<p>To install packages from a <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -592,6 +613,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#software-tools">Software Tools</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-computing-platforms">Cloud Computing Platforms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-python-packages">Install Python Packages</a></li>
 </ul>
   </nav></div>
 
