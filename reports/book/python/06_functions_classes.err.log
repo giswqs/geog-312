@@ -1,0 +1,56 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.11.9/x64/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+class Point:
+    def __init__(self, latitude, longitude, name=None):
+        self.latitude = latitude
+        self.longitude = longitude
+        self.name = name
+
+    def distance_to(self, other_point):
+        return haversine(
+            self.latitude, self.longitude, other_point.latitude, other_point.longitude
+        )
+
+    def midpoint(self, other_point):
+        mid_lat = (self.latitude + other_point.latitude) / 2
+        mid_lon = (self.longitude + other_point.longitude) / 2
+        return Point(mid_lat, mid_lon, name="Midpoint")
+
+    def __str__(self):
+        return f"{self.name or 'Point'} ({self.latitude}, {self.longitude})"
+
+
+# Example usage
+mid_point = point1.midpoint(point2)
+print(mid_point)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+Cell [0;32mIn[3], line 22[0m
+[1;32m     18[0m         [38;5;28;01mreturn[39;00m [38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00m[38;5;28mself[39m[38;5;241m.[39mname[38;5;250m [39m[38;5;129;01mor[39;00m[38;5;250m [39m[38;5;124m'[39m[38;5;124mPoint[39m[38;5;124m'[39m[38;5;132;01m}[39;00m[38;5;124m ([39m[38;5;132;01m{[39;00m[38;5;28mself[39m[38;5;241m.[39mlatitude[38;5;132;01m}[39;00m[38;5;124m, [39m[38;5;132;01m{[39;00m[38;5;28mself[39m[38;5;241m.[39mlongitude[38;5;132;01m}[39;00m[38;5;124m)[39m[38;5;124m"[39m
+[1;32m     21[0m [38;5;66;03m# Example usage[39;00m
+[0;32m---> 22[0m mid_point [38;5;241m=[39m [43mpoint1[49m[38;5;241;43m.[39;49m[43mmidpoint[49m(point2)
+[1;32m     23[0m [38;5;28mprint[39m(mid_point)
+
+[0;31mAttributeError[0m: 'Point' object has no attribute 'midpoint'
+
