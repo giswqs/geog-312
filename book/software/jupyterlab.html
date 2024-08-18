@@ -384,7 +384,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -400,6 +402,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -411,6 +423,51 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="jupyterlab">
 <h1>JupyterLab<a class="headerlink" href="#jupyterlab" title="Link to this heading">#</a></h1>
+<p>JupyterLab is a web-based interactive development environment for Jupyter notebooks, code, and data. JupyterLab is flexible: configure and arrange the user interface to support a wide range of workflows in data science, scientific computing, and machine learning. JupyterLab is extensible and modular: write plugins that add new components and integrate with existing ones.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>To install JupyterLab, you can use the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<p>To start JupyterLab, you can use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p>To create a new Jupyter notebook, click on the <strong>+</strong> icon in the file browser and select the desired kernel.</p>
+<p><img alt="" src="https://book.geemap.org/_images/ch01_jupyterlab.jpg" /></p>
+</section>
+<section id="keyboard-shortcuts">
+<h2>Keyboard shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Link to this heading">#</a></h2>
+<p>Jupyter notebook has two modes: <strong>Edit mode</strong> and <strong>Command mode</strong>. The Edit mode allows you to type into the cells like a normal text editor. The Command mode allows you to edit the notebook as a whole, but not type into individual cells. Jupyter notebook has many keyboard shortcuts <span id="id1">[]</span>. Here are some commonly used shortcuts. Note that the shortcuts are for Windows and Linux users. For Mac users, replace <code class="docutils literal notranslate"><span class="pre">Ctrl</span></code> with <code class="docutils literal notranslate"><span class="pre">Command</span></code>.</p>
+<p>Shortcuts in both modes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code>: run the current cell, select below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Enter</span></code>: run selected cells</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Alt</span> <span class="pre">+</span> <span class="pre">Enter</span></code>: run the current cell, insert below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">S</span></code>: save and checkpoint</p></li>
+</ul>
+<p>While in command mode (press <code class="docutils literal notranslate"><span class="pre">Esc</span></code> to activate):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: insert cell above</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">B</span></code>: insert cell below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>: cut selected cells</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C</span></code>: copy selected cells</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">V</span></code>: paste cells below</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code>: change the cell type to Code</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">M</span></code>: change the cell type to Markdown</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">P</span></code>: open the command palette</p></li>
+</ul>
+<p>While in edit mode (press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> to activate):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Esc</span></code>: activate the command mode</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Tab</span></code>: code completion or indent</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Tab</span></code>: show tooltip</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -467,6 +524,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyboard-shortcuts">Keyboard shortcuts</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

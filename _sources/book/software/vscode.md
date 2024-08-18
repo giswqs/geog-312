@@ -20,16 +20,15 @@
 
 1. **Command Palette:** `Ctrl+Shift+P`
 2. **Search and open a file:** `Ctrl+P`
-3.
-4. **Go to Symbol:** `Ctrl+Shift+O`
-5. **Move line up and down:** `Alt+Arrow up/down`
-6. **Go to line number:** `Ctrl+G`
-7. **Cut the Entire Line:** `Ctrl+X`
-8. **Select the entire line:** Triple-clicking at the line of the line
-9. **Markdown preview:** `Ctrl+K V`
-10. **Zen Mode:** `View > Appearance > Toggle Zen Mode`
-11. **Split view:** `View > Editor Layout > Split Up`
-12. **Edit multiple lines simultaneously**: Hold **Alt** and **click** to add a cursor in the places you want to type or edit the code.
+3. **Go to Symbol:** `Ctrl+Shift+O`
+4. **Move line up and down:** `Alt+Arrow up/down`
+5. **Go to line number:** `Ctrl+G`
+6. **Cut the Entire Line:** `Ctrl+X`
+7. **Select the entire line:** Triple-clicking at the line of the line
+8. **Markdown preview:** `Ctrl+K V`
+9. **Zen Mode:** `View > Appearance > Toggle Zen Mode`
+10. **Split view:** `View > Editor Layout > Split Up`
+11. **Edit multiple lines simultaneously**: Hold **Alt** and **click** to add a cursor in the places you want to type or edit the code.
 
 ## References
 
