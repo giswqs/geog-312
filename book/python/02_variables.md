@@ -145,6 +145,16 @@ centroid = [centroid_lat, centroid_lon]
 print("Centroid of the points is at:", centroid)
 ```
 
+## Exercise
+
+1. Create a list of tuples, each representing the coordinates (latitude, longitude) of different cities you have visited.
+2. Calculate the centroid of these coordinates.
+3. Create a dictionary to store the centroid's latitude and longitude.
+
+```{code-cell}
+# Type your code here
+```
+
 ## Conclusion
 
 Understanding Python variables and data types is crucial in geospatial programming.
