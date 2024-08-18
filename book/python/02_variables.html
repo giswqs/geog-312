@@ -562,7 +562,10 @@ document.write(`
 <p><strong>e) Lists:</strong> Lists are ordered collections of items, which can be of any data type.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coordinates</span> <span class="o">=</span> <span class="p">[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">]</span>  <span class="c1"># A list representing latitude and longitude of a point</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coordinates</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mf">35.6895</span><span class="p">,</span>
+    <span class="mf">139.6917</span><span class="p">,</span>
+<span class="p">]</span>  <span class="c1"># A list representing latitude and longitude of a point</span>
 </pre></div>
 </div>
 </div>
@@ -574,7 +577,7 @@ document.write(`
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mount Fuji&quot;</span><span class="p">,</span>
     <span class="s2">&quot;height_meters&quot;</span><span class="p">:</span> <span class="mi">3776</span><span class="p">,</span>
     <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Stratovolcano&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.3606</span><span class="p">,</span> <span class="mf">138.7274</span><span class="p">]</span>
+    <span class="s2">&quot;location&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.3606</span><span class="p">,</span> <span class="mf">138.7274</span><span class="p">],</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -602,6 +605,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
 <span class="n">latitude_radians</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latitude in radians:&quot;</span><span class="p">,</span> <span class="n">latitude_radians</span><span class="p">)</span>
 </pre></div>
@@ -653,8 +657,8 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">points</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">],</span>  <span class="c1"># Tokyo</span>
     <span class="p">[</span><span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">],</span>  <span class="c1"># Los Angeles</span>
-    <span class="p">[</span><span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">],</span>    <span class="c1"># London</span>
-    <span class="p">[</span><span class="mf">48.8566</span><span class="p">,</span> <span class="mf">2.3522</span><span class="p">]</span>      <span class="c1"># Paris</span>
+    <span class="p">[</span><span class="mf">51.5074</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">],</span>  <span class="c1"># London</span>
+    <span class="p">[</span><span class="mf">48.8566</span><span class="p">,</span> <span class="mf">2.3522</span><span class="p">],</span>  <span class="c1"># Paris</span>
 <span class="p">]</span>
 </pre></div>
 </div>
