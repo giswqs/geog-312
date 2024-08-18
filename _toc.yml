@@ -5,12 +5,12 @@ format: jb-book
 root: index
 
 parts:
-  - caption: Preface
+  - caption: About
     chapters:
-      - file: book/preface/instructor
-      - file: book/preface/syllabus
-      - file: book/preface/schedule
-      - file: book/preface/software
+      - file: book/about/instructor
+      - file: book/about/syllabus
+      - file: book/about/schedule
+      - file: book/about/software
   - caption: Python Basics
     numbered: true
     maxdepth: 2
