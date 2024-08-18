@@ -31,3 +31,9 @@ parts:
     maxdepth: 2
     chapters:
       - file: book/geospatial/01_get_started
+  - caption: Labs
+    numbered: false
+    maxdepth: 2
+    chapters:
+      - file: book/labs/instructions
+      - file: book/labs/lab_01

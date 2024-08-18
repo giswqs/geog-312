@@ -24,7 +24,10 @@ Tuples are immutable sequences, meaning that once a tuple is created, its elemen
 For example, a tuple can be used to store the coordinates of a geographic point (latitude, longitude).
 
 ```{code-cell} ipython3
-point = (35.6895, 139.6917)  # Tuple representing a geographic point (latitude, longitude)
+point = (
+    35.6895,
+    139.6917,
+)  # Tuple representing a geographic point (latitude, longitude)
 ```
 
 You can access elements in a tuple using indexing:
@@ -42,7 +45,11 @@ Lists are ordered, mutable sequences, meaning you can change, add, or remove ele
 For example, you can store a list of coordinates representing a path or boundary.
 
 ```{code-cell} ipython3
-path = [(35.6895, 139.6917), (34.0522, -118.2437), (51.5074, -0.1278)]  # List of tuples representing a path
+path = [
+    (35.6895, 139.6917),
+    (34.0522, -118.2437),
+    (51.5074, -0.1278),
+]  # List of tuples representing a path
 ```
 
 You can add a new point to the path:
@@ -94,7 +101,7 @@ For example, you can use a dictionary to store attributes of a geospatial featur
 city_attributes = {
     "name": "Tokyo",
     "population": 13929286,
-    "coordinates": (35.6895, 139.6917)
+    "coordinates": (35.6895, 139.6917),
 }  # Dictionary storing attributes of a city
 ```
 
@@ -113,7 +120,15 @@ city_attributes["area_km2"] = 2191  # Adding the area of the city in square kilo
 print("Updated city attributes:", city_attributes)
 ```
 
-### Conclusion
+## Exercise
+
+Create a dictionary to store attributes of a geographic feature (e.g., a river or mountain). Include keys for the name, length, and location of the feature. Then, add an additional attribute (e.g., the source of the river or the height of the mountain) and print the dictionary.
+
+```{code-cell} ipython3
+# Type your code here
+```
+
+## Conclusion
 
 Understanding and utilizing Python's data structures such as tuples, lists, sets, and dictionaries are fundamental skills in geospatial programming. These structures provide the flexibility and functionality required to manage and manipulate spatial data effectively.
 

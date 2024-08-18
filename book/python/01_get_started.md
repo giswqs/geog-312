@@ -15,7 +15,7 @@ kernelspec:
 
 There are multiple ways to run Jupyter notebooks. You can either run them locally on your machine or use an online service like Google Colab or Binder.
 
-```{code-cell} ipython3
+```{code-cell}
 print("Hello, Python!")
 ```
 
