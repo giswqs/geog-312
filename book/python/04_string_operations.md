@@ -5,10 +5,6 @@ jupytext:
     format_name: myst
     format_version: 0.13
     jupytext_version: 1.16.2
-kernelspec:
-  display_name: geo
-  language: python
-  name: python3
 ---
 
 # String Operations
@@ -42,7 +38,6 @@ print(separator)
 ## String Methods for Geospatial Data
 
 Python provides various built-in methods to manipulate strings. Some commonly used methods include:
-
 - `lower()`, `upper()`: Convert strings to lowercase or uppercase.
 - `strip()`: Remove leading and trailing whitespace.
 - `replace()`: Replace a substring with another substring.
@@ -105,6 +100,6 @@ print(f"Parsed coordinates: ({latitude}, {longitude})")
 
 +++
 
-### Conclusion
+## Conclusion
 
 String operations are crucial in geospatial programming, especially when dealing with textual geographic data. Mastering these operations will enable you to handle and manipulate geographic information effectively in your projects.
