@@ -15,7 +15,7 @@ kernelspec:
 
 <div style="display: flex; align-items: center; justify-content: flex-start;">
 
-<img src="https://geography.utk.edu/wp-content/uploads/2023/10/Qiusheng_Wu.webp" alt="Description of Image" style="max-width: 200px; margin-right: 20px;">
+<img src="https://wetlands.io/file/images/Qiusheng_Wu.webp" alt="Description of Image" style="max-width: 200px; margin-right: 20px;">
 
 <div style="max-width: 800px;">
 
