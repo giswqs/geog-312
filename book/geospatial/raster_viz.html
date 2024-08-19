@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. Raster Data Visualization &#8212; First Steps in GIS Programming</title>
+    <title>13. Raster Data Visualization &#8212; First Steps in GIS Programming</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="12. MapLibre" href="maplibre.html" />
-    <link rel="prev" title="10. Vector Data Visualization" href="vector_viz.html" />
+    <link rel="next" title="14. MapLibre" href="maplibre.html" />
+    <link rel="prev" title="12. Vector Data Visualization" href="vector_viz.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,14 +201,16 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="leafmap.html">9. Leafmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">10. Vector Data Visualization</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Raster Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maplibre.html">12. MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whitebox.html">13. WhiteboxTools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">14. Geemap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="samgeo.html">15. SAMGeo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">16. HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geopandas.html">9. GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">10. Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">11. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">12. Vector Data Visualization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">14. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">15. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">16. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">17. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">18. HyperCoast</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -493,13 +495,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">11.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-packages">11.2. Import packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cog">11.3. COG</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-raster">11.4. Local Raster</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stac">11.5. STAC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-stac-catalog">11.6. Custom STAC Catalog</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-s3">11.7. AWS S3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">13.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-packages">13.2. Import packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cog">13.3. COG</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-raster">13.4. Local Raster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stac">13.5. STAC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-stac-catalog">13.6. Custom STAC Catalog</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-s3">13.7. AWS S3</a></li>
 </ul>
             </nav>
         </div>
@@ -512,10 +514,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="raster-data-visualization">
-<h1><span class="section-number">11. </span>Raster Data Visualization<a class="headerlink" href="#raster-data-visualization" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">13. </span>Raster Data Visualization<a class="headerlink" href="#raster-data-visualization" title="Link to this heading">#</a></h1>
 <p>This notebook demonstrates how to visualize raster data using <a class="reference external" href="https://leafmap.org/">leafmap</a>. Leafmap can visualize raster data (e.g., Cloud Optimized GeoTIFF) stored in a local file or on the cloud (e.g., AWS S3). It can also visualize raster data stored in a <a class="reference external" href="https://stacspec.org/">STAC</a> catalog.</p>
 <section id="installation">
-<h2><span class="section-number">11.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <p>Uncomment the following line to install the required packages if needed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -526,7 +528,7 @@ document.write(`
 </div>
 </section>
 <section id="import-packages">
-<h2><span class="section-number">11.2. </span>Import packages<a class="headerlink" href="#import-packages" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.2. </span>Import packages<a class="headerlink" href="#import-packages" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leafmap</span>
@@ -536,7 +538,7 @@ document.write(`
 </div>
 </section>
 <section id="cog">
-<h2><span class="section-number">11.3. </span>COG<a class="headerlink" href="#cog" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.3. </span>COG<a class="headerlink" href="#cog" title="Link to this heading">#</a></h2>
 <p>A Cloud Optimized GeoTIFF (COG) is a regular GeoTIFF file, aimed at being hosted on a HTTP file server, with an internal organization that enables more efficient workflows on the cloud. It does this by leveraging the ability of clients issuing HTTP GET range requests to ask for just the parts of a file they need. More information about COG can be found at <a class="reference external" href="https://www.cogeo.org/in-depth.html">https://www.cogeo.org/in-depth.html</a></p>
 <p>For this demo, we will use data from <a class="reference external" href="https://www.maxar.com/open-data/california-colorado-fires">https://www.maxar.com/open-data/california-colorado-fires</a> for mapping California and Colorado fires. Let’s create an interactive map and add the COG to the map.</p>
 <div class="cell docutils container">
@@ -573,7 +575,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/FJa0Yta.png" /></p>
 </section>
 <section id="local-raster">
-<h2><span class="section-number">11.4. </span>Local Raster<a class="headerlink" href="#local-raster" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.4. </span>Local Raster<a class="headerlink" href="#local-raster" title="Link to this heading">#</a></h2>
 <p>Leafmap can also visualize local GeoTIFF files. Let’s download some sample data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -615,7 +617,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/euhkajs.png" /></p>
 </section>
 <section id="stac">
-<h2><span class="section-number">11.5. </span>STAC<a class="headerlink" href="#stac" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.5. </span>STAC<a class="headerlink" href="#stac" title="Link to this heading">#</a></h2>
 <p>The SpatioTemporal Asset Catalog (STAC) specification provides a common language to describe a range of geospatial information so that it can more easily be indexed and discovered. A SpatioTemporal Asset is any file that represents information about the earth captured in a certain space and time. STAC aims to enable that next generation of geospatial search engines, while also supporting web best practices so geospatial information is more easily surfaced in traditional search engines. More information about STAC can be found at the <a class="reference external" href="https://stacspec.org">STAC website</a>. In this example, we will use a STAC item from the <a class="reference external" href="https://stacindex.org/catalogs/spot-orthoimages-canada-2005">SPOT Orthoimages of Canada</a> available through the link below:</p>
 <p>Create an interactive map.</p>
 <div class="cell docutils container">
@@ -640,7 +642,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/IlqsJXK.png" /></p>
 </section>
 <section id="custom-stac-catalog">
-<h2><span class="section-number">11.6. </span>Custom STAC Catalog<a class="headerlink" href="#custom-stac-catalog" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.6. </span>Custom STAC Catalog<a class="headerlink" href="#custom-stac-catalog" title="Link to this heading">#</a></h2>
 <p>Provide custom STAC API endpoints as a dictionary in the format of <code class="docutils literal notranslate"><span class="pre">{&quot;name&quot;:</span> <span class="pre">&quot;url&quot;}</span></code>. The name will show up in the dropdown menu, while the url is the STAC API endpoint that will be used to search for items.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -687,7 +689,7 @@ document.write(`
 </div>
 </section>
 <section id="aws-s3">
-<h2><span class="section-number">11.7. </span>AWS S3<a class="headerlink" href="#aws-s3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.7. </span>AWS S3<a class="headerlink" href="#aws-s3" title="Link to this heading">#</a></h2>
 <p>To Be able to run this notebook you’ll need to have AWS credential available as environment variables. Uncomment the following lines to set the environment variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -765,7 +767,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Vector Data Visualization</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Vector Data Visualization</p>
       </div>
     </a>
     <a class="right-next"
@@ -773,7 +775,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>MapLibre</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>MapLibre</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -793,13 +795,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">11.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-packages">11.2. Import packages</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cog">11.3. COG</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-raster">11.4. Local Raster</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stac">11.5. STAC</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-stac-catalog">11.6. Custom STAC Catalog</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-s3">11.7. AWS S3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">13.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-packages">13.2. Import packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cog">13.3. COG</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-raster">13.4. Local Raster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stac">13.5. STAC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-stac-catalog">13.6. Custom STAC Catalog</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aws-s3">13.7. AWS S3</a></li>
 </ul>
   </nav></div>
 

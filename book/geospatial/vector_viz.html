@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10. Vector Data Visualization &#8212; First Steps in GIS Programming</title>
+    <title>12. Vector Data Visualization &#8212; First Steps in GIS Programming</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="11. Raster Data Visualization" href="raster_viz.html" />
-    <link rel="prev" title="9. Leafmap" href="leafmap.html" />
+    <link rel="next" title="13. Raster Data Visualization" href="raster_viz.html" />
+    <link rel="prev" title="11. Leafmap" href="leafmap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,14 +201,16 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="leafmap.html">9. Leafmap</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Vector Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">11. Raster Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maplibre.html">12. MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whitebox.html">13. WhiteboxTools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">14. Geemap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="samgeo.html">15. SAMGeo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">16. HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geopandas.html">9. GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">10. Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">11. Leafmap</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">13. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">14. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">15. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">16. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">17. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">18. HyperCoast</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -493,14 +495,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">10.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">10.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-vector-data">10.3. Visualize vector data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choropleth-map">10.4. Choropleth map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoparquet">10.5. GeoParquet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pmtiles">10.6. PMTiles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-pmtiles">10.7. Remote PMTiles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-cooperative">10.7.1. Source Cooperative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">12.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">12.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-vector-data">12.3. Visualize vector data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choropleth-map">12.4. Choropleth map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoparquet">12.5. GeoParquet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pmtiles">12.6. PMTiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-pmtiles">12.7. Remote PMTiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-cooperative">12.7.1. Source Cooperative</a></li>
 </ul>
 </li>
 </ul>
@@ -515,9 +517,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="vector-data-visualization">
-<h1><span class="section-number">10. </span>Vector Data Visualization<a class="headerlink" href="#vector-data-visualization" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">12. </span>Vector Data Visualization<a class="headerlink" href="#vector-data-visualization" title="Link to this heading">#</a></h1>
 <section id="installation">
-<h2><span class="section-number">10.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <p>Uncomment the following line to install <a class="reference external" href="https://leafmap.org">leafmap</a> if needed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -528,7 +530,7 @@ document.write(`
 </div>
 </section>
 <section id="import-libraries">
-<h2><span class="section-number">10.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leafmap</span>
@@ -538,7 +540,7 @@ document.write(`
 </div>
 </section>
 <section id="visualize-vector-data">
-<h2><span class="section-number">10.3. </span>Visualize vector data<a class="headerlink" href="#visualize-vector-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>Visualize vector data<a class="headerlink" href="#visualize-vector-data" title="Link to this heading">#</a></h2>
 <p>You can visualize vector data using the <code class="docutils literal notranslate"><span class="pre">add_vector</span></code> function. It supports common vector data formats, including GeoJSON, Shapefile, GeoPackage, and any other formats supported by <a class="reference external" href="https://geopandas.org">geopandas</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -567,7 +569,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/mQnV53U.png" /></p>
 </section>
 <section id="choropleth-map">
-<h2><span class="section-number">10.4. </span>Choropleth map<a class="headerlink" href="#choropleth-map" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.4. </span>Choropleth map<a class="headerlink" href="#choropleth-map" title="Link to this heading">#</a></h2>
 <p>You can create a choropleth map using the <code class="docutils literal notranslate"><span class="pre">add_data</span></code> function. It supports GeoJSON, Shapefile, GeoPackage, and any other formats supported by <a class="reference external" href="https://geopandas.org">geopandas</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -600,7 +602,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/KEY6zEj.png" /></p>
 </section>
 <section id="geoparquet">
-<h2><span class="section-number">10.5. </span>GeoParquet<a class="headerlink" href="#geoparquet" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.5. </span>GeoParquet<a class="headerlink" href="#geoparquet" title="Link to this heading">#</a></h2>
 <p>Visualize GeoParquet data with leafmap and lonboard.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -649,14 +651,14 @@ document.write(`
 <p><img alt="legend" src="https://i.imgur.com/fxzHHFN.png" /></p>
 </section>
 <section id="pmtiles">
-<h2><span class="section-number">10.6. </span>PMTiles<a class="headerlink" href="#pmtiles" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.6. </span>PMTiles<a class="headerlink" href="#pmtiles" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://github.com/protomaps/PMTiles">PMTiles</a> is a single-file archive format for tiled data. A PMTiles archive can be hosted on a commodity storage platform such as S3, and enables low-cost, zero-maintenance map applications that are “serverless” - free of a custom tile backend or third party provider.</p>
 </section>
 <section id="remote-pmtiles">
-<h2><span class="section-number">10.7. </span>Remote PMTiles<a class="headerlink" href="#remote-pmtiles" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.7. </span>Remote PMTiles<a class="headerlink" href="#remote-pmtiles" title="Link to this heading">#</a></h2>
 <p>Leafmap can visualize PMTiles hosted locally or remotely.</p>
 <section id="source-cooperative">
-<h3><span class="section-number">10.7.1. </span>Source Cooperative<a class="headerlink" href="#source-cooperative" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">12.7.1. </span>Source Cooperative<a class="headerlink" href="#source-cooperative" title="Link to this heading">#</a></h3>
 <p>Visualize the <a class="reference external" href="https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description">Google-Microsoft Open Buildings data</a> hosted on Source Cooperative.</p>
 <p>Check the metadata of the PMTiles.</p>
 <div class="cell docutils container">
@@ -746,7 +748,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>Leafmap</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Leafmap</p>
       </div>
     </a>
     <a class="right-next"
@@ -754,7 +756,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Raster Data Visualization</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Raster Data Visualization</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -774,14 +776,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">10.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">10.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-vector-data">10.3. Visualize vector data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choropleth-map">10.4. Choropleth map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoparquet">10.5. GeoParquet</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pmtiles">10.6. PMTiles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-pmtiles">10.7. Remote PMTiles</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-cooperative">10.7.1. Source Cooperative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">12.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">12.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-vector-data">12.3. Visualize vector data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choropleth-map">12.4. Choropleth map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoparquet">12.5. GeoParquet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pmtiles">12.6. PMTiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-pmtiles">12.7. Remote PMTiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-cooperative">12.7.1. Source Cooperative</a></li>
 </ul>
 </li>
 </ul>

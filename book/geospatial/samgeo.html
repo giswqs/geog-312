@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15. SAMGeo &#8212; First Steps in GIS Programming</title>
+    <title>17. SAMGeo &#8212; First Steps in GIS Programming</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="16. HyperCoast" href="hypercoast.html" />
-    <link rel="prev" title="14. Geemap" href="geemap.html" />
+    <link rel="next" title="18. HyperCoast" href="hypercoast.html" />
+    <link rel="prev" title="16. Geemap" href="geemap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,14 +201,16 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="leafmap.html">9. Leafmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">10. Vector Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">11. Raster Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maplibre.html">12. MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whitebox.html">13. WhiteboxTools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">14. Geemap</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. SAMGeo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">16. HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geopandas.html">9. GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">10. Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">11. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">12. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">13. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">14. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">15. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">16. Geemap</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">17. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">18. HyperCoast</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -493,38 +495,38 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dependencies">15.1. Install dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">15.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-sample-data">15.3. Download sample data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">15.3.1. Create an interactive map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-map-tiles">15.3.2. Download map tiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dependencies">17.1. Install dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">17.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-sample-data">17.3. Download sample data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">17.3.1. Create an interactive map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-map-tiles">17.3.2. Download map tiles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-mask-generation">15.4. Automatic mask generation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-sam-class">15.4.1. Initialize SAM class</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.4.2. Automatic mask generation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-mask-generation-options">15.4.3. Automatic mask generation options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-mask-generation">17.4. Automatic mask generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-sam-class">17.4.1. Initialize SAM class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">17.4.2. Automatic mask generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-mask-generation-options">17.4.3. Automatic mask generation options</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-points-as-input-prompts">15.5. Use points as input prompts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.5.1. Initialize SAM class</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-segmentation-with-input-points">15.5.2. Image segmentation with input points</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-segmentation">15.5.3. Interactive segmentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-points-as-input-prompts">17.5. Use points as input prompts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">17.5.1. Initialize SAM class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-segmentation-with-input-points">17.5.2. Image segmentation with input points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-segmentation">17.5.3. Interactive segmentation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bounding-box-input-prompts">15.6. Bounding box input prompts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.6.1. Create an interactive map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bounding-boxes">15.6.2. Create bounding boxes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bounding-box-input-prompts">17.6. Bounding box input prompts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">17.6.1. Create an interactive map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bounding-boxes">17.6.2. Create bounding boxes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segment-the-image">15.7. Segment the image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-the-result">15.8. Display the result</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-promots">15.9. Text promots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-langsam-class">15.9.1. Initialize LangSAM class</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-text-prompts">15.9.2. Specify text prompts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.9.3. Segment the image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-results">15.9.4. Visualize the results</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.9.5. Interactive segmentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segment-the-image">17.7. Segment the image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-the-result">17.8. Display the result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-promots">17.9. Text promots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-langsam-class">17.9.1. Initialize LangSAM class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-text-prompts">17.9.2. Specify text prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">17.9.3. Segment the image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-results">17.9.4. Visualize the results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">17.9.5. Interactive segmentation</a></li>
 </ul>
 </li>
 </ul>
@@ -539,9 +541,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="samgeo">
-<h1><span class="section-number">15. </span>SAMGeo<a class="headerlink" href="#samgeo" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">17. </span>SAMGeo<a class="headerlink" href="#samgeo" title="Link to this heading">#</a></h1>
 <section id="install-dependencies">
-<h2><span class="section-number">15.1. </span>Install dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.1. </span>Install dependencies<a class="headerlink" href="#install-dependencies" title="Link to this heading">#</a></h2>
 <p>Uncomment and run the following cell to install the required dependencies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -552,7 +554,7 @@ document.write(`
 </div>
 </section>
 <section id="import-libraries">
-<h2><span class="section-number">15.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leafmap</span>
@@ -564,9 +566,9 @@ document.write(`
 </div>
 </section>
 <section id="download-sample-data">
-<h2><span class="section-number">15.3. </span>Download sample data<a class="headerlink" href="#download-sample-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.3. </span>Download sample data<a class="headerlink" href="#download-sample-data" title="Link to this heading">#</a></h2>
 <section id="create-an-interactive-map">
-<h3><span class="section-number">15.3.1. </span>Create an interactive map<a class="headerlink" href="#create-an-interactive-map" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.3.1. </span>Create an interactive map<a class="headerlink" href="#create-an-interactive-map" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">40.427495</span><span class="p">,</span> <span class="o">-</span><span class="mf">86.913638</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
@@ -589,7 +591,7 @@ document.write(`
 </div>
 </section>
 <section id="download-map-tiles">
-<h3><span class="section-number">15.3.2. </span>Download map tiles<a class="headerlink" href="#download-map-tiles" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.3.2. </span>Download map tiles<a class="headerlink" href="#download-map-tiles" title="Link to this heading">#</a></h3>
 <p>Download maps tiles and mosaic them into a single GeoTIFF file</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -630,9 +632,9 @@ document.write(`
 </section>
 </section>
 <section id="automatic-mask-generation">
-<h2><span class="section-number">15.4. </span>Automatic mask generation<a class="headerlink" href="#automatic-mask-generation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.4. </span>Automatic mask generation<a class="headerlink" href="#automatic-mask-generation" title="Link to this heading">#</a></h2>
 <section id="initialize-sam-class">
-<h3><span class="section-number">15.4.1. </span>Initialize SAM class<a class="headerlink" href="#initialize-sam-class" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.4.1. </span>Initialize SAM class<a class="headerlink" href="#initialize-sam-class" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sam</span> <span class="o">=</span> <span class="n">SamGeo</span><span class="p">(</span>
@@ -645,7 +647,7 @@ document.write(`
 </div>
 </section>
 <section id="id1">
-<h3><span class="section-number">15.4.2. </span>Automatic mask generation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.4.2. </span>Automatic mask generation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>Segment the image and save the results to a GeoTIFF file. Set <code class="docutils literal notranslate"><span class="pre">unique=True</span></code> to assign a unique ID to each object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -713,7 +715,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/N0xVt9S.png" /></p>
 </section>
 <section id="automatic-mask-generation-options">
-<h3><span class="section-number">15.4.3. </span>Automatic mask generation options<a class="headerlink" href="#automatic-mask-generation-options" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.4.3. </span>Automatic mask generation options<a class="headerlink" href="#automatic-mask-generation-options" title="Link to this heading">#</a></h3>
 <p>There are several tunable parameters in automatic mask generation that control how densely points are sampled and what the thresholds are for removing low quality or duplicate masks. Additionally, generation can be automatically run on crops of the image to get improved performance on smaller objects, and post-processing can remove stray pixels and holes. Here is an example configuration that samples more masks:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -778,9 +780,9 @@ document.write(`
 </section>
 </section>
 <section id="use-points-as-input-prompts">
-<h2><span class="section-number">15.5. </span>Use points as input prompts<a class="headerlink" href="#use-points-as-input-prompts" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.5. </span>Use points as input prompts<a class="headerlink" href="#use-points-as-input-prompts" title="Link to this heading">#</a></h2>
 <section id="id2">
-<h3><span class="section-number">15.5.1. </span>Initialize SAM class<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.5.1. </span>Initialize SAM class<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>Set <code class="docutils literal notranslate"><span class="pre">automatic=False</span></code> to disable the <code class="docutils literal notranslate"><span class="pre">SamAutomaticMaskGenerator</span></code> and enable the <code class="docutils literal notranslate"><span class="pre">SamPredictor</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -813,7 +815,7 @@ document.write(`
 </div>
 </section>
 <section id="image-segmentation-with-input-points">
-<h3><span class="section-number">15.5.2. </span>Image segmentation with input points<a class="headerlink" href="#image-segmentation-with-input-points" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.5.2. </span>Image segmentation with input points<a class="headerlink" href="#image-segmentation-with-input-points" title="Link to this heading">#</a></h3>
 <p>A single point can be used to segment an object. The point can be specified as a tuple of (x, y), such as (col, row) or (lon, lat). The points can also be specified as a file path to a vector dataset. For non (col, row) input points, specify the <code class="docutils literal notranslate"><span class="pre">point_crs</span></code> parameter, which will automatically transform the points to the image column and row coordinates.</p>
 <p>Try a single point input:</p>
 <div class="cell docutils container">
@@ -846,7 +848,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/zUMLUsn.png" /></p>
 </section>
 <section id="interactive-segmentation">
-<h3><span class="section-number">15.5.3. </span>Interactive segmentation<a class="headerlink" href="#interactive-segmentation" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.5.3. </span>Interactive segmentation<a class="headerlink" href="#interactive-segmentation" title="Link to this heading">#</a></h3>
 <p>Display the interactive map and use the marker tool to draw points on the map. Then click on the <code class="docutils literal notranslate"><span class="pre">Segment</span></code> button to segment the objects. The results will be added to the map automatically. Click on the <code class="docutils literal notranslate"><span class="pre">Reset</span></code> button to clear the points and the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -860,9 +862,9 @@ document.write(`
 </section>
 </section>
 <section id="bounding-box-input-prompts">
-<h2><span class="section-number">15.6. </span>Bounding box input prompts<a class="headerlink" href="#bounding-box-input-prompts" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.6. </span>Bounding box input prompts<a class="headerlink" href="#bounding-box-input-prompts" title="Link to this heading">#</a></h2>
 <section id="id3">
-<h3><span class="section-number">15.6.1. </span>Create an interactive map<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.6.1. </span>Create an interactive map<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">40.427495</span><span class="p">,</span> <span class="o">-</span><span class="mf">86.913638</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
@@ -894,7 +896,7 @@ document.write(`
 </div>
 </section>
 <section id="create-bounding-boxes">
-<h3><span class="section-number">15.6.2. </span>Create bounding boxes<a class="headerlink" href="#create-bounding-boxes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.6.2. </span>Create bounding boxes<a class="headerlink" href="#create-bounding-boxes" title="Link to this heading">#</a></h3>
 <p>If no rectangles are drawn, the default bounding boxes will be used as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -913,7 +915,7 @@ document.write(`
 </section>
 </section>
 <section id="segment-the-image">
-<h2><span class="section-number">15.7. </span>Segment the image<a class="headerlink" href="#segment-the-image" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.7. </span>Segment the image<a class="headerlink" href="#segment-the-image" title="Link to this heading">#</a></h2>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> method to segment the image with specified bounding boxes. The <code class="docutils literal notranslate"><span class="pre">boxes</span></code> parameter accepts a list of bounding box coordinates in the format of [[left, bottom, right, top], [left, bottom, right, top], …], a GeoJSON dictionary, or a file path to a GeoJSON file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -924,7 +926,7 @@ document.write(`
 </div>
 </section>
 <section id="display-the-result">
-<h2><span class="section-number">15.8. </span>Display the result<a class="headerlink" href="#display-the-result" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.8. </span>Display the result<a class="headerlink" href="#display-the-result" title="Link to this heading">#</a></h2>
 <p>Add the segmented image to the map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -937,9 +939,9 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/9y31xUH.png" /></p>
 </section>
 <section id="text-promots">
-<h2><span class="section-number">15.9. </span>Text promots<a class="headerlink" href="#text-promots" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.9. </span>Text promots<a class="headerlink" href="#text-promots" title="Link to this heading">#</a></h2>
 <section id="initialize-langsam-class">
-<h3><span class="section-number">15.9.1. </span>Initialize LangSAM class<a class="headerlink" href="#initialize-langsam-class" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.9.1. </span>Initialize LangSAM class<a class="headerlink" href="#initialize-langsam-class" title="Link to this heading">#</a></h3>
 <p>The initialization of the LangSAM class might take a few minutes. The initialization downloads the model weights and sets up the model for inference.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -960,7 +962,7 @@ document.write(`
 </div>
 </section>
 <section id="specify-text-prompts">
-<h3><span class="section-number">15.9.2. </span>Specify text prompts<a class="headerlink" href="#specify-text-prompts" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.9.2. </span>Specify text prompts<a class="headerlink" href="#specify-text-prompts" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_prompt</span> <span class="o">=</span> <span class="s2">&quot;tree&quot;</span>
@@ -970,7 +972,7 @@ document.write(`
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">15.9.3. </span>Segment the image<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.9.3. </span>Segment the image<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>Part of the model prediction includes setting appropriate thresholds for object detection and text association with the detected objects. These threshold values range from 0 to 1 and are set while calling the predict method of the LangSAM class.</p>
 <p><code class="docutils literal notranslate"><span class="pre">box_threshold</span></code>: This value is used for object detection in the image. A higher value makes the model more selective, identifying only the most confident object instances, leading to fewer overall detections. A lower value, conversely, makes the model more tolerant, leading to increased detections, including potentially less confident ones.</p>
 <p><code class="docutils literal notranslate"><span class="pre">text_threshold</span></code>: This value is used to associate the detected objects with the provided text prompt. A higher value requires a stronger association between the object and the text prompt, leading to more precise but potentially fewer associations. A lower value allows for looser associations, which could increase the number of associations but also introduce less precise matches.</p>
@@ -984,7 +986,7 @@ document.write(`
 </div>
 </section>
 <section id="visualize-the-results">
-<h3><span class="section-number">15.9.4. </span>Visualize the results<a class="headerlink" href="#visualize-the-results" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.9.4. </span>Visualize the results<a class="headerlink" href="#visualize-the-results" title="Link to this heading">#</a></h3>
 <p>Show the result with bounding boxes on the map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1055,7 +1057,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/WDQgECD.png" /></p>
 </section>
 <section id="id5">
-<h3><span class="section-number">15.9.5. </span>Interactive segmentation<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.9.5. </span>Interactive segmentation<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sam</span><span class="o">.</span><span class="n">show_map</span><span class="p">()</span>
@@ -1104,7 +1106,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">14. </span>Geemap</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>Geemap</p>
       </div>
     </a>
     <a class="right-next"
@@ -1112,7 +1114,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">16. </span>HyperCoast</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>HyperCoast</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1132,38 +1134,38 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dependencies">15.1. Install dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">15.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-sample-data">15.3. Download sample data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">15.3.1. Create an interactive map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-map-tiles">15.3.2. Download map tiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-dependencies">17.1. Install dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">17.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-sample-data">17.3. Download sample data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">17.3.1. Create an interactive map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-map-tiles">17.3.2. Download map tiles</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-mask-generation">15.4. Automatic mask generation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-sam-class">15.4.1. Initialize SAM class</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">15.4.2. Automatic mask generation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-mask-generation-options">15.4.3. Automatic mask generation options</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-mask-generation">17.4. Automatic mask generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-sam-class">17.4.1. Initialize SAM class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">17.4.2. Automatic mask generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-mask-generation-options">17.4.3. Automatic mask generation options</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-points-as-input-prompts">15.5. Use points as input prompts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.5.1. Initialize SAM class</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-segmentation-with-input-points">15.5.2. Image segmentation with input points</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-segmentation">15.5.3. Interactive segmentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-points-as-input-prompts">17.5. Use points as input prompts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">17.5.1. Initialize SAM class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-segmentation-with-input-points">17.5.2. Image segmentation with input points</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-segmentation">17.5.3. Interactive segmentation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bounding-box-input-prompts">15.6. Bounding box input prompts</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.6.1. Create an interactive map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bounding-boxes">15.6.2. Create bounding boxes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bounding-box-input-prompts">17.6. Bounding box input prompts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">17.6.1. Create an interactive map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bounding-boxes">17.6.2. Create bounding boxes</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segment-the-image">15.7. Segment the image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-the-result">15.8. Display the result</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-promots">15.9. Text promots</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-langsam-class">15.9.1. Initialize LangSAM class</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-text-prompts">15.9.2. Specify text prompts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.9.3. Segment the image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-results">15.9.4. Visualize the results</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.9.5. Interactive segmentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segment-the-image">17.7. Segment the image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-the-result">17.8. Display the result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-promots">17.9. Text promots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-langsam-class">17.9.1. Initialize LangSAM class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-text-prompts">17.9.2. Specify text prompts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">17.9.3. Segment the image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-results">17.9.4. Visualize the results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">17.9.5. Interactive segmentation</a></li>
 </ul>
 </li>
 </ul>

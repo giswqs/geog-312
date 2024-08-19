@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. Leafmap &#8212; First Steps in GIS Programming</title>
+    <title>10. Rasterio &#8212; First Steps in GIS Programming</title>
   
   
   
@@ -57,13 +57,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/leafmap';</script>
-    <link rel="canonical" href="https://geog-312.gishub.org/book/geospatial/leafmap.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/rasterio';</script>
+    <link rel="canonical" href="https://geog-312.gishub.org/book/geospatial/rasterio.html" />
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="12. Vector Data Visualization" href="vector_viz.html" />
-    <link rel="prev" title="10. Rasterio" href="rasterio.html" />
+    <link rel="next" title="11. Leafmap" href="leafmap.html" />
+    <link rel="prev" title="9. GeoPandas" href="geopandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -202,8 +202,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">9. GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">10. Rasterio</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Leafmap</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">11. Leafmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vector_viz.html">12. Vector Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="raster_viz.html">13. Raster Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maplibre.html">14. MapLibre</a></li>
@@ -270,7 +270,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/giswqs/geog-312/main?urlpath=tree/book/geospatial/leafmap.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/giswqs/geog-312/main?urlpath=tree/book/geospatial/rasterio.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -288,7 +288,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/leafmap.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/rasterio.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -354,7 +354,7 @@
       
       
       
-      <li><a href="https://github.com/giswqs/geog-312/edit/main/book/geospatial/leafmap.ipynb" target="_blank"
+      <li><a href="https://github.com/giswqs/geog-312/edit/main/book/geospatial/rasterio.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -371,7 +371,7 @@
       
       
       
-      <li><a href="https://github.com/giswqs/geog-312/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/leafmap.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/giswqs/geog-312/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/rasterio.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -401,7 +401,7 @@
       
       
       
-      <li><a href="../../_sources/book/geospatial/leafmap.ipynb" target="_blank"
+      <li><a href="../../_sources/book/geospatial/rasterio.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -485,7 +485,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Leafmap</h1>
+    <h1>Rasterio</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -495,16 +495,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-leafmap">11.1. Install leafmap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">11.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">11.3. Create an interactive map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-map-height">11.4. Customize map height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-control-visibility">11.5. Set control visibility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-basemaps">11.6. Change basemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-xyz-tile-layer">11.7. Add XYZ tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-wms-tile-layer">11.8. Add WMS tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-legend">11.9. Add legend</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">11.10. Add colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-rasterio">10.2. Installing and Importing Rasterio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-data">10.3. Reading Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-raster-data">10.4. Plotting Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-raster-bands">10.5. Accessing Raster Bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raster-data">10.6. Writing Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">10.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">10.8. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -516,153 +514,125 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="leafmap">
-<h1><span class="section-number">11. </span>Leafmap<a class="headerlink" href="#leafmap" title="Link to this heading">#</a></h1>
-<section id="install-leafmap">
-<h2><span class="section-number">11.1. </span>Install leafmap<a class="headerlink" href="#install-leafmap" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="rasterio">
+<h1><span class="section-number">10. </span>Rasterio<a class="headerlink" href="#rasterio" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">10.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://rasterio.readthedocs.io/">Rasterio</a> is a Python library that allows you to read, write, and analyze geospatial raster data. It is built on top of GDAL (Geospatial Data Abstraction Library) and provides a simple, Pythonic interface to work with raster datasets, such as satellite images and digital elevation models (DEMs).</p>
+</section>
+<section id="installing-and-importing-rasterio">
+<h2><span class="section-number">10.2. </span>Installing and Importing Rasterio<a class="headerlink" href="#installing-and-importing-rasterio" title="Link to this heading">#</a></h2>
+<p>Before using Rasterio, you need to install it. You can install Rasterio using pip:</p>
+<p><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">rasterio</span></code></p>
+<p>Once installed, you can import it like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install leafmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="import-libraries">
-<h2><span class="section-number">11.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<section id="reading-raster-data">
+<h2><span class="section-number">10.3. </span>Reading Raster Data<a class="headerlink" href="#reading-raster-data" title="Link to this heading">#</a></h2>
+<p>Rasterio allows you to read raster data in various formats, including GeoTIFF. Let’s start by reading a raster file and displaying some basic information about the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leafmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reading a raster file</span>
+<span class="n">raster_path</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/raster/srtm90.tif&quot;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">raster_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raster CRS: </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">crs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raster dimensions: </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">width</span><span class="si">}</span><span class="s2"> x </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">height</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raster bounds: </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raster count: </span><span class="si">{</span><span class="n">src</span><span class="o">.</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Number of bands</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="create-an-interactive-map">
-<h2><span class="section-number">11.3. </span>Create an interactive map<a class="headerlink" href="#create-an-interactive-map" title="Link to this heading">#</a></h2>
+<section id="plotting-raster-data">
+<h2><span class="section-number">10.4. </span>Plotting Raster Data<a class="headerlink" href="#plotting-raster-data" title="Link to this heading">#</a></h2>
+<p>Rasterio integrates well with Matplotlib, allowing you to easily plot raster data. Let’s plot the raster data we just read.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">),</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">m</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting the raster data</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">raster_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+        <span class="n">show</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Raster Data&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="customize-map-height">
-<h2><span class="section-number">11.4. </span>Customize map height<a class="headerlink" href="#customize-map-height" title="Link to this heading">#</a></h2>
+<section id="accessing-raster-bands">
+<h2><span class="section-number">10.5. </span>Accessing Raster Bands<a class="headerlink" href="#accessing-raster-bands" title="Link to this heading">#</a></h2>
+<p>Raster data often consists of multiple bands, each representing different information (e.g., different spectral bands in satellite imagery). You can access and manipulate these bands individually using Rasterio.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="s2">&quot;400px&quot;</span><span class="p">)</span>
-<span class="n">m</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accessing and plotting a single band</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">raster_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">band1</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Reading the first band</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Band 1&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">band1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Pixel values&quot;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="set-control-visibility">
-<h2><span class="section-number">11.5. </span>Set control visibility<a class="headerlink" href="#set-control-visibility" title="Link to this heading">#</a></h2>
+<section id="writing-raster-data">
+<h2><span class="section-number">10.6. </span>Writing Raster Data<a class="headerlink" href="#writing-raster-data" title="Link to this heading">#</a></h2>
+<p>After processing or modifying raster data, you may want to save the results to a new file. Rasterio allows you to write raster data to various formats.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
-    <span class="n">draw_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">measure_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">fullscreen_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">attribution_control</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">m</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Writing the modified raster data to a new file</span>
+<span class="n">output_raster_path</span> <span class="o">=</span> <span class="s2">&quot;output_raster_file.tif&quot;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">raster_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">meta</span>
+        <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">output_raster_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
+            <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">band1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Writing the first band</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raster data has been written to </span><span class="si">{</span><span class="n">output_raster_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred while writing to </span><span class="si">{</span><span class="n">output_raster_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="change-basemaps">
-<h2><span class="section-number">11.6. </span>Change basemaps<a class="headerlink" href="#change-basemaps" title="Link to this heading">#</a></h2>
+<section id="exercises">
+<h2><span class="section-number">10.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Load a raster file of your choice, display the metadata, and plot all the bands separately.</p></li>
+<li><p>Modify one of the bands (e.g., apply a mathematical operation) and save the modified raster to a new file.</p></li>
+<li><p>Write a function that calculates the histogram of pixel values for a given raster band and plots it.</p></li>
+<li><p>Explore how to reproject a raster file to a different coordinate reference system (CRS) using Rasterio.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
-<span class="n">m</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Type your code here.</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="add-xyz-tile-layer">
-<h2><span class="section-number">11.7. </span>Add XYZ tile layer<a class="headerlink" href="#add-xyz-tile-layer" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_tile_layer</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://mt1.google.com/vt/lyrs=y&amp;x=</span><span class="si">{x}</span><span class="s2">&amp;y=</span><span class="si">{y}</span><span class="s2">&amp;z=</span><span class="si">{z}</span><span class="s2">&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Google Satellite&quot;</span><span class="p">,</span>
-    <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;Google&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">m</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="add-wms-tile-layer">
-<h2><span class="section-number">11.8. </span>Add WMS tile layer<a class="headerlink" href="#add-wms-tile-layer" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://imagery.nationalmap.gov/arcgis/services/USGSNAIPImagery/ImageServer/WMSServer?&quot;</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_wms_layer</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-    <span class="n">layers</span><span class="o">=</span><span class="s2">&quot;USGSNAIPImagery:FalseColorComposite&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;NAIP&quot;</span><span class="p">,</span>
-    <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;USGS&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
-    <span class="n">shown</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">m</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="add-legend">
-<h2><span class="section-number">11.9. </span>Add legend<a class="headerlink" href="#add-legend" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2021_Land_Cover_L48/wms?&quot;</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_wms_layer</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-    <span class="n">layers</span><span class="o">=</span><span class="s2">&quot;NLCD_2021_Land_Cover_L48&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;NLCD 2021&quot;</span><span class="p">,</span>
-    <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;MRLC&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
-    <span class="n">shown</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover Type&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span><span class="p">)</span>
-<span class="n">m</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="add-colorbar">
-<h2><span class="section-number">11.10. </span>Add colorbar<a class="headerlink" href="#add-colorbar" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_colormap</span><span class="p">(</span>
-    <span class="s2">&quot;terrain&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation&quot;</span><span class="p">,</span>
-    <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span>
-    <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">vmax</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">m</span>
-</pre></div>
-</div>
-</div>
-</div>
+<section id="conclusion">
+<h2><span class="section-number">10.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>Rasterio is a powerful library for working with geospatial raster data in Python. It provides a simple yet flexible interface for reading, writing, and analyzing raster data. By completing these exercises, you’ll gain practical experience in handling raster data for geospatial applications.</p>
 </section>
 </section>
 
@@ -697,20 +667,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="rasterio.html"
+       href="geopandas.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Rasterio</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>GeoPandas</p>
       </div>
     </a>
     <a class="right-next"
-       href="vector_viz.html"
+       href="leafmap.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Vector Data Visualization</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Leafmap</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -730,16 +700,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-leafmap">11.1. Install leafmap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">11.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">11.3. Create an interactive map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-map-height">11.4. Customize map height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-control-visibility">11.5. Set control visibility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-basemaps">11.6. Change basemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-xyz-tile-layer">11.7. Add XYZ tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-wms-tile-layer">11.8. Add WMS tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-legend">11.9. Add legend</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">11.10. Add colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-rasterio">10.2. Installing and Importing Rasterio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-data">10.3. Reading Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-raster-data">10.4. Plotting Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-raster-bands">10.5. Accessing Raster Bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raster-data">10.6. Writing Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">10.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">10.8. Conclusion</a></li>
 </ul>
   </nav></div>
 

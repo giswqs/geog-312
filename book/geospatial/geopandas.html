@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. Leafmap &#8212; First Steps in GIS Programming</title>
+    <title>9. GeoPandas &#8212; First Steps in GIS Programming</title>
   
   
   
@@ -57,13 +57,13 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/leafmap';</script>
-    <link rel="canonical" href="https://geog-312.gishub.org/book/geospatial/leafmap.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/geopandas';</script>
+    <link rel="canonical" href="https://geog-312.gishub.org/book/geospatial/geopandas.html" />
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="12. Vector Data Visualization" href="vector_viz.html" />
-    <link rel="prev" title="10. Rasterio" href="rasterio.html" />
+    <link rel="next" title="10. Rasterio" href="rasterio.html" />
+    <link rel="prev" title="8. Get Started" href="get_started.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,9 +201,9 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geopandas.html">9. GeoPandas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. GeoPandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rasterio.html">10. Rasterio</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">11. Leafmap</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vector_viz.html">12. Vector Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="raster_viz.html">13. Raster Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="maplibre.html">14. MapLibre</a></li>
@@ -270,7 +270,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/giswqs/geog-312/main?urlpath=tree/book/geospatial/leafmap.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/giswqs/geog-312/main?urlpath=tree/book/geospatial/geopandas.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -288,7 +288,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/leafmap.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/geopandas.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -354,7 +354,7 @@
       
       
       
-      <li><a href="https://github.com/giswqs/geog-312/edit/main/book/geospatial/leafmap.ipynb" target="_blank"
+      <li><a href="https://github.com/giswqs/geog-312/edit/main/book/geospatial/geopandas.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -371,7 +371,7 @@
       
       
       
-      <li><a href="https://github.com/giswqs/geog-312/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/leafmap.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/giswqs/geog-312/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/geopandas.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -401,7 +401,7 @@
       
       
       
-      <li><a href="../../_sources/book/geospatial/leafmap.ipynb" target="_blank"
+      <li><a href="../../_sources/book/geospatial/geopandas.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -485,7 +485,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Leafmap</h1>
+    <h1>GeoPandas</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -495,16 +495,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-leafmap">11.1. Install leafmap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">11.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">11.3. Create an interactive map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-map-height">11.4. Customize map height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-control-visibility">11.5. Set control visibility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-basemaps">11.6. Change basemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-xyz-tile-layer">11.7. Add XYZ tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-wms-tile-layer">11.8. Add WMS tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-legend">11.9. Add legend</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">11.10. Add colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">9.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-geopandas">9.2. Installing and Importing GeoPandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-geodataframes">9.3. Creating GeoDataFrames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-geospatial-data">9.4. Reading and Writing Geospatial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-operations">9.5. Spatial Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-geospatial-data">9.6. Plotting Geospatial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">9.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.8. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -516,153 +514,145 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="leafmap">
-<h1><span class="section-number">11. </span>Leafmap<a class="headerlink" href="#leafmap" title="Link to this heading">#</a></h1>
-<section id="install-leafmap">
-<h2><span class="section-number">11.1. </span>Install leafmap<a class="headerlink" href="#install-leafmap" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="geopandas">
+<h1><span class="section-number">9. </span>GeoPandas<a class="headerlink" href="#geopandas" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">9.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://geopandas.org">GeoPandas</a> is an open-source project that makes working with geospatial data in Python easier. It extends the datatypes used by pandas to allow spatial operations on geometric types. GeoPandas combines the capabilities of pandas and Shapely, providing geospatial operations in a pandas-like interface.</p>
+</section>
+<section id="installing-and-importing-geopandas">
+<h2><span class="section-number">9.2. </span>Installing and Importing GeoPandas<a class="headerlink" href="#installing-and-importing-geopandas" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install leafmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install geopandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once installed, you can import it like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">Polygon</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="import-libraries">
-<h2><span class="section-number">11.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<section id="creating-geodataframes">
+<h2><span class="section-number">9.3. </span>Creating GeoDataFrames<a class="headerlink" href="#creating-geodataframes" title="Link to this heading">#</a></h2>
+<p>A GeoDataFrame is a tabular data structure that contains a ‘geometry’ column, which holds the geometric shapes. You can create a GeoDataFrame from a list of geometries or from a pandas DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leafmap</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a GeoDataFrame from scratch</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;New York&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Paris&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Latitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">40.7128</span><span class="p">,</span> <span class="mf">51.5074</span><span class="p">,</span> <span class="mf">48.8566</span><span class="p">],</span>
+    <span class="s2">&quot;Longitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6917</span><span class="p">,</span> <span class="o">-</span><span class="mf">74.0060</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">,</span> <span class="mf">2.3522</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Longitude</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">Latitude</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="create-an-interactive-map">
-<h2><span class="section-number">11.3. </span>Create an interactive map<a class="headerlink" href="#create-an-interactive-map" title="Link to this heading">#</a></h2>
+<section id="reading-and-writing-geospatial-data">
+<h2><span class="section-number">9.4. </span>Reading and Writing Geospatial Data<a class="headerlink" href="#reading-and-writing-geospatial-data" title="Link to this heading">#</a></h2>
+<p>GeoPandas makes it easy to read and write geospatial data formats like Shapefiles, GeoJSON, and others. Let’s read a shapefile and write the GeoDataFrame to a GeoJSON file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">),</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">m</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reading a shapefile</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s2">&quot;naturalearth_lowres&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">world</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Writing the GeoDataFrame to a GeoJSON file</span>
+<span class="n">output_file</span> <span class="o">=</span> <span class="s2">&quot;world.geojson&quot;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">world</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GeoDataFrame has been written to </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred while writing to </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="customize-map-height">
-<h2><span class="section-number">11.4. </span>Customize map height<a class="headerlink" href="#customize-map-height" title="Link to this heading">#</a></h2>
+<section id="spatial-operations">
+<h2><span class="section-number">9.5. </span>Spatial Operations<a class="headerlink" href="#spatial-operations" title="Link to this heading">#</a></h2>
+<p>GeoPandas provides a range of spatial operations, such as buffering, intersections, and spatial joins. Let’s explore some of these operations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="s2">&quot;400px&quot;</span><span class="p">)</span>
-<span class="n">m</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example of buffering (creating a buffer zone around points)</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;buffer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Buffer of 1 degree</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gdf</span><span class="p">[[</span><span class="s2">&quot;City&quot;</span><span class="p">,</span> <span class="s2">&quot;buffer&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example of spatial join (finding points within a polygon)</span>
+<span class="n">paris</span> <span class="o">=</span> <span class="n">gdf</span><span class="p">[</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;City&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Paris&quot;</span><span class="p">]</span>
+<span class="n">polygon</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">([(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">48</span><span class="p">),</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">48</span><span class="p">),</span> <span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">49</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">49</span><span class="p">)])</span>
+<span class="n">polygon_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">geometry</span><span class="o">=</span><span class="p">[</span><span class="n">polygon</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">gdf</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="n">joined</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">sjoin</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">polygon_gdf</span><span class="p">,</span> <span class="n">predicate</span><span class="o">=</span><span class="s2">&quot;within&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">joined</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="set-control-visibility">
-<h2><span class="section-number">11.5. </span>Set control visibility<a class="headerlink" href="#set-control-visibility" title="Link to this heading">#</a></h2>
+<section id="plotting-geospatial-data">
+<h2><span class="section-number">9.6. </span>Plotting Geospatial Data<a class="headerlink" href="#plotting-geospatial-data" title="Link to this heading">#</a></h2>
+<p>GeoPandas integrates well with Matplotlib, allowing you to easily plot geospatial data. Let’s plot the world map with the locations of the cities from our GeoDataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
-    <span class="n">draw_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">measure_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">fullscreen_control</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">attribution_control</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">m</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Plotting the world map and the cities</span>
+<span class="n">world</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="s2">&quot;EPSG:4326&quot;</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">explore</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="change-basemaps">
-<h2><span class="section-number">11.6. </span>Change basemaps<a class="headerlink" href="#change-basemaps" title="Link to this heading">#</a></h2>
+<section id="exercises">
+<h2><span class="section-number">9.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Create a GeoDataFrame containing a list of countries and their capital cities. Add a geometry column with the locations of the capitals.</p></li>
+<li><p>Load a shapefile of your choice, filter the data to only include a specific region or country, and save the filtered GeoDataFrame to a new file.</p></li>
+<li><p>Perform a spatial join between two GeoDataFrames: one containing polygons (e.g., country borders) and one containing points (e.g., cities). Find out which points fall within which polygons.</p></li>
+<li><p>Plot a map showing the distribution of a particular attribute (e.g., population) across different regions.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
-<span class="n">m</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Type your code here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="add-xyz-tile-layer">
-<h2><span class="section-number">11.7. </span>Add XYZ tile layer<a class="headerlink" href="#add-xyz-tile-layer" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_tile_layer</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://mt1.google.com/vt/lyrs=y&amp;x=</span><span class="si">{x}</span><span class="s2">&amp;y=</span><span class="si">{y}</span><span class="s2">&amp;z=</span><span class="si">{z}</span><span class="s2">&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Google Satellite&quot;</span><span class="p">,</span>
-    <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;Google&quot;</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">m</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="add-wms-tile-layer">
-<h2><span class="section-number">11.8. </span>Add WMS tile layer<a class="headerlink" href="#add-wms-tile-layer" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://imagery.nationalmap.gov/arcgis/services/USGSNAIPImagery/ImageServer/WMSServer?&quot;</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_wms_layer</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-    <span class="n">layers</span><span class="o">=</span><span class="s2">&quot;USGSNAIPImagery:FalseColorComposite&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;NAIP&quot;</span><span class="p">,</span>
-    <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;USGS&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
-    <span class="n">shown</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">m</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="add-legend">
-<h2><span class="section-number">11.9. </span>Add legend<a class="headerlink" href="#add-legend" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2021_Land_Cover_L48/wms?&quot;</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_wms_layer</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-    <span class="n">layers</span><span class="o">=</span><span class="s2">&quot;NLCD_2021_Land_Cover_L48&quot;</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;NLCD 2021&quot;</span><span class="p">,</span>
-    <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;MRLC&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
-    <span class="n">shown</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover Type&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span><span class="p">)</span>
-<span class="n">m</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="add-colorbar">
-<h2><span class="section-number">11.10. </span>Add colorbar<a class="headerlink" href="#add-colorbar" title="Link to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_colormap</span><span class="p">(</span>
-    <span class="s2">&quot;terrain&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation&quot;</span><span class="p">,</span>
-    <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span><span class="p">,</span>
-    <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">vmax</span><span class="o">=</span><span class="mi">4000</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">m</span>
-</pre></div>
-</div>
-</div>
-</div>
+<section id="conclusion">
+<h2><span class="section-number">9.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>GeoPandas is a powerful tool for geospatial data analysis in Python. It combines the capabilities of pandas with the geometric operations of Shapely, allowing for efficient and intuitive geospatial data manipulation. By practicing with these exercises, you can gain a solid understanding of how to work with geospatial data using GeoPandas.</p>
 </section>
 </section>
 
@@ -697,20 +687,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="rasterio.html"
+       href="get_started.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Rasterio</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Get Started</p>
       </div>
     </a>
     <a class="right-next"
-       href="vector_viz.html"
+       href="rasterio.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Vector Data Visualization</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>Rasterio</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -730,16 +720,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-leafmap">11.1. Install leafmap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">11.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">11.3. Create an interactive map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-map-height">11.4. Customize map height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-control-visibility">11.5. Set control visibility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-basemaps">11.6. Change basemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-xyz-tile-layer">11.7. Add XYZ tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-wms-tile-layer">11.8. Add WMS tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-legend">11.9. Add legend</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">11.10. Add colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">9.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-geopandas">9.2. Installing and Importing GeoPandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-geodataframes">9.3. Creating GeoDataFrames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-geospatial-data">9.4. Reading and Writing Geospatial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-operations">9.5. Spatial Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-geospatial-data">9.6. Plotting Geospatial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">9.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.8. Conclusion</a></li>
 </ul>
   </nav></div>
 
