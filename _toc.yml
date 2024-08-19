@@ -10,7 +10,7 @@ parts:
       - file: book/about/instructor
       - file: book/about/syllabus
       - file: book/about/schedule
-      - file: book/about/software
+      - file: book/about/videos
   - caption: Software
     chapters:
       - file: book/software/overview
