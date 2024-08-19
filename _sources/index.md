@@ -1,4 +1,4 @@
-# First Steps in GIS Programming
+# Introduction to GIS Programming
 
 ## Course Description
 
