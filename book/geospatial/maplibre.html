@@ -1,0 +1,1290 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>12. MapLibre &#8212; First Steps in GIS Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/maplibre';</script>
+    <link rel="canonical" href="https://geog-312.gishub.org/book/geospatial/maplibre.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="13. WhiteboxTools" href="whitebox.html" />
+    <link rel="prev" title="11. Raster Data Visualization" href="raster_viz.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="First Steps in GIS Programming - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="First Steps in GIS Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/miniconda.html">Miniconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/colab.html">Google Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/jupyterlab.html">JupyterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/01_get_started.html">1. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/02_variables.html">2. Variables and Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/03_data_structures.html">3. Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/04_string_operations.html">4. String Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/05_looping.html">5. Looping and Control Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/06_functions_classes.html">6. Functions and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/07_files.html">7. Files and Exception Handling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">9. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">10. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">11. Raster Data Visualization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">13. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">14. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">15. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">16. HyperCoast</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_01.html">Lab 1</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/giswqs/geog-312/main?urlpath=tree/book/geospatial/maplibre.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/maplibre.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312/edit/main/book/geospatial/maplibre.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/maplibre.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/geospatial/maplibre.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MapLibre</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">12.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">12.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-maps">12.3. Create maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-controls">12.4. Add controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-basemaps">12.5. Add basemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xyz-tile-layer">12.6. XYZ tile layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wms-layer">12.7. WMS layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cog-layer">12.8. COG layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stac-layer">12.9. STAC layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-raster">12.10. Local raster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vancouver-property-value">12.11. Vancouver Property Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthquake-clusters">12.12. Earthquake Clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airport-markers">12.13. Airport Markers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-indoor-mapping">12.14. 3D Indoor Mapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-basemap">12.15. Custom Basemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h3-grid-uk-road-safety">12.16. H3 Grid UK Road Safety</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deck-gl-layer">12.17. Deck.GL Layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-deck-gl-layers">12.18. Multiple Deck.GL Layers</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="maplibre">
+<h1><span class="section-number">12. </span>MapLibre<a class="headerlink" href="#maplibre" title="Link to this heading">#</a></h1>
+<p>The notebook demonstrates how to create 3D maps using the <a class="reference external" href="https://github.com/eodaGmbH/py-maplibregl">MapLibre</a> Python package. The examples shown in this notebook are based on the <a class="reference external" href="https://eodagmbh.github.io/py-maplibregl/examples/vancouver_blocks/">MapLibre documentation</a>.</p>
+<section id="installation">
+<h2><span class="section-number">12.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>Uncomment the following line to install <a class="reference external" href="https://leafmap.org">leafmap</a> if needed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install &quot;leafmap[maplibre]&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-libraries">
+<h2><span class="section-number">12.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leafmap.maplibregl</span> <span class="k">as</span> <span class="nn">leafmap</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-maps">
+<h2><span class="section-number">12.3. </span>Create maps<a class="headerlink" href="#create-maps" title="Link to this heading">#</a></h2>
+<p>Create an interactive map by specifying map center [lon, lat], zoom level, pitch, and bearing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">pitch</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bearing</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/8ITaEZa.png" /></p>
+<p>To customize the basemap, you can specify the <code class="docutils literal notranslate"><span class="pre">style</span></code> parameter. It can be an URL or a string, such as <code class="docutils literal notranslate"><span class="pre">dark-matter</span></code>, <code class="docutils literal notranslate"><span class="pre">positron</span></code>, <code class="docutils literal notranslate"><span class="pre">voyager</span></code>, <code class="docutils literal notranslate"><span class="pre">demotiles</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;positron&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/9fImW21.png" /></p>
+<p>To create a map with a background color, use <code class="docutils literal notranslate"><span class="pre">style=&quot;background-&lt;COLOR&gt;&quot;</span></code>, such as <code class="docutils literal notranslate"><span class="pre">background-lightgray</span></code> and <code class="docutils literal notranslate"><span class="pre">background-green</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;background-lightgray&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/xFeDTkE.png" /></p>
+<p>Alternatively, you can provide a URL to a vector style.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;https://demotiles.maplibre.org/style.json&quot;</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/yaZYrr1.png" /></p>
+</section>
+<section id="add-controls">
+<h2><span class="section-number">12.4. </span>Add controls<a class="headerlink" href="#add-controls" title="Link to this heading">#</a></h2>
+<p>The control to add to the map. Can be one of the following: <code class="docutils literal notranslate"><span class="pre">scale</span></code>, <code class="docutils literal notranslate"><span class="pre">fullscreen</span></code>, <code class="docutils literal notranslate"><span class="pre">geolocate</span></code>, <code class="docutils literal notranslate"><span class="pre">navigation</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="s2">&quot;geolocate&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;top-left&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/7LS5WAk.png" /></p>
+</section>
+<section id="add-basemaps">
+<h2><span class="section-number">12.5. </span>Add basemaps<a class="headerlink" href="#add-basemaps" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/MRRw1MW.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="xyz-tile-layer">
+<h2><span class="section-number">12.6. </span>XYZ tile layer<a class="headerlink" href="#xyz-tile-layer" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://tile.openstreetmap.org/</span><span class="si">{z}</span><span class="s2">/</span><span class="si">{x}</span><span class="s2">/</span><span class="si">{y}</span><span class="s2">.png&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_tile_layer</span><span class="p">(</span>
+    <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">,</span> <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">visible</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/V9wmsjl.png" /></p>
+</section>
+<section id="wms-layer">
+<h2><span class="section-number">12.7. </span>WMS layer<a class="headerlink" href="#wms-layer" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2021_Land_Cover_L48/wms&quot;</span>
+<span class="n">layers</span> <span class="o">=</span> <span class="s2">&quot;NLCD_2021_Land_Cover_L48&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_wms_layer</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">layers</span><span class="o">=</span><span class="n">layers</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/xcZ4VKv.png" /></p>
+</section>
+<section id="cog-layer">
+<h2><span class="section-number">12.8. </span>COG layer<a class="headerlink" href="#cog-layer" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-07-01.tif&quot;</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_cog_layer</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;COG&quot;</span><span class="p">,</span> <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;Maxar&quot;</span><span class="p">,</span> <span class="n">fit_bounds</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/ApGhjDp.png" /></p>
+</section>
+<section id="stac-layer">
+<h2><span class="section-number">12.9. </span>STAC layer<a class="headerlink" href="#stac-layer" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://canada-spot-ortho.s3.amazonaws.com/canada_spot_orthoimages/canada_spot5_orthoimages/S5_2007/S5_11055_6057_20070622/S5_11055_6057_20070622.json&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_stac_layer</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;SPOT&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/RJAhsV5.png" /></p>
+</section>
+<section id="local-raster">
+<h2><span class="section-number">12.10. </span>Local raster<a class="headerlink" href="#local-raster" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/raster/srtm90.tif&quot;</span>
+<span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;srtm90.tif&quot;</span>
+<span class="n">leafmap</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">filepath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/pMcuQAp.png" /></p>
+</section>
+<section id="vancouver-property-value">
+<h2><span class="section-number">12.11. </span>Vancouver Property Value<a class="headerlink" href="#vancouver-property-value" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+    <span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">123.13</span><span class="p">,</span> <span class="mf">49.254</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;dark-matter&quot;</span><span class="p">,</span> <span class="n">pitch</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">bearing</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/geojson/vancouver-blocks.json&quot;</span>
+<span class="n">paint_line</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;line-color&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;line-width&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">paint_fill</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;fill-extrusion-color&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;property&quot;</span><span class="p">:</span> <span class="s2">&quot;valuePerSqm&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;stops&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;grey&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">5000</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">10000</span><span class="p">,</span> <span class="s2">&quot;darkred&quot;</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">50000</span><span class="p">,</span> <span class="s2">&quot;lightblue&quot;</span><span class="p">],</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;fill-extrusion-height&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;sqrt&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;valuePerSqm&quot;</span><span class="p">]]],</span>
+    <span class="s2">&quot;fill-extrusion-opacity&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">layer_type</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">,</span> <span class="n">paint</span><span class="o">=</span><span class="n">paint_line</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;blocks-line&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">layer_type</span><span class="o">=</span><span class="s2">&quot;fill-extrusion&quot;</span><span class="p">,</span> <span class="n">paint</span><span class="o">=</span><span class="n">paint_fill</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;blocks-fill&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">layer_interact</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/IZXfgSz.gif" /></p>
+</section>
+<section id="earthquake-clusters">
+<h2><span class="section-number">12.12. </span>Earthquake Clusters<a class="headerlink" href="#earthquake-clusters" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;positron&quot;</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson&quot;</span>
+<span class="n">source_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;cluster&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;cluster_radius&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="s2">&quot;cluster_min_points&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;cluster_max_zoom&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="s2">&quot;cluster_properties&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;maxMag&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;mag&quot;</span><span class="p">]],</span>
+        <span class="s2">&quot;minMag&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;mag&quot;</span><span class="p">]],</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">layer_type</span><span class="o">=</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;earthquake-circles&quot;</span><span class="p">,</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;!&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;has&quot;</span><span class="p">,</span> <span class="s2">&quot;point_count&quot;</span><span class="p">]],</span>
+    <span class="n">paint</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;circle-color&quot;</span><span class="p">:</span> <span class="s2">&quot;darkblue&quot;</span><span class="p">},</span>
+    <span class="n">source_args</span><span class="o">=</span><span class="n">source_args</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">layer_type</span><span class="o">=</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;earthquake-clusters&quot;</span><span class="p">,</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;has&quot;</span><span class="p">,</span> <span class="s2">&quot;point_count&quot;</span><span class="p">],</span>
+    <span class="n">paint</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;circle-color&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;step&quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;point_count&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;#51bbd6&quot;</span><span class="p">,</span>
+            <span class="mi">100</span><span class="p">,</span>
+            <span class="s2">&quot;#f1f075&quot;</span><span class="p">,</span>
+            <span class="mi">750</span><span class="p">,</span>
+            <span class="s2">&quot;#f28cb1&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;circle-radius&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;step&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;point_count&quot;</span><span class="p">],</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">750</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="n">source_args</span><span class="o">=</span><span class="n">source_args</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">layer_type</span><span class="o">=</span><span class="s2">&quot;symbol&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;earthquake-labels&quot;</span><span class="p">,</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;has&quot;</span><span class="p">,</span> <span class="s2">&quot;point_count&quot;</span><span class="p">],</span>
+    <span class="n">layout</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;text-field&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;point_count_abbreviated&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;text-size&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">source_args</span><span class="o">=</span><span class="n">source_args</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/vge4jF4.png" /></p>
+</section>
+<section id="airport-markers">
+<h2><span class="section-number">12.13. </span>Airport Markers<a class="headerlink" href="#airport-markers" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">maplibre.controls</span> <span class="kn">import</span> <span class="n">Marker</span><span class="p">,</span> <span class="n">MarkerOptions</span><span class="p">,</span> <span class="n">Popup</span><span class="p">,</span> <span class="n">PopupOptions</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;positron&quot;</span><span class="p">)</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/visgl/deck.gl-data/raw/master/examples/line/airports.json&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">pandas_to_geojson</span><span class="p">(</span>
+    <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;coordinates&quot;</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;abbrev&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Airports&quot;</span><span class="p">,</span>
+    <span class="n">layer_type</span><span class="o">=</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span>
+    <span class="n">paint</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;circle-color&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;match&quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;mid&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;darkred&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;major&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;darkgreen&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;darkblue&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;circle_radius&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">&quot;circle-opacity&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_color</span><span class="p">(</span><span class="n">airport_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;darkblue&quot;</span>
+    <span class="k">if</span> <span class="n">airport_type</span> <span class="o">==</span> <span class="s2">&quot;mid&quot;</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;darkred&quot;</span>
+    <span class="k">elif</span> <span class="n">airport_type</span> <span class="o">==</span> <span class="s2">&quot;major&quot;</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;darkgreen&quot;</span>
+
+    <span class="k">return</span> <span class="n">color</span>
+
+
+<span class="n">airports_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">popup_options</span> <span class="o">=</span> <span class="n">PopupOptions</span><span class="p">(</span><span class="n">close_button</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">airports_data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">add_marker</span><span class="p">(</span>
+        <span class="n">lng_lat</span><span class="o">=</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;coordinates&quot;</span><span class="p">],</span>
+        <span class="n">options</span><span class="o">=</span><span class="n">MarkerOptions</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">get_color</span><span class="p">(</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">])),</span>
+        <span class="n">popup</span><span class="o">=</span><span class="n">Popup</span><span class="p">(</span>
+            <span class="n">text</span><span class="o">=</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">popup_options</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/q7nN1PW.png" /></p>
+</section>
+<section id="d-indoor-mapping">
+<h2><span class="section-number">12.14. </span>3D Indoor Mapping<a class="headerlink" href="#d-indoor-mapping" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+    <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">87.61694</span><span class="p">,</span> <span class="mf">41.86625</span><span class="p">),</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">pitch</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">bearing</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;positron&quot;</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenStreetMap.Mapnik&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;https://maplibre.org/maplibre-gl-js/docs/assets/indoor-3d-map.geojson&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">layer_type</span><span class="o">=</span><span class="s2">&quot;fill-extrusion&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;floorplan&quot;</span><span class="p">,</span>
+    <span class="n">paint</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;fill-extrusion-color&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;fill-extrusion-height&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;fill-extrusion-base&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;base_height&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;fill-extrusion-opacity&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/dteQlQC.png" /></p>
+</section>
+<section id="custom-basemap">
+<h2><span class="section-number">12.15. </span>Custom Basemap<a class="headerlink" href="#custom-basemap" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leafmap.maplibregl</span> <span class="k">as</span> <span class="nn">leafmap</span>
+<span class="kn">from</span> <span class="nn">maplibre.basemaps</span> <span class="kn">import</span> <span class="n">construct_basemap_style</span>
+<span class="kn">from</span> <span class="nn">maplibre</span> <span class="kn">import</span> <span class="n">Layer</span><span class="p">,</span> <span class="n">LayerType</span><span class="p">,</span> <span class="n">Map</span><span class="p">,</span> <span class="n">MapOptions</span>
+<span class="kn">from</span> <span class="nn">maplibre.sources</span> <span class="kn">import</span> <span class="n">GeoJSONSource</span>
+
+
+<span class="n">bg_layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">LayerType</span><span class="o">.</span><span class="n">BACKGROUND</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;background&quot;</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">paint</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;background-color&quot;</span><span class="p">:</span> <span class="s2">&quot;darkblue&quot;</span><span class="p">,</span> <span class="s2">&quot;background-opacity&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">countries_source</span> <span class="o">=</span> <span class="n">GeoJSONSource</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="s2">&quot;https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_admin_0_countries.geojson&quot;</span>
+<span class="p">)</span>
+
+<span class="n">lines_layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">LayerType</span><span class="o">.</span><span class="n">LINE</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="s2">&quot;countries&quot;</span><span class="p">,</span>
+    <span class="n">paint</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;line-color&quot;</span><span class="p">:</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="s2">&quot;line-width&quot;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">polygons_layer</span> <span class="o">=</span> <span class="n">Layer</span><span class="p">(</span>
+    <span class="nb">type</span><span class="o">=</span><span class="n">LayerType</span><span class="o">.</span><span class="n">FILL</span><span class="p">,</span>
+    <span class="n">source</span><span class="o">=</span><span class="s2">&quot;countries&quot;</span><span class="p">,</span>
+    <span class="n">paint</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fill-color&quot;</span><span class="p">:</span> <span class="s2">&quot;darkred&quot;</span><span class="p">,</span> <span class="s2">&quot;fill-opacity&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">},</span>
+<span class="p">)</span>
+
+<span class="n">custom_basemap</span> <span class="o">=</span> <span class="n">construct_basemap_style</span><span class="p">(</span>
+    <span class="n">layers</span><span class="o">=</span><span class="p">[</span><span class="n">bg_layer</span><span class="p">,</span> <span class="n">polygons_layer</span><span class="p">,</span> <span class="n">lines_layer</span><span class="p">],</span>
+    <span class="n">sources</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;countries&quot;</span><span class="p">:</span> <span class="n">countries_source</span><span class="p">},</span>
+<span class="p">)</span>
+
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="n">custom_basemap</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">layer_type</span><span class="o">=</span><span class="s2">&quot;circle&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;earthquakes&quot;</span><span class="p">,</span>
+    <span class="n">paint</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;circle-color&quot;</span><span class="p">:</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;circle-radius&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_popup</span><span class="p">(</span><span class="s2">&quot;earthquakes&quot;</span><span class="p">,</span> <span class="s2">&quot;mag&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/Bn9Kwje.png" /></p>
+</section>
+<section id="h3-grid-uk-road-safety">
+<h2><span class="section-number">12.16. </span>H3 Grid UK Road Safety<a class="headerlink" href="#h3-grid-uk-road-safety" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">h3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RESOLUTION</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">COLORS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;lightblue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;turquoise&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;yellow&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;darkred&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">road_safety</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">create_h3_grid</span><span class="p">(</span><span class="n">res</span><span class="o">=</span><span class="n">RESOLUTION</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="n">road_safety</span><span class="p">[</span><span class="s2">&quot;h3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">road_safety</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">h3</span><span class="o">.</span><span class="n">geo_to_h3</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;lng&quot;</span><span class="p">],</span> <span class="n">resolution</span><span class="o">=</span><span class="n">res</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">road_safety</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;h3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">h3</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s2">&quot;count&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;hexagon&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">h3</span><span class="o">.</span><span class="n">h3_to_geo_boundary</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;h3&quot;</span><span class="p">],</span> <span class="n">geo_json</span><span class="o">=</span><span class="kc">True</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span>
+    <span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">],</span>
+        <span class="n">bins</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">COLORS</span><span class="p">),</span>
+        <span class="n">labels</span><span class="o">=</span><span class="n">COLORS</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">pandas_to_geojson</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">,</span> <span class="s2">&quot;hexagon&quot;</span><span class="p">,</span> <span class="n">geometry_type</span><span class="o">=</span><span class="s2">&quot;Polygon&quot;</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+    <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">1.415727</span><span class="p">,</span> <span class="mf">52.232395</span><span class="p">),</span>
+    <span class="n">zoom</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">pitch</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+    <span class="n">bearing</span><span class="o">=-</span><span class="mi">27</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">create_h3_grid</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">layer_type</span><span class="o">=</span><span class="s2">&quot;fill-extrusion&quot;</span><span class="p">,</span>
+    <span class="n">paint</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;fill-extrusion-color&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;fill-extrusion-opacity&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="s2">&quot;fill-extrusion-height&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">]],</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/DYWmj5y.png" /></p>
+</section>
+<section id="deck-gl-layer">
+<h2><span class="section-number">12.17. </span><a class="reference external" href="http://Deck.GL">Deck.GL</a> Layer<a class="headerlink" href="#deck-gl-layer" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;positron&quot;</span><span class="p">,</span>
+    <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">122.4</span><span class="p">,</span> <span class="mf">37.74</span><span class="p">),</span>
+    <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+    <span class="n">pitch</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">deck_grid_layer</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;@@type&quot;</span><span class="p">:</span> <span class="s2">&quot;GridLayer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;GridLayer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="s2">&quot;https://raw.githubusercontent.com/visgl/deck.gl-data/master/website/sf-bike-parking.json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;extruded&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;getPosition&quot;</span><span class="p">:</span> <span class="s2">&quot;@@=COORDINATES&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;getColorWeight&quot;</span><span class="p">:</span> <span class="s2">&quot;@@=SPACES&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;getElevationWeight&quot;</span><span class="p">:</span> <span class="s2">&quot;@@=SPACES&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;elevationScale&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s2">&quot;cellSize&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;pickable&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_deck_layers</span><span class="p">([</span><span class="n">deck_grid_layer</span><span class="p">],</span> <span class="n">tooltip</span><span class="o">=</span><span class="s2">&quot;Number of points: {{ count }}&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/xBVdT2u.png" /></p>
+</section>
+<section id="multiple-deck-gl-layers">
+<h2><span class="section-number">12.18. </span>Multiple <a class="reference external" href="http://Deck.GL">Deck.GL</a> Layers<a class="headerlink" href="#multiple-deck-gl-layers" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+    <span class="s2">&quot;https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_airports.geojson&quot;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
+    <span class="n">style</span><span class="o">=</span><span class="s2">&quot;positron&quot;</span><span class="p">,</span>
+    <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">51.47</span><span class="p">),</span>
+    <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">pitch</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">deck_geojson_layer</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;@@type&quot;</span><span class="p">:</span> <span class="s2">&quot;GeoJsonLayer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;airports&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span>
+    <span class="s2">&quot;filled&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;pointRadiusMinPixels&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;pointRadiusScale&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+    <span class="s2">&quot;getPointRadius&quot;</span><span class="p">:</span> <span class="s2">&quot;@@=11 - properties.scalerank&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;getFillColor&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">180</span><span class="p">],</span>
+    <span class="s2">&quot;autoHighlight&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;pickable&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">deck_arc_layer</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;@@type&quot;</span><span class="p">:</span> <span class="s2">&quot;ArcLayer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;arcs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="n">feature</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;features&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">feature</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;scalerank&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">4</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;getSourcePosition&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.4531566</span><span class="p">,</span> <span class="mf">51.4709959</span><span class="p">],</span>  <span class="c1"># London</span>
+    <span class="s2">&quot;getTargetPosition&quot;</span><span class="p">:</span> <span class="s2">&quot;@@=geometry.coordinates&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;getSourceColor&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span>
+    <span class="s2">&quot;getTargetColor&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">],</span>
+    <span class="s2">&quot;getWidth&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">&quot;pickable&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_deck_layers</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">deck_geojson_layer</span><span class="p">,</span> <span class="n">deck_arc_layer</span><span class="p">],</span>
+    <span class="n">tooltip</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;airports&quot;</span><span class="p">:</span> <span class="s2">&quot;{{ &amp;properties.name }}&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;arcs&quot;</span><span class="p">:</span> <span class="s2">&quot;gps_code: {{ properties.gps_code }}&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/eFc4IbZ.png" /></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "giswqs/geog-312",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/geospatial"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="raster_viz.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Raster Data Visualization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="whitebox.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>WhiteboxTools</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">12.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">12.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-maps">12.3. Create maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-controls">12.4. Add controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-basemaps">12.5. Add basemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xyz-tile-layer">12.6. XYZ tile layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wms-layer">12.7. WMS layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cog-layer">12.8. COG layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stac-layer">12.9. STAC layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-raster">12.10. Local raster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vancouver-property-value">12.11. Vancouver Property Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthquake-clusters">12.12. Earthquake Clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airport-markers">12.13. Airport Markers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-indoor-mapping">12.14. 3D Indoor Mapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-basemap">12.15. Custom Basemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h3-grid-uk-road-safety">12.16. H3 Grid UK Road Safety</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deck-gl-layer">12.17. Deck.GL Layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-deck-gl-layers">12.18. Multiple Deck.GL Layers</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Qiusheng Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

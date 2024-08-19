@@ -1,0 +1,2206 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>14. Geemap &#8212; First Steps in GIS Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/geemap';</script>
+    <link rel="canonical" href="https://geog-312.gishub.org/book/geospatial/geemap.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="15. SAMGeo" href="samgeo.html" />
+    <link rel="prev" title="13. WhiteboxTools" href="whitebox.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="First Steps in GIS Programming - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="First Steps in GIS Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/miniconda.html">Miniconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/colab.html">Google Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/jupyterlab.html">JupyterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/01_get_started.html">1. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/02_variables.html">2. Variables and Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/03_data_structures.html">3. Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/04_string_operations.html">4. String Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/05_looping.html">5. Looping and Control Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/06_functions_classes.html">6. Functions and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/07_files.html">7. Files and Exception Handling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">9. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">10. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">11. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">12. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">13. WhiteboxTools</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">15. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">16. HyperCoast</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_01.html">Lab 1</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/giswqs/geog-312/main?urlpath=tree/book/geospatial/geemap.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/geemap.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312/edit/main/book/geospatial/geemap.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/geemap.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/geospatial/geemap.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Geemap</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">14.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">14.1.1. Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">14.1.2. Agenda</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-earth-engine-and-geemap">14.2. Introduction to Earth Engine and geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab-and-earth-engine-python-api-authentication">14.3. Google Colab and Earth Engine Python API authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-colab-dark-theme">14.3.1. Change Colab dark theme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geemap">14.3.2. Install geemap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">14.3.3. Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-and-initialize-earth-engine">14.3.4. Authenticate and initialize Earth Engine</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">14.4. Creating interactive maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">14.4.1. Adding basemaps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-earth-engine-data">14.5. Using Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-types">14.5.1. Earth Engine data types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">14.5.2. Image</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-earth-engine-images">14.5.2.1. Loading Earth Engine images</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-images">14.5.2.2. Visualizing Earth Engine images</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagecollection">14.5.3. ImageCollection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-image-collections">14.5.3.1. Loading image collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-image-collections">14.5.3.2. Visualizing image collections</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#featurecollection">14.5.4. FeatureCollection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-feature-collections">14.5.4.1. Loading feature collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-feature-collections">14.5.4.2. Filtering feature collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-feature-collections">14.5.4.3. Visualizing feature collections</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-catalog">14.5.5. Earth Engine Data Catalog</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-datasets">14.5.5.1. Searching for datasets</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-cloud-free-imagery">14.5.6. Exercise 1 - Creating cloud-free imagery</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-data">14.6. Visualizing Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-inspector-tool">14.6.1. Using the inspector tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-plotting-tool">14.6.2. Using the plotting tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legends-color-bars-and-labels">14.6.3. Legends, color bars, and labels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-legends">14.6.3.1. Built-in legends</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-legends">14.6.3.2. Custom legends</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-color-bars">14.6.3.3. Creating color bars</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-map-and-linked-maps">14.6.4. Split-panel map and linked maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-maps">14.6.5. Split-panel maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linked-maps">14.6.6. Linked maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector-and-time-slider">14.6.7. Timeseries inspector and time slider</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector">14.6.7.1. Timeseries inspector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-slider">14.6.7.2. Time slider</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualizing-satellite-data-for-an-area-of-interest">14.6.8. Exercise 2 - Visualizing satellite data for an area of interest</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-earth-engine-data">14.7. Analyzing Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics">14.7.1. Zonal statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-by-group">14.7.2. Zonal statistics by group</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-earth-engine-data">14.8. Exporting Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-images">14.8.1. Exporting images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-image-collections">14.8.2. Export image collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-feature-collections">14.8.3. Exporting feature collections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-timelapse-animations">14.9. Creating timelapse animations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-timelapse">14.9.1. Landsat timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-2-timelapse">14.9.2. Sentinel-2 timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-vegetation-indices">14.9.3. MODIS vegetation indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-temperature-data">14.9.4. MODIS temperature data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goes-timelapse">14.9.5. GOES timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-creating-timelapse-animations">14.9.6. Exercise 3 - Creating timelapse animations</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="geemap">
+<h1><span class="section-number">14. </span>Geemap<a class="headerlink" href="#geemap" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2><span class="section-number">14.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This notebook is designed for users who are new to Google Earth Engine and geemap. It provides an introduction to Earth Engine and geemap, and demonstrates how to use geemap to explore and analyze Earth Engine data.</p>
+<section id="prerequisites">
+<h3><span class="section-number">14.1.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>To use geemap and the Earth Engine Python API, you must <a class="reference external" href="https://code.earthengine.google.com/register">register</a> for an Earth Engine account and follow the instructions <a class="reference external" href="https://docs.google.com/document/d/1ZGSmrNm6_baqd8CHt33kIBWOlvkh-HLr46bODgJN1h0/edit?usp=sharing">here</a> to create a Cloud Project. Earth Engine is free for <a class="reference external" href="https://earthengine.google.com/noncommercial">noncommercial and research use</a>. To test whether you can use authenticate the Earth Engine Python API, please run <a class="reference external" href="https://colab.research.google.com/github/gee-community/geemap/blob/master/docs/notebooks/geemap_colab.ipynb">this notebook</a> on Google Colab.</p></li>
+<li><p>It is recommended that attendees have a basic understanding of Python and Jupyter Notebook.</p></li>
+<li><p>Familiarity with the Earth Engine JavaScript API is not required but will be helpful.</p></li>
+<li><p>Attendees can use Google Colab to follow this short course without installing anything on their computer.</p></li>
+</ul>
+</section>
+<section id="agenda">
+<h3><span class="section-number">14.1.2. </span>Agenda<a class="headerlink" href="#agenda" title="Link to this heading">#</a></h3>
+<p>The main topics to be covered in this workshop include:</p>
+<ul class="simple">
+<li><p>Create interactive maps</p></li>
+<li><p>Visualize Earth Engine data</p></li>
+<li><p>Explore Earth Engine Data Catalogs</p></li>
+<li><p>Analyze Earth Engine data</p></li>
+<li><p>Export Earth Engine data</p></li>
+<li><p>Create timelapse animations</p></li>
+</ul>
+</section>
+</section>
+<section id="introduction-to-earth-engine-and-geemap">
+<h2><span class="section-number">14.2. </span>Introduction to Earth Engine and geemap<a class="headerlink" href="#introduction-to-earth-engine-and-geemap" title="Link to this heading">#</a></h2>
+<p>Earth Engine is free for <a class="reference external" href="https://earthengine.google.com/noncommercial">noncommercial and research use</a>. For more than a decade, Earth Engine has enabled planetary-scale Earth data science and analysis by nonprofit organizations, research scientists, and other impact users.</p>
+<p>With the launch of Earth Engine for <a class="reference external" href="https://earthengine.google.com/commercial">commercial use</a>, commercial customers will be charged for Earth Engine services. However, Earth Engine will remain free of charge for noncommercial use and research projects. Nonprofit organizations, academic institutions, educators, news media, Indigenous governments, and government researchers are eligible to use Earth Engine free of charge, just as they have done for over a decade.</p>
+<p>The geemap Python package is built upon the Earth Engine Python API and open-source mapping libraries. It allows Earth Engine users to interactively manipulate, analyze, and visualize geospatial big data in a Jupyter environment. Since its creation in April 2020, geemap has received over 3,300 GitHub stars and is being used by over 2,700 projects on GitHub.</p>
+</section>
+<section id="google-colab-and-earth-engine-python-api-authentication">
+<h2><span class="section-number">14.3. </span>Google Colab and Earth Engine Python API authentication<a class="headerlink" href="#google-colab-and-earth-engine-python-api-authentication" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://colab.research.google.com/github/gee-community/geemap/blob/master/docs/workshops/Taiwan_2024.ipynb"><img alt="image" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section id="change-colab-dark-theme">
+<h3><span class="section-number">14.3.1. </span>Change Colab dark theme<a class="headerlink" href="#change-colab-dark-theme" title="Link to this heading">#</a></h3>
+<p>Currently, ipywidgets does not work well with Colab dark theme. Some of the geemap widgets may not display properly in Colab dark <a class="reference external" href="http://theme.It">theme.It</a> is recommended that you change Colab to the light theme.</p>
+<p><img alt="" src="https://i.imgur.com/EJ0GDP8.png" /></p>
+</section>
+<section id="install-geemap">
+<h3><span class="section-number">14.3.2. </span>Install geemap<a class="headerlink" href="#install-geemap" title="Link to this heading">#</a></h3>
+<p>The geemap package is pre-installed in Google Colab and is updated to the latest minor or major release every few weeks. Some optional dependencies of geemap being used by this notebook are not pre-installed in Colab. Uncomment the following code block to install geemap and some optional dependencies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install -U &quot;geemap[workshop]&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that some geemap features may not work properly in the Google Colab environmennt. If you are familiar with <a class="reference external" href="https://www.anaconda.com/download">Anaconda</a> or <a class="reference external" href="https://docs.anaconda.com/free/miniconda">Miniconda</a>, it is recommended to create a new conda environment to install geemap and its optional dependencies on your local computer.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>gee<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+conda<span class="w"> </span>activate<span class="w"> </span>gee
+conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>mamba
+mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap<span class="w"> </span>pygis
+</pre></div>
+</div>
+</section>
+<section id="import-libraries">
+<h3><span class="section-number">14.3.3. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
+<p>Import the earthengine-api and geemap.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
+<span class="kn">import</span> <span class="nn">geemap</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="authenticate-and-initialize-earth-engine">
+<h3><span class="section-number">14.3.4. </span>Authenticate and initialize Earth Engine<a class="headerlink" href="#authenticate-and-initialize-earth-engine" title="Link to this heading">#</a></h3>
+<p>You will need to create a <a class="reference external" href="https://console.cloud.google.com/projectcreate">Google Cloud Project</a> and enable the <a class="reference external" href="https://console.cloud.google.com/apis/api/earthengine.googleapis.com">Earth Engine API</a> for the project. You can find detailed instructions <a class="reference external" href="https://book.geemap.org/chapters/01_introduction.html#earth-engine-authentication">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ee</span><span class="o">.</span><span class="n">Authenticate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s2">&quot;YOUR-PROJECT-ID&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="creating-interactive-maps">
+<h2><span class="section-number">14.4. </span>Creating interactive maps<a class="headerlink" href="#creating-interactive-maps" title="Link to this heading">#</a></h2>
+<p>Let’s create an interactive map using the <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> plotting backend. The <a class="reference external" href="https://geemap.org/geemap/#geemap.geemap.m"><code class="docutils literal notranslate"><span class="pre">geemap.Map</span></code></a> class inherits the <a class="reference external" href="https://ipyleaflet.readthedocs.io/en/latest/map_and_basemaps/map.html"><code class="docutils literal notranslate"><span class="pre">ipyleaflet.Map</span></code></a> class. Therefore, you can use the same syntax to create an interactive map as you would with <code class="docutils literal notranslate"><span class="pre">ipyleaflet.Map</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To display it in a Jupyter notebook, simply ask for the object representation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To customize the map, you can specify various keyword arguments, such as <code class="docutils literal notranslate"><span class="pre">center</span></code> ([lat, lon]), <code class="docutils literal notranslate"><span class="pre">zoom</span></code>, <code class="docutils literal notranslate"><span class="pre">width</span></code>, and <code class="docutils literal notranslate"><span class="pre">height</span></code>. The default <code class="docutils literal notranslate"><span class="pre">width</span></code> is <code class="docutils literal notranslate"><span class="pre">100%</span></code>, which takes up the entire cell width of the Jupyter notebook. The <code class="docutils literal notranslate"><span class="pre">height</span></code> argument accepts a number or a string. If a number is provided, it represents the height of the map in pixels. If a string is provided, the string must be in the format of a number followed by <code class="docutils literal notranslate"><span class="pre">px</span></code>, e.g., <code class="docutils literal notranslate"><span class="pre">600px</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600xp&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To hide a control, set <code class="docutils literal notranslate"><span class="pre">control_name</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code>, e.g., <code class="docutils literal notranslate"><span class="pre">draw_ctrl=False</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">data_ctrl</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">toolbar_ctrl</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">draw_ctrl</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="adding-basemaps">
+<h3><span class="section-number">14.4.1. </span>Adding basemaps<a class="headerlink" href="#adding-basemaps" title="Link to this heading">#</a></h3>
+<p>There are several ways to add basemaps to a map. You can specify the basemap to use in the <code class="docutils literal notranslate"><span class="pre">basemap</span></code> keyword argument when creating the map. Alternatively, you can add basemap layers to the map using the <code class="docutils literal notranslate"><span class="pre">add_basemap</span></code> method. Geemap has hundreds of built-in basemaps available that can be easily added to the map with only one line of code.</p>
+<p>Create a map by specifying the basemap to use as follows. For example, the <code class="docutils literal notranslate"><span class="pre">Esri.WorldImagery</span></code> basemap represents the Esri world imagery basemap.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">basemap</span><span class="o">=</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can add as many basemaps as you like to the map. For example, the following code adds the <code class="docutils literal notranslate"><span class="pre">OpenTopoMap</span></code> basemap to the map above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also change basemaps interactively using the basemap GUI.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;basemap_selector&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="using-earth-engine-data">
+<h2><span class="section-number">14.5. </span>Using Earth Engine data<a class="headerlink" href="#using-earth-engine-data" title="Link to this heading">#</a></h2>
+<section id="earth-engine-data-types">
+<h3><span class="section-number">14.5.1. </span>Earth Engine data types<a class="headerlink" href="#earth-engine-data-types" title="Link to this heading">#</a></h3>
+<p>Earth Engine objects are server-side objects rather than client-side objects, which means that they are not stored locally on your computer. Similar to video streaming services (e.g., YouTube, Netflix, and Hulu), which store videos/movies on their servers, Earth Engine data are stored on the Earth Engine servers. We can stream geospatial data from Earth Engine on-the-fly without having to download the data just like we can watch videos from streaming services using a web browser without having to download the entire video to your computer.</p>
+<ul class="simple">
+<li><p><strong>Image</strong>: the fundamental raster data type in Earth Engine.</p></li>
+<li><p><strong>ImageCollection</strong>: a stack or time-series of images.</p></li>
+<li><p><strong>Geometry</strong>: the fundamental vector data type in Earth Engine.</p></li>
+<li><p><strong>Feature</strong>: a Geometry with attributes.</p></li>
+<li><p><strong>FeatureCollection</strong>: a set of features.</p></li>
+</ul>
+</section>
+<section id="image">
+<h3><span class="section-number">14.5.2. </span>Image<a class="headerlink" href="#image" title="Link to this heading">#</a></h3>
+<p>Raster data in Earth Engine are represented as <strong>Image</strong> objects. Images are composed of one or more bands and each band has its own name, data type, scale, mask and projection. Each image has metadata stored as a set of properties.</p>
+<section id="loading-earth-engine-images">
+<h4><span class="section-number">14.5.2.1. </span>Loading Earth Engine images<a class="headerlink" href="#loading-earth-engine-images" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/SRTMGL1_003&quot;</span><span class="p">)</span>
+<span class="n">image</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-earth-engine-images">
+<h4><span class="section-number">14.5.2.2. </span>Visualizing Earth Engine images<a class="headerlink" href="#visualizing-earth-engine-images" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">23.5790</span><span class="p">,</span> <span class="mf">121.4181</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/SRTMGL1_003&quot;</span><span class="p">)</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">6000</span><span class="p">,</span>
+    <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;006633&quot;</span><span class="p">,</span> <span class="s2">&quot;E5FFCC&quot;</span><span class="p">,</span> <span class="s2">&quot;662A00&quot;</span><span class="p">,</span> <span class="s2">&quot;D8D8D8&quot;</span><span class="p">,</span> <span class="s2">&quot;F5F5F5&quot;</span><span class="p">],</span>  <span class="c1"># &#39;terrain&#39;</span>
+<span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s2">&quot;SRTM&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="imagecollection">
+<h3><span class="section-number">14.5.3. </span>ImageCollection<a class="headerlink" href="#imagecollection" title="Link to this heading">#</a></h3>
+<p>An <code class="docutils literal notranslate"><span class="pre">ImageCollection</span></code> is a stack or sequence of images. An <code class="docutils literal notranslate"><span class="pre">ImageCollection</span></code> can be loaded by passing an Earth Engine asset ID into the <code class="docutils literal notranslate"><span class="pre">ImageCollection</span></code> constructor. You can find <code class="docutils literal notranslate"><span class="pre">ImageCollection</span></code> IDs in the <a class="reference external" href="https://developers.google.com/earth-engine/datasets">Earth Engine Data Catalog</a>.</p>
+<section id="loading-image-collections">
+<h4><span class="section-number">14.5.3.1. </span>Loading image collections<a class="headerlink" href="#loading-image-collections" title="Link to this heading">#</a></h4>
+<p>For example, to load the image collection of the <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR">Sentinel-2 surface reflectance</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;COPERNICUS/S2_SR&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-image-collections">
+<h4><span class="section-number">14.5.3.2. </span>Visualizing image collections<a class="headerlink" href="#visualizing-image-collections" title="Link to this heading">#</a></h4>
+<p>To visualize an Earth Engine <strong>ImageCollection</strong>, we need to convert an <strong>ImageCollection</strong> to an <strong>Image</strong> by compositing all the images in the collection to a single image representing, for example, the min, max, median, mean or standard deviation of the images. For example, to create a median value image from a collection, use the <code class="docutils literal notranslate"><span class="pre">collection.median()</span></code> method. Let’s create a median image from the Sentinel-2 surface reflectance collection:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;COPERNICUS/S2_SR&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-01-01&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="s2">&quot;CLOUDY_PIXEL_PERCENTAGE&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+
+<span class="n">vis</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span>
+    <span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="mf">121.4181</span><span class="p">,</span> <span class="mf">23.5790</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis</span><span class="p">,</span> <span class="s2">&quot;Sentinel-2&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="featurecollection">
+<h3><span class="section-number">14.5.4. </span>FeatureCollection<a class="headerlink" href="#featurecollection" title="Link to this heading">#</a></h3>
+<p>A <strong>FeatureCollection</strong> is a collection of Features. A FeatureCollection is analogous to a GeoJSON FeatureCollection object, i.e., a collection of features with associated properties/attributes. Data contained in a shapefile can be represented as a FeatureCollection.</p>
+<section id="loading-feature-collections">
+<h4><span class="section-number">14.5.4.1. </span>Loading feature collections<a class="headerlink" href="#loading-feature-collections" title="Link to this heading">#</a></h4>
+<p>The <a class="reference external" href="https://developers.google.com/earth-engine/datasets">Earth Engine Data Catalog</a> hosts a variety of vector datasets (e.g,, US Census data, country boundaries, and more) as feature collections. You can find feature collection IDs by searching the data catalog. For example, to load the <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/TIGER_2016_Roads">TIGER roads data</a> by the U.S. Census Bureau:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;TIGER/2016/Roads&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="o">-</span><span class="mf">73.9596</span><span class="p">,</span> <span class="mf">40.7688</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Census roads&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="filtering-feature-collections">
+<h4><span class="section-number">14.5.4.2. </span>Filtering feature collections<a class="headerlink" href="#filtering-feature-collections" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/WM_geoLab_geoBoundaries_600_ADM0">geoBoundaries: Political administrative boundaries at Country level (ADM0)</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/WM_geoLab_geoBoundaries_600_ADM1">geoBoundaries: Political administrative boundaries at District level (ADM1)</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM0&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeName&quot;</span><span class="p">,</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM1&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeGroup&quot;</span><span class="p">,</span> <span class="s2">&quot;TWN&quot;</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">region</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">user_roi</span>
+<span class="k">if</span> <span class="n">region</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="mf">119.1687</span><span class="p">,</span> <span class="mf">21.7799</span><span class="p">,</span> <span class="mf">122.981</span><span class="p">,</span> <span class="mf">25.4234</span><span class="p">)</span>
+
+<span class="n">fc</span> <span class="o">=</span> <span class="n">fc</span><span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Taiwan 2&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-feature-collections">
+<h4><span class="section-number">14.5.4.3. </span>Visualizing feature collections<a class="headerlink" href="#visualizing-feature-collections" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM1&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeGroup&quot;</span><span class="p">,</span> <span class="s2">&quot;TWN&quot;</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM1&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeGroup&quot;</span><span class="p">,</span> <span class="s2">&quot;TWN&quot;</span><span class="p">))</span>
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;000000ff&quot;</span><span class="p">,</span> <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;lineType&quot;</span><span class="p">:</span> <span class="s2">&quot;solid&quot;</span><span class="p">,</span> <span class="s2">&quot;fillColor&quot;</span><span class="p">:</span> <span class="s2">&quot;FF000000&quot;</span><span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="o">**</span><span class="n">style</span><span class="p">),</span> <span class="p">{},</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM1&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeGroup&quot;</span><span class="p">,</span> <span class="s2">&quot;TWN&quot;</span><span class="p">))</span>
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;0000ffff&quot;</span><span class="p">,</span> <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;lineType&quot;</span><span class="p">:</span> <span class="s2">&quot;solid&quot;</span><span class="p">,</span> <span class="s2">&quot;fillColor&quot;</span><span class="p">:</span> <span class="s2">&quot;FF000080&quot;</span><span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="o">**</span><span class="n">style</span><span class="p">),</span> <span class="p">{},</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="earth-engine-data-catalog">
+<h3><span class="section-number">14.5.5. </span>Earth Engine Data Catalog<a class="headerlink" href="#earth-engine-data-catalog" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://developers.google.com/earth-engine/datasets">Earth Engine Data Catalog</a> hosts a variety of geospatial datasets. As of July 2024, the catalog contains over <a class="reference external" href="https://github.com/opengeos/Earth-Engine-Catalog/blob/master/gee_catalog.tsv">1,100 datasets</a> with a total size of over 100 petabytes. Some notable datasets include: Landsat, Sentinel, MODIS, NAIP, etc. For a complete list of datasets in CSV or JSON formats, see the <a class="reference external" href="https://github.com/giswqs/Earth-Engine-Catalog/blob/master/gee_catalog.tsv">Earth Engine Datasets List</a>.</p>
+<section id="searching-for-datasets">
+<h4><span class="section-number">14.5.5.1. </span>Searching for datasets<a class="headerlink" href="#searching-for-datasets" title="Link to this heading">#</a></h4>
+<p>The <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog">Earth Engine Data Catalog</a> is searchable. You can search datasets by name, keyword, or tag. For example, enter “elevation” in the search box will filter the catalog to show only datasets containing “elevation” in their name, description, or tags. 52 datasets are returned for this search query. Scroll down the list to find the <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/USGS_SRTMGL1_003#description">NASA SRTM Digital Elevation 30m</a> dataset. On each dataset page, you can find the following information, including Dataset Availability, Dataset Provider, Earth Engine Snippet, Tags, Description, Code Example, and more. One important piece of information is the Image/ImageCollection/FeatureCollection ID of each dataset, which is essential for accessing the dataset through the Earth Engine JavaScript or Python APIs.</p>
+<p><img alt="" src="https://i.imgur.com/B3rf4QN.jpg" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/SRTMGL1_003&quot;</span><span class="p">)</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
+    <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;006633&quot;</span><span class="p">,</span> <span class="s2">&quot;E5FFCC&quot;</span><span class="p">,</span> <span class="s2">&quot;662A00&quot;</span><span class="p">,</span> <span class="s2">&quot;D8D8D8&quot;</span><span class="p">,</span> <span class="s2">&quot;F5F5F5&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s2">&quot;SRTM DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">counties</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM0&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">counties</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeName&quot;</span><span class="p">,</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">))</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/SRTMGL1_003&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">clipToCollection</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
+    <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;006633&quot;</span><span class="p">,</span> <span class="s2">&quot;E5FFCC&quot;</span><span class="p">,</span> <span class="s2">&quot;662A00&quot;</span><span class="p">,</span> <span class="s2">&quot;D8D8D8&quot;</span><span class="p">,</span> <span class="s2">&quot;F5F5F5&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s2">&quot;SRTM DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-1-creating-cloud-free-imagery">
+<h3><span class="section-number">14.5.6. </span>Exercise 1 - Creating cloud-free imagery<a class="headerlink" href="#exercise-1-creating-cloud-free-imagery" title="Link to this heading">#</a></h3>
+<p>Create a cloud-free imagery of Taiwan for the year of 2023. You can use either Landsat 9 or Sentinel-2 imagery. Relevant Earth Engine assets:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/TIGER_2018_States">ee.FeatureCollection(“TIGER/2018/States”)</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR">ee.ImageCollection(“COPERNICUS/S2_SR”)</a></p></li>
+<li><p><a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC09_C02_T1_L2">ee.ImageCollection(“LANDSAT/LC09/C02/T1_L2”)</a></p></li>
+</ul>
+<p>A sample map of cloud-free imagery for the state of Texas is shown below:</p>
+<p><img alt="" src="https://i.imgur.com/i3IT0lF.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Type your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="visualizing-earth-engine-data">
+<h2><span class="section-number">14.6. </span>Visualizing Earth Engine data<a class="headerlink" href="#visualizing-earth-engine-data" title="Link to this heading">#</a></h2>
+<section id="using-the-inspector-tool">
+<h3><span class="section-number">14.6.1. </span>Using the inspector tool<a class="headerlink" href="#using-the-inspector-tool" title="Link to this heading">#</a></h3>
+<p>Inspect pixel values and vector features using the inspector tool.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+
+<span class="n">counties</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM0&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">counties</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeName&quot;</span><span class="p">,</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">))</span>
+
+<span class="n">dem</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/SRTMGL1_003&quot;</span><span class="p">)</span>
+<span class="n">landsat7</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;LANDSAT/LE7_TOA_5YEAR/1999_2003&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B5&quot;</span><span class="p">,</span> <span class="s2">&quot;B7&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
+    <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;006633&quot;</span><span class="p">,</span> <span class="s2">&quot;E5FFCC&quot;</span><span class="p">,</span> <span class="s2">&quot;662A00&quot;</span><span class="p">,</span> <span class="s2">&quot;D8D8D8&quot;</span><span class="p">,</span> <span class="s2">&quot;F5F5F5&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
+    <span class="n">landsat7</span><span class="p">,</span>
+    <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">],</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">},</span>
+    <span class="s2">&quot;Landsat 7&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s2">&quot;SRTM DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;inspector&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-the-plotting-tool">
+<h3><span class="section-number">14.6.2. </span>Using the plotting tool<a class="headerlink" href="#using-the-plotting-tool" title="Link to this heading">#</a></h3>
+<p>Plot spectral profiles of pixels using the plotting tool.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">landsat7</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;LANDSAT/LE7_TOA_5YEAR/1999_2003&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="p">[</span><span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B5&quot;</span><span class="p">,</span> <span class="s2">&quot;B7&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">landsat_vis</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">],</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">1.4</span><span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">landsat7</span><span class="p">,</span> <span class="n">landsat_vis</span><span class="p">,</span> <span class="s2">&quot;Landsat&quot;</span><span class="p">)</span>
+
+<span class="n">hyperion</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;EO1/HYPERION&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;2016-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2017-03-01&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">hyperion_vis</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">1000.0</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">14000.0</span><span class="p">,</span>
+    <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">2.5</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">hyperion</span><span class="p">,</span> <span class="n">hyperion_vis</span><span class="p">,</span> <span class="s2">&quot;Hyperion&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_plot_gui</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set plotting options for Landsat.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">set_plot_options</span><span class="p">(</span><span class="n">add_marker_cluster</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Set plotting options for Hyperion.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">set_plot_options</span><span class="p">(</span><span class="n">add_marker_cluster</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">plot_type</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="legends-color-bars-and-labels">
+<h3><span class="section-number">14.6.3. </span>Legends, color bars, and labels<a class="headerlink" href="#legends-color-bars-and-labels" title="Link to this heading">#</a></h3>
+<section id="built-in-legends">
+<h4><span class="section-number">14.6.3.1. </span>Built-in legends<a class="headerlink" href="#built-in-legends" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geemap.legends</span> <span class="kn">import</span> <span class="n">builtin_legends</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">legend</span> <span class="ow">in</span> <span class="n">builtin_legends</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">legend</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add ESA WorldCover and legend to the map.</p>
+<p><a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/ESA_WorldCover_v200">https://developers.google.com/earth-engine/datasets/catalog/ESA_WorldCover_v200</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v200&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">visualization</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Map&quot;</span><span class="p">]}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">visualization</span><span class="p">,</span> <span class="s2">&quot;Landcover&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Land Cover Type&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;ESA_WorldCover&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="mf">121.4181</span><span class="p">,</span> <span class="mf">23.5790</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="custom-legends">
+<h4><span class="section-number">14.6.3.2. </span>Custom legends<a class="headerlink" href="#custom-legends" title="Link to this heading">#</a></h4>
+<p>Add a custom legend by specifying a dictionary of colors and labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v200&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">visualization</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Map&quot;</span><span class="p">]}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">visualization</span><span class="p">,</span> <span class="s2">&quot;Landcover&quot;</span><span class="p">)</span>
+<span class="n">legend_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;10 Trees&quot;</span><span class="p">:</span> <span class="s2">&quot;006400&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;20 Shrubland&quot;</span><span class="p">:</span> <span class="s2">&quot;ffbb22&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;30 Grassland&quot;</span><span class="p">:</span> <span class="s2">&quot;ffff4c&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;40 Cropland&quot;</span><span class="p">:</span> <span class="s2">&quot;f096ff&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;50 Built-up&quot;</span><span class="p">:</span> <span class="s2">&quot;fa0000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;60 Barren / sparse vegetation&quot;</span><span class="p">:</span> <span class="s2">&quot;b4b4b4&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;70 Snow and ice&quot;</span><span class="p">:</span> <span class="s2">&quot;f0f0f0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;80 Open water&quot;</span><span class="p">:</span> <span class="s2">&quot;0064c8&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;90 Herbaceous wetland&quot;</span><span class="p">:</span> <span class="s2">&quot;0096a0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;95 Mangroves&quot;</span><span class="p">:</span> <span class="s2">&quot;00cf75&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;100 Moss and lichen&quot;</span><span class="p">:</span> <span class="s2">&quot;fae6a0&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Land Cover Type&quot;</span><span class="p">,</span> <span class="n">legend_dict</span><span class="o">=</span><span class="n">legend_dict</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="mf">121.4181</span><span class="p">,</span> <span class="mf">23.5790</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-color-bars">
+<h4><span class="section-number">14.6.3.3. </span>Creating color bars<a class="headerlink" href="#creating-color-bars" title="Link to this heading">#</a></h4>
+<p>Add a horizontal color bar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM0&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeName&quot;</span><span class="p">,</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">))</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/SRTMGL1_003&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">clipToCollection</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
+    <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;006633&quot;</span><span class="p">,</span> <span class="s2">&quot;E5FFCC&quot;</span><span class="p">,</span> <span class="s2">&quot;662A00&quot;</span><span class="p">,</span> <span class="s2">&quot;D8D8D8&quot;</span><span class="p">,</span> <span class="s2">&quot;F5F5F5&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s2">&quot;SRTM DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span><span class="n">vis_params</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation (m)&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;SRTM DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add a vertical color bar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span>
+    <span class="n">vis_params</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation (m)&quot;</span><span class="p">,</span>
+    <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;SRTM DEM&quot;</span><span class="p">,</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span>
+    <span class="n">max_width</span><span class="o">=</span><span class="s2">&quot;100px&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Make the color bar background transparent.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_colorbar</span><span class="p">(</span>
+    <span class="n">vis_params</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation (m)&quot;</span><span class="p">,</span>
+    <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;SRTM DEM&quot;</span><span class="p">,</span>
+    <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span>
+    <span class="n">max_width</span><span class="o">=</span><span class="s2">&quot;100px&quot;</span><span class="p">,</span>
+    <span class="n">transparent_bg</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="split-panel-map-and-linked-maps">
+<h3><span class="section-number">14.6.4. </span>Split-panel map and linked maps<a class="headerlink" href="#split-panel-map-and-linked-maps" title="Link to this heading">#</a></h3>
+</section>
+<section id="split-panel-maps">
+<h3><span class="section-number">14.6.5. </span>Split-panel maps<a class="headerlink" href="#split-panel-maps" title="Link to this heading">#</a></h3>
+<p>Create a split map with basemaps. Note that ipyleaflet has a bug with the SplitControl. You can’t pan the map, which should be resolved in the next ipyleaflet release.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">split_map</span><span class="p">(</span><span class="n">left_layer</span><span class="o">=</span><span class="s2">&quot;Esri.WorldTopoMap&quot;</span><span class="p">,</span> <span class="n">right_layer</span><span class="o">=</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="mf">121.4181</span><span class="p">,</span> <span class="mf">23.5790</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create a split map with Earth Engine layers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+
+<span class="n">esa_2020</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v100&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">esa_2021</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v200&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="n">visualization</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Map&quot;</span><span class="p">]}</span>
+
+<span class="n">left_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span><span class="n">esa_2020</span><span class="p">,</span> <span class="n">visualization</span><span class="p">,</span> <span class="s2">&quot;Land Cover 2020&quot;</span><span class="p">)</span>
+<span class="n">right_layer</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_tile_layer</span><span class="p">(</span><span class="n">esa_2021</span><span class="p">,</span> <span class="n">visualization</span><span class="p">,</span> <span class="s2">&quot;Land Cover 2021&quot;</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">split_map</span><span class="p">(</span>
+    <span class="n">left_layer</span><span class="p">,</span> <span class="n">right_layer</span><span class="p">,</span> <span class="n">left_label</span><span class="o">=</span><span class="s2">&quot;Land Cover 2020&quot;</span><span class="p">,</span> <span class="n">right_label</span><span class="o">=</span><span class="s2">&quot;Land Cover 2021&quot;</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Land Cover Type&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;ESA_WorldCover&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="mf">121.4181</span><span class="p">,</span> <span class="mf">23.5790</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="linked-maps">
+<h3><span class="section-number">14.6.6. </span>Linked maps<a class="headerlink" href="#linked-maps" title="Link to this heading">#</a></h3>
+<p>Create a 2x2 linked map for visualizing Sentinel-2 imagery with different band combinations. Note that this feature does not work properly with Colab. Panning one map would not pan other maps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM0&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeName&quot;</span><span class="p">,</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">))</span>
+<span class="n">image</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;COPERNICUS/S2&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s2">&quot;2023-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-01-01&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="s2">&quot;CLOUDY_PIXEL_PERCENTAGE&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">img</span><span class="p">:</span> <span class="n">img</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">10000</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">median</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">clipToCollection</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">],</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B8&quot;</span><span class="p">,</span> <span class="s2">&quot;B11&quot;</span><span class="p">,</span> <span class="s2">&quot;B4&quot;</span><span class="p">],</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B8&quot;</span><span class="p">,</span> <span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">],</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B12&quot;</span><span class="p">,</span> <span class="s2">&quot;B12&quot;</span><span class="p">,</span> <span class="s2">&quot;B4&quot;</span><span class="p">],</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">1.3</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Natural Color (B4/B3/B2)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Land/Water (B8/B11/B4)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Color Infrared (B8/B4/B3)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Vegetation (B12/B11/B4)&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">geemap</span><span class="o">.</span><span class="n">linked_maps</span><span class="p">(</span>
+    <span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="s2">&quot;400px&quot;</span><span class="p">,</span>
+    <span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">23.5790</span><span class="p">,</span> <span class="mf">121.4181</span><span class="p">],</span>
+    <span class="n">zoom</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">ee_objects</span><span class="o">=</span><span class="p">[</span><span class="n">image</span><span class="p">],</span>
+    <span class="n">vis_params</span><span class="o">=</span><span class="n">vis_params</span><span class="p">,</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+    <span class="n">label_position</span><span class="o">=</span><span class="s2">&quot;topright&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="timeseries-inspector-and-time-slider">
+<h3><span class="section-number">14.6.7. </span>Timeseries inspector and time slider<a class="headerlink" href="#timeseries-inspector-and-time-slider" title="Link to this heading">#</a></h3>
+<section id="timeseries-inspector">
+<h4><span class="section-number">14.6.7.1. </span>Timeseries inspector<a class="headerlink" href="#timeseries-inspector" title="Link to this heading">#</a></h4>
+<p>Check the available years of NLCD.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;USGS/NLCD_RELEASES/2019_REL/NLCD&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;landcover&quot;</span><span class="p">)</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;landcover&quot;</span><span class="p">]}</span>
+<span class="n">years</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">aggregate_array</span><span class="p">(</span><span class="s2">&quot;system:index&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<span class="n">years</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create a timeseries inspector for NLCD. Note that ipyleaflet has a bug with the SplitControl. You can’t pan the map, which should be resolved in a future ipyleaflet release.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">ts_inspector</span><span class="p">(</span>
+    <span class="n">left_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span>
+    <span class="n">right_ts</span><span class="o">=</span><span class="n">collection</span><span class="p">,</span>
+    <span class="n">left_names</span><span class="o">=</span><span class="n">years</span><span class="p">,</span>
+    <span class="n">right_names</span><span class="o">=</span><span class="n">years</span><span class="p">,</span>
+    <span class="n">left_vis</span><span class="o">=</span><span class="n">vis_params</span><span class="p">,</span>
+    <span class="n">right_vis</span><span class="o">=</span><span class="n">vis_params</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="s2">&quot;80px&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="time-slider">
+<h4><span class="section-number">14.6.7.2. </span>Time slider<a class="headerlink" href="#time-slider" title="Link to this heading">#</a></h4>
+<p>Note that this feature may not work properly with in the Colab environment. Restart Colab runtime if the time slider does not work.</p>
+<p>Create a map for visualizing MODIS vegetation data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+
+<span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;MODIS/MCD43A4_006_NDVI&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="s2">&quot;2018-06-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2018-07-01&quot;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;NDVI&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="s2">&quot;ndvi&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_time_slider</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="n">time_interval</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create a map for visualizing weather data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+
+<span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;NOAA/GFS0P25&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s2">&quot;2018-12-22&quot;</span><span class="p">,</span> <span class="s2">&quot;2018-12-23&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;temperature_2m_above_ground&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">40.0</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mf">35.0</span><span class="p">,</span>
+    <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;purple&quot;</span><span class="p">,</span> <span class="s2">&quot;cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;:00&quot;</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">)]</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_time_slider</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">time_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Visualizing Sentinel-2 imagery</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">37.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.45</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;COPERNICUS/S2_SR&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">122.45</span><span class="p">,</span> <span class="mf">37.75</span><span class="p">]))</span>
+    <span class="o">.</span><span class="n">filterMetadata</span><span class="p">(</span><span class="s2">&quot;CLOUDY_PIXEL_PERCENTAGE&quot;</span><span class="p">,</span> <span class="s2">&quot;less_than&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span> <span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B8&quot;</span><span class="p">,</span> <span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">]}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_time_slider</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercise-2-visualizing-satellite-data-for-an-area-of-interest">
+<h3><span class="section-number">14.6.8. </span>Exercise 2 - Visualizing satellite data for an area of interest<a class="headerlink" href="#exercise-2-visualizing-satellite-data-for-an-area-of-interest" title="Link to this heading">#</a></h3>
+<p>Visualize the time series of <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED">Sentinel-2</a> imagery for an area of interest in Taiwan. You can use the following Earth Engine assets:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ee.ImageCollection(&quot;COPERNICUS/S2_SR_HARMONIZED&quot;)</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="analyzing-earth-engine-data">
+<h2><span class="section-number">14.7. </span>Analyzing Earth Engine data<a class="headerlink" href="#analyzing-earth-engine-data" title="Link to this heading">#</a></h2>
+<section id="zonal-statistics">
+<h3><span class="section-number">14.7.1. </span>Zonal statistics<a class="headerlink" href="#zonal-statistics" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM1&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeGroup&quot;</span><span class="p">,</span> <span class="s2">&quot;TWN&quot;</span><span class="p">))</span>
+<span class="c1"># Add NASA SRTM</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/SRTMGL1_003&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">clipToCollection</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+<span class="n">dem_vis</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
+    <span class="s2">&quot;palette&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;006633&quot;</span><span class="p">,</span> <span class="s2">&quot;E5FFCC&quot;</span><span class="p">,</span> <span class="s2">&quot;662A00&quot;</span><span class="p">,</span> <span class="s2">&quot;D8D8D8&quot;</span><span class="p">,</span> <span class="s2">&quot;F5F5F5&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">dem_vis</span><span class="p">,</span> <span class="s2">&quot;SRTM DEM&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add 5-year Landsat TOA composite</span>
+<span class="n">landsat</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;LANDSAT/LE7_TOA_5YEAR/1999_2003&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">clipToCollection</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+<span class="n">landsat_vis</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">],</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">1.4</span><span class="p">,</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">150</span><span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">landsat</span><span class="p">,</span> <span class="n">landsat_vis</span><span class="p">,</span> <span class="s2">&quot;Landsat&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_dem_stats</span> <span class="o">=</span> <span class="s2">&quot;dem_stats.csv&quot;</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">fc</span><span class="p">,</span> <span class="n">out_dem_stats</span><span class="p">,</span> <span class="n">stat_type</span><span class="o">=</span><span class="s2">&quot;MEAN&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">return_fc</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">csv_to_df</span><span class="p">(</span><span class="n">out_dem_stats</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_landsat_stats</span> <span class="o">=</span> <span class="s2">&quot;landsat_stats.csv&quot;</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats</span><span class="p">(</span>
+    <span class="n">landsat</span><span class="p">,</span>
+    <span class="n">fc</span><span class="p">,</span>
+    <span class="n">out_landsat_stats</span><span class="p">,</span>
+    <span class="n">stat_type</span><span class="o">=</span><span class="s2">&quot;MEAN&quot;</span><span class="p">,</span>
+    <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">return_fc</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">csv_to_df</span><span class="p">(</span><span class="n">out_landsat_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="zonal-statistics-by-group">
+<h3><span class="section-number">14.7.2. </span>Zonal statistics by group<a class="headerlink" href="#zonal-statistics-by-group" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM1&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeGroup&quot;</span><span class="p">,</span> <span class="s2">&quot;TWN&quot;</span><span class="p">))</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;ESA/WorldCover/v200&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">clipToCollection</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+<span class="n">visualization</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Map&quot;</span><span class="p">]}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">visualization</span><span class="p">,</span> <span class="s2">&quot;Landcover&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Land Cover Type&quot;</span><span class="p">,</span> <span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;ESA_WorldCover&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="mf">121.4181</span><span class="p">,</span> <span class="mf">23.5790</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landcover_stats</span> <span class="o">=</span> <span class="s2">&quot;landcover_stats.csv&quot;</span>
+
+<span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats_by_group</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">fc</span><span class="p">,</span>
+    <span class="n">landcover_stats</span><span class="p">,</span>
+    <span class="n">stat_type</span><span class="o">=</span><span class="s2">&quot;SUM&quot;</span><span class="p">,</span>
+    <span class="n">denominator</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span>
+    <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">csv_to_df</span><span class="p">(</span><span class="n">landcover_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landcover_stats</span> <span class="o">=</span> <span class="s2">&quot;landcover_stats_pct.csv&quot;</span>
+
+<span class="n">geemap</span><span class="o">.</span><span class="n">zonal_stats_by_group</span><span class="p">(</span>
+    <span class="n">dataset</span><span class="p">,</span>
+    <span class="n">fc</span><span class="p">,</span>
+    <span class="n">landcover_stats</span><span class="p">,</span>
+    <span class="n">stat_type</span><span class="o">=</span><span class="s2">&quot;PERCENTAGE&quot;</span><span class="p">,</span>
+    <span class="n">denominator</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span>
+    <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">csv_to_df</span><span class="p">(</span><span class="n">landcover_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exporting-earth-engine-data">
+<h2><span class="section-number">14.8. </span>Exporting Earth Engine data<a class="headerlink" href="#exporting-earth-engine-data" title="Link to this heading">#</a></h2>
+<section id="exporting-images">
+<h3><span class="section-number">14.8.1. </span>Exporting images<a class="headerlink" href="#exporting-images" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="mf">121.615219</span><span class="p">,</span> <span class="mf">25.041219</span><span class="p">])</span>
+<span class="n">image</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;COPERNICUS/S2_SR_HARMONIZED&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s2">&quot;2024-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2024-08-01&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="s2">&quot;CLOUDY_PIXEL_PERCENTAGE&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s2">&quot;CLOUDY_PIXEL_PERCENTAGE&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s2">&quot;B8&quot;</span><span class="p">,</span> <span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s2">&quot;Sentinel-2&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">roi</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="mf">121.3824</span><span class="p">,</span> <span class="mf">24.9325</span><span class="p">,</span> <span class="mf">121.6653</span><span class="p">,</span> <span class="mf">25.1496</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;ffff00ff&quot;</span><span class="p">,</span> <span class="s2">&quot;fillColor&quot;</span><span class="p">:</span> <span class="s2">&quot;00000000&quot;</span><span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="o">.</span><span class="n">style</span><span class="p">(</span><span class="o">**</span><span class="n">style</span><span class="p">),</span> <span class="p">{},</span> <span class="s2">&quot;ROI&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;sentinel-2.tif&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image_to_drive</span><span class="p">(</span>
+    <span class="n">image</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;sentinel-2&quot;</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s2">&quot;export&quot;</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">download_ee_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="s2">&quot;sentinel-2_10m.tif&quot;</span><span class="p">,</span> <span class="n">region</span><span class="o">=</span><span class="n">region</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="export-image-collections">
+<h3><span class="section-number">14.8.2. </span>Export image collections<a class="headerlink" href="#export-image-collections" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">99.2222</span><span class="p">,</span> <span class="mf">46.7816</span><span class="p">)</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;USDA/NAIP/DOQQ&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s2">&quot;2008-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2018-01-01&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">listContains</span><span class="p">(</span><span class="s2">&quot;system:band_names&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collection</span><span class="o">.</span><span class="n">aggregate_array</span><span class="p">(</span><span class="s2">&quot;system:index&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image_collection</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">out_dir</span><span class="o">=</span><span class="s2">&quot;naip&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image_collection_to_drive</span><span class="p">(</span><span class="n">collection</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s2">&quot;export&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exporting-feature-collections">
+<h3><span class="section-number">14.8.3. </span>Exporting feature collections<a class="headerlink" href="#exporting-feature-collections" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;WM/geoLab/geoBoundaries/600/ADM0&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;shapeName&quot;</span><span class="p">,</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">))</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Taiwan&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_shp</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;Taiwan.shp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_vector</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;Taiwan.shp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_geojson</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;Taiwan.geojson&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_csv</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;Taiwan.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_gdf</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+<span class="n">gdf</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_df</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_vector_to_drive</span><span class="p">(</span>
+    <span class="n">fc</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Alaska&quot;</span><span class="p">,</span> <span class="n">fileFormat</span><span class="o">=</span><span class="s2">&quot;SHP&quot;</span><span class="p">,</span> <span class="n">folder</span><span class="o">=</span><span class="s2">&quot;export&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="creating-timelapse-animations">
+<h2><span class="section-number">14.9. </span>Creating timelapse animations<a class="headerlink" href="#creating-timelapse-animations" title="Link to this heading">#</a></h2>
+<section id="landsat-timelapse">
+<h3><span class="section-number">14.9.1. </span>Landsat timelapse<a class="headerlink" href="#landsat-timelapse" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="mf">121.615219</span><span class="p">,</span> <span class="mf">25.041219</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">user_roi</span>
+<span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="mf">121.3824</span><span class="p">,</span> <span class="mf">24.9325</span><span class="p">,</span> <span class="mf">121.6653</span><span class="p">,</span> <span class="mf">25.1496</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">timelapse</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">landsat_timelapse</span><span class="p">(</span>
+    <span class="n">roi</span><span class="p">,</span>
+    <span class="n">out_gif</span><span class="o">=</span><span class="s2">&quot;Taiwan.gif&quot;</span><span class="p">,</span>
+    <span class="n">start_year</span><span class="o">=</span><span class="mi">1988</span><span class="p">,</span>
+    <span class="n">end_year</span><span class="o">=</span><span class="mi">2024</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;01-01&quot;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;12-31&quot;</span><span class="p">,</span>
+    <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SWIR1&quot;</span><span class="p">,</span> <span class="s2">&quot;NIR&quot;</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">],</span>
+    <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Taipei&quot;</span><span class="p">,</span>
+    <span class="n">progress_bar_color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">mp4</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">timelapse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="mf">113.8252</span><span class="p">,</span> <span class="mf">22.1988</span><span class="p">,</span> <span class="mf">114.0851</span><span class="p">,</span> <span class="mf">22.3497</span><span class="p">)</span>
+<span class="n">timelapse</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">landsat_timelapse</span><span class="p">(</span>
+    <span class="n">roi</span><span class="p">,</span>
+    <span class="n">out_gif</span><span class="o">=</span><span class="s2">&quot;hong_kong.gif&quot;</span><span class="p">,</span>
+    <span class="n">start_year</span><span class="o">=</span><span class="mi">1990</span><span class="p">,</span>
+    <span class="n">end_year</span><span class="o">=</span><span class="mi">2022</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;01-01&quot;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;12-31&quot;</span><span class="p">,</span>
+    <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SWIR1&quot;</span><span class="p">,</span> <span class="s2">&quot;NIR&quot;</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">],</span>
+    <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Hong Kong&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">timelapse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">115.5541</span><span class="p">,</span> <span class="mf">35.8044</span><span class="p">,</span> <span class="o">-</span><span class="mf">113.9035</span><span class="p">,</span> <span class="mf">36.5581</span><span class="p">)</span>
+<span class="n">timelapse</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">landsat_timelapse</span><span class="p">(</span>
+    <span class="n">roi</span><span class="p">,</span>
+    <span class="n">out_gif</span><span class="o">=</span><span class="s2">&quot;las_vegas.gif&quot;</span><span class="p">,</span>
+    <span class="n">start_year</span><span class="o">=</span><span class="mi">1984</span><span class="p">,</span>
+    <span class="n">end_year</span><span class="o">=</span><span class="mi">2023</span><span class="p">,</span>
+    <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NIR&quot;</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">],</span>
+    <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Las Vegas, NV&quot;</span><span class="p">,</span>
+    <span class="n">font_color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">timelapse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sentinel-2-timelapse">
+<h3><span class="section-number">14.9.2. </span>Sentinel-2 timelapse<a class="headerlink" href="#sentinel-2-timelapse" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="mf">121.615219</span><span class="p">,</span> <span class="mf">25.041219</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">user_roi</span>
+<span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="mf">121.3824</span><span class="p">,</span> <span class="mf">24.9325</span><span class="p">,</span> <span class="mf">121.6653</span><span class="p">,</span> <span class="mf">25.1496</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">timelapse</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">sentinel2_timelapse</span><span class="p">(</span>
+    <span class="n">roi</span><span class="p">,</span>
+    <span class="n">out_gif</span><span class="o">=</span><span class="s2">&quot;sentinel2.gif&quot;</span><span class="p">,</span>
+    <span class="n">start_year</span><span class="o">=</span><span class="mi">2017</span><span class="p">,</span>
+    <span class="n">end_year</span><span class="o">=</span><span class="mi">2024</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;01-01&quot;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;12-31&quot;</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;year&quot;</span><span class="p">,</span>
+    <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SWIR1&quot;</span><span class="p">,</span> <span class="s2">&quot;NIR&quot;</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">],</span>
+    <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sentinel-2 Timelapse&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">timelapse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modis-vegetation-indices">
+<h3><span class="section-number">14.9.3. </span>MODIS vegetation indices<a class="headerlink" href="#modis-vegetation-indices" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span>
+<span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">18.6983</span><span class="p">,</span> <span class="o">-</span><span class="mf">36.1630</span><span class="p">,</span> <span class="mf">52.2293</span><span class="p">,</span> <span class="mf">38.1446</span><span class="p">)</span>
+    <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+    <span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">timelapse</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">modis_ndvi_timelapse</span><span class="p">(</span>
+    <span class="n">roi</span><span class="p">,</span>
+    <span class="n">out_gif</span><span class="o">=</span><span class="s2">&quot;ndvi.gif&quot;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="s2">&quot;Terra&quot;</span><span class="p">,</span>
+    <span class="n">band</span><span class="o">=</span><span class="s2">&quot;NDVI&quot;</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2022-12-31&quot;</span><span class="p">,</span>
+    <span class="n">frames_per_second</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;MODIS NDVI Timelapse&quot;</span><span class="p">,</span>
+    <span class="n">overlay_data</span><span class="o">=</span><span class="s2">&quot;countries&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">timelapse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modis-temperature-data">
+<h3><span class="section-number">14.9.4. </span>MODIS temperature data<a class="headerlink" href="#modis-temperature-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">Map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">Map</span><span class="o">.</span><span class="n">user_roi</span>
+<span class="k">if</span> <span class="n">roi</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">171.21</span><span class="p">,</span> <span class="o">-</span><span class="mf">57.13</span><span class="p">,</span> <span class="mf">177.53</span><span class="p">,</span> <span class="mf">79.99</span><span class="p">)</span>
+    <span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+    <span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">timelapse</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">modis_ocean_color_timelapse</span><span class="p">(</span>
+    <span class="n">satellite</span><span class="o">=</span><span class="s2">&quot;Aqua&quot;</span><span class="p">,</span>
+    <span class="n">start_date</span><span class="o">=</span><span class="s2">&quot;2018-01-01&quot;</span><span class="p">,</span>
+    <span class="n">end_date</span><span class="o">=</span><span class="s2">&quot;2020-12-31&quot;</span><span class="p">,</span>
+    <span class="n">roi</span><span class="o">=</span><span class="n">roi</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="o">=</span><span class="s2">&quot;month&quot;</span><span class="p">,</span>
+    <span class="n">out_gif</span><span class="o">=</span><span class="s2">&quot;temperature.gif&quot;</span><span class="p">,</span>
+    <span class="n">overlay_data</span><span class="o">=</span><span class="s2">&quot;continents&quot;</span><span class="p">,</span>
+    <span class="n">overlay_color</span><span class="o">=</span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span>
+    <span class="n">overlay_opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">timelapse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="goes-timelapse">
+<h3><span class="section-number">14.9.5. </span>GOES timelapse<a class="headerlink" href="#goes-timelapse" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="mf">167.1898</span><span class="p">,</span> <span class="o">-</span><span class="mf">28.5757</span><span class="p">,</span> <span class="mf">202.6258</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.4411</span><span class="p">)</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;2022-01-15T03:00:00&quot;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s2">&quot;2022-01-15T07:00:00&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;GOES-17&quot;</span>
+<span class="n">scan</span> <span class="o">=</span> <span class="s2">&quot;full_disk&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">timelapse</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">goes_timelapse</span><span class="p">(</span>
+    <span class="n">roi</span><span class="p">,</span> <span class="s2">&quot;goes.gif&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">scan</span><span class="p">,</span> <span class="n">framesPerSecond</span><span class="o">=</span><span class="mi">5</span>
+<span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">timelapse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">159.5954</span><span class="p">,</span> <span class="mf">24.5178</span><span class="p">,</span> <span class="o">-</span><span class="mf">114.2438</span><span class="p">,</span> <span class="mf">60.4088</span><span class="p">)</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;2021-10-24T14:00:00&quot;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s2">&quot;2021-10-25T01:00:00&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;GOES-17&quot;</span>
+<span class="n">scan</span> <span class="o">=</span> <span class="s2">&quot;full_disk&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">timelapse</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">goes_timelapse</span><span class="p">(</span>
+    <span class="n">roi</span><span class="p">,</span> <span class="s2">&quot;hurricane.gif&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">scan</span><span class="p">,</span> <span class="n">framesPerSecond</span><span class="o">=</span><span class="mi">5</span>
+<span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">timelapse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="o">-</span><span class="mf">121.0034</span><span class="p">,</span> <span class="mf">36.8488</span><span class="p">,</span> <span class="o">-</span><span class="mf">117.9052</span><span class="p">,</span> <span class="mf">39.0490</span><span class="p">)</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;2020-09-05T15:00:00&quot;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s2">&quot;2020-09-06T02:00:00&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;GOES-17&quot;</span>
+<span class="n">scan</span> <span class="o">=</span> <span class="s2">&quot;full_disk&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">timelapse</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">goes_fire_timelapse</span><span class="p">(</span>
+    <span class="n">roi</span><span class="p">,</span> <span class="s2">&quot;fire.gif&quot;</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">scan</span><span class="p">,</span> <span class="n">framesPerSecond</span><span class="o">=</span><span class="mi">5</span>
+<span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">timelapse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-creating-timelapse-animations">
+<h3><span class="section-number">14.9.6. </span>Exercise 3 - Creating timelapse animations<a class="headerlink" href="#exercise-3-creating-timelapse-animations" title="Link to this heading">#</a></h3>
+<p>Use the geemap timelapse GUI to create a timelapse animation for any location of your choice. Share the timelapse on social media and use the hashtag such as #EarthEngine and #geemap. See <a class="reference external" href="https://i.imgur.com/YaCHvKC.gif">this</a> example.</p>
+<p><img alt="" src="https://i.imgur.com/ohrXeFC.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_gui</span><span class="p">(</span><span class="s2">&quot;timelapse&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "giswqs/geog-312",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/geospatial"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="whitebox.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>WhiteboxTools</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="samgeo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>SAMGeo</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">14.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">14.1.1. Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">14.1.2. Agenda</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-earth-engine-and-geemap">14.2. Introduction to Earth Engine and geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab-and-earth-engine-python-api-authentication">14.3. Google Colab and Earth Engine Python API authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-colab-dark-theme">14.3.1. Change Colab dark theme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geemap">14.3.2. Install geemap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">14.3.3. Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-and-initialize-earth-engine">14.3.4. Authenticate and initialize Earth Engine</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">14.4. Creating interactive maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">14.4.1. Adding basemaps</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-earth-engine-data">14.5. Using Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-types">14.5.1. Earth Engine data types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">14.5.2. Image</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-earth-engine-images">14.5.2.1. Loading Earth Engine images</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-images">14.5.2.2. Visualizing Earth Engine images</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagecollection">14.5.3. ImageCollection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-image-collections">14.5.3.1. Loading image collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-image-collections">14.5.3.2. Visualizing image collections</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#featurecollection">14.5.4. FeatureCollection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-feature-collections">14.5.4.1. Loading feature collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-feature-collections">14.5.4.2. Filtering feature collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-feature-collections">14.5.4.3. Visualizing feature collections</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-catalog">14.5.5. Earth Engine Data Catalog</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-datasets">14.5.5.1. Searching for datasets</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-cloud-free-imagery">14.5.6. Exercise 1 - Creating cloud-free imagery</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-data">14.6. Visualizing Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-inspector-tool">14.6.1. Using the inspector tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-plotting-tool">14.6.2. Using the plotting tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legends-color-bars-and-labels">14.6.3. Legends, color bars, and labels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-legends">14.6.3.1. Built-in legends</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-legends">14.6.3.2. Custom legends</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-color-bars">14.6.3.3. Creating color bars</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-map-and-linked-maps">14.6.4. Split-panel map and linked maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-maps">14.6.5. Split-panel maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linked-maps">14.6.6. Linked maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector-and-time-slider">14.6.7. Timeseries inspector and time slider</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector">14.6.7.1. Timeseries inspector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-slider">14.6.7.2. Time slider</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualizing-satellite-data-for-an-area-of-interest">14.6.8. Exercise 2 - Visualizing satellite data for an area of interest</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-earth-engine-data">14.7. Analyzing Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics">14.7.1. Zonal statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-by-group">14.7.2. Zonal statistics by group</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-earth-engine-data">14.8. Exporting Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-images">14.8.1. Exporting images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-image-collections">14.8.2. Export image collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-feature-collections">14.8.3. Exporting feature collections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-timelapse-animations">14.9. Creating timelapse animations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-timelapse">14.9.1. Landsat timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-2-timelapse">14.9.2. Sentinel-2 timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-vegetation-indices">14.9.3. MODIS vegetation indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-temperature-data">14.9.4. MODIS temperature data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goes-timelapse">14.9.5. GOES timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-creating-timelapse-animations">14.9.6. Exercise 3 - Creating timelapse animations</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Qiusheng Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

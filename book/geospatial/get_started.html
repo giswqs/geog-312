@@ -57,12 +57,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/01_get_started';</script>
-    <link rel="canonical" href="https://geog-312.gishub.org/book/geospatial/01_get_started.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/get_started';</script>
+    <link rel="canonical" href="https://geog-312.gishub.org/book/geospatial/get_started.html" />
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Submission Instructions" href="../labs/instructions.html" />
+    <link rel="next" title="9. Leafmap" href="leafmap.html" />
     <link rel="prev" title="7. Files and Exception Handling" href="../python/07_files.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -201,6 +201,14 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">9. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">10. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">11. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">12. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">13. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">14. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">15. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">16. HyperCoast</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -260,7 +268,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/giswqs/geog-312/main?urlpath=tree/book/geospatial/01_get_started.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/giswqs/geog-312/main?urlpath=tree/book/geospatial/get_started.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +286,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/01_get_started.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/get_started.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -344,7 +352,7 @@
       
       
       
-      <li><a href="https://github.com/giswqs/geog-312/edit/main/book/geospatial/01_get_started.ipynb" target="_blank"
+      <li><a href="https://github.com/giswqs/geog-312/edit/main/book/geospatial/get_started.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,7 +369,7 @@
       
       
       
-      <li><a href="https://github.com/giswqs/geog-312/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/01_get_started.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/giswqs/geog-312/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/get_started.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -391,7 +399,7 @@
       
       
       
-      <li><a href="../../_sources/book/geospatial/01_get_started.ipynb" target="_blank"
+      <li><a href="../../_sources/book/geospatial/get_started.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -503,186 +511,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><iframe srcdoc="&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    
-    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
-    
-        &lt;script&gt;
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        &lt;/script&gt;
-    
-    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
-    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
-    
-            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
-            &lt;style&gt;
-                #map_ea946853139b8380ed2ff750641b00d9 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                .leaflet-container { font-size: 1rem; }
-            &lt;/style&gt;
-        
-    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js&quot;&gt;&lt;/script&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css&quot;/&gt;
-    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js&quot;&gt;&lt;/script&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css&quot;/&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js&quot;&gt;&lt;/script&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css&quot;/&gt;
-    &lt;script src=&quot;https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js&quot;&gt;&lt;/script&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css&quot;/&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    
-    
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_ea946853139b8380ed2ff750641b00d9&quot; &gt;&lt;/div&gt;
-        
-&lt;/body&gt;
-&lt;script&gt;
-    
-    
-            var map_ea946853139b8380ed2ff750641b00d9 = L.map(
-                &quot;map_ea946853139b8380ed2ff750641b00d9&quot;,
-                {
-                    center: [20.0, 0.0],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 2,
-                    zoomControl: true,
-                    preferCanvas: false,
-                    drawExport: false,
-                    layersControl: true,
-                }
-            );
-            L.control.scale().addTo(map_ea946853139b8380ed2ff750641b00d9);
-
-            
-
-        
-    
-            var tile_layer_a82ed19b42c1194e7bbfd1629e70af43 = L.tileLayer(
-                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
-                {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 24, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
-            );
-        
-    
-            tile_layer_a82ed19b42c1194e7bbfd1629e70af43.addTo(map_ea946853139b8380ed2ff750641b00d9);
-        
-    
-            L.control.fullscreen(
-                {&quot;forceSeparateButton&quot;: false, &quot;position&quot;: &quot;topleft&quot;, &quot;title&quot;: &quot;Full Screen&quot;, &quot;titleCancel&quot;: &quot;Exit Full Screen&quot;}
-            ).addTo(map_ea946853139b8380ed2ff750641b00d9);
-        
-    
-            var options = {
-              position: &quot;topleft&quot;,
-              draw: {},
-              edit: {},
-            }
-            // FeatureGroup is to store editable layers.
-            var drawnItems_draw_control_23e9761dfad8dbd1554df23805c1ad3d = new L.featureGroup().addTo(
-                map_ea946853139b8380ed2ff750641b00d9
-            );
-            options.edit.featureGroup = drawnItems_draw_control_23e9761dfad8dbd1554df23805c1ad3d;
-            var draw_control_23e9761dfad8dbd1554df23805c1ad3d = new L.Control.Draw(
-                options
-            ).addTo( map_ea946853139b8380ed2ff750641b00d9 );
-            map_ea946853139b8380ed2ff750641b00d9.on(L.Draw.Event.CREATED, function(e) {
-                var layer = e.layer,
-                    type = e.layerType;
-                var coords = JSON.stringify(layer.toGeoJSON());
-                layer.on(&#x27;click&#x27;, function() {
-                    alert(coords);
-                    console.log(coords);
-                });
-                drawnItems_draw_control_23e9761dfad8dbd1554df23805c1ad3d.addLayer(layer);
-             });
-            map_ea946853139b8380ed2ff750641b00d9.on(&#x27;draw:created&#x27;, function(e) {
-                drawnItems_draw_control_23e9761dfad8dbd1554df23805c1ad3d.addLayer(e.layer);
-            });
-            
-        
-    
-            var measure_control_af17eccb12ca08e480a541597293c2a3 = new L.Control.Measure(
-                {&quot;position&quot;: &quot;bottomleft&quot;, &quot;primaryAreaUnit&quot;: &quot;sqmeters&quot;, &quot;primaryLengthUnit&quot;: &quot;meters&quot;, &quot;secondaryAreaUnit&quot;: &quot;acres&quot;, &quot;secondaryLengthUnit&quot;: &quot;miles&quot;});
-            map_ea946853139b8380ed2ff750641b00d9.addControl(measure_control_af17eccb12ca08e480a541597293c2a3);
-
-            // Workaround for using this plugin with Leaflet&gt;=1.8.0
-            // https://github.com/ljagis/leaflet-measure/issues/171
-            L.Control.Measure.include({
-                _setCaptureMarkerIcon: function () {
-                    // disable autopan
-                    this._captureMarker.options.autoPanOnFocus = false;
-                    // default function
-                    this._captureMarker.setIcon(
-                        L.divIcon({
-                            iconSize: this._map.getSize().multiplyBy(2)
-                        })
-                    );
-                },
-            });
-
-        
-    
-
-            var geocoderOpts_geocoder_76e570376f0de3e0e55c189d43b59aa1 = {&quot;collapsed&quot;: true, &quot;defaultMarkGeocode&quot;: true, &quot;position&quot;: &quot;topleft&quot;, &quot;provider&quot;: &quot;nominatim&quot;, &quot;providerOptions&quot;: {}, &quot;zoom&quot;: 11};
-
-            // note: geocoder name should start with lowercase
-            var geocoderName_geocoder_76e570376f0de3e0e55c189d43b59aa1 = geocoderOpts_geocoder_76e570376f0de3e0e55c189d43b59aa1[&quot;provider&quot;];
-
-            var customGeocoder_geocoder_76e570376f0de3e0e55c189d43b59aa1 = L.Control.Geocoder[ geocoderName_geocoder_76e570376f0de3e0e55c189d43b59aa1 ](
-                geocoderOpts_geocoder_76e570376f0de3e0e55c189d43b59aa1[&#x27;providerOptions&#x27;]
-            );
-            geocoderOpts_geocoder_76e570376f0de3e0e55c189d43b59aa1[&quot;geocoder&quot;] = customGeocoder_geocoder_76e570376f0de3e0e55c189d43b59aa1;
-
-            L.Control.geocoder(
-                geocoderOpts_geocoder_76e570376f0de3e0e55c189d43b59aa1
-            ).on(&#x27;markgeocode&#x27;, function(e) {
-                var zoom = geocoderOpts_geocoder_76e570376f0de3e0e55c189d43b59aa1[&#x27;zoom&#x27;] || map_ea946853139b8380ed2ff750641b00d9.getZoom();
-                map_ea946853139b8380ed2ff750641b00d9.setView(e.geocode.center, zoom);
-            }).addTo(map_ea946853139b8380ed2ff750641b00d9);
-
-        
-    
-            map_ea946853139b8380ed2ff750641b00d9.fitBounds(
-                [[20, 0], [20, 0]],
-                {&quot;maxZoom&quot;: 2}
-            );
-        
-    
-            var layer_control_d2f177e78d725b23ccf44ca8e1731b5e_layers = {
-                base_layers : {
-                    &quot;openstreetmap&quot; : tile_layer_a82ed19b42c1194e7bbfd1629e70af43,
-                },
-                overlays :  {
-                },
-            };
-            let layer_control_d2f177e78d725b23ccf44ca8e1731b5e = L.control.layers(
-                layer_control_d2f177e78d725b23ccf44ca8e1731b5e_layers.base_layers,
-                layer_control_d2f177e78d725b23ccf44ca8e1731b5e_layers.overlays,
-                {&quot;autoZIndex&quot;: true, &quot;collapsed&quot;: true, &quot;position&quot;: &quot;topright&quot;}
-            ).addTo(map_ea946853139b8380ed2ff750641b00d9);
-
-        
-&lt;/script&gt;
-&lt;/html&gt;" width="100%" height="600"style="border:none !important;" "allowfullscreen" "webkitallowfullscreen" "mozallowfullscreen"></iframe></div></div>
 </div>
 </section>
 
@@ -726,11 +554,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../labs/instructions.html"
+       href="leafmap.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Submission Instructions</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Leafmap</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

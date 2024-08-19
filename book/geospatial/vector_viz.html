@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>10. Vector Data Visualization &#8212; First Steps in GIS Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/vector_viz';</script>
+    <link rel="canonical" href="https://geog-312.gishub.org/book/geospatial/vector_viz.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="11. Raster Data Visualization" href="raster_viz.html" />
+    <link rel="prev" title="9. Leafmap" href="leafmap.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="First Steps in GIS Programming - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="First Steps in GIS Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/miniconda.html">Miniconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/colab.html">Google Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/jupyterlab.html">JupyterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/01_get_started.html">1. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/02_variables.html">2. Variables and Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/03_data_structures.html">3. Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/04_string_operations.html">4. String Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/05_looping.html">5. Looping and Control Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/06_functions_classes.html">6. Functions and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/07_files.html">7. Files and Exception Handling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">9. Leafmap</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">11. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">12. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">13. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">14. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">15. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">16. HyperCoast</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_01.html">Lab 1</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/giswqs/geog-312/main?urlpath=tree/book/geospatial/vector_viz.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/vector_viz.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312/edit/main/book/geospatial/vector_viz.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/vector_viz.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/geospatial/vector_viz.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Vector Data Visualization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">10.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">10.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-vector-data">10.3. Visualize vector data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choropleth-map">10.4. Choropleth map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoparquet">10.5. GeoParquet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pmtiles">10.6. PMTiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-pmtiles">10.7. Remote PMTiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-cooperative">10.7.1. Source Cooperative</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="vector-data-visualization">
+<h1><span class="section-number">10. </span>Vector Data Visualization<a class="headerlink" href="#vector-data-visualization" title="Link to this heading">#</a></h1>
+<section id="installation">
+<h2><span class="section-number">10.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>Uncomment the following line to install <a class="reference external" href="https://leafmap.org">leafmap</a> if needed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install &quot;leafmap[vector]&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-libraries">
+<h2><span class="section-number">10.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leafmap</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-vector-data">
+<h2><span class="section-number">10.3. </span>Visualize vector data<a class="headerlink" href="#visualize-vector-data" title="Link to this heading">#</a></h2>
+<p>You can visualize vector data using the <code class="docutils literal notranslate"><span class="pre">add_vector</span></code> function. It supports common vector data formats, including GeoJSON, Shapefile, GeoPackage, and any other formats supported by <a class="reference external" href="https://geopandas.org">geopandas</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;https://open.gishub.org/data/vector/cables.geojson&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_vector</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Cable lines&quot;</span><span class="p">,</span> <span class="n">info_mode</span><span class="o">=</span><span class="s2">&quot;on_hover&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/NIcnLWs.png" /></p>
+<p>You can style the vector with custom style callback functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;CartoDB.DarkMatter&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;https://open.gishub.org/data/vector/cables.geojson&quot;</span>
+<span class="n">callback</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">feat</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">feat</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;color&quot;</span><span class="p">],</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_vector</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Cable lines&quot;</span><span class="p">,</span> <span class="n">style_callback</span><span class="o">=</span><span class="n">callback</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/mQnV53U.png" /></p>
+</section>
+<section id="choropleth-map">
+<h2><span class="section-number">10.4. </span>Choropleth map<a class="headerlink" href="#choropleth-map" title="Link to this heading">#</a></h2>
+<p>You can create a choropleth map using the <code class="docutils literal notranslate"><span class="pre">add_data</span></code> function. It supports GeoJSON, Shapefile, GeoPackage, and any other formats supported by <a class="reference external" href="https://geopandas.org">geopandas</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/opengeos/leafmap/master/docs/data/countries.geojson&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;POP_EST&quot;</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;Quantiles&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Population&quot;</span>
+<span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/4FV6f72.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_data</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;POP_EST&quot;</span><span class="p">,</span>
+    <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;EqualInterval&quot;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span>
+    <span class="n">legend_title</span><span class="o">=</span><span class="s2">&quot;Population&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/KEY6zEj.png" /></p>
+</section>
+<section id="geoparquet">
+<h2><span class="section-number">10.5. </span>GeoParquet<a class="headerlink" href="#geoparquet" title="Link to this heading">#</a></h2>
+<p>Visualize GeoParquet data with leafmap and lonboard.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://open.gishub.org/data/duckdb/cities.parquet&quot;</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;gdf&quot;</span><span class="p">,</span> <span class="n">src_crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Visualize point data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">view_vector</span><span class="p">(</span>
+    <span class="n">gdf</span><span class="p">,</span>
+    <span class="n">get_radius</span><span class="o">=</span><span class="mi">20000</span><span class="p">,</span>
+    <span class="n">get_fill_color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">map_args</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;center&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">),</span> <span class="s2">&quot;zoom&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;height&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/BBsLjvx.png" /></p>
+<p>Visualizing polygon data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://data.source.coop/giswqs/nwi/wetlands/DC_Wetlands.parquet&quot;</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">read_parquet</span><span class="p">(</span>
+    <span class="n">url</span><span class="p">,</span> <span class="n">return_type</span><span class="o">=</span><span class="s2">&quot;gdf&quot;</span><span class="p">,</span> <span class="n">src_crs</span><span class="o">=</span><span class="s2">&quot;EPSG:5070&quot;</span><span class="p">,</span> <span class="n">dst_crs</span><span class="o">=</span><span class="s2">&quot;EPSG:4326&quot;</span>
+<span class="p">)</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">view_vector</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">get_fill_color</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">128</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="vector" src="https://i.imgur.com/HRtpiVd.png" /></p>
+<p><img alt="legend" src="https://i.imgur.com/fxzHHFN.png" /></p>
+</section>
+<section id="pmtiles">
+<h2><span class="section-number">10.6. </span>PMTiles<a class="headerlink" href="#pmtiles" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://github.com/protomaps/PMTiles">PMTiles</a> is a single-file archive format for tiled data. A PMTiles archive can be hosted on a commodity storage platform such as S3, and enables low-cost, zero-maintenance map applications that are “serverless” - free of a custom tile backend or third party provider.</p>
+</section>
+<section id="remote-pmtiles">
+<h2><span class="section-number">10.7. </span>Remote PMTiles<a class="headerlink" href="#remote-pmtiles" title="Link to this heading">#</a></h2>
+<p>Leafmap can visualize PMTiles hosted locally or remotely.</p>
+<section id="source-cooperative">
+<h3><span class="section-number">10.7.1. </span>Source Cooperative<a class="headerlink" href="#source-cooperative" title="Link to this heading">#</a></h3>
+<p>Visualize the <a class="reference external" href="https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description">Google-Microsoft Open Buildings data</a> hosted on Source Cooperative.</p>
+<p>Check the metadata of the PMTiles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://data.source.coop/vida/google-microsoft-open-buildings/pmtiles/go_ms_building_footprints.pmtiles&quot;</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">pmtiles_metadata</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;layer names: </span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;layer_names&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;bounds: </span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;bounds&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Visualize the PMTiles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;CartoDB.DarkMatter&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s2">&quot;sources&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;example_source&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;vector&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;pmtiles://&quot;</span> <span class="o">+</span> <span class="n">url</span><span class="p">,</span>
+            <span class="s2">&quot;attribution&quot;</span><span class="p">:</span> <span class="s2">&quot;PMTiles&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;layers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;buildings&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;example_source&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;building_footprints&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;fill-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#3388ff&quot;</span><span class="p">,</span> <span class="s2">&quot;fill-opacity&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_pmtiles</span><span class="p">(</span>
+    <span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Buildings&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">overlay</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://i.imgur.com/kT6ng6k.png" /></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "giswqs/geog-312",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/geospatial"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="leafmap.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Leafmap</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="raster_viz.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Raster Data Visualization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">10.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">10.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-vector-data">10.3. Visualize vector data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choropleth-map">10.4. Choropleth map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoparquet">10.5. GeoParquet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pmtiles">10.6. PMTiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-pmtiles">10.7. Remote PMTiles</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-cooperative">10.7.1. Source Cooperative</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Qiusheng Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

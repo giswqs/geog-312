@@ -1,0 +1,1196 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>13. WhiteboxTools &#8212; First Steps in GIS Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/geospatial/whitebox';</script>
+    <link rel="canonical" href="https://geog-312.gishub.org/book/geospatial/whitebox.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="14. Geemap" href="geemap.html" />
+    <link rel="prev" title="12. MapLibre" href="maplibre.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="First Steps in GIS Programming - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="First Steps in GIS Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/miniconda.html">Miniconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/colab.html">Google Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/jupyterlab.html">JupyterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/01_get_started.html">1. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/02_variables.html">2. Variables and Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/03_data_structures.html">3. Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/04_string_operations.html">4. String Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/05_looping.html">5. Looping and Control Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/06_functions_classes.html">6. Functions and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/07_files.html">7. Files and Exception Handling</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">9. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">10. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">11. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">12. MapLibre</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">13. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">14. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">15. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">16. HyperCoast</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab_01.html">Lab 1</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/giswqs/geog-312/main?urlpath=tree/book/geospatial/whitebox.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/whitebox.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312/edit/main/book/geospatial/whitebox.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312/issues/new?title=Issue%20on%20page%20%2Fbook/geospatial/whitebox.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/geospatial/whitebox.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>WhiteboxTools</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">13.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">13.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-interactive-maps">13.3. Create interactive maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-basemaps">13.4. Add basemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-watershed-data">13.5. Get watershed data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-dem">13.6. Download DEM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-dem-metadata">13.7. Get DEM metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">13.8. Add colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-whiteboxtools">13.9. Initialize WhiteboxTools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-working-directory">13.10. Set working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-dem">13.11. Smooth DEM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-hillshade">13.12. Create hillshade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-no-flow-cells">13.13. Find no-flow cells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fill-depressions">13.14. Fill depressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-flow-direction">13.15. Delineate flow direction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-flow-accumulation">13.16. Calculate flow accumulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-streams">13.17. Extract streams</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-distance-to-outlet">13.18. Calculate distance to outlet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorize-streams">13.19. Vectorize streams</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-basins">13.20. Delineate basins</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-the-longest-flow-path">13.21. Delineate the longest flow path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-pour-point">13.22. Generate a pour point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-pour-point-to-stream">13.23. Snap pour point to stream</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-watershed">13.24. Delineate watershed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-watershed-raster-to-vector">13.25. Convert watershed raster to vector</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="whiteboxtools">
+<h1><span class="section-number">13. </span>WhiteboxTools<a class="headerlink" href="#whiteboxtools" title="Link to this heading">#</a></h1>
+<section id="installation">
+<h2><span class="section-number">13.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>Uncomment and run the following cell to install necessary packages for this notebook, including leafmap, geopandas, localtileserver, rio-cogeo, pynhd, py3dep.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install &quot;leafmap[raster]&quot; geopandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-libraries">
+<h2><span class="section-number">13.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">leafmap</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-interactive-maps">
+<h2><span class="section-number">13.3. </span>Create interactive maps<a class="headerlink" href="#create-interactive-maps" title="Link to this heading">#</a></h2>
+<p>Specify the map center, zoom level, and height.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600px&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-basemaps">
+<h2><span class="section-number">13.4. </span>Add basemaps<a class="headerlink" href="#add-basemaps" title="Link to this heading">#</a></h2>
+<p>Add OpenTopoMap, USGS 3DEP Elevation, and USGS Hydrography basemaps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;USGS 3DEP Elevation&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;USGS Hydrography&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add NLCD land cover map and legend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;HYBRID&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;NLCD 2019 CONUS Land Cover&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover Type&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add WMS layers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2019_Land_Cover_L48/wms?&quot;</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_wms_layer</span><span class="p">(</span>
+    <span class="n">url</span><span class="p">,</span>
+    <span class="n">layers</span><span class="o">=</span><span class="s2">&quot;NLCD_2019_Land_Cover_L48&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;NLCD 2019 CONUS Land Cover&quot;</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
+    <span class="n">transparent</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover Type&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-watershed-data">
+<h2><span class="section-number">13.5. </span>Get watershed data<a class="headerlink" href="#get-watershed-data" title="Link to this heading">#</a></h2>
+<p>Let’s download watershed data for the Calapooia River basin in Oregon.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">get_nhd_basins</span><span class="p">(</span><span class="n">feature_ids</span><span class="o">=</span><span class="mi">23763529</span><span class="p">,</span> <span class="n">fsource</span><span class="o">=</span><span class="s2">&quot;comid&quot;</span><span class="p">,</span> <span class="n">simplified</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot the watershed boundary on the map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_gdf</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Catchment&quot;</span><span class="p">,</span> <span class="n">info_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Save the watershed boundary to a GeoJSON or shapefile.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;basin.geojson&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;basin.shp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-dem">
+<h2><span class="section-number">13.6. </span>Download DEM<a class="headerlink" href="#download-dem" title="Link to this heading">#</a></h2>
+<p>Download a digital elevation model (DEM) for the watershed from the USGS 3DEP Elevation service. Convert the DEM to a Cloud Optimized GeoTIFF (COG).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">get_3dep_dem</span><span class="p">(</span>
+    <span class="n">gdf</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="n">dst_crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">,</span> <span class="n">to_cog</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Display the DEM on the map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-dem-metadata">
+<h2><span class="section-number">13.7. </span>Get DEM metadata<a class="headerlink" href="#get-dem-metadata" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">image_metadata</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">)</span>
+<span class="n">metadata</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Get a summary statistics of the DEM.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;bands&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="add-colorbar">
+<h2><span class="section-number">13.8. </span>Add colorbar<a class="headerlink" href="#add-colorbar" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_colormap</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="s2">&quot;60&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation (m)&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="initialize-whiteboxtools">
+<h2><span class="section-number">13.9. </span>Initialize WhiteboxTools<a class="headerlink" href="#initialize-whiteboxtools" title="Link to this heading">#</a></h2>
+<p>Initialize the WhiteboxTools class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">WhiteboxTools</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check the WhiteboxTools version.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Display the WhiteboxTools interface.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">whiteboxgui</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-working-directory">
+<h2><span class="section-number">13.10. </span>Set working directory<a class="headerlink" href="#set-working-directory" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">set_working_dir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="n">wbt</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="smooth-dem">
+<h2><span class="section-number">13.11. </span>Smooth DEM<a class="headerlink" href="#smooth-dem" title="Link to this heading">#</a></h2>
+<p>All WhiteboxTools functions will return 0 if they are successful, and 1 if they are not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">feature_preserving_smoothing</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Display the smoothed DEM and watershed boundary on the map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Smoothed DEM&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span><span class="s2">&quot;basin.geojson&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Watershed&quot;</span><span class="p">,</span> <span class="n">info_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-hillshade">
+<h2><span class="section-number">13.12. </span>Create hillshade<a class="headerlink" href="#create-hillshade" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">hillshade</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;hillshade.tif&quot;</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">315</span><span class="p">,</span> <span class="n">altitude</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Overlay the hillshade on the smoothed DEM with transparency.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;hillshade.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Hillshade&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="mf">0.6</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="find-no-flow-cells">
+<h2><span class="section-number">13.13. </span>Find no-flow cells<a class="headerlink" href="#find-no-flow-cells" title="Link to this heading">#</a></h2>
+<p>Find cells with undefined flow, i.e. no valid flow direction, based on the D8 flow direction algorithm</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">find_no_flow_cells</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;noflow.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Display the no-flow cells on the map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;noflow.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;No Flow Cells&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="fill-depressions">
+<h2><span class="section-number">13.14. </span>Fill depressions<a class="headerlink" href="#fill-depressions" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">fill_depressions</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;filled.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternatively, you can use depression breaching to fill the depressions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">breach_depressions</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;breached.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">find_no_flow_cells</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;noflow2.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;noflow2.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;No Flow Cells after Breaching&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="delineate-flow-direction">
+<h2><span class="section-number">13.15. </span>Delineate flow direction<a class="headerlink" href="#delineate-flow-direction" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">d8_pointer</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-flow-accumulation">
+<h2><span class="section-number">13.16. </span>Calculate flow accumulation<a class="headerlink" href="#calculate-flow-accumulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">d8_flow_accumulation</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Flow Accumulation&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-streams">
+<h2><span class="section-number">13.17. </span>Extract streams<a class="headerlink" href="#extract-streams" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">extract_streams</span><span class="p">(</span><span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Streams&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-distance-to-outlet">
+<h2><span class="section-number">13.18. </span>Calculate distance to outlet<a class="headerlink" href="#calculate-distance-to-outlet" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">distance_to_outlet</span><span class="p">(</span>
+    <span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="n">streams</span><span class="o">=</span><span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;distance_to_outlet.tif&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;distance_to_outlet.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Distance to Outlet&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="vectorize-streams">
+<h2><span class="section-number">13.19. </span>Vectorize streams<a class="headerlink" href="#vectorize-streams" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">raster_streams_to_vector</span><span class="p">(</span>
+    <span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">d8_pntr</span><span class="o">=</span><span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;streams.shp&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The raster_streams_to_vector tool has a bug. The output vector file is missing the coordinate system. Use leafmap.vector_set_crs() to set the coordinate system.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">vector_set_crs</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;streams.shp&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;streams.shp&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
+    <span class="s2">&quot;streams.shp&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Streams Vector&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="delineate-basins">
+<h2><span class="section-number">13.20. </span>Delineate basins<a class="headerlink" href="#delineate-basins" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">basins</span><span class="p">(</span><span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;basins.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;basins.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Basins&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="delineate-the-longest-flow-path">
+<h2><span class="section-number">13.21. </span>Delineate the longest flow path<a class="headerlink" href="#delineate-the-longest-flow-path" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">longest_flowpath</span><span class="p">(</span>
+    <span class="n">dem</span><span class="o">=</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="n">basins</span><span class="o">=</span><span class="s2">&quot;basins.tif&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;longest_flowpath.shp&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Select only the longest flow path.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">select_largest</span><span class="p">(</span>
+    <span class="s2">&quot;longest_flowpath.shp&quot;</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;LENGTH&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;longest_flowpath.shp&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
+    <span class="s2">&quot;longest_flowpath.shp&quot;</span><span class="p">,</span>
+    <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Longest Flowpath&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generate-a-pour-point">
+<h2><span class="section-number">13.22. </span>Generate a pour point<a class="headerlink" href="#generate-a-pour-point" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">user_roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">save_draw_features</span><span class="p">(</span><span class="s2">&quot;pour_point.shp&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">122.613559</span><span class="p">,</span> <span class="mf">44.284383</span><span class="p">]</span>
+    <span class="n">leafmap</span><span class="o">.</span><span class="n">coords_to_vector</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;pour_point.shp&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="snap-pour-point-to-stream">
+<h2><span class="section-number">13.23. </span>Snap pour point to stream<a class="headerlink" href="#snap-pour-point-to-stream" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">snap_pour_points</span><span class="p">(</span>
+    <span class="s2">&quot;pour_point.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;pour_point_snapped.shp&quot;</span><span class="p">,</span> <span class="n">snap_dist</span><span class="o">=</span><span class="mi">300</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span><span class="s2">&quot;pour_point_snapped.shp&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Pour Point&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="delineate-watershed">
+<h2><span class="section-number">13.24. </span>Delineate watershed<a class="headerlink" href="#delineate-watershed" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">watershed</span><span class="p">(</span><span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;pour_point_snapped.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;watershed.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;watershed.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Watershed&quot;</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="convert-watershed-raster-to-vector">
+<h2><span class="section-number">13.25. </span>Convert watershed raster to vector<a class="headerlink" href="#convert-watershed-raster-to-vector" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">raster_to_vector_polygons</span><span class="p">(</span><span class="s2">&quot;watershed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;watershed.shp&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
+    <span class="s2">&quot;watershed.shp&quot;</span><span class="p">,</span>
+    <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Watershed Vector&quot;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ffff00&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "giswqs/geog-312",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/geospatial"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="maplibre.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>MapLibre</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="geemap.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Geemap</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">13.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">13.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-interactive-maps">13.3. Create interactive maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-basemaps">13.4. Add basemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-watershed-data">13.5. Get watershed data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-dem">13.6. Download DEM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-dem-metadata">13.7. Get DEM metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">13.8. Add colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-whiteboxtools">13.9. Initialize WhiteboxTools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-working-directory">13.10. Set working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smooth-dem">13.11. Smooth DEM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-hillshade">13.12. Create hillshade</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-no-flow-cells">13.13. Find no-flow cells</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fill-depressions">13.14. Fill depressions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-flow-direction">13.15. Delineate flow direction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-flow-accumulation">13.16. Calculate flow accumulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-streams">13.17. Extract streams</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-distance-to-outlet">13.18. Calculate distance to outlet</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vectorize-streams">13.19. Vectorize streams</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-basins">13.20. Delineate basins</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-the-longest-flow-path">13.21. Delineate the longest flow path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-pour-point">13.22. Generate a pour point</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-pour-point-to-stream">13.23. Snap pour point to stream</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#delineate-watershed">13.24. Delineate watershed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-watershed-raster-to-vector">13.25. Convert watershed raster to vector</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Qiusheng Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
