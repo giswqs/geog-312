@@ -8,6 +8,7 @@
 - Black Formatter
 - Code Runner
 - CodeSnap
+- GitHub Actions
 - GitHub Copilot
 - GitHub Copilot Chat
 - GitHub Pull Requests
