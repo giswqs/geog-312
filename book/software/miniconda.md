@@ -27,5 +27,5 @@ After installing Miniconda, you can open the **Anaconda Prompt** or **Terminal**
 conda create -n geo python=3.11
 conda activate geo
 conda install -n base mamba -c conda-forge
-mamba install -c conda-forge geemap leafmap maplibre
+mamba install -c conda-forge geemap leafmap
 ```
