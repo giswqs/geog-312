@@ -517,6 +517,12 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-commands">Common Commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-managing-environments">Creating and Managing Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-managing-packages">Installing and Managing Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mamba-faster-package-management">Using Mamba (Faster Package Management)</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -537,13 +543,110 @@ document.write(`
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
-<p>After installing Miniconda, you can open the <strong>Anaconda Prompt</strong> or <strong>Terminal</strong> to create a new environment and install packages using the following commands:</p>
+<p>After installing Miniconda, you can open the <strong>Anaconda Prompt</strong> or <strong>Terminal</strong> to create a new environment and install packages required for this course using the following commands:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>geo<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
 conda<span class="w"> </span>activate<span class="w"> </span>geo
 conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>mamba<span class="w"> </span>-c<span class="w"> </span>conda-forge
 mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap<span class="w"> </span>leafmap
 </pre></div>
 </div>
+</section>
+<section id="common-commands">
+<h2>Common Commands<a class="headerlink" href="#common-commands" title="Link to this heading">#</a></h2>
+<p>Here are some common commands to manage environments and packages using conda:</p>
+<section id="creating-and-managing-environments">
+<h3>Creating and Managing Environments<a class="headerlink" href="#creating-and-managing-environments" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Create a new environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
+</pre></div>
+</div>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">myenv</span></code> with your desired environment name and <code class="docutils literal notranslate"><span class="pre">python=3.11</span></code> with the version of Python you need.</p>
+</li>
+<li><p><strong>Activate an environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>myenv
+</pre></div>
+</div>
+</li>
+<li><p><strong>Deactivate the current environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
+</pre></div>
+</div>
+</li>
+<li><p><strong>List all environments:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>list
+</pre></div>
+</div>
+</li>
+<li><p><strong>Remove an environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>remove<span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span>--all
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="installing-and-managing-packages">
+<h3>Installing and Managing Packages<a class="headerlink" href="#installing-and-managing-packages" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Install a package in the current environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>numpy
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install a package in a specific environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>myenv<span class="w"> </span>pandas
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install packages from the conda-forge channel:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geopandas
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install multiple packages at once:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>scipy<span class="w"> </span>matplotlib<span class="w"> </span>seaborn
+</pre></div>
+</div>
+</li>
+<li><p><strong>Update all packages in an environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>update<span class="w"> </span>--all
+</pre></div>
+</div>
+</li>
+<li><p><strong>Search for a package:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>search<span class="w"> </span>scikit-learn
+</pre></div>
+</div>
+</li>
+<li><p><strong>List all installed packages in the current environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>list
+</pre></div>
+</div>
+</li>
+<li><p><strong>Remove a package:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>remove<span class="w"> </span>numpy
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="using-mamba-faster-package-management">
+<h3>Using Mamba (Faster Package Management)<a class="headerlink" href="#using-mamba-faster-package-management" title="Link to this heading">#</a></h3>
+<p>After installing Mamba, you can use it for faster package management:</p>
+<ul>
+<li><p><strong>Install mamba in the base environment:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>mamba<span class="w"> </span>-c<span class="w"> </span>conda-forge
+</pre></div>
+</div>
+</li>
+<li><p><strong>Install packages using mamba:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap<span class="w"> </span>leafmap
+</pre></div>
+</div>
+</li>
+</ul>
+<p>These commands should help you effectively manage your Python environments and packages using Miniconda.</p>
+</section>
 </section>
 </section>
 
@@ -613,6 +716,12 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-commands">Common Commands</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-managing-environments">Creating and Managing Environments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-managing-packages">Installing and Managing Packages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-mamba-faster-package-management">Using Mamba (Faster Package Management)</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

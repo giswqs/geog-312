@@ -21,7 +21,7 @@ To install Miniconda, download the installer from the [Miniconda website](https:
 
 ## Usage
 
-After installing Miniconda, you can open the **Anaconda Prompt** or **Terminal** to create a new environment and install packages using the following commands:
+After installing Miniconda, you can open the **Anaconda Prompt** or **Terminal** to create a new environment and install packages required for this course using the following commands:
 
 ```bash
 conda create -n geo python=3.11
@@ -29,3 +29,106 @@ conda activate geo
 conda install -n base mamba -c conda-forge
 mamba install -c conda-forge geemap leafmap
 ```
+
+## Common Commands
+
+Here are some common commands to manage environments and packages using conda:
+
+### Creating and Managing Environments
+
+- **Create a new environment:**
+
+  ```bash
+  conda create -n myenv python=3.11
+  ```
+
+  Replace `myenv` with your desired environment name and `python=3.11` with the version of Python you need.
+
+- **Activate an environment:**
+
+  ```bash
+  conda activate myenv
+  ```
+
+- **Deactivate the current environment:**
+
+  ```bash
+  conda deactivate
+  ```
+
+- **List all environments:**
+
+  ```bash
+  conda env list
+  ```
+
+- **Remove an environment:**
+  ```bash
+  conda remove -n myenv --all
+  ```
+
+### Installing and Managing Packages
+
+- **Install a package in the current environment:**
+
+  ```bash
+  conda install numpy
+  ```
+
+- **Install a package in a specific environment:**
+
+  ```bash
+  conda install -n myenv pandas
+  ```
+
+- **Install packages from the conda-forge channel:**
+
+  ```bash
+  conda install -c conda-forge geopandas
+  ```
+
+- **Install multiple packages at once:**
+
+  ```bash
+  conda install scipy matplotlib seaborn
+  ```
+
+- **Update all packages in an environment:**
+
+  ```bash
+  conda update --all
+  ```
+
+- **Search for a package:**
+
+  ```bash
+  conda search scikit-learn
+  ```
+
+- **List all installed packages in the current environment:**
+
+  ```bash
+  conda list
+  ```
+
+- **Remove a package:**
+  ```bash
+  conda remove numpy
+  ```
+
+### Using Mamba (Faster Package Management)
+
+After installing Mamba, you can use it for faster package management:
+
+- **Install mamba in the base environment:**
+
+  ```bash
+  conda install -n base mamba -c conda-forge
+  ```
+
+- **Install packages using mamba:**
+  ```bash
+  mamba install -c conda-forge geemap leafmap
+  ```
+
+These commands should help you effectively manage your Python environments and packages using Miniconda.
