@@ -52,8 +52,7 @@ from google.colab import files
 files.download('path/to/your/file')
 ```
 
-12. Run R programs in Google Colab: You can use R programming language in Google Colab by going to [https://colab.to/r](https://colab.to/r). It will open a new notebook with R set as the kernel instead of Python.
-13. **“Open in Colab” Badge:** You can add a `Open in Colab` badge to your **README.md** or jupyter notebooks using the following markdown code:
+12. **“Open in Colab” Badge:** You can add a `Open in Colab` badge to a markdown file or jupyter notebooks using the following markdown code:
 
     [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/notebooks/basic_features_overview.ipynb)
 
