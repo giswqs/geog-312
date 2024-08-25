@@ -39,6 +39,24 @@ To view the value of the variable, we can use the `print()` function.
 print(num_points)
 ```
 
+Alternatively, we can simply type the variable name in a code cell and run the cell to display the value of the variable.
+
+```{code-cell} ipython3
+num_points
+```
+
+## Naming Variables
+
+When naming variables, you should follow these rules:
+
+- Variable names must start with a letter or an underscore, such as `_`.
+- The remainder of the variable name can consist of letters, numbers, and underscores.
+- Variable names are case-sensitive, so `num_points` and `Num_Points` are different variables.
+- Variable names should be descriptive and meaningful, such as `num_points` instead of `n`.
+- Avoid using Python keywords and built-in functions as variable names, such as `print`, `sum`, `list`, `dict`, `str`, `int`, `float`, `bool`, `set`, `tuple`, `range`, `type`, `object`, `None`, `True`, `False`, `and`, `or`, `not`, `if`, `else`, `elif`, `for`, `while`, `break`, `continue`, `pass`, `def`, `return`, `lambda`, `class`, `import`, `from`, `as`, `with`, `try`, `except`, `finally`, `raise`, `assert`, `del`, `in`, `is`, `global`, `nonlocal`, `yield`, `async`, `await`.
+
++++
+
 ## Data Types
 
 Python supports various data types, which are essential to understand before working with geospatial data. The most common data types include:
@@ -49,10 +67,11 @@ Python supports various data types, which are essential to understand before wor
 num_features = 500  # Represents the number of features in a geospatial dataset
 ```
 
-**b) Floating-point numbers (float):** These are numbers with a decimal point, e.g., 3.14, -0.001, 100.0
+**b) Floating-point numbers (float):** These are numbers with a decimal point, e.g., 3.14, -0.001, 100.0. You can write multiple lines of code in a single code cell. The output will be displayed for the last line of code.
 
 ```{code-cell} ipython3
 latitude = 35.6895  # Represents the latitude of a point on Earth's surface
+longitude = 139.6917  # Represents the longitude of a point on Earth's surface
 ```
 
 **c) Strings (str):** Strings are sequences of characters, e.g., "Hello", "Geospatial Data", "Lat/Long"
@@ -60,6 +79,10 @@ latitude = 35.6895  # Represents the latitude of a point on Earth's surface
 ```{code-cell} ipython3
 coordinate_system = "WGS 84"  # Represents a commonly used coordinate system
 ```
+
+Strings can be enclosed in single quotes (`'`) or double quotes (`"`). You can also use triple quotes (`'''` or `"""`) for multiline strings.
+
++++
 
 **d) Booleans (bool):** Booleans represent one of two values: True or False
 
@@ -87,6 +110,39 @@ feature_attributes = {
 }
 ```
 
+## Escape Characters
+
+Escape characters are used to insert characters that are illegal in a string. For example, you can use the escape character `\n` to insert a new line in a string.
+
+```{code-cell} ipython3
+print("Hello World!\nThis is a Python script.")
+```
+
+Another common escape character is `\t`, which inserts a tab in a string.
+
+```{code-cell} ipython3
+print("This is the first line.\n\tThis is the second line. It is indented.")
+```
+
+If you want to include a single quote in a string, your can wrap the string in double quotes. Alternatively, you can use the escape character `\'` to include a single quote in a string.
+
+```{code-cell} ipython3
+print("What's your name?")
+```
+
+```{code-cell} ipython3
+print("What's your name?")
+```
+
+## Comments
+
+Comments are used to explain the code and make it more readable. In Python, comments start with the `#` symbol. Everything after the `#` symbol on a line is ignored by the Python interpreter.
+
+```{code-cell} ipython3
+# This is a comment
+num_points = 120  # This is an inline comment
+```
+
 ## Working with Variables and Data Types
 
 Now, let's do some basic operations with these variables.
@@ -103,6 +159,7 @@ Converting latitude from degrees to radians (required for some geospatial calcul
 ```{code-cell} ipython3
 import math
 
+latitude = 35.6895
 latitude_radians = math.radians(latitude)
 print("Latitude in radians:", latitude_radians)
 ```
@@ -110,6 +167,7 @@ print("Latitude in radians:", latitude_radians)
 Adding new coordinates to the list:
 
 ```{code-cell} ipython3
+coordinates = [35.6895, 139.6917]
 coordinates.append(34.0522)  # Adding latitude of Los Angeles
 coordinates.append(-118.2437)  # Adding longitude of Los Angeles
 print("Updated coordinates:", coordinates)
@@ -146,6 +204,12 @@ centroid_lon = sum([point[1] for point in points]) / len(points)
 centroid = [centroid_lat, centroid_lon]
 print("Centroid of the points is at:", centroid)
 ```
+
+## Further Reading
+
+For more information on variables and data types in Python, check out the **Basics** section of the A Byte of Python book: <https://python.swaroopch.com/basics.html>.
+
++++
 
 ## Exercises
 
