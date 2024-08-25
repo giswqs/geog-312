@@ -497,16 +497,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4">Question 4</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5">Question 5</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6">Question 6</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-7">Question 7</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-8">Question 8</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-9">Question 9</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-10">Question 10</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-variable-assignment-and-basic-operations">Exercise 1: Variable Assignment and Basic Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-working-with-strings">Exercise 2: Working with Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-using-lists">Exercise 3: Using Lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-using-tuples">Exercise 4: Using Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-working-with-sets">Exercise 5: Working with Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-working-with-dictionaries">Exercise 6: Working with Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-nested-data-structures">Exercise 7: Nested Data Structures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-list-operations">Exercise 8: List Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-dictionary-operations">Exercise 9: Dictionary Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-practical-application">Exercise 10: Practical Application</a></li>
 </ul>
             </nav>
         </div>
@@ -521,55 +521,129 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="lab-1">
 <h1>Lab 1<a class="headerlink" href="#lab-1" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/labs/lab_01.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<section id="question-1">
-<h2>Question 1<a class="headerlink" href="#question-1" title="Link to this heading">#</a></h2>
-<p><strong>Simple Message:</strong> Assign a message to a variable, and then print that message.</p>
+<section id="exercise-1-variable-assignment-and-basic-operations">
+<h2>Exercise 1: Variable Assignment and Basic Operations<a class="headerlink" href="#exercise-1-variable-assignment-and-basic-operations" title="Link to this heading">#</a></h2>
+<p>Create variables to store the following geospatial data:</p>
+<ul class="simple">
+<li><p>The latitude and longitude of New York City: 40.7128, -74.0060.</p></li>
+<li><p>The population of New York City: 8,336,817.</p></li>
+<li><p>The area of New York City in square kilometers: 783.8.</p></li>
+</ul>
+<p>Perform the following tasks:</p>
+<ol class="arabic simple">
+<li><p>Calculate and print the population density of New York City (population per square kilometer).</p></li>
+<li><p>Print the coordinates in the format “Latitude: [latitude], Longitude: [longitude]”.</p></li>
+</ol>
 </section>
-<section id="question-2">
-<h2>Question 2<a class="headerlink" href="#question-2" title="Link to this heading">#</a></h2>
-<p><strong>Simple Messages:</strong> Assign a message to a variable, and print that message. Then change the value of the variable to a new message, and print the new message.</p>
+<section id="exercise-2-working-with-strings">
+<h2>Exercise 2: Working with Strings<a class="headerlink" href="#exercise-2-working-with-strings" title="Link to this heading">#</a></h2>
+<p>Create a string variable to store the name of a city, such as “San Francisco”. Perform the following operations:</p>
+<ol class="arabic simple">
+<li><p>Convert the string to lowercase and print the result.</p></li>
+<li><p>Convert the string to uppercase and print the result.</p></li>
+<li><p>Replace “San” with “Los” in the city name and print the new string.</p></li>
+</ol>
 </section>
-<section id="question-3">
-<h2>Question 3<a class="headerlink" href="#question-3" title="Link to this heading">#</a></h2>
-<p><strong>Personal Message:</strong> Use a variable to represent a person’s name, and print a message to that person. Your message should be simple, such as, “Hello Eric, would you like to learn some Python today?”</p>
+<section id="exercise-3-using-lists">
+<h2>Exercise 3: Using Lists<a class="headerlink" href="#exercise-3-using-lists" title="Link to this heading">#</a></h2>
+<p>Create a list of tuples, where each tuple contains the name of a city and its corresponding latitude and longitude:</p>
+<ul class="simple">
+<li><p>New York City: (40.7128, -74.0060)</p></li>
+<li><p>Los Angeles: (34.0522, -118.2437)</p></li>
+<li><p>Chicago: (41.8781, -87.6298)</p></li>
+</ul>
+<p>Perform the following tasks:</p>
+<ol class="arabic simple">
+<li><p>Add a new city (e.g., Miami: (25.7617, -80.1918)) to the list.</p></li>
+<li><p>Print the entire list of cities.</p></li>
+<li><p>Slice the list to print only the first two cities.</p></li>
+</ol>
 </section>
-<section id="question-4">
-<h2>Question 4<a class="headerlink" href="#question-4" title="Link to this heading">#</a></h2>
-<p><strong>Name Cases:</strong> Use a variable to represent a person’s name, and then print that person’s name in lowercase, uppercase, and title case.</p>
+<section id="exercise-4-using-tuples">
+<h2>Exercise 4: Using Tuples<a class="headerlink" href="#exercise-4-using-tuples" title="Link to this heading">#</a></h2>
+<p>Create a tuple to store the coordinates (latitude, longitude) of the Eiffel Tower: (48.8584, 2.2945). Perform the following tasks:</p>
+<ol class="arabic simple">
+<li><p>Access and print the latitude and longitude values from the tuple.</p></li>
+<li><p>Try to change the latitude value to 48.8585. What happens? Explain why.</p></li>
+</ol>
 </section>
-<section id="question-5">
-<h2>Question 5<a class="headerlink" href="#question-5" title="Link to this heading">#</a></h2>
-<p><strong>Famous Quote:</strong> Find a quote from a famous person you admire. Print the quote and the name of its author. Your output should look something like the following, including the quotation marks:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Albert Einstein once said, “A person who never made a mistake never tried anything new.”
+<section id="exercise-5-working-with-sets">
+<h2>Exercise 5: Working with Sets<a class="headerlink" href="#exercise-5-working-with-sets" title="Link to this heading">#</a></h2>
+<p>Create a set of countries you have visited, such as {“USA”, “France”, “Germany”}. Perform the following tasks:</p>
+<ol class="arabic simple">
+<li><p>Add a new country to the set.</p></li>
+<li><p>Try to add the same country again. What happens?</p></li>
+<li><p>Print the updated set.</p></li>
+</ol>
+</section>
+<section id="exercise-6-working-with-dictionaries">
+<h2>Exercise 6: Working with Dictionaries<a class="headerlink" href="#exercise-6-working-with-dictionaries" title="Link to this heading">#</a></h2>
+<p>Create a dictionary to store information about a specific geospatial feature, such as a river:</p>
+<ul class="simple">
+<li><p>Name: “Amazon River”</p></li>
+<li><p>Length: 6400 km</p></li>
+<li><p>Countries: [“Brazil”, “Peru”, “Colombia”]</p></li>
+</ul>
+<p>Perform the following tasks:</p>
+<ol class="arabic simple">
+<li><p>Add a new key-value pair to the dictionary to store the river’s average discharge (e.g., 209,000 m³/s).</p></li>
+<li><p>Update the length of the river to 6992 km.</p></li>
+<li><p>Print the dictionary.</p></li>
+</ol>
+</section>
+<section id="exercise-7-nested-data-structures">
+<h2>Exercise 7: Nested Data Structures<a class="headerlink" href="#exercise-7-nested-data-structures" title="Link to this heading">#</a></h2>
+<p>Create a dictionary to represent a city that contains the city’s name, population, and coordinates (latitude, longitude):</p>
+<ul class="simple">
+<li><p>Name: “Tokyo”</p></li>
+<li><p>Population: 13,515,271</p></li>
+<li><p>Coordinates: (35.6895, 139.6917)</p></li>
+</ul>
+<p>Perform the following tasks:</p>
+<ol class="arabic simple">
+<li><p>Access and print the population of the city.</p></li>
+<li><p>Access and print the city’s latitude.</p></li>
+<li><p>Update the population to 14,000,000 and print the updated dictionary.</p></li>
+</ol>
+</section>
+<section id="exercise-8-list-operations">
+<h2>Exercise 8: List Operations<a class="headerlink" href="#exercise-8-list-operations" title="Link to this heading">#</a></h2>
+<p>Given the list of cities from Exercise 3, perform the following operations:</p>
+<ol class="arabic simple">
+<li><p>Sort the list of cities alphabetically by name.</p></li>
+<li><p>Create a new list that contains only the city names.</p></li>
+<li><p>Remove the last city from the original list and print the updated list.</p></li>
+</ol>
+</section>
+<section id="exercise-9-dictionary-operations">
+<h2>Exercise 9: Dictionary Operations<a class="headerlink" href="#exercise-9-dictionary-operations" title="Link to this heading">#</a></h2>
+<p>Using the dictionary from Exercise 6, perform the following tasks:</p>
+<ol class="arabic simple">
+<li><p>Check if the key “Length” exists in the dictionary.</p></li>
+<li><p>Print all the keys in the dictionary.</p></li>
+<li><p>Print all the values in the dictionary.</p></li>
+</ol>
+</section>
+<section id="exercise-10-practical-application">
+<h2>Exercise 10: Practical Application<a class="headerlink" href="#exercise-10-practical-application" title="Link to this heading">#</a></h2>
+<p>Imagine you have a list of tuples, each representing a location with its name, latitude, and longitude:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">locations</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;Mount Everest&quot;</span><span class="p">,</span> <span class="mf">27.9881</span><span class="p">,</span> <span class="mf">86.9250</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;K2&quot;</span><span class="p">,</span> <span class="mf">35.8808</span><span class="p">,</span> <span class="mf">76.5155</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Kangchenjunga&quot;</span><span class="p">,</span> <span class="mf">27.7025</span><span class="p">,</span> <span class="mf">88.1475</span><span class="p">),</span>
+<span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="question-6">
-<h2>Question 6<a class="headerlink" href="#question-6" title="Link to this heading">#</a></h2>
-<p><strong>Famous Quote 2:</strong> Repeat Exercise 2-5, but this time, represent the famous person’s name using a variable called famous_person. Then compose your message and represent it with a new variable called message. Print your
-message.</p>
-</section>
-<section id="question-7">
-<h2>Question 7<a class="headerlink" href="#question-7" title="Link to this heading">#</a></h2>
-<p><strong>Stripping Names:</strong> Use a variable to represent a person’s name, and include some whitespace characters at the beginning and end of the name. Make sure you use each character combination, “\t” and “\n”, at least once.
-Print the name once, so the whitespace around the name is displayed. Then print the name using each of the three stripping functions, lstrip(), rstrip(), and strip().</p>
-</section>
-<section id="question-8">
-<h2>Question 8<a class="headerlink" href="#question-8" title="Link to this heading">#</a></h2>
-<p><strong>Number Eight:</strong> Write addition, subtraction, multiplication, and division operations that each result in the number 8. Be sure to enclose your operations in print() calls to see the results. You should create four lines that look like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
-</pre></div>
 </div>
-<p>Your output should simply be four lines with the number 8 appearing once on each line.</p>
-</section>
-<section id="question-9">
-<h2>Question 9<a class="headerlink" href="#question-9" title="Link to this heading">#</a></h2>
-<p><strong>Favorite Number:</strong> Use a variable to represent your favorite number. Then, using that variable, create a message that reveals your favorite number. Print that message.</p>
-</section>
-<section id="question-10">
-<h2>Question 10<a class="headerlink" href="#question-10" title="Link to this heading">#</a></h2>
-<p><strong>Adding Comments:</strong> Choose two of the programs you’ve written, and add at least one comment to each. If you don’t have anything specific to write because your programs are too simple at this point, just add your name and
-the current date at the top of each program file. Then write one sentence describing what the program does.</p>
+</div>
+<p>Perform the following tasks:</p>
+<ol class="arabic simple">
+<li><p>Create a new list that contains only the names of the locations.</p></li>
+<li><p>Create a dictionary where the keys are location names and the values are tuples of their coordinates.</p></li>
+<li><p>Print the latitude of “K2” using the dictionary.</p></li>
+</ol>
 </section>
 </section>
 
@@ -628,16 +702,16 @@ the current date at the top of each program file. Then write one sentence descri
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4">Question 4</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5">Question 5</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-6">Question 6</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-7">Question 7</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-8">Question 8</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-9">Question 9</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-10">Question 10</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-variable-assignment-and-basic-operations">Exercise 1: Variable Assignment and Basic Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-working-with-strings">Exercise 2: Working with Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-using-lists">Exercise 3: Using Lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-using-tuples">Exercise 4: Using Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-working-with-sets">Exercise 5: Working with Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-working-with-dictionaries">Exercise 6: Working with Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-nested-data-structures">Exercise 7: Nested Data Structures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-list-operations">Exercise 8: List Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-dictionary-operations">Exercise 9: Dictionary Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-practical-application">Exercise 10: Practical Application</a></li>
 </ul>
   </nav></div>
 
