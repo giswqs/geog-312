@@ -500,11 +500,15 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-in-python">2.2. Variables in Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">2.3. Data Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-variables-and-data-types">2.4. Working with Variables and Data Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-in-geospatial-context">2.5. Application in Geospatial Context</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.6. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.7. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-variables">2.3. Naming Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">2.4. Data Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escape-characters">2.5. Escape Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">2.6. Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-variables-and-data-types">2.7. Working with Variables and Data Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-in-geospatial-context">2.8. Application in Geospatial Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">2.9. Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.10. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.11. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -548,9 +552,33 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Alternatively, we can simply type the variable name in a code cell and run the cell to display the value of the variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_points</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>120
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="naming-variables">
+<h2><span class="section-number">2.3. </span>Naming Variables<a class="headerlink" href="#naming-variables" title="Link to this heading">#</a></h2>
+<p>When naming variables, you should follow these rules:</p>
+<ul class="simple">
+<li><p>Variable names must start with a letter or an underscore, such as <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p></li>
+<li><p>The remainder of the variable name can consist of letters, numbers, and underscores.</p></li>
+<li><p>Variable names are case-sensitive, so <code class="docutils literal notranslate"><span class="pre">num_points</span></code> and <code class="docutils literal notranslate"><span class="pre">Num_Points</span></code> are different variables.</p></li>
+<li><p>Variable names should be descriptive and meaningful, such as <code class="docutils literal notranslate"><span class="pre">num_points</span></code> instead of <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p></li>
+<li><p>Avoid using Python keywords and built-in functions as variable names, such as <code class="docutils literal notranslate"><span class="pre">print</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">range</span></code>, <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">object</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span></code>, <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, <code class="docutils literal notranslate"><span class="pre">for</span></code>, <code class="docutils literal notranslate"><span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">break</span></code>, <code class="docutils literal notranslate"><span class="pre">continue</span></code>, <code class="docutils literal notranslate"><span class="pre">pass</span></code>, <code class="docutils literal notranslate"><span class="pre">def</span></code>, <code class="docutils literal notranslate"><span class="pre">return</span></code>, <code class="docutils literal notranslate"><span class="pre">lambda</span></code>, <code class="docutils literal notranslate"><span class="pre">class</span></code>, <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">from</span></code>, <code class="docutils literal notranslate"><span class="pre">as</span></code>, <code class="docutils literal notranslate"><span class="pre">with</span></code>, <code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">except</span></code>, <code class="docutils literal notranslate"><span class="pre">finally</span></code>, <code class="docutils literal notranslate"><span class="pre">raise</span></code>, <code class="docutils literal notranslate"><span class="pre">assert</span></code>, <code class="docutils literal notranslate"><span class="pre">del</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">is</span></code>, <code class="docutils literal notranslate"><span class="pre">global</span></code>, <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code>, <code class="docutils literal notranslate"><span class="pre">yield</span></code>, <code class="docutils literal notranslate"><span class="pre">async</span></code>, <code class="docutils literal notranslate"><span class="pre">await</span></code>.</p></li>
+</ul>
 </section>
 <section id="data-types">
-<h2><span class="section-number">2.3. </span>Data Types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.4. </span>Data Types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h2>
 <p>Python supports various data types, which are essential to understand before working with geospatial data. The most common data types include:</p>
 <p><strong>a) Integers (int):</strong> These are whole numbers, e.g., 1, 120, -5</p>
 <div class="cell docutils container">
@@ -560,10 +588,11 @@ document.write(`
 </div>
 </div>
 </div>
-<p><strong>b) Floating-point numbers (float):</strong> These are numbers with a decimal point, e.g., 3.14, -0.001, 100.0</p>
+<p><strong>b) Floating-point numbers (float):</strong> These are numbers with a decimal point, e.g., 3.14, -0.001, 100.0. You can write multiple lines of code in a single code cell. The output will be displayed for the last line of code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">latitude</span> <span class="o">=</span> <span class="mf">35.6895</span>  <span class="c1"># Represents the latitude of a point on Earth&#39;s surface</span>
+<span class="n">longitude</span> <span class="o">=</span> <span class="mf">139.6917</span>  <span class="c1"># Represents the longitude of a point on Earth&#39;s surface</span>
 </pre></div>
 </div>
 </div>
@@ -576,6 +605,7 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Strings can be enclosed in single quotes (<code class="docutils literal notranslate"><span class="pre">'</span></code>) or double quotes (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>). You can also use triple quotes (<code class="docutils literal notranslate"><span class="pre">'''</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>) for multiline strings.</p>
 <p><strong>d) Booleans (bool):</strong> Booleans represent one of two values: True or False</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -609,8 +639,76 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="escape-characters">
+<h2><span class="section-number">2.5. </span>Escape Characters<a class="headerlink" href="#escape-characters" title="Link to this heading">#</a></h2>
+<p>Escape characters are used to insert characters that are illegal in a string. For example, you can use the escape character <code class="docutils literal notranslate"><span class="pre">\n</span></code> to insert a new line in a string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!</span><span class="se">\n</span><span class="s2">This is a Python script.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World!
+This is a Python script.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another common escape character is <code class="docutils literal notranslate"><span class="pre">\t</span></code>, which inserts a tab in a string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the first line.</span><span class="se">\n\t</span><span class="s2">This is the second line. It is indented.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This is the first line.
+	This is the second line. It is indented.
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you want to include a single quote in a string, your can wrap the string in double quotes. Alternatively, you can use the escape character <code class="docutils literal notranslate"><span class="pre">\'</span></code> to include a single quote in a string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>What&#39;s your name?
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;What&#39;s your name?&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>What&#39;s your name?
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comments">
+<h2><span class="section-number">2.6. </span>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
+<p>Comments are used to explain the code and make it more readable. In Python, comments start with the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol. Everything after the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol on a line is ignored by the Python interpreter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a comment</span>
+<span class="n">num_points</span> <span class="o">=</span> <span class="mi">120</span>  <span class="c1"># This is an inline comment</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="working-with-variables-and-data-types">
-<h2><span class="section-number">2.4. </span>Working with Variables and Data Types<a class="headerlink" href="#working-with-variables-and-data-types" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.7. </span>Working with Variables and Data Types<a class="headerlink" href="#working-with-variables-and-data-types" title="Link to this heading">#</a></h2>
 <p>Now, let’s do some basic operations with these variables.</p>
 <p>Adding a constant to the number of features:</p>
 <div class="cell docutils container">
@@ -631,6 +729,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 
+<span class="n">latitude</span> <span class="o">=</span> <span class="mf">35.6895</span>
 <span class="n">latitude_radians</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">latitude</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Latitude in radians:&quot;</span><span class="p">,</span> <span class="n">latitude_radians</span><span class="p">)</span>
 </pre></div>
@@ -645,7 +744,8 @@ document.write(`
 <p>Adding new coordinates to the list:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">34.0522</span><span class="p">)</span>  <span class="c1"># Adding latitude of Los Angeles</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coordinates</span> <span class="o">=</span> <span class="p">[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">]</span>
+<span class="n">coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">34.0522</span><span class="p">)</span>  <span class="c1"># Adding latitude of Los Angeles</span>
 <span class="n">coordinates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mf">118.2437</span><span class="p">)</span>  <span class="c1"># Adding longitude of Los Angeles</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Updated coordinates:&quot;</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">)</span>
 </pre></div>
@@ -674,7 +774,7 @@ document.write(`
 </div>
 </section>
 <section id="application-in-geospatial-context">
-<h2><span class="section-number">2.5. </span>Application in Geospatial Context<a class="headerlink" href="#application-in-geospatial-context" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.8. </span>Application in Geospatial Context<a class="headerlink" href="#application-in-geospatial-context" title="Link to this heading">#</a></h2>
 <p>Let’s say you are given a list of coordinates and need to calculate the centroid (average point).</p>
 <p>Example coordinates of four points (latitude, longitude):</p>
 <div class="cell docutils container">
@@ -706,8 +806,12 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="further-reading">
+<h2><span class="section-number">2.9. </span>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<p>For more information on variables and data types in Python, check out the <strong>Basics</strong> section of the A Byte of Python book: <a class="reference external" href="https://python.swaroopch.com/basics.html">https://python.swaroopch.com/basics.html</a>.</p>
+</section>
 <section id="exercises">
-<h2><span class="section-number">2.6. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.10. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Create a list of tuples, each representing the coordinates (latitude, longitude) of different cities you have visited.</p></li>
 <li><p>Calculate the centroid of these coordinates.</p></li>
@@ -722,7 +826,7 @@ document.write(`
 </div>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">2.7. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.11. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Understanding Python variables and data types is crucial in geospatial programming.
 As you proceed with more complex analyses, these concepts will serve as the foundation for your work.
 Continue practicing by experimenting with different data types and operations in a geospatial context.</p>
@@ -796,11 +900,15 @@ Continue practicing by experimenting with different data types and operations in
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-in-python">2.2. Variables in Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">2.3. Data Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-variables-and-data-types">2.4. Working with Variables and Data Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-in-geospatial-context">2.5. Application in Geospatial Context</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.6. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.7. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-variables">2.3. Naming Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">2.4. Data Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escape-characters">2.5. Escape Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">2.6. Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-variables-and-data-types">2.7. Working with Variables and Data Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-in-geospatial-context">2.8. Application in Geospatial Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">2.9. Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.10. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.11. Conclusion</a></li>
 </ul>
   </nav></div>
 
