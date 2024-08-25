@@ -536,12 +536,13 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="whiteboxtools">
 <h1><span class="section-number">15. </span>WhiteboxTools<a class="headerlink" href="#whiteboxtools" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/whitebox.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="installation">
 <h2><span class="section-number">15.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <p>Uncomment and run the following cell to install necessary packages for this notebook, including leafmap, geopandas, localtileserver, rio-cogeo, pynhd, py3dep.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install &quot;leafmap[raster]&quot; geopandas</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install &quot;leafmap[raster]&quot; geopandas</span>
 </pre></div>
 </div>
 </div>
@@ -551,7 +552,7 @@ document.write(`
 <h2><span class="section-number">15.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">leafmap</span>
 </pre></div>
 </div>
@@ -563,7 +564,7 @@ document.write(`
 <p>Specify the map center, zoom level, and height.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600px&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600px&quot;</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
 </div>
@@ -575,7 +576,7 @@ document.write(`
 <p>Add OpenTopoMap, USGS 3DEP Elevation, and USGS Hydrography basemaps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;OpenTopoMap&quot;</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;USGS 3DEP Elevation&quot;</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;USGS Hydrography&quot;</span><span class="p">)</span>
@@ -587,7 +588,7 @@ document.write(`
 <p>Add NLCD land cover map and legend.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;HYBRID&quot;</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;NLCD 2019 CONUS Land Cover&quot;</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s2">&quot;NLCD&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NLCD Land Cover Type&quot;</span><span class="p">)</span>
@@ -599,7 +600,7 @@ document.write(`
 <p>Add WMS layers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Esri.WorldImagery&quot;</span><span class="p">)</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.mrlc.gov/geoserver/mrlc_display/NLCD_2019_Land_Cover_L48/wms?&quot;</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_wms_layer</span><span class="p">(</span>
@@ -621,7 +622,7 @@ document.write(`
 <p>Let’s download watershed data for the Calapooia River basin in Oregon.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">get_nhd_basins</span><span class="p">(</span><span class="n">feature_ids</span><span class="o">=</span><span class="mi">23763529</span><span class="p">,</span> <span class="n">fsource</span><span class="o">=</span><span class="s2">&quot;comid&quot;</span><span class="p">,</span> <span class="n">simplified</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">get_nhd_basins</span><span class="p">(</span><span class="n">feature_ids</span><span class="o">=</span><span class="mi">23763529</span><span class="p">,</span> <span class="n">fsource</span><span class="o">=</span><span class="s2">&quot;comid&quot;</span><span class="p">,</span> <span class="n">simplified</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -629,7 +630,7 @@ document.write(`
 <p>Plot the watershed boundary on the map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_gdf</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Catchment&quot;</span><span class="p">,</span> <span class="n">info_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
@@ -639,14 +640,14 @@ document.write(`
 <p>Save the watershed boundary to a GeoJSON or shapefile.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;basin.geojson&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;basin.geojson&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;GeoJSON&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;basin.shp&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s2">&quot;basin.shp&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -657,7 +658,7 @@ document.write(`
 <p>Download a digital elevation model (DEM) for the watershed from the USGS 3DEP Elevation service. Convert the DEM to a Cloud Optimized GeoTIFF (COG).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">get_3dep_dem</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">get_3dep_dem</span><span class="p">(</span>
     <span class="n">gdf</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="n">dst_crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">,</span> <span class="n">to_cog</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
 </pre></div>
@@ -667,7 +668,7 @@ document.write(`
 <p>Display the DEM on the map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;DEM&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;DEM&quot;</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
 </div>
@@ -678,7 +679,7 @@ document.write(`
 <h2><span class="section-number">15.7. </span>Get DEM metadata<a class="headerlink" href="#get-dem-metadata" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">image_metadata</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">image_metadata</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">)</span>
 <span class="n">metadata</span>
 </pre></div>
 </div>
@@ -687,7 +688,7 @@ document.write(`
 <p>Get a summary statistics of the DEM.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;bands&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;bands&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -697,7 +698,7 @@ document.write(`
 <h2><span class="section-number">15.8. </span>Add colorbar<a class="headerlink" href="#add-colorbar" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_colormap</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="s2">&quot;60&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation (m)&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_colormap</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="s2">&quot;60&quot;</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Elevation (m)&quot;</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
 </div>
@@ -709,7 +710,7 @@ document.write(`
 <p>Initialize the WhiteboxTools class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">WhiteboxTools</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">WhiteboxTools</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -717,7 +718,7 @@ document.write(`
 <p>Check the WhiteboxTools version.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -725,7 +726,7 @@ document.write(`
 <p>Display the WhiteboxTools interface.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">whiteboxgui</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">whiteboxgui</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -735,7 +736,7 @@ document.write(`
 <h2><span class="section-number">15.10. </span>Set working directory<a class="headerlink" href="#set-working-directory" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">set_working_dir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">set_working_dir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
 <span class="n">wbt</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span>
 </pre></div>
 </div>
@@ -747,7 +748,7 @@ document.write(`
 <p>All WhiteboxTools functions will return 0 if they are successful, and 1 if they are not.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">feature_preserving_smoothing</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">feature_preserving_smoothing</span><span class="p">(</span><span class="s2">&quot;dem.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -755,7 +756,7 @@ document.write(`
 <p>Display the smoothed DEM and watershed boundary on the map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;terrain&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Smoothed DEM&quot;</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_geojson</span><span class="p">(</span><span class="s2">&quot;basin.geojson&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Watershed&quot;</span><span class="p">,</span> <span class="n">info_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">m</span>
@@ -768,7 +769,7 @@ document.write(`
 <h2><span class="section-number">15.12. </span>Create hillshade<a class="headerlink" href="#create-hillshade" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">hillshade</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;hillshade.tif&quot;</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">315</span><span class="p">,</span> <span class="n">altitude</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">hillshade</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;hillshade.tif&quot;</span><span class="p">,</span> <span class="n">azimuth</span><span class="o">=</span><span class="mi">315</span><span class="p">,</span> <span class="n">altitude</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -776,7 +777,7 @@ document.write(`
 <p>Overlay the hillshade on the smoothed DEM with transparency.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;hillshade.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Hillshade&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;hillshade.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Hillshade&quot;</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">opacity</span> <span class="o">=</span> <span class="mf">0.6</span>
 </pre></div>
 </div>
@@ -788,7 +789,7 @@ document.write(`
 <p>Find cells with undefined flow, i.e. no valid flow direction, based on the D8 flow direction algorithm</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">find_no_flow_cells</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;noflow.tif&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">find_no_flow_cells</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;noflow.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -796,7 +797,7 @@ document.write(`
 <p>Display the no-flow cells on the map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;noflow.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;No Flow Cells&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;noflow.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;No Flow Cells&quot;</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
 </div>
@@ -807,7 +808,7 @@ document.write(`
 <h2><span class="section-number">15.14. </span>Fill depressions<a class="headerlink" href="#fill-depressions" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">fill_depressions</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;filled.tif&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">fill_depressions</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;filled.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -815,21 +816,21 @@ document.write(`
 <p>Alternatively, you can use depression breaching to fill the depressions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">breach_depressions</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;breached.tif&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">breach_depressions</span><span class="p">(</span><span class="s2">&quot;smoothed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;breached.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">find_no_flow_cells</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;noflow2.tif&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">find_no_flow_cells</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;noflow2.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;noflow2.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;No Flow Cells after Breaching&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;noflow2.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;No Flow Cells after Breaching&quot;</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
 </div>
@@ -840,7 +841,7 @@ document.write(`
 <h2><span class="section-number">15.15. </span>Delineate flow direction<a class="headerlink" href="#delineate-flow-direction" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">d8_pointer</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">d8_pointer</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -850,14 +851,14 @@ document.write(`
 <h2><span class="section-number">15.16. </span>Calculate flow accumulation<a class="headerlink" href="#calculate-flow-accumulation" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">d8_flow_accumulation</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">d8_flow_accumulation</span><span class="p">(</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Flow Accumulation&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Flow Accumulation&quot;</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
 </div>
@@ -868,14 +869,14 @@ document.write(`
 <h2><span class="section-number">15.17. </span>Extract streams<a class="headerlink" href="#extract-streams" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">extract_streams</span><span class="p">(</span><span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">extract_streams</span><span class="p">(</span><span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Streams&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Streams&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -885,7 +886,7 @@ document.write(`
 <h2><span class="section-number">15.18. </span>Calculate distance to outlet<a class="headerlink" href="#calculate-distance-to-outlet" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">distance_to_outlet</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">distance_to_outlet</span><span class="p">(</span>
     <span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="n">streams</span><span class="o">=</span><span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;distance_to_outlet.tif&quot;</span>
 <span class="p">)</span>
 </pre></div>
@@ -894,7 +895,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;distance_to_outlet.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Distance to Outlet&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;distance_to_outlet.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Distance to Outlet&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -904,7 +905,7 @@ document.write(`
 <h2><span class="section-number">15.19. </span>Vectorize streams<a class="headerlink" href="#vectorize-streams" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">raster_streams_to_vector</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">raster_streams_to_vector</span><span class="p">(</span>
     <span class="s2">&quot;streams.tif&quot;</span><span class="p">,</span> <span class="n">d8_pntr</span><span class="o">=</span><span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;streams.shp&quot;</span>
 <span class="p">)</span>
 </pre></div>
@@ -914,14 +915,14 @@ document.write(`
 <p>The raster_streams_to_vector tool has a bug. The output vector file is missing the coordinate system. Use leafmap.vector_set_crs() to set the coordinate system.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">vector_set_crs</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;streams.shp&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;streams.shp&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">vector_set_crs</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="s2">&quot;streams.shp&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;streams.shp&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
     <span class="s2">&quot;streams.shp&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Streams Vector&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
 <span class="p">)</span>
 <span class="n">m</span>
@@ -934,14 +935,14 @@ document.write(`
 <h2><span class="section-number">15.20. </span>Delineate basins<a class="headerlink" href="#delineate-basins" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">basins</span><span class="p">(</span><span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;basins.tif&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">basins</span><span class="p">(</span><span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;basins.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;basins.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Basins&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;basins.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Basins&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -951,7 +952,7 @@ document.write(`
 <h2><span class="section-number">15.21. </span>Delineate the longest flow path<a class="headerlink" href="#delineate-the-longest-flow-path" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">longest_flowpath</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">longest_flowpath</span><span class="p">(</span>
     <span class="n">dem</span><span class="o">=</span><span class="s2">&quot;breached.tif&quot;</span><span class="p">,</span> <span class="n">basins</span><span class="o">=</span><span class="s2">&quot;basins.tif&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;longest_flowpath.shp&quot;</span>
 <span class="p">)</span>
 </pre></div>
@@ -961,7 +962,7 @@ document.write(`
 <p>Select only the longest flow path.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">select_largest</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">leafmap</span><span class="o">.</span><span class="n">select_largest</span><span class="p">(</span>
     <span class="s2">&quot;longest_flowpath.shp&quot;</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;LENGTH&quot;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;longest_flowpath.shp&quot;</span>
 <span class="p">)</span>
 </pre></div>
@@ -970,7 +971,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
     <span class="s2">&quot;longest_flowpath.shp&quot;</span><span class="p">,</span>
     <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Longest Flowpath&quot;</span><span class="p">,</span>
     <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
@@ -985,7 +986,7 @@ document.write(`
 <h2><span class="section-number">15.22. </span>Generate a pour point<a class="headerlink" href="#generate-a-pour-point" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">user_roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">user_roi</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">m</span><span class="o">.</span><span class="n">save_draw_features</span><span class="p">(</span><span class="s2">&quot;pour_point.shp&quot;</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="n">coords</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">122.613559</span><span class="p">,</span> <span class="mf">44.284383</span><span class="p">]</span>
@@ -999,7 +1000,7 @@ document.write(`
 <h2><span class="section-number">15.23. </span>Snap pour point to stream<a class="headerlink" href="#snap-pour-point-to-stream" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">snap_pour_points</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">snap_pour_points</span><span class="p">(</span>
     <span class="s2">&quot;pour_point.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;flow_accum.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;pour_point_snapped.shp&quot;</span><span class="p">,</span> <span class="n">snap_dist</span><span class="o">=</span><span class="mi">300</span>
 <span class="p">)</span>
 </pre></div>
@@ -1008,7 +1009,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span><span class="s2">&quot;pour_point_snapped.shp&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Pour Point&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span><span class="s2">&quot;pour_point_snapped.shp&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Pour Point&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1018,14 +1019,14 @@ document.write(`
 <h2><span class="section-number">15.24. </span>Delineate watershed<a class="headerlink" href="#delineate-watershed" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">watershed</span><span class="p">(</span><span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;pour_point_snapped.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;watershed.tif&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">watershed</span><span class="p">(</span><span class="s2">&quot;flow_direction.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;pour_point_snapped.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;watershed.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;watershed.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Watershed&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_raster</span><span class="p">(</span><span class="s2">&quot;watershed.tif&quot;</span><span class="p">,</span> <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Watershed&quot;</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
 </div>
@@ -1036,14 +1037,14 @@ document.write(`
 <h2><span class="section-number">15.25. </span>Convert watershed raster to vector<a class="headerlink" href="#convert-watershed-raster-to-vector" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">raster_to_vector_polygons</span><span class="p">(</span><span class="s2">&quot;watershed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;watershed.shp&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wbt</span><span class="o">.</span><span class="n">raster_to_vector_polygons</span><span class="p">(</span><span class="s2">&quot;watershed.tif&quot;</span><span class="p">,</span> <span class="s2">&quot;watershed.shp&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_shp</span><span class="p">(</span>
     <span class="s2">&quot;watershed.shp&quot;</span><span class="p">,</span>
     <span class="n">layer_name</span><span class="o">=</span><span class="s2">&quot;Watershed Vector&quot;</span><span class="p">,</span>
     <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ffff00&quot;</span><span class="p">,</span> <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span>
