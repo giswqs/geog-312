@@ -13,6 +13,8 @@ kernelspec:
 
 # Data Structures
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/03_data_structures.ipynb)
+
 In this notebook, we will explore the fundamental Python data structures: Tuples, Lists, Sets, and Dictionaries. These data structures are essential when working with geospatial data, as they allow you to store, manage, and manipulate various types of data effectively.
 
 +++
