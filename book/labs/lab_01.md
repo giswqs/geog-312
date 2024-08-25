@@ -15,94 +15,155 @@ kernelspec:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/labs/lab_01.ipynb)
 
-## Question 1
++++
 
-**Simple Message:** Assign a message to a variable, and then print that message.
+## Exercise 1: Variable Assignment and Basic Operations
 
-```{code-cell} ipython3
+Create variables to store the following geospatial data:
 
-```
+- The latitude and longitude of New York City: 40.7128, -74.0060.
+- The population of New York City: 8,336,817.
+- The area of New York City in square kilometers: 783.8.
 
-## Question 2
+Perform the following tasks:
 
-**Simple Messages:** Assign a message to a variable, and print that message. Then change the value of the variable to a new message, and print the new message.
-
-```{code-cell} ipython3
-
-```
-
-## Question 3
-
-**Personal Message:** Use a variable to represent a person’s name, and print a message to that person. Your message should be simple, such as, “Hello Eric, would you like to learn some Python today?”
+1. Calculate and print the population density of New York City (population per square kilometer).
+2. Print the coordinates in the format "Latitude: [latitude], Longitude: [longitude]".
 
 ```{code-cell} ipython3
 
 ```
 
-## Question 4
+## Exercise 2: Working with Strings
 
-**Name Cases:** Use a variable to represent a person’s name, and then print that person’s name in lowercase, uppercase, and title case.
+Create a string variable to store the name of a city, such as "San Francisco". Perform the following operations:
 
-```{code-cell} ipython3
-
-```
-
-## Question 5
-
-**Famous Quote:** Find a quote from a famous person you admire. Print the quote and the name of its author. Your output should look something like the following, including the quotation marks:
-
-```
-Albert Einstein once said, “A person who never made a mistake never tried anything new.”
-```
+1. Convert the string to lowercase and print the result.
+2. Convert the string to uppercase and print the result.
+3. Replace "San" with "Los" in the city name and print the new string.
 
 ```{code-cell} ipython3
 
 ```
 
-## Question 6
+## Exercise 3: Using Lists
 
-**Famous Quote 2:** Repeat Exercise 2-5, but this time, represent the famous person’s name using a variable called famous_person. Then compose your message and represent it with a new variable called message. Print your
-message.
+Create a list of tuples, where each tuple contains the name of a city and its corresponding latitude and longitude:
 
-```{code-cell} ipython3
+- New York City: (40.7128, -74.0060)
+- Los Angeles: (34.0522, -118.2437)
+- Chicago: (41.8781, -87.6298)
 
-```
+Perform the following tasks:
 
-## Question 7
-
-**Stripping Names:** Use a variable to represent a person’s name, and include some whitespace characters at the beginning and end of the name. Make sure you use each character combination, "\t" and "\n", at least once.
-Print the name once, so the whitespace around the name is displayed. Then print the name using each of the three stripping functions, lstrip(), rstrip(), and strip().
-
-```{code-cell} ipython3
-
-```
-
-## Question 8
-
-**Number Eight:** Write addition, subtraction, multiplication, and division operations that each result in the number 8. Be sure to enclose your operations in print() calls to see the results. You should create four lines that look like this:
-
-```
-print(5 + 3)
-```
-
-Your output should simply be four lines with the number 8 appearing once on each line.
+1. Add a new city (e.g., Miami: (25.7617, -80.1918)) to the list.
+2. Print the entire list of cities.
+3. Slice the list to print only the first two cities.
 
 ```{code-cell} ipython3
 
 ```
 
-## Question 9
+## Exercise 4: Using Tuples
 
-**Favorite Number:** Use a variable to represent your favorite number. Then, using that variable, create a message that reveals your favorite number. Print that message.
+Create a tuple to store the coordinates (latitude, longitude) of the Eiffel Tower: (48.8584, 2.2945). Perform the following tasks:
+
+1. Access and print the latitude and longitude values from the tuple.
+2. Try to change the latitude value to 48.8585. What happens? Explain why.
 
 ```{code-cell} ipython3
 
 ```
 
-## Question 10
+## Exercise 5: Working with Sets
 
-**Adding Comments:** Choose two of the programs you’ve written, and add at least one comment to each. If you don’t have anything specific to write because your programs are too simple at this point, just add your name and
-the current date at the top of each program file. Then write one sentence describing what the program does.
+Create a set of countries you have visited, such as {"USA", "France", "Germany"}. Perform the following tasks:
+
+1. Add a new country to the set.
+2. Try to add the same country again. What happens?
+3. Print the updated set.
+
+```{code-cell} ipython3
+
+```
+
+## Exercise 6: Working with Dictionaries
+
+Create a dictionary to store information about a specific geospatial feature, such as a river:
+
+- Name: "Amazon River"
+- Length: 6400 km
+- Countries: ["Brazil", "Peru", "Colombia"]
+
+Perform the following tasks:
+
+1. Add a new key-value pair to the dictionary to store the river's average discharge (e.g., 209,000 m³/s).
+2. Update the length of the river to 6992 km.
+3. Print the dictionary.
+
+```{code-cell} ipython3
+
+```
+
+## Exercise 7: Nested Data Structures
+
+Create a dictionary to represent a city that contains the city's name, population, and coordinates (latitude, longitude):
+
+- Name: "Tokyo"
+- Population: 13,515,271
+- Coordinates: (35.6895, 139.6917)
+
+Perform the following tasks:
+
+1. Access and print the population of the city.
+2. Access and print the city's latitude.
+3. Update the population to 14,000,000 and print the updated dictionary.
+
+```{code-cell} ipython3
+
+```
+
+## Exercise 8: List Operations
+
+Given the list of cities from Exercise 3, perform the following operations:
+
+1. Sort the list of cities alphabetically by name.
+2. Create a new list that contains only the city names.
+3. Remove the last city from the original list and print the updated list.
+
+```{code-cell} ipython3
+
+```
+
+## Exercise 9: Dictionary Operations
+
+Using the dictionary from Exercise 6, perform the following tasks:
+
+1. Check if the key "Length" exists in the dictionary.
+2. Print all the keys in the dictionary.
+3. Print all the values in the dictionary.
+
+```{code-cell} ipython3
+
+```
+
+## Exercise 10: Practical Application
+
+Imagine you have a list of tuples, each representing a location with its name, latitude, and longitude:
+
+```{code-cell} ipython3
+locations = [
+    ("Mount Everest", 27.9881, 86.9250),
+    ("K2", 35.8808, 76.5155),
+    ("Kangchenjunga", 27.7025, 88.1475)
+]
+```
+
+Perform the following tasks:
+
+1. Create a new list that contains only the names of the locations.
+2. Create a dictionary where the keys are location names and the values are tuples of their coordinates.
+3. Print the latitude of "K2" using the dictionary.
 
 ```{code-cell} ipython3
 
