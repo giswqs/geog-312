@@ -15,7 +15,19 @@ kernelspec:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/07_files.ipynb)
 
-This notebook introduces how to work with files and handle exceptions in Python, with a focus on geospatial data. Working with files is a common task in geospatial programming, whether you are reading data from a file, writing results to a file, or processing large datasets. Exception handling is crucial for writing robust code that can handle errors gracefully.
+## Overview
+
+This lecture introduces techniques for working with files and handling exceptions in Python, focusing on their importance in geospatial programming. Managing files effectively is crucial when reading, writing, or processing geospatial data. Exception handling is equally important as it allows your programs to gracefully manage errors, ensuring that your code remains robust and reliable even in the face of unexpected issues.
+
+## Learning Objectives
+
+By the end of this lecture, you should be able to:
+
+- Read from and write to files in Python, with a particular focus on handling geospatial data.
+- Implement exception handling using `try`, `except`, and `finally` blocks to manage errors that may occur during file operations.
+- Combine file handling and exception handling to create robust and reliable geospatial applications.
+- Develop the skills to identify and manage common issues in file processing, such as missing files, corrupt data, or formatting errors.
+- Ensure that your geospatial programs can handle real-world data scenarios effectively by using best practices for file and exception handling.
 
 +++
 

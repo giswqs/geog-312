@@ -6,7 +6,7 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.16.2
 kernelspec:
-  display_name: geo
+  display_name: Python 3
   language: python
   name: python3
 ---
@@ -15,7 +15,19 @@ kernelspec:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/03_data_structures.ipynb)
 
-In this notebook, we will explore the fundamental Python data structures: Tuples, Lists, Sets, and Dictionaries. These data structures are essential when working with geospatial data, as they allow you to store, manage, and manipulate various types of data effectively.
+## Overview
+
+In this lecture, we will explore the fundamental Python data structures: Tuples, Lists, Sets, and Dictionaries. These data structures are essential tools in geospatial programming, enabling you to efficiently store, manage, and manipulate various types of data. By mastering these structures, you will be able to handle complex geospatial datasets with ease, paving the way for more advanced analysis and processing tasks.
+
+## Learning Objectives
+
+By the end of this lecture, you should be able to:
+
+- Understand the characteristics and use cases of Python tuples, lists, sets, and dictionaries.
+- Apply these data structures to store and manipulate geospatial data, such as coordinates, paths, and attribute information.
+- Differentiate between mutable and immutable data structures and choose the appropriate structure for different geospatial tasks.
+- Perform common operations on these data structures, including indexing, slicing, adding/removing elements, and updating values.
+- Utilize dictionaries to manage geospatial feature attributes and understand the importance of key-value pairs in geospatial data management.
 
 +++
 

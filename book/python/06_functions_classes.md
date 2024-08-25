@@ -15,7 +15,19 @@ kernelspec:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/06_functions_classes.ipynb)
 
-In this notebook, we will explore how to create and use functions and classes in Python, particularly in the context of geospatial programming. Functions and classes are essential for organizing your code, promoting reuse, and enabling more complex data manipulation and analysis.
+## Overview
+
+This lecture introduces the concepts of functions and classes in Python, focusing on their application in geospatial programming. Functions allow you to encapsulate code into reusable blocks, making your scripts more modular and easier to maintain. Classes provide a way to create complex data structures by bundling data and functionality together. By understanding and applying these concepts, you will be able to build more sophisticated and efficient geospatial analysis tools.
+
+## Learning Objectives
+
+By the end of this lecture, you should be able to:
+
+- Define and use functions to perform specific tasks and promote code reuse in geospatial applications.
+- Understand and implement classes to represent complex geospatial data structures, such as geographic features.
+- Combine functions and classes to create modular and scalable geospatial tools.
+- Apply object-oriented programming principles to organize and manage geospatial data and operations effectively.
+- Develop the skills to extend existing classes and create new ones tailored to specific geospatial tasks.
 
 +++
 

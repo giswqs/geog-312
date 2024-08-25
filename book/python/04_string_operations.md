@@ -15,7 +15,19 @@ kernelspec:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/04_string_operations.ipynb)
 
-In this notebook, we will explore various string operations in Python and see how they can be applied in geospatial contexts. Understanding how to manipulate and analyze strings is essential when working with geographic data, such as handling names of places, formatting coordinates, and parsing data from text files.
+## Overview
+
+This lecture will cover various string operations in Python, with a focus on their application in geospatial contexts. Strings are fundamental in handling textual data, such as names of geographic locations, coordinates, and data extracted from text files. Mastering string operations allows you to effectively manipulate and analyze geographic information, which is essential for tasks like data cleaning, formatting, and parsing.
+
+## Learning Objectives
+
+By the end of this lecture, you should be able to:
+
+- Create and manipulate strings in Python, including concatenation and repetition.
+- Apply string methods such as `lower()`, `upper()`, `strip()`, `replace()`, and `split()` to process geospatial data.
+- Format strings using the `format()` method and f-strings to include variable data within strings.
+- Parse and extract specific information from strings, such as coordinates or location names.
+- Utilize string operations in practical geospatial tasks, enhancing your ability to work with and manage geographic data.
 
 +++
 
@@ -44,6 +56,7 @@ print(separator)
 ## String Methods for Geospatial Data
 
 Python provides various built-in methods to manipulate strings. Some commonly used methods include:
+
 - `lower()`, `upper()`: Convert strings to lowercase or uppercase.
 - `strip()`: Remove leading and trailing whitespace.
 - `replace()`: Replace a substring with another substring.
