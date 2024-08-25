@@ -16,6 +16,7 @@
 - IntelliCode
 - Jupyter
 - Markdown All in One
+- Markdown Shortcuts
 - Prettier
 - Pylint
 - Python
