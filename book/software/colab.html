@@ -445,14 +445,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="google-colab">
 <h1>Google Colab<a class="headerlink" href="#google-colab" title="Link to this heading">#</a></h1>
-<p>Google Colab is a free cloud service that supports free GPU and TPU. It is a Jupyter notebook environment that requires no setup to use. It allows you to write and execute Python code in the browser and save your code in Google Drive. It also provides a way to share your code with others.</p>
+<p><a class="reference external" href="https://colab.research.google.com/">Google Colab</a> is a free cloud service that supports free GPU and TPU. It is a Jupyter notebook environment that requires no setup to use. It allows you to write and execute Python code in the browser and save your code in Google Drive. It also provides a way to share your code with others.</p>
 <section id="tips-and-tricks">
 <h2>Tips and Tricks<a class="headerlink" href="#tips-and-tricks" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Scratchpad Notebook:</strong> <a class="reference external" href="https://colab.research.google.com/notebooks/empty.ipynb">https://colab.research.google.com/notebooks/empty.ipynb</a></p></li>
-<li><p><strong>Open Notebooks from GitHub:</strong> simply replace <a class="reference external" href="http://github.com">github.com</a> with <a class="reference external" href="http://githubtocolab.com">githubtocolab.com</a>. It will redirect you to a Colab notebook.</p></li>
-<li><p>**Timing Execution of Cell: **hover over the cell run icon and you will get an estimate of the execution time taken</p></li>
-<li><p>**Run part of a cell: **Click <code class="docutils literal notranslate"><span class="pre">Runtime</span> <span class="pre">-&gt;</span> <span class="pre">Run</span> <span class="pre">Selection</span></code> button or using the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code></p></li>
+<li><p><strong>Open Notebooks from GitHub:</strong> simply replace <code class="docutils literal notranslate"><span class="pre">github.com</span></code> with <code class="docutils literal notranslate"><span class="pre">githubtocolab.com</span></code>. It will redirect you to a Colab notebook.</p></li>
+<li><p><strong>Timing Execution of Cell:</strong> hover over the cell run icon and you will get an estimate of the execution time taken</p></li>
+<li><p><strong>Open in Colab Chrome extension:</strong> Install this <a class="reference external" href="https://chrome.google.com/webstore/detail/open-in-colab/iogfkhleblhcpcekbiedikdehleodpjo">Open in Colab</a> extension to open any GitHub notebook in Colab with a single click.</p></li>
+<li><p><strong>Run part of a cell:</strong> Click <code class="docutils literal notranslate"><span class="pre">Runtime</span> <span class="pre">-&gt;</span> <span class="pre">Run</span> <span class="pre">Selection</span></code> button or using the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code></p></li>
 <li><p><strong>Most commonly used shortcuts:</strong></p>
 <ul class="simple">
 <li><p>Run cell (<code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">Enter</span></code>)</p></li>
@@ -480,33 +481,31 @@ document.write(`
 </li>
 <li><p><strong>Mount your Google Drive to Colab:</strong></p></li>
 </ol>
-<div class="highlight-plaintext notranslate"><div class="highlight"><pre><span></span>from google.colab import drive
-drive.mount(&#39;/content/gdrive&#39;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/gdrive&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="10">
 <li><p>To upload a file (or several) from your computer, run:</p></li>
 </ol>
-<div class="highlight-plaintext notranslate"><div class="highlight"><pre><span></span>from google.colab import files
-files.upload()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
+<span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="11">
 <li><p>To download a file, run:</p></li>
 </ol>
-<div class="highlight-plaintext notranslate"><div class="highlight"><pre><span></span>from google.colab import files
-files.download(&#39;path/to/your/file&#39;)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
+<span class="n">files</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;path/to/your/file&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic" start="12">
-<li><p>Run R programs in Google Colab: You can use R programming language in Google Colab by going to <a class="reference external" href="https://colab.to/r">https://colab.to/r</a>. It will open a new notebook with R set as the kernel instead of Python.</p></li>
-<li><p><strong>“Open in Colab” Badge:</strong> You can add a ‘Open in Colab’ badge to your <strong><a class="reference external" href="http://README.md">README.md</a></strong> or jupyter notebooks using the following markdown code:</p>
+<li><p><strong>“Open in Colab” Badge:</strong> You can add a <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">in</span> <span class="pre">Colab</span></code> badge to a markdown file or jupyter notebooks using the following markdown code:</p>
 <p><a class="reference external" href="https://colab.research.google.com/notebooks/basic_features_overview.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/notebooks/basic_features_overview.ipynb)
 </pre></div>
 </div>
 </li>
-<li><p>Run Rust programs in Google Colab: Go to <a class="reference external" href="https://colab.to/rust">https://colab.to/rust</a>. Then rust the first cell. Reload the page. Skip the first and run other cells, or write your own codes.</p></li>
 </ol>
 <p><strong>References:</strong></p>
 <ul class="simple">
