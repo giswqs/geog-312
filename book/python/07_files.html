@@ -498,11 +498,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-files">7.1. Working with Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling">7.2. Exception Handling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-file-handling-and-exception-handling">7.3. Combining File Handling and Exception Handling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.4. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.5. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">7.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">7.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-files">7.3. Working with Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling">7.4. Exception Handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-file-handling-and-exception-handling">7.5. Combining File Handling and Exception Handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.6. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.7. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -517,9 +519,23 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="files-and-exception-handling">
 <h1><span class="section-number">7. </span>Files and Exception Handling<a class="headerlink" href="#files-and-exception-handling" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/07_files.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<p>This notebook introduces how to work with files and handle exceptions in Python, with a focus on geospatial data. Working with files is a common task in geospatial programming, whether you are reading data from a file, writing results to a file, or processing large datasets. Exception handling is crucial for writing robust code that can handle errors gracefully.</p>
+<section id="overview">
+<h2><span class="section-number">7.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This lecture introduces techniques for working with files and handling exceptions in Python, focusing on their importance in geospatial programming. Managing files effectively is crucial when reading, writing, or processing geospatial data. Exception handling is equally important as it allows your programs to gracefully manage errors, ensuring that your code remains robust and reliable even in the face of unexpected issues.</p>
+</section>
+<section id="learning-objectives">
+<h2><span class="section-number">7.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>By the end of this lecture, you should be able to:</p>
+<ul class="simple">
+<li><p>Read from and write to files in Python, with a particular focus on handling geospatial data.</p></li>
+<li><p>Implement exception handling using <code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">except</span></code>, and <code class="docutils literal notranslate"><span class="pre">finally</span></code> blocks to manage errors that may occur during file operations.</p></li>
+<li><p>Combine file handling and exception handling to create robust and reliable geospatial applications.</p></li>
+<li><p>Develop the skills to identify and manage common issues in file processing, such as missing files, corrupt data, or formatting errors.</p></li>
+<li><p>Ensure that your geospatial programs can handle real-world data scenarios effectively by using best practices for file and exception handling.</p></li>
+</ul>
+</section>
 <section id="working-with-files">
-<h2><span class="section-number">7.1. </span>Working with Files<a class="headerlink" href="#working-with-files" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>Working with Files<a class="headerlink" href="#working-with-files" title="Link to this heading">#</a></h2>
 <p>In geospatial programming, you often need to read from or write to files. Python provides built-in functions to handle these tasks. Let’s start by reading from a text file containing coordinates and writing the results to a new file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -550,7 +566,7 @@ document.write(`
 </div>
 </section>
 <section id="exception-handling">
-<h2><span class="section-number">7.2. </span>Exception Handling<a class="headerlink" href="#exception-handling" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>Exception Handling<a class="headerlink" href="#exception-handling" title="Link to this heading">#</a></h2>
 <p>Exception handling allows you to handle errors that occur during the execution of your program. This is especially important in geospatial programming, where you may encounter issues such as missing files, corrupt data, or invalid input.</p>
 <p>Let’s explore how to handle different types of exceptions using <code class="docutils literal notranslate"><span class="pre">try</span></code>, <code class="docutils literal notranslate"><span class="pre">except</span></code>, and <code class="docutils literal notranslate"><span class="pre">finally</span></code>.</p>
 <div class="cell docutils container">
@@ -586,7 +602,7 @@ document.write(`
 </div>
 </section>
 <section id="combining-file-handling-and-exception-handling">
-<h2><span class="section-number">7.3. </span>Combining File Handling and Exception Handling<a class="headerlink" href="#combining-file-handling-and-exception-handling" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.5. </span>Combining File Handling and Exception Handling<a class="headerlink" href="#combining-file-handling-and-exception-handling" title="Link to this heading">#</a></h2>
 <p>You can combine file handling and exception handling to create robust geospatial applications. This allows you to ensure that files are properly handled even if errors occur during the process.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -620,7 +636,7 @@ Finished processing coordinates.txt
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">7.4. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.6. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Create a function that reads a file containing a list of city names and their coordinates. The function should handle exceptions if the file is missing or if a line in the file is not properly formatted.</p></li>
 <li><p>Write a function that writes a list of coordinates to a file. Include exception handling to ensure that the file is properly closed even if an error occurs during writing.</p></li>
@@ -635,7 +651,7 @@ Finished processing coordinates.txt
 </div>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">7.5. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.7. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Working with files and handling exceptions are critical skills in geospatial programming. By mastering these techniques, you can create more reliable and efficient geospatial applications that handle real-world data gracefully.</p>
 </section>
 </section>
@@ -704,11 +720,13 @@ Finished processing coordinates.txt
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-files">7.1. Working with Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling">7.2. Exception Handling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-file-handling-and-exception-handling">7.3. Combining File Handling and Exception Handling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.4. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.5. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">7.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">7.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-files">7.3. Working with Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling">7.4. Exception Handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-file-handling-and-exception-handling">7.5. Combining File Handling and Exception Handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.6. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7.7. Conclusion</a></li>
 </ul>
   </nav></div>
 

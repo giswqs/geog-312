@@ -498,12 +498,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops">5.1. For Loops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops">5.2. While Loops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements-if-elif-else">5.3. Control Statements: if, elif, else</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-loops-and-control-statements">5.4. Combining Loops and Control Statements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">5.5. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">5.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">5.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops">5.3. For Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops">5.4. While Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements-if-elif-else">5.5. Control Statements: if, elif, else</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-loops-and-control-statements">5.6. Combining Loops and Control Statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">5.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.8. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -518,9 +520,23 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="looping-and-control-statements">
 <h1><span class="section-number">5. </span>Looping and Control Statements<a class="headerlink" href="#looping-and-control-statements" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/05_looping.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<p>This notebook introduces looping and control statements in Python, focusing on how these concepts can be applied in geospatial programming. Understanding loops and control flow is essential for processing and analyzing geographic data efficiently.</p>
+<section id="overview">
+<h2><span class="section-number">5.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This lecture introduces looping and control statements in Python, focusing on their applications in geospatial programming. Loops and control statements are essential tools for automating repetitive tasks, making decisions based on data conditions, and efficiently processing large geospatial datasets. By mastering these concepts, you will be able to handle complex geospatial analysis tasks with greater efficiency and precision.</p>
+</section>
+<section id="learning-objectives">
+<h2><span class="section-number">5.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>By the end of this lecture, you should be able to:</p>
+<ul class="simple">
+<li><p>Understand and implement <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to iterate over sequences such as lists and tuples.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">while</span></code> loops to perform tasks until a specific condition is met.</p></li>
+<li><p>Apply control statements (<code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code>) to execute different blocks of code based on data conditions.</p></li>
+<li><p>Combine loops and control statements to filter, process, and analyze geospatial data.</p></li>
+<li><p>Develop the ability to automate repetitive geospatial tasks, making your data processing workflows more efficient.</p></li>
+</ul>
+</section>
 <section id="for-loops">
-<h2><span class="section-number">5.1. </span>For Loops<a class="headerlink" href="#for-loops" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.3. </span>For Loops<a class="headerlink" href="#for-loops" title="Link to this heading">#</a></h2>
 <p>For loops allow you to iterate over a sequence (such as a list, tuple, or string) and execute a block of code for each item in the sequence. This is particularly useful in geospatial programming when you need to process multiple features or coordinates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -545,7 +561,7 @@ Latitude: 51.5074, Longitude: -0.1278
 </div>
 </section>
 <section id="while-loops">
-<h2><span class="section-number">5.2. </span>While Loops<a class="headerlink" href="#while-loops" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.4. </span>While Loops<a class="headerlink" href="#while-loops" title="Link to this heading">#</a></h2>
 <p>While loops continue to execute a block of code as long as a specified condition is true. They are useful when the number of iterations is not known beforehand, such as when processing data until a certain condition is met.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -567,7 +583,7 @@ Processing coordinate: (51.5074, -0.1278)
 </div>
 </section>
 <section id="control-statements-if-elif-else">
-<h2><span class="section-number">5.3. </span>Control Statements: if, elif, else<a class="headerlink" href="#control-statements-if-elif-else" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.5. </span>Control Statements: if, elif, else<a class="headerlink" href="#control-statements-if-elif-else" title="Link to this heading">#</a></h2>
 <p>Control statements allow you to execute different blocks of code based on certain conditions. In geospatial programming, this is useful for handling different types of data or conditions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -591,7 +607,7 @@ Processing coordinate: (51.5074, -0.1278)
 </div>
 </section>
 <section id="combining-loops-and-control-statements">
-<h2><span class="section-number">5.4. </span>Combining Loops and Control Statements<a class="headerlink" href="#combining-loops-and-control-statements" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.6. </span>Combining Loops and Control Statements<a class="headerlink" href="#combining-loops-and-control-statements" title="Link to this heading">#</a></h2>
 <p>You can combine loops and control statements to perform more complex operations, such as filtering data or applying conditions during iteration.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -611,7 +627,7 @@ Processing coordinate: (51.5074, -0.1278)
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">5.5. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Create a list of cities with their coordinates. Write a for loop to print out only the cities that are in the Northern Hemisphere.</p></li>
 <li><p>Write a while loop that continues to print the coordinates in a list until a coordinate with a latitude less than 0 is found.</p></li>
@@ -627,7 +643,7 @@ Processing coordinate: (51.5074, -0.1278)
 </div>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">5.6. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">5.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Loops and control statements are fundamental tools in geospatial programming. They allow you to process and analyze geographic data efficiently by automating repetitive tasks and applying logic based on data conditions. Practice these concepts by applying them to your geospatial datasets and analyses.</p>
 </section>
 </section>
@@ -696,12 +712,14 @@ Processing coordinate: (51.5074, -0.1278)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops">5.1. For Loops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops">5.2. While Loops</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements-if-elif-else">5.3. Control Statements: if, elif, else</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-loops-and-control-statements">5.4. Combining Loops and Control Statements</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">5.5. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">5.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">5.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops">5.3. For Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops">5.4. While Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements-if-elif-else">5.5. Control Statements: if, elif, else</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-loops-and-control-statements">5.6. Combining Loops and Control Statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">5.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.8. Conclusion</a></li>
 </ul>
   </nav></div>
 

@@ -498,11 +498,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">6.1. Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">6.2. Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-functions-and-classes">6.3. Combining Functions and Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.4. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6.5. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">6.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">6.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">6.3. Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">6.4. Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-functions-and-classes">6.5. Combining Functions and Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.6. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6.7. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -517,9 +519,23 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="functions-and-classes">
 <h1><span class="section-number">6. </span>Functions and Classes<a class="headerlink" href="#functions-and-classes" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/06_functions_classes.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<p>In this notebook, we will explore how to create and use functions and classes in Python, particularly in the context of geospatial programming. Functions and classes are essential for organizing your code, promoting reuse, and enabling more complex data manipulation and analysis.</p>
+<section id="overview">
+<h2><span class="section-number">6.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This lecture introduces the concepts of functions and classes in Python, focusing on their application in geospatial programming. Functions allow you to encapsulate code into reusable blocks, making your scripts more modular and easier to maintain. Classes provide a way to create complex data structures by bundling data and functionality together. By understanding and applying these concepts, you will be able to build more sophisticated and efficient geospatial analysis tools.</p>
+</section>
+<section id="learning-objectives">
+<h2><span class="section-number">6.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>By the end of this lecture, you should be able to:</p>
+<ul class="simple">
+<li><p>Define and use functions to perform specific tasks and promote code reuse in geospatial applications.</p></li>
+<li><p>Understand and implement classes to represent complex geospatial data structures, such as geographic features.</p></li>
+<li><p>Combine functions and classes to create modular and scalable geospatial tools.</p></li>
+<li><p>Apply object-oriented programming principles to organize and manage geospatial data and operations effectively.</p></li>
+<li><p>Develop the skills to extend existing classes and create new ones tailored to specific geospatial tasks.</p></li>
+</ul>
+</section>
 <section id="functions">
-<h2><span class="section-number">6.1. </span>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.3. </span>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <p>Functions are blocks of code that perform a specific task and can be reused multiple times. They allow you to structure your code more efficiently and reduce redundancy.</p>
 <p>Let’s start by defining a simple function to calculate the distance between two points using the Haversine formula.</p>
 <div class="cell docutils container">
@@ -554,7 +570,7 @@ document.write(`
 </div>
 </section>
 <section id="classes">
-<h2><span class="section-number">6.2. </span>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.4. </span>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
 <p>Classes are blueprints for creating objects. An object is an instance of a class, and it can have attributes (data) and methods (functions). Classes are particularly useful in geospatial programming for representing complex data structures, such as geographic features.</p>
 <p>Let’s define a simple <code class="docutils literal notranslate"><span class="pre">Point</span></code> class to represent a geographic point.</p>
 <div class="cell docutils container">
@@ -593,7 +609,7 @@ Distance from Tokyo to Los Angeles: 8815.47 km
 </div>
 </section>
 <section id="combining-functions-and-classes">
-<h2><span class="section-number">6.3. </span>Combining Functions and Classes<a class="headerlink" href="#combining-functions-and-classes" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.5. </span>Combining Functions and Classes<a class="headerlink" href="#combining-functions-and-classes" title="Link to this heading">#</a></h2>
 <p>You can use functions within classes to create more powerful and flexible geospatial tools. For example, we can extend the <code class="docutils literal notranslate"><span class="pre">Point</span></code> class to include methods for calculating the midpoint between two points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -639,7 +655,7 @@ Distance from Tokyo to Los Angeles: 8815.47 km
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">6.4. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.6. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Create a function that takes a list of <code class="docutils literal notranslate"><span class="pre">Point</span></code> objects and returns the total distance if you were to travel from the first point to the last, visiting each point in sequence.</p></li>
 <li><p>Extend the <code class="docutils literal notranslate"><span class="pre">Point</span></code> class to include a method that returns the bearing (direction) from the current point to another point.</p></li>
@@ -654,7 +670,7 @@ Distance from Tokyo to Los Angeles: 8815.47 km
 </div>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">6.5. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">6.7. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Functions and classes are powerful tools in Python that help you organize and reuse your code, especially in the context of geospatial programming. By mastering these concepts, you’ll be able to write more efficient and maintainable code for your geospatial projects.</p>
 </section>
 </section>
@@ -723,11 +739,13 @@ Distance from Tokyo to Los Angeles: 8815.47 km
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">6.1. Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">6.2. Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-functions-and-classes">6.3. Combining Functions and Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.4. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6.5. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">6.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">6.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">6.3. Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">6.4. Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-functions-and-classes">6.5. Combining Functions and Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.6. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6.7. Conclusion</a></li>
 </ul>
   </nav></div>
 

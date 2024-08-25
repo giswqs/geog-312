@@ -498,17 +498,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-in-python">2.2. Variables in Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-variables">2.3. Naming Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">2.4. Data Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escape-characters">2.5. Escape Characters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">2.6. Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-variables-and-data-types">2.7. Working with Variables and Data Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-in-geospatial-context">2.8. Application in Geospatial Context</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">2.9. Further Reading</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.10. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.11. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">2.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">2.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-in-python">2.3. Variables in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-variables">2.4. Naming Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">2.5. Data Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escape-characters">2.6. Escape Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">2.7. Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-variables-and-data-types">2.8. Working with Variables and Data Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-in-geospatial-context">2.9. Application in Geospatial Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">2.10. Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.11. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.12. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -523,12 +524,23 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="variables-and-data-types">
 <h1><span class="section-number">2. </span>Variables and Data Types<a class="headerlink" href="#variables-and-data-types" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/02_variables.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<section id="introduction">
-<h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>Welcome to this introductory lesson on Python variables and data types in a geospatial context. This notebook will guide you through the basics of Python, which are essential for geospatial analysis.</p>
+<section id="overview">
+<h2><span class="section-number">2.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This lecture introduces the fundamental concepts of variables and data types in Python, focusing on their applications within geospatial programming. Understanding these basics is essential for working with geospatial data, as variables allow you to store and manipulate information, while data types define the kind of operations you can perform on this information. This lecture will guide you through variable assignment, naming conventions, and the various data types available in Python, providing practical examples relevant to GIS.</p>
+</section>
+<section id="learning-objectives">
+<h2><span class="section-number">2.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>By the end of this lecture, you should be able to:</p>
+<ul class="simple">
+<li><p>Define and use variables in Python, adhering to best practices for naming and assignment.</p></li>
+<li><p>Identify and utilize various Python data types, including integers, floats, strings, booleans, lists, and dictionaries.</p></li>
+<li><p>Understand how data types are used in the context of geospatial data, such as coordinates and attribute information.</p></li>
+<li><p>Perform basic operations and manipulations on different data types, reinforcing your understanding of their practical applications in geospatial programming.</p></li>
+<li><p>Apply the concepts of variables and data types to real-world geospatial problems, such as calculating centroids and managing attribute data.</p></li>
+</ul>
 </section>
 <section id="variables-in-python">
-<h2><span class="section-number">2.2. </span>Variables in Python<a class="headerlink" href="#variables-in-python" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.3. </span>Variables in Python<a class="headerlink" href="#variables-in-python" title="Link to this heading">#</a></h2>
 <p>In Python, a variable is a symbolic name that is a reference or pointer to an object. Once an object is assigned to a variable, you can refer to that object by the variable name.</p>
 <p>Let’s start by creating a simple variable that represents the number of spatial points in a dataset.</p>
 <div class="cell docutils container">
@@ -567,7 +579,7 @@ document.write(`
 </div>
 </section>
 <section id="naming-variables">
-<h2><span class="section-number">2.3. </span>Naming Variables<a class="headerlink" href="#naming-variables" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.4. </span>Naming Variables<a class="headerlink" href="#naming-variables" title="Link to this heading">#</a></h2>
 <p>When naming variables, you should follow these rules:</p>
 <ul class="simple">
 <li><p>Variable names must start with a letter or an underscore, such as <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p></li>
@@ -578,7 +590,7 @@ document.write(`
 </ul>
 </section>
 <section id="data-types">
-<h2><span class="section-number">2.4. </span>Data Types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.5. </span>Data Types<a class="headerlink" href="#data-types" title="Link to this heading">#</a></h2>
 <p>Python supports various data types, which are essential to understand before working with geospatial data. The most common data types include:</p>
 <p><strong>a) Integers (int):</strong> These are whole numbers, e.g., 1, 120, -5</p>
 <div class="cell docutils container">
@@ -640,7 +652,7 @@ document.write(`
 </div>
 </section>
 <section id="escape-characters">
-<h2><span class="section-number">2.5. </span>Escape Characters<a class="headerlink" href="#escape-characters" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.6. </span>Escape Characters<a class="headerlink" href="#escape-characters" title="Link to this heading">#</a></h2>
 <p>Escape characters are used to insert characters that are illegal in a string. For example, you can use the escape character <code class="docutils literal notranslate"><span class="pre">\n</span></code> to insert a new line in a string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -696,7 +708,7 @@ This is a Python script.
 </div>
 </section>
 <section id="comments">
-<h2><span class="section-number">2.6. </span>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.7. </span>Comments<a class="headerlink" href="#comments" title="Link to this heading">#</a></h2>
 <p>Comments are used to explain the code and make it more readable. In Python, comments start with the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol. Everything after the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol on a line is ignored by the Python interpreter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,7 +720,7 @@ This is a Python script.
 </div>
 </section>
 <section id="working-with-variables-and-data-types">
-<h2><span class="section-number">2.7. </span>Working with Variables and Data Types<a class="headerlink" href="#working-with-variables-and-data-types" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.8. </span>Working with Variables and Data Types<a class="headerlink" href="#working-with-variables-and-data-types" title="Link to this heading">#</a></h2>
 <p>Now, let’s do some basic operations with these variables.</p>
 <p>Adding a constant to the number of features:</p>
 <div class="cell docutils container">
@@ -774,7 +786,7 @@ This is a Python script.
 </div>
 </section>
 <section id="application-in-geospatial-context">
-<h2><span class="section-number">2.8. </span>Application in Geospatial Context<a class="headerlink" href="#application-in-geospatial-context" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.9. </span>Application in Geospatial Context<a class="headerlink" href="#application-in-geospatial-context" title="Link to this heading">#</a></h2>
 <p>Let’s say you are given a list of coordinates and need to calculate the centroid (average point).</p>
 <p>Example coordinates of four points (latitude, longitude):</p>
 <div class="cell docutils container">
@@ -807,11 +819,11 @@ This is a Python script.
 </div>
 </section>
 <section id="further-reading">
-<h2><span class="section-number">2.9. </span>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.10. </span>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
 <p>For more information on variables and data types in Python, check out the <strong>Basics</strong> section of the A Byte of Python book: <a class="reference external" href="https://python.swaroopch.com/basics.html">https://python.swaroopch.com/basics.html</a>.</p>
 </section>
 <section id="exercises">
-<h2><span class="section-number">2.10. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.11. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Create a list of tuples, each representing the coordinates (latitude, longitude) of different cities you have visited.</p></li>
 <li><p>Calculate the centroid of these coordinates.</p></li>
@@ -826,7 +838,7 @@ This is a Python script.
 </div>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">2.11. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">2.12. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Understanding Python variables and data types is crucial in geospatial programming.
 As you proceed with more complex analyses, these concepts will serve as the foundation for your work.
 Continue practicing by experimenting with different data types and operations in a geospatial context.</p>
@@ -898,17 +910,18 @@ Continue practicing by experimenting with different data types and operations in
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">2.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-in-python">2.2. Variables in Python</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-variables">2.3. Naming Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">2.4. Data Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escape-characters">2.5. Escape Characters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">2.6. Comments</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-variables-and-data-types">2.7. Working with Variables and Data Types</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-in-geospatial-context">2.8. Application in Geospatial Context</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">2.9. Further Reading</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.10. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.11. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">2.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">2.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-in-python">2.3. Variables in Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-variables">2.4. Naming Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types">2.5. Data Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#escape-characters">2.6. Escape Characters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">2.7. Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-variables-and-data-types">2.8. Working with Variables and Data Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-in-geospatial-context">2.9. Application in Geospatial Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">2.10. Further Reading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">2.11. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">2.12. Conclusion</a></li>
 </ul>
   </nav></div>
 

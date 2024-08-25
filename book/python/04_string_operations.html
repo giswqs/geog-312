@@ -498,12 +498,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-manipulating-strings">4.1. Creating and Manipulating Strings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-methods-for-geospatial-data">4.2. String Methods for Geospatial Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-strings">4.3. Formatting Strings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-and-extracting-information-from-strings">4.4. Parsing and Extracting Information from Strings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">4.5. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">4.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-manipulating-strings">4.3. Creating and Manipulating Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-methods-for-geospatial-data">4.4. String Methods for Geospatial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-strings">4.5. Formatting Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-and-extracting-information-from-strings">4.6. Parsing and Extracting Information from Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">4.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.8. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -518,9 +520,23 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="string-operations">
 <h1><span class="section-number">4. </span>String Operations<a class="headerlink" href="#string-operations" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/04_string_operations.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<p>In this notebook, we will explore various string operations in Python and see how they can be applied in geospatial contexts. Understanding how to manipulate and analyze strings is essential when working with geographic data, such as handling names of places, formatting coordinates, and parsing data from text files.</p>
+<section id="overview">
+<h2><span class="section-number">4.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>This lecture will cover various string operations in Python, with a focus on their application in geospatial contexts. Strings are fundamental in handling textual data, such as names of geographic locations, coordinates, and data extracted from text files. Mastering string operations allows you to effectively manipulate and analyze geographic information, which is essential for tasks like data cleaning, formatting, and parsing.</p>
+</section>
+<section id="learning-objectives">
+<h2><span class="section-number">4.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>By the end of this lecture, you should be able to:</p>
+<ul class="simple">
+<li><p>Create and manipulate strings in Python, including concatenation and repetition.</p></li>
+<li><p>Apply string methods such as <code class="docutils literal notranslate"><span class="pre">lower()</span></code>, <code class="docutils literal notranslate"><span class="pre">upper()</span></code>, <code class="docutils literal notranslate"><span class="pre">strip()</span></code>, <code class="docutils literal notranslate"><span class="pre">replace()</span></code>, and <code class="docutils literal notranslate"><span class="pre">split()</span></code> to process geospatial data.</p></li>
+<li><p>Format strings using the <code class="docutils literal notranslate"><span class="pre">format()</span></code> method and f-strings to include variable data within strings.</p></li>
+<li><p>Parse and extract specific information from strings, such as coordinates or location names.</p></li>
+<li><p>Utilize string operations in practical geospatial tasks, enhancing your ability to work with and manage geographic data.</p></li>
+</ul>
+</section>
 <section id="creating-and-manipulating-strings">
-<h2><span class="section-number">4.1. </span>Creating and Manipulating Strings<a class="headerlink" href="#creating-and-manipulating-strings" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>Creating and Manipulating Strings<a class="headerlink" href="#creating-and-manipulating-strings" title="Link to this heading">#</a></h2>
 <p>Strings in Python are sequences of characters. You can create a string by enclosing characters in single or double quotes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -559,7 +575,7 @@ document.write(`
 </div>
 </section>
 <section id="string-methods-for-geospatial-data">
-<h2><span class="section-number">4.2. </span>String Methods for Geospatial Data<a class="headerlink" href="#string-methods-for-geospatial-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.4. </span>String Methods for Geospatial Data<a class="headerlink" href="#string-methods-for-geospatial-data" title="Link to this heading">#</a></h2>
 <p>Python provides various built-in methods to manipulate strings. Some commonly used methods include:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">lower()</span></code>, <code class="docutils literal notranslate"><span class="pre">upper()</span></code>: Convert strings to lowercase or uppercase.</p></li>
@@ -621,7 +637,7 @@ document.write(`
 </div>
 </section>
 <section id="formatting-strings">
-<h2><span class="section-number">4.3. </span>Formatting Strings<a class="headerlink" href="#formatting-strings" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.5. </span>Formatting Strings<a class="headerlink" href="#formatting-strings" title="Link to this heading">#</a></h2>
 <p>String formatting is essential when preparing data for output or when you need to include variable values in strings. You can use the <code class="docutils literal notranslate"><span class="pre">format()</span></code> method or f-strings (in Python 3.6 and above) for string formatting.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -653,7 +669,7 @@ document.write(`
 </div>
 </section>
 <section id="parsing-and-extracting-information-from-strings">
-<h2><span class="section-number">4.4. </span>Parsing and Extracting Information from Strings<a class="headerlink" href="#parsing-and-extracting-information-from-strings" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.6. </span>Parsing and Extracting Information from Strings<a class="headerlink" href="#parsing-and-extracting-information-from-strings" title="Link to this heading">#</a></h2>
 <p>Often, you will need to extract specific information from strings, especially when dealing with geographic data. For example, you might need to extract coordinates from a formatted string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -673,7 +689,7 @@ document.write(`
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">4.5. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Create a string representing the name of a city. Convert the string to lowercase and then to uppercase.</p></li>
 <li><p>Take a string with the format ‘latitude, longitude’ (e.g., ‘40.7128N, 74.0060W’) and extract the numeric values of latitude and longitude.</p></li>
@@ -689,7 +705,7 @@ document.write(`
 </div>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">4.6. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>String operations are crucial in geospatial programming, especially when dealing with textual geographic data. Mastering these operations will enable you to handle and manipulate geographic information effectively in your projects.</p>
 </section>
 </section>
@@ -758,12 +774,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-manipulating-strings">4.1. Creating and Manipulating Strings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-methods-for-geospatial-data">4.2. String Methods for Geospatial Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-strings">4.3. Formatting Strings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-and-extracting-information-from-strings">4.4. Parsing and Extracting Information from Strings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">4.5. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">4.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-manipulating-strings">4.3. Creating and Manipulating Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-methods-for-geospatial-data">4.4. String Methods for Geospatial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-strings">4.5. Formatting Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-and-extracting-information-from-strings">4.6. Parsing and Extracting Information from Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">4.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.8. Conclusion</a></li>
 </ul>
   </nav></div>
 

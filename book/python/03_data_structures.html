@@ -498,12 +498,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">3.1. Tuples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">3.2. Lists</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">3.3. Sets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">3.4. Dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.5. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">3.6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">3.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">3.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">3.3. Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">3.4. Lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">3.5. Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">3.6. Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">3.8. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -518,9 +520,23 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="data-structures">
 <h1><span class="section-number">3. </span>Data Structures<a class="headerlink" href="#data-structures" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/03_data_structures.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<p>In this notebook, we will explore the fundamental Python data structures: Tuples, Lists, Sets, and Dictionaries. These data structures are essential when working with geospatial data, as they allow you to store, manage, and manipulate various types of data effectively.</p>
+<section id="overview">
+<h2><span class="section-number">3.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>In this lecture, we will explore the fundamental Python data structures: Tuples, Lists, Sets, and Dictionaries. These data structures are essential tools in geospatial programming, enabling you to efficiently store, manage, and manipulate various types of data. By mastering these structures, you will be able to handle complex geospatial datasets with ease, paving the way for more advanced analysis and processing tasks.</p>
+</section>
+<section id="learning-objectives">
+<h2><span class="section-number">3.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<p>By the end of this lecture, you should be able to:</p>
+<ul class="simple">
+<li><p>Understand the characteristics and use cases of Python tuples, lists, sets, and dictionaries.</p></li>
+<li><p>Apply these data structures to store and manipulate geospatial data, such as coordinates, paths, and attribute information.</p></li>
+<li><p>Differentiate between mutable and immutable data structures and choose the appropriate structure for different geospatial tasks.</p></li>
+<li><p>Perform common operations on these data structures, including indexing, slicing, adding/removing elements, and updating values.</p></li>
+<li><p>Utilize dictionaries to manage geospatial feature attributes and understand the importance of key-value pairs in geospatial data management.</p></li>
+</ul>
+</section>
 <section id="tuples">
-<h2><span class="section-number">3.1. </span>Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h2>
 <p>Tuples are immutable sequences, meaning that once a tuple is created, its elements cannot be changed. Tuples are useful for storing fixed collections of items.</p>
 <p>For example, a tuple can be used to store the coordinates of a geographic point (latitude, longitude).</p>
 <div class="cell docutils container">
@@ -550,7 +566,7 @@ document.write(`
 </div>
 </section>
 <section id="lists">
-<h2><span class="section-number">3.2. </span>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
 <p>Lists are ordered, mutable sequences, meaning you can change, add, or remove elements after the list has been created. Lists are very flexible and can store multiple types of data, making them useful for various geospatial tasks.</p>
 <p>For example, you can store a list of coordinates representing a path or boundary.</p>
 <div class="cell docutils container">
@@ -594,7 +610,7 @@ document.write(`
 </div>
 </section>
 <section id="sets">
-<h2><span class="section-number">3.3. </span>Sets<a class="headerlink" href="#sets" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.5. </span>Sets<a class="headerlink" href="#sets" title="Link to this heading">#</a></h2>
 <p>Sets are unordered collections of unique elements. Sets are useful when you need to store a collection of items but want to eliminate duplicates.</p>
 <p>For example, you might want to store a set of unique geographic regions visited during a survey.</p>
 <div class="cell docutils container">
@@ -614,7 +630,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Updated regions: {&#39;Africa&#39;, &#39;North America&#39;, &#39;Europe&#39;, &#39;Asia&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Updated regions: {&#39;Europe&#39;, &#39;Africa&#39;, &#39;Asia&#39;, &#39;North America&#39;}
 </pre></div>
 </div>
 </div>
@@ -628,14 +644,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Regions after attempting to add duplicate: {&#39;Africa&#39;, &#39;North America&#39;, &#39;Europe&#39;, &#39;Asia&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Regions after attempting to add duplicate: {&#39;Europe&#39;, &#39;Africa&#39;, &#39;Asia&#39;, &#39;North America&#39;}
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="dictionaries">
-<h2><span class="section-number">3.4. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.6. </span>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h2>
 <p>Dictionaries are collections of key-value pairs, where each key is unique. Dictionaries are extremely useful for storing data that is associated with specific identifiers, such as attribute data for geographic features.</p>
 <p>For example, you can use a dictionary to store attributes of a geospatial feature, such as a city.</p>
 <div class="cell docutils container">
@@ -680,7 +696,7 @@ document.write(`
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">3.5. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <p>Create a dictionary to store attributes of a geographic feature (e.g., a river or mountain). Include keys for the name, length, and location of the feature. Then, add an additional attribute (e.g., the source of the river or the height of the mountain) and print the dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -691,7 +707,7 @@ document.write(`
 </div>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">3.6. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">3.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Understanding and utilizing Python’s data structures such as tuples, lists, sets, and dictionaries are fundamental skills in geospatial programming. These structures provide the flexibility and functionality required to manage and manipulate spatial data effectively.</p>
 <p>Continue exploring these data structures by applying them to your geospatial projects and analyses.</p>
 </section>
@@ -761,12 +777,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">3.1. Tuples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">3.2. Lists</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">3.3. Sets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">3.4. Dictionaries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.5. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">3.6. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">3.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">3.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">3.3. Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">3.4. Lists</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sets">3.5. Sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">3.6. Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">3.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">3.8. Conclusion</a></li>
 </ul>
   </nav></div>
 
