@@ -15,9 +15,19 @@ kernelspec:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/05_looping.ipynb)
 
-This notebook introduces looping and control statements in Python, focusing on how these concepts can be applied in geospatial programming. Understanding loops and control flow is essential for processing and analyzing geographic data efficiently.
+## Overview
 
-+++
+This lecture introduces looping and control statements in Python, focusing on their applications in geospatial programming. Loops and control statements are essential tools for automating repetitive tasks, making decisions based on data conditions, and efficiently processing large geospatial datasets. By mastering these concepts, you will be able to handle complex geospatial analysis tasks with greater efficiency and precision.
+
+## Learning Objectives
+
+By the end of this lecture, you should be able to:
+
+- Understand and implement `for` loops to iterate over sequences such as lists and tuples.
+- Use `while` loops to perform tasks until a specific condition is met.
+- Apply control statements (`if`, `elif`, `else`) to execute different blocks of code based on data conditions.
+- Combine loops and control statements to filter, process, and analyze geospatial data.
+- Develop the ability to automate repetitive geospatial tasks, making your data processing workflows more efficient.
 
 ## For Loops
 

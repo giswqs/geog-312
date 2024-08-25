@@ -15,9 +15,19 @@ kernelspec:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/02_variables.ipynb)
 
-## Introduction
+## Overview
 
-Welcome to this introductory lesson on Python variables and data types in a geospatial context. This notebook will guide you through the basics of Python, which are essential for geospatial analysis.
+This lecture introduces the fundamental concepts of variables and data types in Python, focusing on their applications within geospatial programming. Understanding these basics is essential for working with geospatial data, as variables allow you to store and manipulate information, while data types define the kind of operations you can perform on this information. This lecture will guide you through variable assignment, naming conventions, and the various data types available in Python, providing practical examples relevant to GIS.
+
+## Learning Objectives
+
+By the end of this lecture, you should be able to:
+
+- Define and use variables in Python, adhering to best practices for naming and assignment.
+- Identify and utilize various Python data types, including integers, floats, strings, booleans, lists, and dictionaries.
+- Understand how data types are used in the context of geospatial data, such as coordinates and attribute information.
+- Perform basic operations and manipulations on different data types, reinforcing your understanding of their practical applications in geospatial programming.
+- Apply the concepts of variables and data types to real-world geospatial problems, such as calculating centroids and managing attribute data.
 
 +++
 
