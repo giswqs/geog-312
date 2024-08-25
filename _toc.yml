@@ -48,6 +48,7 @@ parts:
       - file: book/geospatial/samgeo
       - file: book/geospatial/hypercoast
       - file: book/geospatial/duckdb
+      - file: book/geospatial/xarray
   - caption: Labs
     numbered: false
     maxdepth: 2
