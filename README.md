@@ -1,7 +1,15 @@
 # Introduction to GIS Programming
 
-This repository contains the materials for the course "_Introduction to GIS Programming_" that I teach at the University of Tennessee, Knoxville.
+Welcome to the repository for the "_Introduction to GIS Programming_" course, taught at the University of Tennessee, Knoxville in Fall 2024.
 
-Please visit the course website at <https://geog-312.gishub.org> for more information.
+## Course Resources
 
-![](https://assets.gishub.org/images/geog-312.png)
+All course materials and video recordings are freely accessible on the course website: [geog-312.gishub.org](https://geog-312.gishub.org).
+
+## Enroll for Certification
+
+If you're interested in submitting lab assignments, receiving grades, and earning a certificate of completion, you can enroll in the course by clicking the link below:
+
+[Enroll Now](https://tiny.utk.edu/intro-gis-programming)
+
+[![Introduction to GIS Programming](https://assets.gishub.org/images/intro-gis-programming.webp)](https://tiny.utk.edu/intro-gis-programming)
