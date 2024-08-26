@@ -1,15 +1,30 @@
 # Introduction to GIS Programming
 
-## Course Description
+Welcome to the official course website for "_Introduction to GIS Programming_," offered at the University of Tennessee, Knoxville, during Fall 2024.
 
-This course provides an in-depth exploration of GIS programming using the Python programming language. Students will learn how to leverage various Python libraries and frameworks to process, analyze, and visualize geospatial data.
+## Course Overview
 
-The course begins with an introduction to the course and setup of the necessary software environment. Students will then dive into the fundamental concepts of Python, including variables, data types, data structures, string operations, looping, and control statements. They will also learn about functions, classes, file handling, and exception handling.
+This course offers a comprehensive exploration of GIS programming, centered around the Python programming language. Throughout the semester, students will master the use of Python libraries and frameworks essential for processing, analyzing, and visualizing geospatial data.
 
-The course then focuses on the application of Python in the geospatial domain. Students will be introduced to Leafmap, a powerful library for creating interactive web maps, and will learn how to visualize vector and raster data. They will also explore 3D mapping with MapLibre and gain exposure to SAMGeo and HyperCoast, two specialized geospatial libraries.
+### What You'll Learn
 
-Throughout the course, students will participate in hands-on labs and projects that reinforce the concepts learned in the lectures. The course culminates in a final project, where students will demonstrate their ability to apply the skills and knowledge acquired during the semester.
+- **Fundamentals of Python**: Start with the basics—variables, data types, data structures, string operations, looping, and control statements. Progress to more advanced topics, including functions, classes, file handling, and exception handling.
+- **Geospatial Applications**: Delve into Python’s application in the geospatial realm. Learn to create interactive web maps using Leafmap, visualize vector and raster data, and explore 3D mapping with MapLibre. You'll also get hands-on experience with a number of specialized geospatial libraries, including GeoPandas, Rasterio, WhiteboxTools, Geemap, SAMGeo, HyperCoast, DuckDB, Xarray, and more.
 
-By the end of this course, students will have a strong understanding of Python programming and its applications in the geospatial domain. They will be equipped with the necessary skills to tackle a wide range of geospatial analysis and visualization tasks using Python.
+- **Hands-On Experience**: Engage in practical labs and projects designed to reinforce the concepts covered in lectures. These activities culminate in a final project where you'll apply your skills to a real-world geospatial problem.
 
-![](https://assets.gishub.org/images/geog-312.png)
+By the end of the course, you will have a robust understanding of Python programming, specifically tailored to geospatial analysis and visualization, empowering you to confidently tackle various geospatial challenges.
+
+![GIS Programming Course](https://assets.gishub.org/images/geog-312.png)
+
+## Course Resources
+
+All course materials, including video recordings, are freely available on the course website: [geog-312.gishub.org](https://geog-312.gishub.org).
+
+## Enroll for Certification
+
+To submit lab assignments, receive grades, and earn a certificate of completion, you can enroll in the course through the link below:
+
+[Enroll Now](https://tiny.utk.edu/intro-gis-programming)
+
+[![Introduction to GIS Programming](https://assets.gishub.org/images/intro-gis-programming.webp)](https://tiny.utk.edu/intro-gis-programming)
