@@ -8,7 +8,7 @@ All course materials and video recordings are freely accessible on the course we
 
 ## Enroll for Certification
 
-If you're interested in submitting lab assignments, receiving grades, and earning a certificate of completion, you can enroll in the course by clicking the link below:
+Please note that you can access the course materials and video recordings on the course website without enrolling in the course. However, if you're interested in submitting lab assignments, receiving grades, and earning a certificate of completion, you can enroll in the course by clicking the link below:
 
 [Enroll Now](https://tiny.utk.edu/intro-gis-programming)
 
