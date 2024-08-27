@@ -6,8 +6,8 @@
 
 1. **Scratchpad Notebook:** <https://colab.research.google.com/notebooks/empty.ipynb>
 2. **Open Notebooks from GitHub:** simply replace `github.com` with `githubtocolab.com`. It will redirect you to a Colab notebook.
-3. **Timing Execution of Cell:** hover over the cell run icon and you will get an estimate of the execution time taken
-4. **Open in Colab Chrome extension:** Install this [Open in Colab](https://chrome.google.com/webstore/detail/open-in-colab/iogfkhleblhcpcekbiedikdehleodpjo) extension to open any GitHub notebook in Colab with a single click.
+3. **Open in Colab Chrome extension:** Install this [Open in Colab](https://chrome.google.com/webstore/detail/open-in-colab/iogfkhleblhcpcekbiedikdehleodpjo) extension to open any GitHub notebook in Colab with a single click.
+4. **Timing Execution of Cell:** hover over the cell run icon and you will get an estimate of the execution time taken
 5. **Run part of a cell:** Click `Runtime -> Run Selection` button or using the keyboard shortcut `Ctrl + Shift + Enter`
 6. **Most commonly used shortcuts:**
 
