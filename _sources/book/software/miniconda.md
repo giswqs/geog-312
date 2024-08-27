@@ -30,6 +30,21 @@ conda install -n base mamba -c conda-forge
 mamba install -c conda-forge geemap leafmap
 ```
 
+## Accessing Conda in Windows Terminal
+
+If you did not add Conda to your PATH during installation, you can do it manually:
+
+1. **Open the Start Menu** and search for "Environment Variables."
+2. **Click on "Edit the system environment variables."**
+3. In the System Properties window, click on **"Environment Variables."**
+4. Under "System Variables," find the **`Path`** variable and select it.
+5. Click **"Edit"** and then **"New."**
+6. Add the following paths to the list:
+   - `C:\Users\<YourUsername>\miniconda3\Scripts`
+7. Click **"OK"** to close all windows.
+
+![image](https://github.com/user-attachments/assets/427ea290-8ea8-42a5-b070-854696f71fc5)
+
 ## Common Commands
 
 Here are some common commands to manage environments and packages using conda:

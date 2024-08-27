@@ -518,6 +518,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-conda-in-windows-terminal">Accessing Conda in Windows Terminal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-commands">Common Commands</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-managing-environments">Creating and Managing Environments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-managing-packages">Installing and Managing Packages</a></li>
@@ -551,6 +552,24 @@ conda<span class="w"> </span>install<span class="w"> </span>-n<span class="w"> <
 mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geemap<span class="w"> </span>leafmap
 </pre></div>
 </div>
+</section>
+<section id="accessing-conda-in-windows-terminal">
+<h2>Accessing Conda in Windows Terminal<a class="headerlink" href="#accessing-conda-in-windows-terminal" title="Link to this heading">#</a></h2>
+<p>If you did not add Conda to your PATH during installation, you can do it manually:</p>
+<ol class="arabic simple">
+<li><p><strong>Open the Start Menu</strong> and search for “Environment Variables.”</p></li>
+<li><p><strong>Click on “Edit the system environment variables.”</strong></p></li>
+<li><p>In the System Properties window, click on <strong>“Environment Variables.”</strong></p></li>
+<li><p>Under “System Variables,” find the <strong><code class="docutils literal notranslate"><span class="pre">Path</span></code></strong> variable and select it.</p></li>
+<li><p>Click <strong>“Edit”</strong> and then <strong>“New.”</strong></p></li>
+<li><p>Add the following paths to the list:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">C:\Users\&lt;YourUsername&gt;\miniconda3\Scripts</span></code></p></li>
+</ul>
+</li>
+<li><p>Click <strong>“OK”</strong> to close all windows.</p></li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/427ea290-8ea8-42a5-b070-854696f71fc5" /></p>
 </section>
 <section id="common-commands">
 <h2>Common Commands<a class="headerlink" href="#common-commands" title="Link to this heading">#</a></h2>
@@ -717,6 +736,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-conda-in-windows-terminal">Accessing Conda in Windows Terminal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-commands">Common Commands</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-and-managing-environments">Creating and Managing Environments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-managing-packages">Installing and Managing Packages</a></li>
