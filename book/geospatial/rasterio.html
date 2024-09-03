@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>10. Rasterio &#8212; Introduction to GIS Programming</title>
+    <title>11. Rasterio &#8212; Introduction to GIS Programming</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="11. Leafmap" href="leafmap.html" />
-    <link rel="prev" title="9. GeoPandas" href="geopandas.html" />
+    <link rel="next" title="12. Leafmap" href="leafmap.html" />
+    <link rel="prev" title="10. GeoPandas" href="geopandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -199,22 +199,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../python/05_looping.html">5. Looping and Control Statements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/06_functions_classes.html">6. Functions and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/07_files.html">7. Files and Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/08_numpy_pandas.html">8. Intro to NumPy and Pandas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geopandas.html">9. GeoPandas</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. Rasterio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="leafmap.html">11. Leafmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">12. Vector Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">13. Raster Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maplibre.html">14. MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whitebox.html">15. WhiteboxTools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">16. Geemap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="samgeo.html">17. SAMGeo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">18. HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">19. DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="xarray.html">20. Xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">9. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geopandas.html">10. GeoPandas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">12. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">13. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">14. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">15. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">16. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">17. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">18. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">19. HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">20. DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xarray.html">21. Xarray</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -499,14 +500,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-rasterio">10.2. Installing and Importing Rasterio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-data">10.3. Reading Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-raster-data">10.4. Plotting Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-raster-bands">10.5. Accessing Raster Bands</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raster-data">10.6. Writing Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">10.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">10.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-rasterio">11.2. Installing and Importing Rasterio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-data">11.3. Reading Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-raster-data">11.4. Plotting Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-raster-bands">11.5. Accessing Raster Bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raster-data">11.6. Writing Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">11.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">11.8. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -519,14 +520,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="rasterio">
-<h1><span class="section-number">10. </span>Rasterio<a class="headerlink" href="#rasterio" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">11. </span>Rasterio<a class="headerlink" href="#rasterio" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/rasterio.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="introduction">
-<h2><span class="section-number">10.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://rasterio.readthedocs.io/">Rasterio</a> is a Python library that allows you to read, write, and analyze geospatial raster data. It is built on top of GDAL (Geospatial Data Abstraction Library) and provides a simple, Pythonic interface to work with raster datasets, such as satellite images and digital elevation models (DEMs).</p>
 </section>
 <section id="installing-and-importing-rasterio">
-<h2><span class="section-number">10.2. </span>Installing and Importing Rasterio<a class="headerlink" href="#installing-and-importing-rasterio" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.2. </span>Installing and Importing Rasterio<a class="headerlink" href="#installing-and-importing-rasterio" title="Link to this heading">#</a></h2>
 <p>Before using Rasterio, you need to install it. You can install Rasterio using pip:</p>
 <p><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">rasterio</span></code></p>
 <p>Once installed, you can import it like this:</p>
@@ -541,7 +542,7 @@ document.write(`
 </div>
 </section>
 <section id="reading-raster-data">
-<h2><span class="section-number">10.3. </span>Reading Raster Data<a class="headerlink" href="#reading-raster-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.3. </span>Reading Raster Data<a class="headerlink" href="#reading-raster-data" title="Link to this heading">#</a></h2>
 <p>Rasterio allows you to read raster data in various formats, including GeoTIFF. Let’s start by reading a raster file and displaying some basic information about the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -561,7 +562,7 @@ document.write(`
 </div>
 </section>
 <section id="plotting-raster-data">
-<h2><span class="section-number">10.4. </span>Plotting Raster Data<a class="headerlink" href="#plotting-raster-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.4. </span>Plotting Raster Data<a class="headerlink" href="#plotting-raster-data" title="Link to this heading">#</a></h2>
 <p>Rasterio integrates well with Matplotlib, allowing you to easily plot raster data. Let’s plot the raster data we just read.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -579,7 +580,7 @@ document.write(`
 </div>
 </section>
 <section id="accessing-raster-bands">
-<h2><span class="section-number">10.5. </span>Accessing Raster Bands<a class="headerlink" href="#accessing-raster-bands" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.5. </span>Accessing Raster Bands<a class="headerlink" href="#accessing-raster-bands" title="Link to this heading">#</a></h2>
 <p>Raster data often consists of multiple bands, each representing different information (e.g., different spectral bands in satellite imagery). You can access and manipulate these bands individually using Rasterio.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -600,7 +601,7 @@ document.write(`
 </div>
 </section>
 <section id="writing-raster-data">
-<h2><span class="section-number">10.6. </span>Writing Raster Data<a class="headerlink" href="#writing-raster-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.6. </span>Writing Raster Data<a class="headerlink" href="#writing-raster-data" title="Link to this heading">#</a></h2>
 <p>After processing or modifying raster data, you may want to save the results to a new file. Rasterio allows you to write raster data to various formats.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -620,7 +621,7 @@ document.write(`
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">10.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Load a raster file of your choice, display the metadata, and plot all the bands separately.</p></li>
 <li><p>Modify one of the bands (e.g., apply a mathematical operation) and save the modified raster to a new file.</p></li>
@@ -636,7 +637,7 @@ document.write(`
 </div>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">10.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">11.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Rasterio is a powerful library for working with geospatial raster data in Python. It provides a simple yet flexible interface for reading, writing, and analyzing raster data. By completing these exercises, you’ll gain practical experience in handling raster data for geospatial applications.</p>
 </section>
 </section>
@@ -677,7 +678,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">9. </span>GeoPandas</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>GeoPandas</p>
       </div>
     </a>
     <a class="right-next"
@@ -685,7 +686,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>Leafmap</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>Leafmap</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -705,14 +706,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-rasterio">10.2. Installing and Importing Rasterio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-data">10.3. Reading Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-raster-data">10.4. Plotting Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-raster-bands">10.5. Accessing Raster Bands</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raster-data">10.6. Writing Raster Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">10.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">10.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">11.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-rasterio">11.2. Installing and Importing Rasterio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-raster-data">11.3. Reading Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-raster-data">11.4. Plotting Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-raster-bands">11.5. Accessing Raster Bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-raster-data">11.6. Writing Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">11.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">11.8. Conclusion</a></li>
 </ul>
   </nav></div>
 

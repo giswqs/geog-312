@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>11. Leafmap &#8212; Introduction to GIS Programming</title>
+    <title>12. Leafmap &#8212; Introduction to GIS Programming</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="12. Vector Data Visualization" href="vector_viz.html" />
-    <link rel="prev" title="10. Rasterio" href="rasterio.html" />
+    <link rel="next" title="13. Vector Data Visualization" href="vector_viz.html" />
+    <link rel="prev" title="11. Rasterio" href="rasterio.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -199,22 +199,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../python/05_looping.html">5. Looping and Control Statements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/06_functions_classes.html">6. Functions and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/07_files.html">7. Files and Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/08_numpy_pandas.html">8. Intro to NumPy and Pandas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geopandas.html">9. GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">10. Rasterio</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Leafmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">12. Vector Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">13. Raster Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maplibre.html">14. MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whitebox.html">15. WhiteboxTools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">16. Geemap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="samgeo.html">17. SAMGeo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">18. HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">19. DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="xarray.html">20. Xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">9. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geopandas.html">10. GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">11. Rasterio</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">13. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">14. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">15. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">16. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">17. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">18. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">19. HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">20. DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xarray.html">21. Xarray</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -499,16 +500,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-leafmap">11.1. Install leafmap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">11.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">11.3. Create an interactive map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-map-height">11.4. Customize map height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-control-visibility">11.5. Set control visibility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-basemaps">11.6. Change basemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-xyz-tile-layer">11.7. Add XYZ tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-wms-tile-layer">11.8. Add WMS tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-legend">11.9. Add legend</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">11.10. Add colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-leafmap">12.1. Install leafmap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">12.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">12.3. Create an interactive map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-map-height">12.4. Customize map height</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-control-visibility">12.5. Set control visibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-basemaps">12.6. Change basemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-xyz-tile-layer">12.7. Add XYZ tile layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-wms-tile-layer">12.8. Add WMS tile layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-legend">12.9. Add legend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">12.10. Add colorbar</a></li>
 </ul>
             </nav>
         </div>
@@ -521,10 +522,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="leafmap">
-<h1><span class="section-number">11. </span>Leafmap<a class="headerlink" href="#leafmap" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">12. </span>Leafmap<a class="headerlink" href="#leafmap" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/leafmap.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="install-leafmap">
-<h2><span class="section-number">11.1. </span>Install leafmap<a class="headerlink" href="#install-leafmap" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>Install leafmap<a class="headerlink" href="#install-leafmap" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install leafmap</span>
@@ -534,7 +535,7 @@ document.write(`
 </div>
 </section>
 <section id="import-libraries">
-<h2><span class="section-number">11.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leafmap</span>
@@ -544,7 +545,7 @@ document.write(`
 </div>
 </section>
 <section id="create-an-interactive-map">
-<h2><span class="section-number">11.3. </span>Create an interactive map<a class="headerlink" href="#create-an-interactive-map" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>Create an interactive map<a class="headerlink" href="#create-an-interactive-map" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">),</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -555,7 +556,7 @@ document.write(`
 </div>
 </section>
 <section id="customize-map-height">
-<h2><span class="section-number">11.4. </span>Customize map height<a class="headerlink" href="#customize-map-height" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.4. </span>Customize map height<a class="headerlink" href="#customize-map-height" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="s2">&quot;400px&quot;</span><span class="p">)</span>
@@ -566,7 +567,7 @@ document.write(`
 </div>
 </section>
 <section id="set-control-visibility">
-<h2><span class="section-number">11.5. </span>Set control visibility<a class="headerlink" href="#set-control-visibility" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.5. </span>Set control visibility<a class="headerlink" href="#set-control-visibility" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
@@ -582,7 +583,7 @@ document.write(`
 </div>
 </section>
 <section id="change-basemaps">
-<h2><span class="section-number">11.6. </span>Change basemaps<a class="headerlink" href="#change-basemaps" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.6. </span>Change basemaps<a class="headerlink" href="#change-basemaps" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -594,7 +595,7 @@ document.write(`
 </div>
 </section>
 <section id="add-xyz-tile-layer">
-<h2><span class="section-number">11.7. </span>Add XYZ tile layer<a class="headerlink" href="#add-xyz-tile-layer" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.7. </span>Add XYZ tile layer<a class="headerlink" href="#add-xyz-tile-layer" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -610,7 +611,7 @@ document.write(`
 </div>
 </section>
 <section id="add-wms-tile-layer">
-<h2><span class="section-number">11.8. </span>Add WMS tile layer<a class="headerlink" href="#add-wms-tile-layer" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.8. </span>Add WMS tile layer<a class="headerlink" href="#add-wms-tile-layer" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -630,7 +631,7 @@ document.write(`
 </div>
 </section>
 <section id="add-legend">
-<h2><span class="section-number">11.9. </span>Add legend<a class="headerlink" href="#add-legend" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.9. </span>Add legend<a class="headerlink" href="#add-legend" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -651,7 +652,7 @@ document.write(`
 </div>
 </section>
 <section id="add-colorbar">
-<h2><span class="section-number">11.10. </span>Add colorbar<a class="headerlink" href="#add-colorbar" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.10. </span>Add colorbar<a class="headerlink" href="#add-colorbar" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -707,7 +708,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Rasterio</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Rasterio</p>
       </div>
     </a>
     <a class="right-next"
@@ -715,7 +716,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">12. </span>Vector Data Visualization</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Vector Data Visualization</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -735,16 +736,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-leafmap">11.1. Install leafmap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">11.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">11.3. Create an interactive map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-map-height">11.4. Customize map height</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-control-visibility">11.5. Set control visibility</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-basemaps">11.6. Change basemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-xyz-tile-layer">11.7. Add XYZ tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-wms-tile-layer">11.8. Add WMS tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-legend">11.9. Add legend</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">11.10. Add colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-leafmap">12.1. Install leafmap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">12.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-interactive-map">12.3. Create an interactive map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-map-height">12.4. Customize map height</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-control-visibility">12.5. Set control visibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-basemaps">12.6. Change basemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-xyz-tile-layer">12.7. Add XYZ tile layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-wms-tile-layer">12.8. Add WMS tile layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-legend">12.9. Add legend</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-colorbar">12.10. Add colorbar</a></li>
 </ul>
   </nav></div>
 

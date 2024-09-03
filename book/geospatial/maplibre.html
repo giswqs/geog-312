@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>14. MapLibre &#8212; Introduction to GIS Programming</title>
+    <title>15. MapLibre &#8212; Introduction to GIS Programming</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="15. WhiteboxTools" href="whitebox.html" />
-    <link rel="prev" title="13. Raster Data Visualization" href="raster_viz.html" />
+    <link rel="next" title="16. WhiteboxTools" href="whitebox.html" />
+    <link rel="prev" title="14. Raster Data Visualization" href="raster_viz.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -199,22 +199,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../python/05_looping.html">5. Looping and Control Statements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/06_functions_classes.html">6. Functions and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/07_files.html">7. Files and Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/08_numpy_pandas.html">8. Intro to NumPy and Pandas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geopandas.html">9. GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">10. Rasterio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="leafmap.html">11. Leafmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">12. Vector Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">13. Raster Data Visualization</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">14. MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whitebox.html">15. WhiteboxTools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">16. Geemap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="samgeo.html">17. SAMGeo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">18. HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">19. DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="xarray.html">20. Xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">9. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geopandas.html">10. GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">11. Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">12. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">13. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">14. Raster Data Visualization</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">16. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">17. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">18. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">19. HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">20. DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xarray.html">21. Xarray</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -499,24 +500,24 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">14.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">14.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-maps">14.3. Create maps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-controls">14.4. Add controls</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-basemaps">14.5. Add basemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xyz-tile-layer">14.6. XYZ tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wms-layer">14.7. WMS layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cog-layer">14.8. COG layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stac-layer">14.9. STAC layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-raster">14.10. Local raster</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vancouver-property-value">14.11. Vancouver Property Value</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthquake-clusters">14.12. Earthquake Clusters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airport-markers">14.13. Airport Markers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-indoor-mapping">14.14. 3D Indoor Mapping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-basemap">14.15. Custom Basemap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h3-grid-uk-road-safety">14.16. H3 Grid UK Road Safety</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deck-gl-layer">14.17. Deck.GL Layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-deck-gl-layers">14.18. Multiple Deck.GL Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">15.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">15.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-maps">15.3. Create maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-controls">15.4. Add controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-basemaps">15.5. Add basemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xyz-tile-layer">15.6. XYZ tile layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wms-layer">15.7. WMS layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cog-layer">15.8. COG layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stac-layer">15.9. STAC layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-raster">15.10. Local raster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vancouver-property-value">15.11. Vancouver Property Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthquake-clusters">15.12. Earthquake Clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airport-markers">15.13. Airport Markers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-indoor-mapping">15.14. 3D Indoor Mapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-basemap">15.15. Custom Basemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h3-grid-uk-road-safety">15.16. H3 Grid UK Road Safety</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deck-gl-layer">15.17. Deck.GL Layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-deck-gl-layers">15.18. Multiple Deck.GL Layers</a></li>
 </ul>
             </nav>
         </div>
@@ -529,11 +530,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="maplibre">
-<h1><span class="section-number">14. </span>MapLibre<a class="headerlink" href="#maplibre" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">15. </span>MapLibre<a class="headerlink" href="#maplibre" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/maplibre.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <p>The notebook demonstrates how to create 3D maps using the <a class="reference external" href="https://github.com/eodaGmbH/py-maplibregl">MapLibre</a> Python package. The examples shown in this notebook are based on the <a class="reference external" href="https://eodagmbh.github.io/py-maplibregl/examples/vancouver_blocks/">MapLibre documentation</a>.</p>
 <section id="installation">
-<h2><span class="section-number">14.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.1. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <p>Uncomment the following line to install <a class="reference external" href="https://leafmap.org">leafmap</a> if needed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -544,7 +545,7 @@ document.write(`
 </div>
 </section>
 <section id="import-libraries">
-<h2><span class="section-number">14.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.2. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leafmap.maplibregl</span> <span class="k">as</span> <span class="nn">leafmap</span>
@@ -554,7 +555,7 @@ document.write(`
 </div>
 </section>
 <section id="create-maps">
-<h2><span class="section-number">14.3. </span>Create maps<a class="headerlink" href="#create-maps" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.3. </span>Create maps<a class="headerlink" href="#create-maps" title="Link to this heading">#</a></h2>
 <p>Create an interactive map by specifying map center [lon, lat], zoom level, pitch, and bearing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -598,7 +599,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/yaZYrr1.png" /></p>
 </section>
 <section id="add-controls">
-<h2><span class="section-number">14.4. </span>Add controls<a class="headerlink" href="#add-controls" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.4. </span>Add controls<a class="headerlink" href="#add-controls" title="Link to this heading">#</a></h2>
 <p>The control to add to the map. Can be one of the following: <code class="docutils literal notranslate"><span class="pre">scale</span></code>, <code class="docutils literal notranslate"><span class="pre">fullscreen</span></code>, <code class="docutils literal notranslate"><span class="pre">geolocate</span></code>, <code class="docutils literal notranslate"><span class="pre">navigation</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -612,7 +613,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/7LS5WAk.png" /></p>
 </section>
 <section id="add-basemaps">
-<h2><span class="section-number">14.5. </span>Add basemaps<a class="headerlink" href="#add-basemaps" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.5. </span>Add basemaps<a class="headerlink" href="#add-basemaps" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -647,7 +648,7 @@ document.write(`
 </div>
 </section>
 <section id="xyz-tile-layer">
-<h2><span class="section-number">14.6. </span>XYZ tile layer<a class="headerlink" href="#xyz-tile-layer" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.6. </span>XYZ tile layer<a class="headerlink" href="#xyz-tile-layer" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -663,7 +664,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/V9wmsjl.png" /></p>
 </section>
 <section id="wms-layer">
-<h2><span class="section-number">14.7. </span>WMS layer<a class="headerlink" href="#wms-layer" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.7. </span>WMS layer<a class="headerlink" href="#wms-layer" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -679,7 +680,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/xcZ4VKv.png" /></p>
 </section>
 <section id="cog-layer">
-<h2><span class="section-number">14.8. </span>COG layer<a class="headerlink" href="#cog-layer" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.8. </span>COG layer<a class="headerlink" href="#cog-layer" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -695,7 +696,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/ApGhjDp.png" /></p>
 </section>
 <section id="stac-layer">
-<h2><span class="section-number">14.9. </span>STAC layer<a class="headerlink" href="#stac-layer" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.9. </span>STAC layer<a class="headerlink" href="#stac-layer" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -709,7 +710,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/RJAhsV5.png" /></p>
 </section>
 <section id="local-raster">
-<h2><span class="section-number">14.10. </span>Local raster<a class="headerlink" href="#local-raster" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.10. </span>Local raster<a class="headerlink" href="#local-raster" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/raster/srtm90.tif&quot;</span>
@@ -731,7 +732,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/pMcuQAp.png" /></p>
 </section>
 <section id="vancouver-property-value">
-<h2><span class="section-number">14.11. </span>Vancouver Property Value<a class="headerlink" href="#vancouver-property-value" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.11. </span>Vancouver Property Value<a class="headerlink" href="#vancouver-property-value" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
@@ -773,7 +774,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/IZXfgSz.gif" /></p>
 </section>
 <section id="earthquake-clusters">
-<h2><span class="section-number">14.12. </span>Earthquake Clusters<a class="headerlink" href="#earthquake-clusters" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.12. </span>Earthquake Clusters<a class="headerlink" href="#earthquake-clusters" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;positron&quot;</span><span class="p">)</span>
@@ -838,7 +839,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/vge4jF4.png" /></p>
 </section>
 <section id="airport-markers">
-<h2><span class="section-number">14.13. </span>Airport Markers<a class="headerlink" href="#airport-markers" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.13. </span>Airport Markers<a class="headerlink" href="#airport-markers" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">maplibre.controls</span> <span class="kn">import</span> <span class="n">Marker</span><span class="p">,</span> <span class="n">MarkerOptions</span><span class="p">,</span> <span class="n">Popup</span><span class="p">,</span> <span class="n">PopupOptions</span>
@@ -907,7 +908,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/q7nN1PW.png" /></p>
 </section>
 <section id="d-indoor-mapping">
-<h2><span class="section-number">14.14. </span>3D Indoor Mapping<a class="headerlink" href="#d-indoor-mapping" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.14. </span>3D Indoor Mapping<a class="headerlink" href="#d-indoor-mapping" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
@@ -934,7 +935,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/dteQlQC.png" /></p>
 </section>
 <section id="custom-basemap">
-<h2><span class="section-number">14.15. </span>Custom Basemap<a class="headerlink" href="#custom-basemap" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.15. </span>Custom Basemap<a class="headerlink" href="#custom-basemap" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">leafmap.maplibregl</span> <span class="k">as</span> <span class="nn">leafmap</span>
@@ -989,7 +990,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/Bn9Kwje.png" /></p>
 </section>
 <section id="h3-grid-uk-road-safety">
-<h2><span class="section-number">14.16. </span>H3 Grid UK Road Safety<a class="headerlink" href="#h3-grid-uk-road-safety" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.16. </span>H3 Grid UK Road Safety<a class="headerlink" href="#h3-grid-uk-road-safety" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1057,7 +1058,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/DYWmj5y.png" /></p>
 </section>
 <section id="deck-gl-layer">
-<h2><span class="section-number">14.17. </span><a class="reference external" href="http://Deck.GL">Deck.GL</a> Layer<a class="headerlink" href="#deck-gl-layer" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.17. </span><a class="reference external" href="http://Deck.GL">Deck.GL</a> Layer<a class="headerlink" href="#deck-gl-layer" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span>
@@ -1088,7 +1089,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/xBVdT2u.png" /></p>
 </section>
 <section id="multiple-deck-gl-layers">
-<h2><span class="section-number">14.18. </span>Multiple <a class="reference external" href="http://Deck.GL">Deck.GL</a> Layers<a class="headerlink" href="#multiple-deck-gl-layers" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">15.18. </span>Multiple <a class="reference external" href="http://Deck.GL">Deck.GL</a> Layers<a class="headerlink" href="#multiple-deck-gl-layers" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
@@ -1194,7 +1195,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">13. </span>Raster Data Visualization</p>
+        <p class="prev-next-title"><span class="section-number">14. </span>Raster Data Visualization</p>
       </div>
     </a>
     <a class="right-next"
@@ -1202,7 +1203,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">15. </span>WhiteboxTools</p>
+        <p class="prev-next-title"><span class="section-number">16. </span>WhiteboxTools</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1222,24 +1223,24 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">14.1. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">14.2. Import libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-maps">14.3. Create maps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-controls">14.4. Add controls</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-basemaps">14.5. Add basemaps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xyz-tile-layer">14.6. XYZ tile layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wms-layer">14.7. WMS layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cog-layer">14.8. COG layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stac-layer">14.9. STAC layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-raster">14.10. Local raster</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vancouver-property-value">14.11. Vancouver Property Value</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthquake-clusters">14.12. Earthquake Clusters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airport-markers">14.13. Airport Markers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-indoor-mapping">14.14. 3D Indoor Mapping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-basemap">14.15. Custom Basemap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h3-grid-uk-road-safety">14.16. H3 Grid UK Road Safety</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deck-gl-layer">14.17. Deck.GL Layer</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-deck-gl-layers">14.18. Multiple Deck.GL Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">15.1. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">15.2. Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-maps">15.3. Create maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-controls">15.4. Add controls</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-basemaps">15.5. Add basemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xyz-tile-layer">15.6. XYZ tile layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wms-layer">15.7. WMS layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cog-layer">15.8. COG layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stac-layer">15.9. STAC layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-raster">15.10. Local raster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vancouver-property-value">15.11. Vancouver Property Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#earthquake-clusters">15.12. Earthquake Clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airport-markers">15.13. Airport Markers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-indoor-mapping">15.14. 3D Indoor Mapping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-basemap">15.15. Custom Basemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h3-grid-uk-road-safety">15.16. H3 Grid UK Road Safety</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deck-gl-layer">15.17. Deck.GL Layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-deck-gl-layers">15.18. Multiple Deck.GL Layers</a></li>
 </ul>
   </nav></div>
 

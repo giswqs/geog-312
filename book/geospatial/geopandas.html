@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>9. GeoPandas &#8212; Introduction to GIS Programming</title>
+    <title>10. GeoPandas &#8212; Introduction to GIS Programming</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="10. Rasterio" href="rasterio.html" />
-    <link rel="prev" title="8. Get Started" href="get_started.html" />
+    <link rel="next" title="11. Rasterio" href="rasterio.html" />
+    <link rel="prev" title="9. Get Started" href="get_started.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -199,22 +199,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../python/05_looping.html">5. Looping and Control Statements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/06_functions_classes.html">6. Functions and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/07_files.html">7. Files and Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/08_numpy_pandas.html">8. Intro to NumPy and Pandas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">9. GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">10. Rasterio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="leafmap.html">11. Leafmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">12. Vector Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">13. Raster Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maplibre.html">14. MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whitebox.html">15. WhiteboxTools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">16. Geemap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="samgeo.html">17. SAMGeo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">18. HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">19. DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="xarray.html">20. Xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">9. Get Started</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">10. GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">11. Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">12. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">13. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">14. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">15. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">16. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">17. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">18. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">19. HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">20. DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xarray.html">21. Xarray</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -499,14 +500,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">9.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-geopandas">9.2. Installing and Importing GeoPandas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-geodataframes">9.3. Creating GeoDataFrames</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-geospatial-data">9.4. Reading and Writing Geospatial Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-operations">9.5. Spatial Operations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-geospatial-data">9.6. Plotting Geospatial Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">9.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-geopandas">10.2. Installing and Importing GeoPandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-geodataframes">10.3. Creating GeoDataFrames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-geospatial-data">10.4. Reading and Writing Geospatial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-operations">10.5. Spatial Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-geospatial-data">10.6. Plotting Geospatial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">10.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">10.8. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -519,14 +520,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="geopandas">
-<h1><span class="section-number">9. </span>GeoPandas<a class="headerlink" href="#geopandas" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">10. </span>GeoPandas<a class="headerlink" href="#geopandas" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/geopandas.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="introduction">
-<h2><span class="section-number">9.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://geopandas.org">GeoPandas</a> is an open-source project that makes working with geospatial data in Python easier. It extends the datatypes used by pandas to allow spatial operations on geometric types. GeoPandas combines the capabilities of pandas and Shapely, providing geospatial operations in a pandas-like interface.</p>
 </section>
 <section id="installing-and-importing-geopandas">
-<h2><span class="section-number">9.2. </span>Installing and Importing GeoPandas<a class="headerlink" href="#installing-and-importing-geopandas" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.2. </span>Installing and Importing GeoPandas<a class="headerlink" href="#installing-and-importing-geopandas" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %pip install geopandas</span>
@@ -545,7 +546,7 @@ document.write(`
 </div>
 </section>
 <section id="creating-geodataframes">
-<h2><span class="section-number">9.3. </span>Creating GeoDataFrames<a class="headerlink" href="#creating-geodataframes" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.3. </span>Creating GeoDataFrames<a class="headerlink" href="#creating-geodataframes" title="Link to this heading">#</a></h2>
 <p>A GeoDataFrame is a tabular data structure that contains a ‘geometry’ column, which holds the geometric shapes. You can create a GeoDataFrame from a list of geometries or from a pandas DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -567,7 +568,7 @@ document.write(`
 </div>
 </section>
 <section id="reading-and-writing-geospatial-data">
-<h2><span class="section-number">9.4. </span>Reading and Writing Geospatial Data<a class="headerlink" href="#reading-and-writing-geospatial-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.4. </span>Reading and Writing Geospatial Data<a class="headerlink" href="#reading-and-writing-geospatial-data" title="Link to this heading">#</a></h2>
 <p>GeoPandas makes it easy to read and write geospatial data formats like Shapefiles, GeoJSON, and others. Let’s read a shapefile and write the GeoDataFrame to a GeoJSON file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -591,7 +592,7 @@ document.write(`
 </div>
 </section>
 <section id="spatial-operations">
-<h2><span class="section-number">9.5. </span>Spatial Operations<a class="headerlink" href="#spatial-operations" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.5. </span>Spatial Operations<a class="headerlink" href="#spatial-operations" title="Link to this heading">#</a></h2>
 <p>GeoPandas provides a range of spatial operations, such as buffering, intersections, and spatial joins. Let’s explore some of these operations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -616,7 +617,7 @@ document.write(`
 </div>
 </section>
 <section id="plotting-geospatial-data">
-<h2><span class="section-number">9.6. </span>Plotting Geospatial Data<a class="headerlink" href="#plotting-geospatial-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.6. </span>Plotting Geospatial Data<a class="headerlink" href="#plotting-geospatial-data" title="Link to this heading">#</a></h2>
 <p>GeoPandas integrates well with Matplotlib, allowing you to easily plot geospatial data. Let’s plot the world map with the locations of the cities from our GeoDataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -640,7 +641,7 @@ document.write(`
 </div>
 </section>
 <section id="exercises">
-<h2><span class="section-number">9.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Create a GeoDataFrame containing a list of countries and their capital cities. Add a geometry column with the locations of the capitals.</p></li>
 <li><p>Load a shapefile of your choice, filter the data to only include a specific region or country, and save the filtered GeoDataFrame to a new file.</p></li>
@@ -656,7 +657,7 @@ document.write(`
 </div>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">9.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">10.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>GeoPandas is a powerful tool for geospatial data analysis in Python. It combines the capabilities of pandas with the geometric operations of Shapely, allowing for efficient and intuitive geospatial data manipulation. By practicing with these exercises, you can gain a solid understanding of how to work with geospatial data using GeoPandas.</p>
 </section>
 </section>
@@ -697,7 +698,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>Get Started</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Get Started</p>
       </div>
     </a>
     <a class="right-next"
@@ -705,7 +706,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">10. </span>Rasterio</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Rasterio</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -725,14 +726,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">9.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-geopandas">9.2. Installing and Importing GeoPandas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-geodataframes">9.3. Creating GeoDataFrames</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-geospatial-data">9.4. Reading and Writing Geospatial Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-operations">9.5. Spatial Operations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-geospatial-data">9.6. Plotting Geospatial Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">9.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">9.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">10.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-importing-geopandas">10.2. Installing and Importing GeoPandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-geodataframes">10.3. Creating GeoDataFrames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-geospatial-data">10.4. Reading and Writing Geospatial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-operations">10.5. Spatial Operations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-geospatial-data">10.6. Plotting Geospatial Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">10.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">10.8. Conclusion</a></li>
 </ul>
   </nav></div>
 

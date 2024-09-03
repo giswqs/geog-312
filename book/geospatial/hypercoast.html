@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>18. HyperCoast &#8212; Introduction to GIS Programming</title>
+    <title>19. HyperCoast &#8212; Introduction to GIS Programming</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="19. DuckDB" href="duckdb.html" />
-    <link rel="prev" title="17. SAMGeo" href="samgeo.html" />
+    <link rel="next" title="20. DuckDB" href="duckdb.html" />
+    <link rel="prev" title="18. SAMGeo" href="samgeo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -199,22 +199,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../python/05_looping.html">5. Looping and Control Statements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/06_functions_classes.html">6. Functions and Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python/07_files.html">7. Files and Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/08_numpy_pandas.html">8. Intro to NumPy and Pandas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="get_started.html">8. Get Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geopandas.html">9. GeoPandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rasterio.html">10. Rasterio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="leafmap.html">11. Leafmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">12. Vector Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">13. Raster Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maplibre.html">14. MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whitebox.html">15. WhiteboxTools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">16. Geemap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="samgeo.html">17. SAMGeo</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">19. DuckDB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="xarray.html">20. Xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="get_started.html">9. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geopandas.html">10. GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rasterio.html">11. Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">12. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">13. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">14. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">15. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">16. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">17. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">18. SAMGeo</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">20. DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xarray.html">21. Xarray</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -499,14 +500,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">18.1. Environment setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-emit-data">18.2. Search for EMIT data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-sample-emit-dataset">18.3. Download a sample EMIT dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-emit-data">18.4. Read EMIT data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-emit-data">18.5. Visualize EMIT data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-image-cube">18.6. Create an image cube</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-slicing">18.7. Interactive slicing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-thresholding">18.8. Interactive thresholding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">19.1. Environment setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-emit-data">19.2. Search for EMIT data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-sample-emit-dataset">19.3. Download a sample EMIT dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-emit-data">19.4. Read EMIT data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-emit-data">19.5. Visualize EMIT data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-image-cube">19.6. Create an image cube</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-slicing">19.7. Interactive slicing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-thresholding">19.8. Interactive thresholding</a></li>
 </ul>
             </nav>
         </div>
@@ -519,10 +520,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="hypercoast">
-<h1><span class="section-number">18. </span>HyperCoast<a class="headerlink" href="#hypercoast" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">19. </span>HyperCoast<a class="headerlink" href="#hypercoast" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/hypercoast.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="environment-setup">
-<h2><span class="section-number">18.1. </span>Environment setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.1. </span>Environment setup<a class="headerlink" href="#environment-setup" title="Link to this heading">#</a></h2>
 <p>Uncomment and run the following cell to install the required packages.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -549,7 +550,7 @@ document.write(`
 </div>
 </section>
 <section id="search-for-emit-data">
-<h2><span class="section-number">18.2. </span>Search for EMIT data<a class="headerlink" href="#search-for-emit-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.2. </span>Search for EMIT data<a class="headerlink" href="#search-for-emit-data" title="Link to this heading">#</a></h2>
 <p>Search for EMIT data programmatically. Specify the bounding box and time range of interest. Set <code class="docutils literal notranslate"><span class="pre">count=-1</span></code> to return all results or set <code class="docutils literal notranslate"><span class="pre">count=10</span></code> to return the first 10 results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -607,7 +608,7 @@ document.write(`
 </div>
 </section>
 <section id="download-a-sample-emit-dataset">
-<h2><span class="section-number">18.3. </span>Download a sample EMIT dataset<a class="headerlink" href="#download-a-sample-emit-dataset" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.3. </span>Download a sample EMIT dataset<a class="headerlink" href="#download-a-sample-emit-dataset" title="Link to this heading">#</a></h2>
 <p>Let’s download a sample EMIT dataset for the demonstration.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -620,7 +621,7 @@ document.write(`
 </div>
 </section>
 <section id="read-emit-data">
-<h2><span class="section-number">18.4. </span>Read EMIT data<a class="headerlink" href="#read-emit-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.4. </span>Read EMIT data<a class="headerlink" href="#read-emit-data" title="Link to this heading">#</a></h2>
 <p>Read the downloaded EMIT data and process it as an <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code>. Note that the dataset has 285 bands.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -633,7 +634,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/qn0B4fb.png" /></p>
 </section>
 <section id="visualize-emit-data">
-<h2><span class="section-number">18.5. </span>Visualize EMIT data<a class="headerlink" href="#visualize-emit-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.5. </span>Visualize EMIT data<a class="headerlink" href="#visualize-emit-data" title="Link to this heading">#</a></h2>
 <p>Visualize the EMIT data on an interactive map. You can change the band combination and extract spectral profiles interactively. You can also export the spectral profiles as a CSV file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -649,7 +650,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/6pceRUz.gif" /></p>
 </section>
 <section id="create-an-image-cube">
-<h2><span class="section-number">18.6. </span>Create an image cube<a class="headerlink" href="#create-an-image-cube" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.6. </span>Create an image cube<a class="headerlink" href="#create-an-image-cube" title="Link to this heading">#</a></h2>
 <p>First, select a subset of the data to avoid nodata areas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -685,7 +686,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/CvE9PN9.gif" /></p>
 </section>
 <section id="interactive-slicing">
-<h2><span class="section-number">18.7. </span>Interactive slicing<a class="headerlink" href="#interactive-slicing" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.7. </span>Interactive slicing<a class="headerlink" href="#interactive-slicing" title="Link to this heading">#</a></h2>
 <p>First, select a subset of the data for demonstration purposes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -723,7 +724,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/msK1liO.gif" /></p>
 </section>
 <section id="interactive-thresholding">
-<h2><span class="section-number">18.8. </span>Interactive thresholding<a class="headerlink" href="#interactive-thresholding" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.8. </span>Interactive thresholding<a class="headerlink" href="#interactive-thresholding" title="Link to this heading">#</a></h2>
 <p>Drag the threshold slider to threshold the data in 3D.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -790,7 +791,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">17. </span>SAMGeo</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>SAMGeo</p>
       </div>
     </a>
     <a class="right-next"
@@ -798,7 +799,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">19. </span>DuckDB</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>DuckDB</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -818,14 +819,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">18.1. Environment setup</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-emit-data">18.2. Search for EMIT data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-sample-emit-dataset">18.3. Download a sample EMIT dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-emit-data">18.4. Read EMIT data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-emit-data">18.5. Visualize EMIT data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-image-cube">18.6. Create an image cube</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-slicing">18.7. Interactive slicing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-thresholding">18.8. Interactive thresholding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-setup">19.1. Environment setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-emit-data">19.2. Search for EMIT data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-a-sample-emit-dataset">19.3. Download a sample EMIT dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-emit-data">19.4. Read EMIT data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-emit-data">19.5. Visualize EMIT data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-image-cube">19.6. Create an image cube</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-slicing">19.7. Interactive slicing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-thresholding">19.8. Interactive thresholding</a></li>
 </ul>
   </nav></div>
 
