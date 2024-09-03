@@ -31,6 +31,7 @@ parts:
       - file: book/python/05_looping
       - file: book/python/06_functions_classes
       - file: book/python/07_files
+      - file: book/python/08_numpy_pandas
 
   - caption: GeoPython
     numbered: true
