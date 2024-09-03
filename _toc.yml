@@ -56,3 +56,4 @@ parts:
     chapters:
       - file: book/labs/instructions
       - file: book/labs/lab_01
+      - file: book/labs/lab_02
