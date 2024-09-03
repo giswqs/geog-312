@@ -44,6 +44,21 @@ for lat, lon in coordinates:
     print(f"Latitude: {lat}, Longitude: {lon}")
 ```
 
+Assuming you have a function to calculate distances, you can use a loop to compute distances from a reference point.
+
+```{code-cell} ipython3
+def calculate_distance(lat1, lon1, lat2, lon2):
+    # Placeholder for distance calculation logic
+    return ((lat2 - lat1) ** 2 + (lon2 - lon1) ** 2) ** 0.5
+
+
+reference_point = (0, 0)  # Reference point (latitude, longitude)
+
+for lat, lon in coordinates:
+    distance = calculate_distance(reference_point[0], reference_point[1], lat, lon)
+    print(f"Distance from {reference_point} to ({lat}, {lon}): {distance:.2f}")
+```
+
 ## While Loops
 
 While loops continue to execute a block of code as long as a specified condition is true. They are useful when the number of iterations is not known beforehand, such as when processing data until a certain condition is met.
@@ -62,12 +77,31 @@ Control statements allow you to execute different blocks of code based on certai
 
 ```{code-cell} ipython3
 for lat, lon in coordinates:
-    if lat > 40:
+    if lat > 0:
         print(f"{lat} is in the Northern Hemisphere")
-    elif lat < -40:
+    elif lat < 0:
         print(f"{lat} is in the Southern Hemisphere")
     else:
         print(f"{lat} is near the equator")
+```
+
+You can further categorize based on longitude:
+
+```{code-cell} ipython3
+for lat, lon in coordinates:
+    if lat > 0:
+        hemisphere = "Northern"
+    else:
+        hemisphere = "Southern"
+
+    if lon > 0:
+        direction = "Eastern"
+    else:
+        direction = "Western"
+
+    print(
+        f"The coordinate ({lat}, {lon}) is in the {hemisphere} Hemisphere and {direction} Hemisphere."
+    )
 ```
 
 ## Combining Loops and Control Statements
@@ -82,17 +116,26 @@ for lat, lon in coordinates:
 print(f"Filtered coordinates (only with positive longitude): {filtered_coordinates}")
 ```
 
+```{code-cell} ipython3
+southern_count = 0
+for lat, lon in coordinates:
+    if lat < 0:
+        southern_count += 1
+print(f"Number of coordinates in the Southern Hemisphere: {southern_count}")
+```
+
 ## Exercises
 
 1. Create a list of cities with their coordinates. Write a for loop to print out only the cities that are in the Northern Hemisphere.
 2. Write a while loop that continues to print the coordinates in a list until a coordinate with a latitude less than 0 is found.
 3. Create a for loop that iterates through a list of coordinates and prints whether each coordinate is in the Eastern or Western Hemisphere based on the longitude.
 4. Combine a for loop and if statements to count how many coordinates in a list are located in the Southern Hemisphere.
+5. Write a program that generates random coordinates (latitude and longitude) and prints them until a coordinate with both latitude and longitude greater than 100 is generated.
 
 ```{code-cell} ipython3
-# Type your code here
+
 ```
 
-## Conclusion
+## Summary
 
 Loops and control statements are fundamental tools in geospatial programming. They allow you to process and analyze geographic data efficiently by automating repetitive tasks and applying logic based on data conditions. Practice these concepts by applying them to your geospatial datasets and analyses.

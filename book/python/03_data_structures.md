@@ -139,10 +139,10 @@ print("Updated city attributes:", city_attributes)
 Create a dictionary to store attributes of a geographic feature (e.g., a river or mountain). Include keys for the name, length, and location of the feature. Then, add an additional attribute (e.g., the source of the river or the height of the mountain) and print the dictionary.
 
 ```{code-cell} ipython3
-# Type your code here
+
 ```
 
-## Conclusion
+## Summary
 
 Understanding and utilizing Python's data structures such as tuples, lists, sets, and dictionaries are fundamental skills in geospatial programming. These structures provide the flexibility and functionality required to manage and manipulate spatial data effectively.
 

@@ -17,7 +17,7 @@ kernelspec:
 
 ## Overview
 
-This lecture will cover various string operations in Python, with a focus on their application in geospatial contexts. Strings are fundamental in handling textual data, such as names of geographic locations, coordinates, and data extracted from text files. Mastering string operations allows you to effectively manipulate and analyze geographic information, which is essential for tasks like data cleaning, formatting, and parsing.
+This lecture will cover various string operations in Python, with a focus on their application in geospatial contexts. Strings are fundamental in handling textual data, such as names of geographic locations, coordinates, and data extracted from text files. Mastering string operations allows you to effectively manipulate and analyze geographic information, which is essential for tasks like data cleaning, formatting, parsing, and even geocoding.
 
 ## Learning Objectives
 
@@ -53,14 +53,29 @@ separator = "-" * 10
 print(separator)
 ```
 
+Let's construct a basic SQL query string to select data from a geospatial database:
+
+```{code-cell} ipython3
+table_name = "locations"
+condition = "country = 'Nepal'"
+sql_query = f"SELECT * FROM {table_name} WHERE {condition};"
+print(sql_query)
+```
+
+In more complex scenarios, you might want to dynamically build queries based on user input or multiple conditions.
+
++++
+
 ## String Methods for Geospatial Data
 
 Python provides various built-in methods to manipulate strings. Some commonly used methods include:
 
 - `lower()`, `upper()`: Convert strings to lowercase or uppercase.
 - `strip()`: Remove leading and trailing whitespace.
+- `lstrip()`, `rstrip()`: Remove leading or trailing whitespace.
 - `replace()`: Replace a substring with another substring.
 - `split()`: Split a string into a list of substrings based on a delimiter.
+- `join()`: Join a list of strings into a single string with a specified delimiter.
 
 ```{code-cell} ipython3
 location_name_upper = location_name.upper()
@@ -82,6 +97,18 @@ location_parts = location_name_full.split(", ")
 print(location_parts)  # Split the string into a list
 ```
 
+Suppose you have a list of country names with inconsistent formatting, and you want to normalize them:
+
+```{code-cell} ipython3
+countries = [" nepal", "INDIA ", "china ", "Bhutan"]
+normalized_countries = [country.strip().title() for country in countries]
+print(normalized_countries)
+```
+
+This operation removes any leading/trailing spaces and ensures consistent capitalization.
+
++++
+
 ## Formatting Strings
 
 String formatting is essential when preparing data for output or when you need to include variable values in strings. You can use the `format()` method or f-strings (in Python 3.6 and above) for string formatting.
@@ -98,6 +125,13 @@ formatted_coordinates_fstring = f"Coordinates: ({latitude}, {longitude})"
 print(formatted_coordinates_fstring)
 ```
 
+Well-Known Text (WKT) is a text markup language for representing vector geometry objects. Let's format a string to represent a POINT geometry:
+
+```{code-cell} ipython3
+wkt_point = f"POINT({longitude} {latitude})"
+print(wkt_point)
+```
+
 ## Parsing and Extracting Information from Strings
 
 Often, you will need to extract specific information from strings, especially when dealing with geographic data. For example, you might need to extract coordinates from a formatted string.
@@ -110,17 +144,27 @@ longitude = float(lon_str[:-1])  # Convert string to float and remove the 'E'
 print(f"Parsed coordinates: ({latitude}, {longitude})")
 ```
 
+If you have a list of addresses in the format "Street, City, Country", you might want to parse and extract each component:
+
+```{code-cell} ipython3
+address = "123 Everest Rd, Kathmandu, Nepal"
+street, city, country = address.split(", ")
+print(f"Street: {street}, City: {city}, Country: {country}")
+```
+
 ## Exercises
 
 1. Create a string representing the name of a city. Convert the string to lowercase and then to uppercase.
 2. Take a string with the format 'latitude, longitude' (e.g., '40.7128N, 74.0060W') and extract the numeric values of latitude and longitude.
 3. Create a formatted string that includes the name of a location and its coordinates. Use both the `format()` method and f-strings to achieve this.
 4. Replace a substring in the name of a place (e.g., change 'San Francisco' to 'San Diego') and print the result.
+5. Given a list of addresses in the format "Street, City, Country", write a function to parse and return a dictionary with keys `street`, `city`, and `country`.
+6. Write a function that converts a pair of latitude and longitude coordinates into a WKT `POINT` string.
 
 ```{code-cell} ipython3
-# Type your code here
+
 ```
 
-## Conclusion
+## Summary
 
-String operations are crucial in geospatial programming, especially when dealing with textual geographic data. Mastering these operations will enable you to handle and manipulate geographic information effectively in your projects.
+String operations are crucial in geospatial programming, especially when dealing with textual geographic data. Mastering these operations will enable you to handle and manipulate geographic information effectively in your projects, whether you're formatting outputs, parsing inputs, or integrating with geospatial databases.
