@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Introduction to NumPy and Pandas
+# Intro to NumPy and Pandas
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/08_numpy_pandas.ipynb)
 
@@ -154,13 +154,13 @@ print(f"Latitudes:\n{latitudes}\n")
 ```{code-cell} ipython3
 # Filtering rows based on a condition
 df_filtered = df[df["Longitude"] < 0]
-print(f"Cities with Longitude < 0:\n{df_filtered}\n")
+df_filtered
 ```
 
 ```{code-cell} ipython3
 # Adding a new column with a calculation
 df["Lat_Radians"] = np.radians(df["Latitude"])
-print(f"DataFrame with Lat_Radians:\n{df}")
+df
 ```
 
 ### Analyzing Geospatial Data
