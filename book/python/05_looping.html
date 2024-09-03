@@ -506,7 +506,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements-if-elif-else">5.5. Control Statements: if, elif, else</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-loops-and-control-statements">5.6. Combining Loops and Control Statements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">5.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.8. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -560,6 +560,30 @@ Latitude: 51.5074, Longitude: -0.1278
 </div>
 </div>
 </div>
+<p>Assuming you have a function to calculate distances, you can use a loop to compute distances from a reference point.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_distance</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">):</span>
+    <span class="c1"># Placeholder for distance calculation logic</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+
+
+<span class="n">reference_point</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Reference point (latitude, longitude)</span>
+
+<span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">calculate_distance</span><span class="p">(</span><span class="n">reference_point</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reference_point</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance from </span><span class="si">{</span><span class="n">reference_point</span><span class="si">}</span><span class="s2"> to (</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">distance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance from (0, 0) to (35.6895, 139.6917): 144.18
+Distance from (0, 0) to (34.0522, -118.2437): 123.05
+Distance from (0, 0) to (51.5074, -0.1278): 51.51
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="while-loops">
 <h2><span class="section-number">5.4. </span>While Loops<a class="headerlink" href="#while-loops" title="Link to this heading">#</a></h2>
@@ -589,9 +613,9 @@ Processing coordinate: (51.5074, -0.1278)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">lat</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">lat</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2"> is in the Northern Hemisphere&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">lat</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">40</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">lat</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2"> is in the Southern Hemisphere&quot;</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2"> is near the equator&quot;</span><span class="p">)</span>
@@ -599,9 +623,37 @@ Processing coordinate: (51.5074, -0.1278)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.6895 is near the equator
-34.0522 is near the equator
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>35.6895 is in the Northern Hemisphere
+34.0522 is in the Northern Hemisphere
 51.5074 is in the Northern Hemisphere
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can further categorize based on longitude:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">lat</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">hemisphere</span> <span class="o">=</span> <span class="s2">&quot;Northern&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">hemisphere</span> <span class="o">=</span> <span class="s2">&quot;Southern&quot;</span>
+
+    <span class="k">if</span> <span class="n">lon</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">direction</span> <span class="o">=</span> <span class="s2">&quot;Eastern&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">direction</span> <span class="o">=</span> <span class="s2">&quot;Western&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s2">&quot;The coordinate (</span><span class="si">{</span><span class="n">lat</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">lon</span><span class="si">}</span><span class="s2">) is in the </span><span class="si">{</span><span class="n">hemisphere</span><span class="si">}</span><span class="s2"> Hemisphere and </span><span class="si">{</span><span class="n">direction</span><span class="si">}</span><span class="s2"> Hemisphere.&quot;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coordinate (35.6895, 139.6917) is in the Northern Hemisphere and Eastern Hemisphere.
+The coordinate (34.0522, -118.2437) is in the Northern Hemisphere and Western Hemisphere.
+The coordinate (51.5074, -0.1278) is in the Northern Hemisphere and Western Hemisphere.
 </pre></div>
 </div>
 </div>
@@ -626,6 +678,22 @@ Processing coordinate: (51.5074, -0.1278)
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">southern_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">lat</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">southern_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of coordinates in the Southern Hemisphere: </span><span class="si">{</span><span class="n">southern_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of coordinates in the Southern Hemisphere: 0
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="exercises">
 <h2><span class="section-number">5.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
@@ -634,17 +702,11 @@ Processing coordinate: (51.5074, -0.1278)
 <li><p>Write a while loop that continues to print the coordinates in a list until a coordinate with a latitude less than 0 is found.</p></li>
 <li><p>Create a for loop that iterates through a list of coordinates and prints whether each coordinate is in the Eastern or Western Hemisphere based on the longitude.</p></li>
 <li><p>Combine a for loop and if statements to count how many coordinates in a list are located in the Southern Hemisphere.</p></li>
+<li><p>Write a program that generates random coordinates (latitude and longitude) and prints them until a coordinate with both latitude and longitude greater than 100 is generated.</p></li>
 </ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Type your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
-<section id="conclusion">
-<h2><span class="section-number">5.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<section id="summary">
+<h2><span class="section-number">5.8. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>Loops and control statements are fundamental tools in geospatial programming. They allow you to process and analyze geographic data efficiently by automating repetitive tasks and applying logic based on data conditions. Practice these concepts by applying them to your geospatial datasets and analyses.</p>
 </section>
 </section>
@@ -720,7 +782,7 @@ Processing coordinate: (51.5074, -0.1278)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#control-statements-if-elif-else">5.5. Control Statements: if, elif, else</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-loops-and-control-statements">5.6. Combining Loops and Control Statements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">5.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">5.8. Summary</a></li>
 </ul>
   </nav></div>
 

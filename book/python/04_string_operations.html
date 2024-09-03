@@ -506,7 +506,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-strings">4.5. Formatting Strings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-and-extracting-information-from-strings">4.6. Parsing and Extracting Information from Strings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">4.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.8. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -523,7 +523,7 @@ document.write(`
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/python/04_string_operations.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="overview">
 <h2><span class="section-number">4.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
-<p>This lecture will cover various string operations in Python, with a focus on their application in geospatial contexts. Strings are fundamental in handling textual data, such as names of geographic locations, coordinates, and data extracted from text files. Mastering string operations allows you to effectively manipulate and analyze geographic information, which is essential for tasks like data cleaning, formatting, and parsing.</p>
+<p>This lecture will cover various string operations in Python, with a focus on their application in geospatial contexts. Strings are fundamental in handling textual data, such as names of geographic locations, coordinates, and data extracted from text files. Mastering string operations allows you to effectively manipulate and analyze geographic information, which is essential for tasks like data cleaning, formatting, parsing, and even geocoding.</p>
 </section>
 <section id="learning-objectives">
 <h2><span class="section-number">4.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
@@ -574,6 +574,23 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Let’s construct a basic SQL query string to select data from a geospatial database:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table_name</span> <span class="o">=</span> <span class="s2">&quot;locations&quot;</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="s2">&quot;country = &#39;Nepal&#39;&quot;</span>
+<span class="n">sql_query</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;SELECT * FROM </span><span class="si">{</span><span class="n">table_name</span><span class="si">}</span><span class="s2"> WHERE </span><span class="si">{</span><span class="n">condition</span><span class="si">}</span><span class="s2">;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sql_query</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SELECT * FROM locations WHERE country = &#39;Nepal&#39;;
+</pre></div>
+</div>
+</div>
+</div>
+<p>In more complex scenarios, you might want to dynamically build queries based on user input or multiple conditions.</p>
 </section>
 <section id="string-methods-for-geospatial-data">
 <h2><span class="section-number">4.4. </span>String Methods for Geospatial Data<a class="headerlink" href="#string-methods-for-geospatial-data" title="Link to this heading">#</a></h2>
@@ -581,8 +598,10 @@ document.write(`
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">lower()</span></code>, <code class="docutils literal notranslate"><span class="pre">upper()</span></code>: Convert strings to lowercase or uppercase.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">strip()</span></code>: Remove leading and trailing whitespace.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lstrip()</span></code>, <code class="docutils literal notranslate"><span class="pre">rstrip()</span></code>: Remove leading or trailing whitespace.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">replace()</span></code>: Replace a substring with another substring.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">split()</span></code>: Split a string into a list of substrings based on a delimiter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">join()</span></code>: Join a list of strings into a single string with a specified delimiter.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -636,6 +655,22 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Suppose you have a list of country names with inconsistent formatting, and you want to normalize them:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot; nepal&quot;</span><span class="p">,</span> <span class="s2">&quot;INDIA &quot;</span><span class="p">,</span> <span class="s2">&quot;china &quot;</span><span class="p">,</span> <span class="s2">&quot;Bhutan&quot;</span><span class="p">]</span>
+<span class="n">normalized_countries</span> <span class="o">=</span> <span class="p">[</span><span class="n">country</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">title</span><span class="p">()</span> <span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normalized_countries</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Nepal&#39;, &#39;India&#39;, &#39;China&#39;, &#39;Bhutan&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>This operation removes any leading/trailing spaces and ensures consistent capitalization.</p>
 </section>
 <section id="formatting-strings">
 <h2><span class="section-number">4.5. </span>Formatting Strings<a class="headerlink" href="#formatting-strings" title="Link to this heading">#</a></h2>
@@ -668,6 +703,20 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Well-Known Text (WKT) is a text markup language for representing vector geometry objects. Let’s format a string to represent a POINT geometry:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wkt_point</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;POINT(</span><span class="si">{</span><span class="n">longitude</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s2">)&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">wkt_point</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>POINT(86.925 27.9881)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="parsing-and-extracting-information-from-strings">
 <h2><span class="section-number">4.6. </span>Parsing and Extracting Information from Strings<a class="headerlink" href="#parsing-and-extracting-information-from-strings" title="Link to this heading">#</a></h2>
@@ -688,6 +737,21 @@ document.write(`
 </div>
 </div>
 </div>
+<p>If you have a list of addresses in the format “Street, City, Country”, you might want to parse and extract each component:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">address</span> <span class="o">=</span> <span class="s2">&quot;123 Everest Rd, Kathmandu, Nepal&quot;</span>
+<span class="n">street</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="n">country</span> <span class="o">=</span> <span class="n">address</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Street: </span><span class="si">{</span><span class="n">street</span><span class="si">}</span><span class="s2">, City: </span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s2">, Country: </span><span class="si">{</span><span class="n">country</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Street: 123 Everest Rd, City: Kathmandu, Country: Nepal
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="exercises">
 <h2><span class="section-number">4.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
@@ -696,18 +760,13 @@ document.write(`
 <li><p>Take a string with the format ‘latitude, longitude’ (e.g., ‘40.7128N, 74.0060W’) and extract the numeric values of latitude and longitude.</p></li>
 <li><p>Create a formatted string that includes the name of a location and its coordinates. Use both the <code class="docutils literal notranslate"><span class="pre">format()</span></code> method and f-strings to achieve this.</p></li>
 <li><p>Replace a substring in the name of a place (e.g., change ‘San Francisco’ to ‘San Diego’) and print the result.</p></li>
+<li><p>Given a list of addresses in the format “Street, City, Country”, write a function to parse and return a dictionary with keys <code class="docutils literal notranslate"><span class="pre">street</span></code>, <code class="docutils literal notranslate"><span class="pre">city</span></code>, and <code class="docutils literal notranslate"><span class="pre">country</span></code>.</p></li>
+<li><p>Write a function that converts a pair of latitude and longitude coordinates into a WKT <code class="docutils literal notranslate"><span class="pre">POINT</span></code> string.</p></li>
 </ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Type your code here</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
-<section id="conclusion">
-<h2><span class="section-number">4.8. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>String operations are crucial in geospatial programming, especially when dealing with textual geographic data. Mastering these operations will enable you to handle and manipulate geographic information effectively in your projects.</p>
+<section id="summary">
+<h2><span class="section-number">4.8. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>String operations are crucial in geospatial programming, especially when dealing with textual geographic data. Mastering these operations will enable you to handle and manipulate geographic information effectively in your projects, whether you’re formatting outputs, parsing inputs, or integrating with geospatial databases.</p>
 </section>
 </section>
 
@@ -782,7 +841,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-strings">4.5. Formatting Strings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parsing-and-extracting-information-from-strings">4.6. Parsing and Extracting Information from Strings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">4.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">4.8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">4.8. Summary</a></li>
 </ul>
   </nav></div>
 
