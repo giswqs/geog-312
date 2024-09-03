@@ -228,10 +228,10 @@ For more information on variables and data types in Python, check out the **Basi
 3. Create a dictionary to store the centroid's latitude and longitude.
 
 ```{code-cell} ipython3
-# Type your code here
+
 ```
 
-## Conclusion
+## Summary
 
 Understanding Python variables and data types is crucial in geospatial programming.
 As you proceed with more complex analyses, these concepts will serve as the foundation for your work.

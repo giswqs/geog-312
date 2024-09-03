@@ -31,6 +31,34 @@ By the end of this lecture, you should be able to:
 
 +++
 
+## Creating a Sample File
+
+Before working with files, it's essential to ensure that the files you intend to process actually exist. In this section, you'll learn how to create a sample `coordinates.txt` file programmatically. This file will be used in subsequent examples.
+
+```{code-cell} ipython3
+# Create a sample coordinates.txt file
+sample_data = """35.6895,139.6917
+34.0522,-118.2437
+51.5074,-0.1278
+-33.8688,151.2093
+48.8566,2.3522"""
+
+output_file = "coordinates.txt"
+
+try:
+    with open(output_file, "w") as file:
+        file.write(sample_data)
+    print(f"Sample file '{output_file}' has been created successfully.")
+except Exception as e:
+    print(f"An error occurred while creating the file: {e}")
+```
+
+In this code, we create a simple text file named `coordinates.txt` containing latitude and longitude pairs for several cities around the world. The file is written in the current working directory.
+
+After running this script, the `coordinates.txt` file will be available for use in the following examples. If any issues occur during the file creation process, the script will handle them and print an error message.
+
++++
+
 ## Working with Files
 
 In geospatial programming, you often need to read from or write to files. Python provides built-in functions to handle these tasks. Let's start by reading from a text file containing coordinates and writing the results to a new file.
@@ -115,9 +143,9 @@ process_geospatial_file("coordinates.txt")
 3. Create a robust geospatial data processing function that reads data from a file, processes it, and writes the results to another file. Ensure that all potential errors are handled appropriately.
 
 ```{code-cell} ipython3
-# Type your code here
+
 ```
 
-## Conclusion
+## Summary
 
 Working with files and handling exceptions are critical skills in geospatial programming. By mastering these techniques, you can create more reliable and efficient geospatial applications that handle real-world data gracefully.

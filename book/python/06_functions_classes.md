@@ -39,8 +39,9 @@ Let's start by defining a simple function to calculate the distance between two 
 
 ```{code-cell} ipython3
 from math import radians, sin, cos, sqrt, atan2
+```
 
-
+```{code-cell} ipython3
 def haversine(lat1, lon1, lat2, lon2):
     R = 6371.0  # Earth radius in kilometers
     dlat = radians(lat2 - lat1)
@@ -57,6 +58,24 @@ def haversine(lat1, lon1, lat2, lon2):
 # Example usage
 distance = haversine(35.6895, 139.6917, 34.0522, -118.2437)
 print(f"Distance: {distance:.2f} km")
+```
+
+Now, let's create a function that takes a list of coordinate pairs and returns a list of distances between consecutive points.
+
+```{code-cell} ipython3
+def batch_haversine(coord_list):
+    distances = []
+    for i in range(len(coord_list) - 1):
+        lat1, lon1 = coord_list[i]
+        lat2, lon2 = coord_list[i + 1]
+        distance = haversine(lat1, lon1, lat2, lon2)
+        distances.append(distance)
+    return distances
+
+# Example usage
+coordinates = [(35.6895, 139.6917), (34.0522, -118.2437), (40.7128, -74.0060)]
+distances = batch_haversine(coordinates)
+print(f"Distances: {distances}")
 ```
 
 ## Classes
@@ -79,9 +98,9 @@ class Point:
 
     def __str__(self):
         return f"{self.name or 'Point'} ({self.latitude}, {self.longitude})"
+```
 
-
-# Example usage
+```{code-cell} ipython3
 point1 = Point(35.6895, 139.6917, "Tokyo")
 point2 = Point(34.0522, -118.2437, "Los Angeles")
 print(point1)
@@ -90,9 +109,11 @@ print(
 )
 ```
 
-## Combining Functions and Classes
+We can extend the `Point` class to include more methods, such as calculating the midpoint between two points and determining the bearing (direction) from one point to another.
 
-You can use functions within classes to create more powerful and flexible geospatial tools. For example, we can extend the `Point` class to include methods for calculating the midpoint between two points.
+```{code-cell} ipython3
+from math import atan2, degrees
+```
 
 ```{code-cell} ipython3
 class Point:
@@ -102,22 +123,61 @@ class Point:
         self.name = name
 
     def distance_to(self, other_point):
-        return haversine(
-            self.latitude, self.longitude, other_point.latitude, other_point.longitude
-        )
+        return haversine(self.latitude, self.longitude, other_point.latitude, other_point.longitude)
 
     def midpoint(self, other_point):
         mid_lat = (self.latitude + other_point.latitude) / 2
         mid_lon = (self.longitude + other_point.longitude) / 2
         return Point(mid_lat, mid_lon, name="Midpoint")
 
+    def bearing_to(self, other_point):
+        lat1, lon1 = radians(self.latitude), radians(self.longitude)
+        lat2, lon2 = radians(other_point.latitude), radians(other_point.longitude)
+        dlon = lon2 - lon1
+        x = sin(dlon) * cos(lat2)
+        y = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dlon)
+        initial_bearing = atan2(x, y)
+        bearing = (degrees(initial_bearing) + 360) % 360
+        return bearing
+
     def __str__(self):
         return f"{self.name or 'Point'} ({self.latitude}, {self.longitude})"
+```
 
-
-# Example usage
+```{code-cell} ipython3
+point1 = Point(35.6895, 139.6917, "Tokyo")
+point2 = Point(34.0522, -118.2437, "Los Angeles")
 mid_point = point1.midpoint(point2)
 print(mid_point)
+bearing = point1.bearing_to(point2)
+print(f"Bearing from {point1.name} to {point2.name}: {bearing:.2f}°")
+```
+
+## Combining Functions and Classes
+
+You can use functions within classes to create more powerful and flexible geospatial tools. For instance, by incorporating distance calculations and midpoints, we can make the `Point` class much more versatile.
+
+Let's create a method in the `Point` class that calculates the total distance when traveling through a series of points.
+
+```{code-cell} ipython3
+class Route:
+    def __init__(self, points):
+        self.points = points
+
+    def total_distance(self):
+        total_dist = 0
+        for i in range(len(self.points) - 1):
+            total_dist += self.points[i].distance_to(self.points[i + 1])
+        return total_dist
+
+    def __str__(self):
+        return f"Route with {len(self.points)} points"
+```
+
+```{code-cell} ipython3
+route = Route([point1, point2, mid_point])
+print(route)
+print(f"Total distance: {route.total_distance():.2f} km")
 ```
 
 ## Exercises
@@ -125,11 +185,13 @@ print(mid_point)
 1. Create a function that takes a list of `Point` objects and returns the total distance if you were to travel from the first point to the last, visiting each point in sequence.
 2. Extend the `Point` class to include a method that returns the bearing (direction) from the current point to another point.
 3. Create a `Polygon` class that can hold a list of `Point` objects representing the vertices of the polygon. Add a method to calculate the perimeter of the polygon.
+4. Write a function that takes a `Route` object and returns a list of bearings between each consecutive pair of points along the route.
+5. Extend the `Polygon` class to include a method that checks if a given `Point` is inside the polygon using the ray-casting algorithm.
 
 ```{code-cell} ipython3
-# Type your code here
+
 ```
 
-## Conclusion
+## Summary
 
 Functions and classes are powerful tools in Python that help you organize and reuse your code, especially in the context of geospatial programming. By mastering these concepts, you'll be able to write more efficient and maintainable code for your geospatial projects.
