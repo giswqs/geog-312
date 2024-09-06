@@ -505,8 +505,21 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">6.1. Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">6.2. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">6.3. Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">6.4. Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">6.3. Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-simple-function">6.3.1. Defining a Simple Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-with-default-values">6.3.2. Parameters with Default Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calling-functions">6.3.3. Calling Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geospatial-example-haversine-function">6.3.4. Geospatial Example: Haversine Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-with-default-values-and-geospatial-application">6.3.5. Function with Default Values and Geospatial Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-with-variable-arguments">6.3.6. Function with Variable Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">6.4. Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-simple-class">6.4.1. Defining a Simple Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-methods-to-a-class">6.4.2. Adding Methods to a Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor-with-default-values">6.4.3. Constructor with Default Values</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-functions-and-classes">6.5. Combining Functions and Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.6. Exercises</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.7. Summary</a></li>
@@ -542,7 +555,81 @@ document.write(`
 <section id="functions">
 <h2><span class="section-number">6.3. </span>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
 <p>Functions are blocks of code that perform a specific task and can be reused multiple times. They allow you to structure your code more efficiently and reduce redundancy.</p>
-<p>Let’s start by defining a simple function to calculate the distance between two points using the Haversine formula.</p>
+<section id="defining-a-simple-function">
+<h3><span class="section-number">6.3.1. </span>Defining a Simple Function<a class="headerlink" href="#defining-a-simple-function" title="Link to this heading">#</a></h3>
+<p>Here’s a simple function that adds two numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+
+<span class="c1"># Example usage</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result: 8
+</pre></div>
+</div>
+</div>
+</div>
+<p>This function takes two parameters <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, and returns their sum. You can call it by passing two values as arguments.</p>
+</section>
+<section id="parameters-with-default-values">
+<h3><span class="section-number">6.3.2. </span>Parameters with Default Values<a class="headerlink" href="#parameters-with-default-values" title="Link to this heading">#</a></h3>
+<p>Sometimes, you may want a function to have optional parameters with default values. You can specify a default value by assigning it in the function definition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">greeting</span><span class="o">=</span><span class="s2">&quot;Hello&quot;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">greeting</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span>
+
+
+<span class="c1"># Example usage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Alice&quot;</span><span class="p">))</span>  <span class="c1"># Uses the default greeting</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;Hi&quot;</span><span class="p">))</span>  <span class="c1"># Overrides the default greeting</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, Alice!
+Hi, Bob!
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, the greeting parameter has a default value of <code class="docutils literal notranslate"><span class="pre">&quot;Hello&quot;</span></code>. If you don’t provide a second argument, the function will use this default. If you provide one, it will override the default value.</p>
+</section>
+<section id="calling-functions">
+<h3><span class="section-number">6.3.3. </span>Calling Functions<a class="headerlink" href="#calling-functions" title="Link to this heading">#</a></h3>
+<p>To call a function, you simply use its name followed by parentheses containing the arguments you want to pass. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to multiply two numbers</span>
+<span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+
+<span class="c1"># Calling the function</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">multiply</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Multiplication Result: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Multiplication Result: 20
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can call the multiply function with two numbers, and it will return their product.</p>
+</section>
+<section id="geospatial-example-haversine-function">
+<h3><span class="section-number">6.3.4. </span>Geospatial Example: Haversine Function<a class="headerlink" href="#geospatial-example-haversine-function" title="Link to this heading">#</a></h3>
+<p>Let’s apply these concepts to a geospatial problem. The <a class="reference external" href="https://en.wikipedia.org/wiki/Haversine_formula">Haversine formula</a> calculates the distance between two points on the Earth’s surface.</p>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Illustration_of_great-circle_distance.svg" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">radians</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">atan2</span>
@@ -577,6 +664,42 @@ document.write(`
 </div>
 </div>
 </div>
+</section>
+<section id="function-with-default-values-and-geospatial-application">
+<h3><span class="section-number">6.3.5. </span>Function with Default Values and Geospatial Application<a class="headerlink" href="#function-with-default-values-and-geospatial-application" title="Link to this heading">#</a></h3>
+<p>Now let’s modify the haversine function to accept an optional Earth radius parameter, which has a default value for kilometers but can be set for other units like miles.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">haversine</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">6371.0</span><span class="p">):</span>
+    <span class="n">dlat</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span>
+    <span class="n">dlon</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">sin</span><span class="p">(</span><span class="n">dlat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="o">+</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="n">lat1</span><span class="p">))</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span><span class="p">))</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">dlon</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">atan2</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">c</span>
+    <span class="k">return</span> <span class="n">distance</span>
+
+
+<span class="c1"># Example usage in kilometers</span>
+<span class="n">distance_km</span> <span class="o">=</span> <span class="n">haversine</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance in kilometers: </span><span class="si">{</span><span class="n">distance_km</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
+
+<span class="c1"># Example usage in miles (radius of Earth is approximately 3958.8 miles)</span>
+<span class="n">distance_miles</span> <span class="o">=</span> <span class="n">haversine</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">3958.8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance in miles: </span><span class="si">{</span><span class="n">distance_miles</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> miles&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance in kilometers: 8815.47 km
+Distance in miles: 5477.74 miles
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, the radius parameter has a default value of 6371.0 for kilometers, but you can specify 3958.8 if you want the distance in miles.</p>
 <p>Now, let’s create a function that takes a list of coordinate pairs and returns a list of distances between consecutive points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -604,10 +727,91 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="function-with-variable-arguments">
+<h3><span class="section-number">6.3.6. </span>Function with Variable Arguments<a class="headerlink" href="#function-with-variable-arguments" title="Link to this heading">#</a></h3>
+<p>You can also create functions that accept a variable number of arguments using <code class="docutils literal notranslate"><span class="pre">*args</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+
+<span class="c1"># Example usage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">average</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>  <span class="c1"># 20.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">average</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">))</span>  <span class="c1"># 20.0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.0
+20.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>In Python, you can use <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> (short for “keyword arguments”) in function definitions to pass a variable number of named arguments. This allows you to handle a flexible set of parameters in a function.</p>
+<p>Let’s create an example that demonstrates how to use <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> in a function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">describe_point</span><span class="p">(</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Point at (</span><span class="si">{</span><span class="n">latitude</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">longitude</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+    <span class="c1"># Add optional keyword arguments to the description</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">description</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;, </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="n">description</span>
+
+
+<span class="c1"># Example usage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">describe_point</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="n">population</span><span class="o">=</span><span class="mi">37400000</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">describe_point</span><span class="p">(</span><span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="n">state</span><span class="o">=</span><span class="s2">&quot;California&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Point at (35.6895, 139.6917), name: Tokyo, population: 37400000
+Point at (34.0522, -118.2437), name: Los Angeles, state: California
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="classes">
 <h2><span class="section-number">6.4. </span>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
-<p>Classes are blueprints for creating objects. An object is an instance of a class, and it can have attributes (data) and methods (functions). Classes are particularly useful in geospatial programming for representing complex data structures, such as geographic features.</p>
-<p>Let’s define a simple <code class="docutils literal notranslate"><span class="pre">Point</span></code> class to represent a geographic point.</p>
+<p>Classes are blueprints for creating objects, which can have attributes (data) and methods (functions). They help represent more complex data structures.</p>
+<section id="defining-a-simple-class">
+<h3><span class="section-number">6.4.1. </span>Defining a Simple Class<a class="headerlink" href="#defining-a-simple-class" title="Link to this heading">#</a></h3>
+<p>Here’s a simple Point class to represent geographic points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span> <span class="o">=</span> <span class="n">latitude</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">=</span> <span class="n">longitude</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">latitude</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">longitude</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+
+<span class="c1"># Example usage</span>
+<span class="n">point1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">point1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tokyo (35.6895, 139.6917)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-methods-to-a-class">
+<h3><span class="section-number">6.4.2. </span>Adding Methods to a Class<a class="headerlink" href="#adding-methods-to-a-class" title="Link to this heading">#</a></h3>
+<p>You can add methods to the class to perform operations on the attributes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
@@ -621,17 +825,10 @@ document.write(`
             <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">other_point</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">other_point</span><span class="o">.</span><span class="n">longitude</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">latitude</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">longitude</span><span class="si">}</span><span class="s2">)&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">point1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">)</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">point1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">)</span>
 <span class="n">point2</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">point1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span>
     <span class="sa">f</span><span class="s2">&quot;Distance from </span><span class="si">{</span><span class="n">point1</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">point2</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">point1</span><span class="o">.</span><span class="n">distance_to</span><span class="p">(</span><span class="n">point2</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km&quot;</span>
 <span class="p">)</span>
@@ -639,72 +836,27 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Tokyo (35.6895, 139.6917)
-Distance from Tokyo to Los Angeles: 8815.47 km
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance from Tokyo to Los Angeles: 8815.47 km
 </pre></div>
 </div>
 </div>
 </div>
-<p>We can extend the <code class="docutils literal notranslate"><span class="pre">Point</span></code> class to include more methods, such as calculating the midpoint between two points and determining the bearing (direction) from one point to another.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">degrees</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
+<section id="constructor-with-default-values">
+<h3><span class="section-number">6.4.3. </span>Constructor with Default Values<a class="headerlink" href="#constructor-with-default-values" title="Link to this heading">#</a></h3>
+<p>You can also use default values in the constructor of a class.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Unnamed&quot;</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span> <span class="o">=</span> <span class="n">latitude</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">=</span> <span class="n">longitude</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
-
-    <span class="k">def</span> <span class="nf">distance_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_point</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">haversine</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">other_point</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">other_point</span><span class="o">.</span><span class="n">longitude</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">midpoint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_point</span><span class="p">):</span>
-        <span class="n">mid_lat</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">latitude</span> <span class="o">+</span> <span class="n">other_point</span><span class="o">.</span><span class="n">latitude</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-        <span class="n">mid_lon</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">longitude</span> <span class="o">+</span> <span class="n">other_point</span><span class="o">.</span><span class="n">longitude</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-        <span class="k">return</span> <span class="n">Point</span><span class="p">(</span><span class="n">mid_lat</span><span class="p">,</span> <span class="n">mid_lon</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Midpoint&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">bearing_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_point</span><span class="p">):</span>
-        <span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">latitude</span><span class="p">),</span> <span class="n">radians</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">longitude</span><span class="p">)</span>
-        <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span> <span class="o">=</span> <span class="n">radians</span><span class="p">(</span><span class="n">other_point</span><span class="o">.</span><span class="n">latitude</span><span class="p">),</span> <span class="n">radians</span><span class="p">(</span><span class="n">other_point</span><span class="o">.</span><span class="n">longitude</span><span class="p">)</span>
-        <span class="n">dlon</span> <span class="o">=</span> <span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">dlon</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span> <span class="o">-</span> <span class="n">sin</span><span class="p">(</span><span class="n">lat1</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">lat2</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">dlon</span><span class="p">)</span>
-        <span class="n">initial_bearing</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-        <span class="n">bearing</span> <span class="o">=</span> <span class="p">(</span><span class="n">degrees</span><span class="p">(</span><span class="n">initial_bearing</span><span class="p">)</span> <span class="o">+</span> <span class="mi">360</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span>
-        <span class="k">return</span> <span class="n">bearing</span>
-
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="s1">&#39;Point&#39;</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">latitude</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">longitude</span><span class="si">}</span><span class="s2">)&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">point1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">)</span>
-<span class="n">point2</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">34.0522</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">)</span>
-<span class="n">mid_point</span> <span class="o">=</span> <span class="n">point1</span><span class="o">.</span><span class="n">midpoint</span><span class="p">(</span><span class="n">point2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mid_point</span><span class="p">)</span>
-<span class="n">bearing</span> <span class="o">=</span> <span class="n">point1</span><span class="o">.</span><span class="n">bearing_to</span><span class="p">(</span><span class="n">point2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bearing from </span><span class="si">{</span><span class="n">point1</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">point2</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">bearing</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Midpoint (34.870850000000004, 10.723999999999997)
-Bearing from Tokyo to Los Angeles: 55.55°
-</pre></div>
-</div>
-</div>
-</div>
+</section>
 </section>
 <section id="combining-functions-and-classes">
 <h2><span class="section-number">6.5. </span>Combining Functions and Classes<a class="headerlink" href="#combining-functions-and-classes" title="Link to this heading">#</a></h2>
@@ -722,23 +874,15 @@ Bearing from Tokyo to Los Angeles: 55.55°
             <span class="n">total_dist</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">distance_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">total_dist</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Route with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">points</span><span class="p">)</span><span class="si">}</span><span class="s2"> points&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">route</span> <span class="o">=</span> <span class="n">Route</span><span class="p">([</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">,</span> <span class="n">mid_point</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">route</span><span class="p">)</span>
+
+<span class="c1"># Example usage</span>
+<span class="n">route</span> <span class="o">=</span> <span class="n">Route</span><span class="p">([</span><span class="n">point1</span><span class="p">,</span> <span class="n">point2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total distance: </span><span class="si">{</span><span class="n">route</span><span class="o">.</span><span class="n">total_distance</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> km&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Route with 3 points
-Total distance: 19508.27 km
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total distance: 8815.47 km
 </pre></div>
 </div>
 </div>
@@ -747,16 +891,15 @@ Total distance: 19508.27 km
 <section id="exercises">
 <h2><span class="section-number">6.6. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Create a function that takes a list of <code class="docutils literal notranslate"><span class="pre">Point</span></code> objects and returns the total distance if you were to travel from the first point to the last, visiting each point in sequence.</p></li>
-<li><p>Extend the <code class="docutils literal notranslate"><span class="pre">Point</span></code> class to include a method that returns the bearing (direction) from the current point to another point.</p></li>
-<li><p>Create a <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> class that can hold a list of <code class="docutils literal notranslate"><span class="pre">Point</span></code> objects representing the vertices of the polygon. Add a method to calculate the perimeter of the polygon.</p></li>
-<li><p>Write a function that takes a <code class="docutils literal notranslate"><span class="pre">Route</span></code> object and returns a list of bearings between each consecutive pair of points along the route.</p></li>
-<li><p>Extend the <code class="docutils literal notranslate"><span class="pre">Polygon</span></code> class to include a method that checks if a given <code class="docutils literal notranslate"><span class="pre">Point</span></code> is inside the polygon using the ray-casting algorithm.</p></li>
+<li><p>Write a function called <code class="docutils literal notranslate"><span class="pre">convert_distance</span></code> that converts distances from kilometers to miles and vice versa. The function should accept two parameters: <code class="docutils literal notranslate"><span class="pre">distance</span></code> and <code class="docutils literal notranslate"><span class="pre">unit</span></code>, where <code class="docutils literal notranslate"><span class="pre">unit</span></code> has a default value of <code class="docutils literal notranslate"><span class="pre">&quot;km&quot;</span></code>. If the unit is <code class="docutils literal notranslate"><span class="pre">&quot;km&quot;</span></code>, it should convert the distance to miles, and if the unit is <code class="docutils literal notranslate"><span class="pre">&quot;miles&quot;</span></code>, it should convert the distance to kilometers.</p></li>
+<li><p>Write a function called <code class="docutils literal notranslate"><span class="pre">sum_coordinates</span></code> that accepts a variable number of coordinate pairs (tuples) as input. The function should return the sum of all the latitude and longitude values provided.</p></li>
+<li><p>Extend the <code class="docutils literal notranslate"><span class="pre">Point</span></code> class to include a method called <code class="docutils literal notranslate"><span class="pre">move</span></code> that adjusts the latitude and longitude by a given amount. For example, if you call <code class="docutils literal notranslate"><span class="pre">move(1,</span> <span class="pre">-1)</span></code>, it should increase the latitude by 1 and decrease the longitude by 1.</p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">Rectangle</span></code> class that accepts two <code class="docutils literal notranslate"><span class="pre">Point</span></code> objects representing the bottom-left and top-right corners of the rectangle. The class should include a method called <code class="docutils literal notranslate"><span class="pre">area</span></code> that returns the area of the rectangle, assuming the coordinates are in the same coordinate system.</p></li>
 </ol>
 </section>
 <section id="summary">
 <h2><span class="section-number">6.7. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
-<p>Functions and classes are powerful tools in Python that help you organize and reuse your code, especially in the context of geospatial programming. By mastering these concepts, you’ll be able to write more efficient and maintainable code for your geospatial projects.</p>
+<p>In this lecture, we introduced the concepts of functions and classes. Functions allow you to encapsulate code into reusable blocks, while classes help you represent complex data structures like geospatial points. By combining these, you can build modular, scalable geospatial tools that perform various tasks efficiently.</p>
 </section>
 </section>
 
@@ -826,8 +969,21 @@ Total distance: 19508.27 km
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">6.1. Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">6.2. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">6.3. Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">6.4. Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">6.3. Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-simple-function">6.3.1. Defining a Simple Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-with-default-values">6.3.2. Parameters with Default Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calling-functions">6.3.3. Calling Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geospatial-example-haversine-function">6.3.4. Geospatial Example: Haversine Function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-with-default-values-and-geospatial-application">6.3.5. Function with Default Values and Geospatial Application</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#function-with-variable-arguments">6.3.6. Function with Variable Arguments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">6.4. Classes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-simple-class">6.4.1. Defining a Simple Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-methods-to-a-class">6.4.2. Adding Methods to a Class</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor-with-default-values">6.4.3. Constructor with Default Values</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-functions-and-classes">6.5. Combining Functions and Classes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.6. Exercises</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6.7. Summary</a></li>
