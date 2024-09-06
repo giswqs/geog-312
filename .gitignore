@@ -15,6 +15,7 @@ __pycache__/
 private/
 .Python
 env/
+.venv/
 build/
 develop-eggs/
 dist/
