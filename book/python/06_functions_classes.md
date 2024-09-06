@@ -255,31 +255,6 @@ class Point:
         self.name = name
 ```
 
-```{code-cell} ipython3
-class Point:
-    def __init__(self, latitude, longitude, name=None):
-        self.latitude = latitude
-        self.longitude = longitude
-        self.name = name
-
-    def distance_to(self, other_point):
-        return haversine(
-            self.latitude, self.longitude, other_point.latitude, other_point.longitude
-        )
-
-    def __str__(self):
-        return f"{self.name or 'Point'} ({self.latitude}, {self.longitude})"
-```
-
-```{code-cell} ipython3
-point1 = Point(35.6895, 139.6917, "Tokyo")
-point2 = Point(34.0522, -118.2437, "Los Angeles")
-print(point1)
-print(
-    f"Distance from {point1.name} to {point2.name}: {point1.distance_to(point2):.2f} km"
-)
-```
-
 ## Combining Functions and Classes
 
 You can use functions within classes to create more powerful and flexible geospatial tools. For instance, by incorporating distance calculations and midpoints, we can make the `Point` class much more versatile.
