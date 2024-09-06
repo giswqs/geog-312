@@ -2,24 +2,28 @@
 
 [Visual Studio Code](https://code.visualstudio.com) is a free source-code editor made by Microsoft for Windows, Linux and macOS. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git. Users can change the theme, keyboard shortcuts, preferences, and install extensions that add additional functionality.
 
+# Important Extensions
+
+- [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+- [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
+- [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
+
 ## Useful Extensions
 
 - autoDocstring
 - Black Formatter
 - Code Runner
 - CodeSnap
-- GitHub Actions
+- [GitHub Actions](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions)
 - GitHub Copilot
 - GitHub Copilot Chat
 - GitHub Pull Requests
 - GitLens
 - IntelliCode
-- Jupyter
 - Markdown All in One
 - Markdown Shortcuts
 - Prettier
 - Pylint
-- Python
 - vscode-icons
 
 ## Keyboard shortcuts
