@@ -40,6 +40,7 @@ parts:
       - file: book/geospatial/get_started
       - file: book/geospatial/geopandas
       - file: book/geospatial/rasterio
+      - file: book/geospatial/xarray
       - file: book/geospatial/leafmap
       - file: book/geospatial/vector_viz
       - file: book/geospatial/raster_viz
@@ -49,7 +50,6 @@ parts:
       - file: book/geospatial/samgeo
       - file: book/geospatial/hypercoast
       - file: book/geospatial/duckdb
-      - file: book/geospatial/xarray
   - caption: Labs
     numbered: false
     maxdepth: 2
