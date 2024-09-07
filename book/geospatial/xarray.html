@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>21. Xarray &#8212; Introduction to GIS Programming</title>
+    <title>12. Xarray &#8212; Introduction to GIS Programming</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Submission Instructions" href="../labs/instructions.html" />
-    <link rel="prev" title="20. DuckDB" href="duckdb.html" />
+    <link rel="next" title="13. Leafmap" href="leafmap.html" />
+    <link rel="prev" title="11. Rasterio" href="rasterio.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -207,16 +207,16 @@
 <li class="toctree-l1"><a class="reference internal" href="get_started.html">9. Get Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">10. GeoPandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rasterio.html">11. Rasterio</a></li>
-<li class="toctree-l1"><a class="reference internal" href="leafmap.html">12. Leafmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">13. Vector Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">14. Raster Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maplibre.html">15. MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whitebox.html">16. WhiteboxTools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">17. Geemap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="samgeo.html">18. SAMGeo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">19. HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">20. DuckDB</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">21. Xarray</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">12. Xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">13. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">14. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">15. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">16. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">17. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">18. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">19. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">20. HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">21. DuckDB</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -503,17 +503,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">21.1. Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">21.2. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-xarray">21.3. What is Xarray?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-xarray">21.4. Installing Xarray</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-with-xarray">21.5. Loading Data with Xarray</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-dataarrays">21.6. Working with DataArrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-selecting-data">21.7. Indexing and Selecting Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-operations-on-dataarrays">21.8. Performing Operations on DataArrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-with-xarray">21.9. Visualization with Xarray</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-datasets">21.10. Working with Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">21.11. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">12.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">12.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-xarray">12.3. What is Xarray?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-xarray">12.4. Installing Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-with-xarray">12.5. Loading Data with Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-dataarrays">12.6. Working with DataArrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-selecting-data">12.7. Indexing and Selecting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-operations-on-dataarrays">12.8. Performing Operations on DataArrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-with-xarray">12.9. Visualization with Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-datasets">12.10. Working with Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12.11. Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -526,14 +526,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="xarray">
-<h1><span class="section-number">21. </span>Xarray<a class="headerlink" href="#xarray" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">12. </span>Xarray<a class="headerlink" href="#xarray" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/xarray.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="overview">
-<h2><span class="section-number">21.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://docs.xarray.dev">Xarray</a> is a powerful Python library designed for working with multi-dimensional labeled datasets, often used in fields such as climate science, oceanography, and remote sensing. It provides a high-level interface for manipulating and analyzing datasets that can be thought of as extensions of NumPy arrays. Xarray is particularly useful for geospatial data because it supports labeled axes (dimensions), coordinates, and metadata, making it easier to work with datasets that vary across time, space, and other dimensions.</p>
 </section>
 <section id="learning-objectives">
-<h2><span class="section-number">21.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <p>By the end of this lecture, you should be able to:</p>
 <ul class="simple">
 <li><p>Understand the basic concepts and data structures in Xarray, including <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> and <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>.</p></li>
@@ -544,7 +544,7 @@ document.write(`
 </ul>
 </section>
 <section id="what-is-xarray">
-<h2><span class="section-number">21.3. </span>What is Xarray?<a class="headerlink" href="#what-is-xarray" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span>What is Xarray?<a class="headerlink" href="#what-is-xarray" title="Link to this heading">#</a></h2>
 <p>Xarray extends the capabilities of NumPy by providing a data structure for labeled, multi-dimensional arrays. The two main data structures in Xarray are:</p>
 <ul class="simple">
 <li><p><strong>DataArray</strong>: A labeled, multi-dimensional array, which includes dimensions, coordinates, and attributes.</p></li>
@@ -553,7 +553,7 @@ document.write(`
 <p>Xarray is particularly useful for working with datasets where dimensions have meaningful labels (e.g., time, latitude, longitude) and where metadata is important.</p>
 </section>
 <section id="installing-xarray">
-<h2><span class="section-number">21.4. </span>Installing Xarray<a class="headerlink" href="#installing-xarray" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.4. </span>Installing Xarray<a class="headerlink" href="#installing-xarray" title="Link to this heading">#</a></h2>
 <p>Before we start, ensure that Xarray is installed. You can install it via pip:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>xarray
 </pre></div>
@@ -564,7 +564,7 @@ document.write(`
 </div>
 </section>
 <section id="loading-data-with-xarray">
-<h2><span class="section-number">21.5. </span>Loading Data with Xarray<a class="headerlink" href="#loading-data-with-xarray" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.5. </span>Loading Data with Xarray<a class="headerlink" href="#loading-data-with-xarray" title="Link to this heading">#</a></h2>
 <p>Xarray provides built-in sample datasets that are great for getting started. In this example, we’ll load and explore the air temperature dataset provided by Xarray.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -581,7 +581,7 @@ document.write(`
 </div>
 </section>
 <section id="working-with-dataarrays">
-<h2><span class="section-number">21.6. </span>Working with DataArrays<a class="headerlink" href="#working-with-dataarrays" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.6. </span>Working with DataArrays<a class="headerlink" href="#working-with-dataarrays" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> is the core data structure in Xarray. It includes the data values, the dimensions (e.g., time, latitude, longitude), and the coordinates for each dimension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -622,7 +622,7 @@ document.write(`
 </div>
 </section>
 <section id="indexing-and-selecting-data">
-<h2><span class="section-number">21.7. </span>Indexing and Selecting Data<a class="headerlink" href="#indexing-and-selecting-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.7. </span>Indexing and Selecting Data<a class="headerlink" href="#indexing-and-selecting-data" title="Link to this heading">#</a></h2>
 <p>Xarray allows you to easily select data based on dimension labels, which is very intuitive when working with geospatial data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -644,7 +644,7 @@ document.write(`
 </div>
 </section>
 <section id="performing-operations-on-dataarrays">
-<h2><span class="section-number">21.8. </span>Performing Operations on DataArrays<a class="headerlink" href="#performing-operations-on-dataarrays" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.8. </span>Performing Operations on DataArrays<a class="headerlink" href="#performing-operations-on-dataarrays" title="Link to this heading">#</a></h2>
 <p>You can perform arithmetic operations directly on <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> objects, similar to how you would with NumPy arrays. Xarray also handles broadcasting automatically.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -666,7 +666,7 @@ document.write(`
 </div>
 </section>
 <section id="visualization-with-xarray">
-<h2><span class="section-number">21.9. </span>Visualization with Xarray<a class="headerlink" href="#visualization-with-xarray" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.9. </span>Visualization with Xarray<a class="headerlink" href="#visualization-with-xarray" title="Link to this heading">#</a></h2>
 <p>Xarray integrates well with Matplotlib and other visualization libraries, making it easy to create plots directly from <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> and <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -685,7 +685,7 @@ document.write(`
 </div>
 </section>
 <section id="working-with-datasets">
-<h2><span class="section-number">21.10. </span>Working with Datasets<a class="headerlink" href="#working-with-datasets" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.10. </span>Working with Datasets<a class="headerlink" href="#working-with-datasets" title="Link to this heading">#</a></h2>
 <p>A <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> is a collection of <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> objects. It is useful when you need to work with multiple related variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -704,7 +704,7 @@ document.write(`
 </div>
 </section>
 <section id="conclusion">
-<h2><span class="section-number">21.11. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">12.11. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>Xarray is an essential tool for working with multi-dimensional geospatial data. Its ability to handle labeled dimensions and coordinates, combined with its powerful data manipulation and visualization capabilities, makes it invaluable for geospatial analysis. By using Xarray, you can efficiently manage and analyze complex datasets, such as time series and raster data, enabling more insightful geospatial analyses.</p>
 </section>
 </section>
@@ -740,20 +740,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="duckdb.html"
+       href="rasterio.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">20. </span>DuckDB</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Rasterio</p>
       </div>
     </a>
     <a class="right-next"
-       href="../labs/instructions.html"
+       href="leafmap.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Submission Instructions</p>
+        <p class="prev-next-title"><span class="section-number">13. </span>Leafmap</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -773,17 +773,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">21.1. Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">21.2. Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-xarray">21.3. What is Xarray?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-xarray">21.4. Installing Xarray</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-with-xarray">21.5. Loading Data with Xarray</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-dataarrays">21.6. Working with DataArrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-selecting-data">21.7. Indexing and Selecting Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-operations-on-dataarrays">21.8. Performing Operations on DataArrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-with-xarray">21.9. Visualization with Xarray</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-datasets">21.10. Working with Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">21.11. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">12.1. Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">12.2. Learning Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-xarray">12.3. What is Xarray?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-xarray">12.4. Installing Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-with-xarray">12.5. Loading Data with Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-dataarrays">12.6. Working with DataArrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-selecting-data">12.7. Indexing and Selecting Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-operations-on-dataarrays">12.8. Performing Operations on DataArrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-with-xarray">12.9. Visualization with Xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-datasets">12.10. Working with Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">12.11. Conclusion</a></li>
 </ul>
   </nav></div>
 
