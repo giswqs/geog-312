@@ -1,4 +1,5 @@
 repos:
+
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0
     hooks:
@@ -16,6 +17,7 @@ repos:
     hooks:
       - id: black-jupyter
         language_version: python3.11
+        args: ["--skip-string-normalization"]
 
   - repo: https://github.com/codespell-project/codespell
     rev: v2.3.0
