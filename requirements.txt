@@ -1,4 +1,5 @@
 geemap==0.34.*
+# geospatial==0.10.*
 ghp-import==2.1.*
 jupyter-book==1.0.*
 jupytext==1.16.*
