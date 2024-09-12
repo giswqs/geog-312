@@ -142,8 +142,6 @@ In geospatial programming, it's common to access datasets hosted online. For ins
 
 First, ensure you have the requests library installed. Uncomment and run the following command if you haven't already installed it.
 
-```bash
-
 ```{code-cell} ipython3
 # !pip install requests
 ```
