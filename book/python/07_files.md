@@ -148,7 +148,7 @@ First, ensure you have the requests library installed. Uncomment and run the fol
 # !pip install requests
 ```
 
-Import the required libraries and read the GeoJSON data from the URL. 
+Import the required libraries and read the GeoJSON data from the URL.
 
 ```{code-cell} ipython3
 import requests
