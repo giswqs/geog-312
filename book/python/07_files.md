@@ -6,7 +6,7 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.16.2
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -134,6 +134,73 @@ def process_geospatial_file(input_file):
 
 # Example usage
 process_geospatial_file("coordinates.txt")
+```
+
+## Reading GeoJSON Data from a URL
+
+In geospatial programming, it's common to access datasets hosted online. For instance, we may need to read GeoJSON data directly from a URL. Python's requests library makes it easy to retrieve such data. In this example, we'll read a GeoJSON file containing U.S. cities and handle any exceptions that may arise.
+
+First, ensure you have the requests library installed. Uncomment and run the following command if you haven't already installed it.
+
+```{code-cell} ipython3
+# !pip install requests
+```
+
+Import the required libraries and read the GeoJSON data from the URL.
+
+```{code-cell} ipython3
+import requests
+```
+
+In this case, we will read the GeoJSON data for world cities hosted at https://github.com/opengeos/datasets/releases/tag/world, and process it to extract the names and coordinates of the cities.
+
+```{code-cell} ipython3
+url = (
+    "https://github.com/opengeos/datasets/releases/download/world/world_cities.geojson"
+)
+```
+
+Let's define a function to read the GeoJSON data from the URL and extract the city names and coordinates. We'll also handle any exceptions that may occur during the process.
+
+```{code-cell} ipython3
+def fetch_geojson(url):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()  # Raises an exception for HTTP errors
+        geojson_data = response.json()  # Parse the JSON response
+        return geojson_data
+    except requests.exceptions.HTTPError as http_err:
+        print(f"HTTP error occurred: {http_err}")
+    except requests.exceptions.ConnectionError as conn_err:
+        print(f"Error connecting to the server: {conn_err}")
+    except Exception as err:
+        print(f"An error occurred: {err}")
+    return None
+
+
+# Fetch and print a summary of the data
+geojson_data = fetch_geojson(url)
+```
+
+Uncomment and run the following code to display the data read from the URL.
+
+```{code-cell} ipython3
+# geojson_data
+```
+
+The output above is lengthy, so we'll only display the first few cities. You can modify the code to display more cities if needed.
+
+```{code-cell} ipython3
+if geojson_data:
+    features = geojson_data.get("features", [])
+    print(f"Number of cities: {len(features)}")
+
+    # Extract city ids and their coordinates
+    for feature in features[:5]:  # Display first 5 cities
+        city_name = feature["properties"].get("name")
+        country_name = feature["properties"].get("country")
+        coordinates = feature["geometry"]["coordinates"]
+        print(f"Name: {city_name}, Country: {country_name}, Coordinates: {coordinates}")
 ```
 
 ## Exercises
