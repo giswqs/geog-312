@@ -509,8 +509,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-files">7.4. Working with Files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling">7.5. Exception Handling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-file-handling-and-exception-handling">7.6. Combining File Handling and Exception Handling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.8. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-geojson-data-from-a-url">7.7. Reading GeoJSON Data from a URL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.8. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.9. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -677,8 +678,97 @@ Finished processing coordinates.txt
 </div>
 </div>
 </section>
+<section id="reading-geojson-data-from-a-url">
+<h2><span class="section-number">7.7. </span>Reading GeoJSON Data from a URL<a class="headerlink" href="#reading-geojson-data-from-a-url" title="Link to this heading">#</a></h2>
+<p>In geospatial programming, it’s common to access datasets hosted online. For instance, we may need to read GeoJSON data directly from a URL. Python’s requests library makes it easy to retrieve such data. In this example, we’ll read a GeoJSON file containing U.S. cities and handle any exceptions that may arise.</p>
+<p>First, ensure you have the requests library installed. Uncomment and run the following command if you haven’t already installed it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Import the required libraries and read the GeoJSON data from the URL.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, we will read the GeoJSON data for world cities hosted at <a class="github reference external" href="https://github.com/opengeos/datasets/releases/tag/world">opengeos/datasets</a>, and process it to extract the names and coordinates of the cities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/world/world_cities.geojson&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s define a function to read the GeoJSON data from the URL and extract the city names and coordinates. We’ll also handle any exceptions that may occur during the process.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fetch_geojson</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>  <span class="c1"># Raises an exception for HTTP errors</span>
+        <span class="n">geojson_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>  <span class="c1"># Parse the JSON response</span>
+        <span class="k">return</span> <span class="n">geojson_data</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">http_err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;HTTP error occurred: </span><span class="si">{</span><span class="n">http_err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span> <span class="k">as</span> <span class="n">conn_err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error connecting to the server: </span><span class="si">{</span><span class="n">conn_err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="c1"># Fetch and print a summary of the data</span>
+<span class="n">geojson_data</span> <span class="o">=</span> <span class="n">fetch_geojson</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Uncomment and run the following code to display the data read from the URL.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># geojson_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output above is lengthy, so we’ll only display the first few cities. You can modify the code to display more cities if needed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">geojson_data</span><span class="p">:</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">geojson_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;features&quot;</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of cities: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Extract city ids and their coordinates</span>
+    <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">features</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>  <span class="c1"># Display first 5 cities</span>
+        <span class="n">city_name</span> <span class="o">=</span> <span class="n">feature</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+        <span class="n">country_name</span> <span class="o">=</span> <span class="n">feature</span><span class="p">[</span><span class="s2">&quot;properties&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;country&quot;</span><span class="p">)</span>
+        <span class="n">coordinates</span> <span class="o">=</span> <span class="n">feature</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">][</span><span class="s2">&quot;coordinates&quot;</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Name: </span><span class="si">{</span><span class="n">city_name</span><span class="si">}</span><span class="s2">, Country: </span><span class="si">{</span><span class="n">country_name</span><span class="si">}</span><span class="s2">, Coordinates: </span><span class="si">{</span><span class="n">coordinates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of cities: 1249
+Name: Bombo, Country: UGA, Coordinates: [32.5333, 0.5833]
+Name: Fort Portal, Country: UGA, Coordinates: [30.275, 0.671]
+Name: Potenza, Country: ITA, Coordinates: [15.799, 40.642]
+Name: Campobasso, Country: ITA, Coordinates: [14.656, 41.563]
+Name: Aosta, Country: ITA, Coordinates: [7.315, 45.737]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="exercises">
-<h2><span class="section-number">7.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.8. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Create a function that reads a file containing a list of city names and their coordinates. The function should handle exceptions if the file is missing or if a line in the file is not properly formatted.</p></li>
 <li><p>Write a function that writes a list of coordinates to a file. Include exception handling to ensure that the file is properly closed even if an error occurs during writing.</p></li>
@@ -686,7 +776,7 @@ Finished processing coordinates.txt
 </ol>
 </section>
 <section id="summary">
-<h2><span class="section-number">7.8. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.9. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>Working with files and handling exceptions are critical skills in geospatial programming. By mastering these techniques, you can create more reliable and efficient geospatial applications that handle real-world data gracefully.</p>
 </section>
 </section>
@@ -761,8 +851,9 @@ Finished processing coordinates.txt
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-files">7.4. Working with Files</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling">7.5. Exception Handling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-file-handling-and-exception-handling">7.6. Combining File Handling and Exception Handling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.8. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-geojson-data-from-a-url">7.7. Reading GeoJSON Data from a URL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.8. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">7.9. Summary</a></li>
 </ul>
   </nav></div>
 
