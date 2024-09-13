@@ -14,6 +14,7 @@
 - Black Formatter
 - Code Runner
 - CodeSnap
+- GistPad
 - [GitHub Actions](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-github-actions)
 - GitHub Copilot
 - GitHub Copilot Chat
