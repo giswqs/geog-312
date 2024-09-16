@@ -130,7 +130,7 @@ print(f"Number of coordinates in the Southern Hemisphere: {southern_count}")
 2. Write a while loop that continues to print the coordinates in a list until a coordinate with a latitude less than 0 is found.
 3. Create a for loop that iterates through a list of coordinates and prints whether each coordinate is in the Eastern or Western Hemisphere based on the longitude.
 4. Combine a for loop and if statements to count how many coordinates in a list are located in the Southern Hemisphere.
-5. Write a program that generates random coordinates (latitude and longitude) and prints them until a coordinate with both latitude and longitude greater than 100 is generated.
+5. Write a program that generates random coordinates (latitude and longitude) and prints them until a coordinate with both latitude and longitude greater than 50 is generated.
 
 ```{code-cell} ipython3
 

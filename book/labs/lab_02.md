@@ -112,7 +112,7 @@ This notebook contains exercises based on the lectures on [**String Operations**
 ## Exercise 10: Generating and Analyzing Random Coordinates
 
 - Write a program that generates random coordinates (latitude and longitude between -180 and 180 degrees).
-- Use a `while` loop to keep generating coordinates until a pair with both latitude and longitude greater than 100 is generated.
+- Use a `while` loop to keep generating coordinates until a pair with both latitude and longitude greater than 50 is generated.
 - Print each generated coordinate and the final coordinate that meets the condition.
 
 ```{code-cell} ipython3
