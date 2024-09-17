@@ -95,6 +95,211 @@ arr_2d_product = arr_2d * np.array([1, 2, 3])
 print(f"Element-wise multiplication of 2D array:\n{arr_2d_product}")
 ```
 
+### Reshaping Arrays
+
+Reshaping arrays can be particularly useful when you need to restructure data for specific computations or visualizations.
+
+```{code-cell} ipython3
+# Reshape a 1D array into a 2D array
+arr_reshaped = np.arange(12).reshape((3, 4))
+print(f"Reshaped 1D Array into 2D Array:\n{arr_reshaped}")
+```
+
+```{code-cell} ipython3
+arr_reshaped.shape
+```
+
+### Mathematical Functions on Arrays
+
+You can apply various mathematical functions to arrays, such as square roots, logarithms, and trigonometric functions.
+
+```{code-cell} ipython3
+# Square root of each element in the array
+sqrt_array = np.sqrt(arr_reshaped)
+print(f"Square Root of Array Elements:\n{sqrt_array}")
+```
+
+```{code-cell} ipython3
+# Logarithm of each element (add 1 to avoid log(0))
+log_array = np.log1p(arr_reshaped)
+print(f"Logarithm (base e) of Array Elements:\n{log_array}")
+```
+
+### Statistical Operations
+
+NumPy provides a wide range of statistical functions for data analysis, such as mean, median, variance, and standard deviation.
+
+```{code-cell} ipython3
+# Mean, median, and standard deviation of an array
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+mean_val = np.mean(arr)
+median_val = np.median(arr)
+std_val = np.std(arr)
+
+print(f"Mean: {mean_val}, Median: {median_val}, Standard Deviation: {std_val:.4f}")
+```
+
+### Random Data Generation for Simulation
+
+Random data generation is useful for simulations, such as generating random geospatial coordinates or sampling from distributions.
+
+```{code-cell} ipython3
+# Generate an array of random latitudes and longitudes
+random_coords = np.random.uniform(low=-90, high=90, size=(5, 2))
+print(f"Random Latitudes and Longitudes:\n{random_coords}")
+```
+
+### Indexing, Slicing, and Iterating
+
+One of the most powerful features of `NumPy` is its ability to quickly access and modify array elements using indexing and slicing. These operations allow you to select specific parts of the array, which is useful in many geospatial applications where you may want to work with subsets of your data (e.g., focusing on specific regions or coordinates).
+
+#### Indexing in NumPy
+
+You can access individual elements of an array using their indices. Remember that `NumPy` arrays are zero-indexed, meaning that the first element is at index `0`.
+
+Below are some examples of indexing 1D Arrays in `NumPy`.
+
+```{code-cell} ipython3
+# Create a 1D array
+arr = np.array([10, 20, 30, 40, 50])
+
+# Accessing the first element
+first_element = arr[0]
+print(f"First element: {first_element}")
+
+# Accessing the last element
+last_element = arr[-1]
+print(f"Last element: {last_element}")
+```
+
+In 2D arrays, you can specify both row and column indices to access a particular element.
+
+```{code-cell} ipython3
+# Create a 2D array
+arr_2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+arr_2d
+```
+
+```{code-cell} ipython3
+# Accessing the element in the first row and second column
+element = arr_2d[0, 1]
+print(f"Element at row 1, column 2: {element}")
+
+# Accessing the element in the last row and last column
+element_last = arr_2d[-1, -1]
+print(f"Element at last row, last column: {element_last}")
+```
+
+#### Slicing in NumPy
+
+Slicing allows you to access a subset of an array. You can use the : symbol to specify a range of indices.
+
+**Example: Slicing 1D Arrays in NumPy**
+
+```{code-cell} ipython3
+# Create a 1D array
+arr = np.array([10, 20, 30, 40, 50])
+
+# Slice elements from index 1 to 3 (exclusive)
+slice_1d = arr[1:4]
+print(f"Slice from index 1 to 3: {slice_1d}")
+
+# Slice all elements from index 2 onwards
+slice_2d = arr[2:]
+print(f"Slice from index 2 onwards: {slice_2d}")
+```
+
+**Example: Slicing 2D Arrays in NumPy**
+
+When slicing a 2D array, you can slice both rows and columns.
+
+```{code-cell} ipython3
+# Create a 2D array
+arr_2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+arr_2d
+```
+
+```{code-cell} ipython3
+# Slice the first two rows and all columns
+slice_2d = arr_2d[:2, :]
+print(f"Sliced 2D array (first two rows):\n{slice_2d}")
+
+# Slice the last two rows and the first two columns
+slice_2d_partial = arr_2d[1:, :2]
+print(f"Sliced 2D array (last two rows, first two columns):\n{slice_2d_partial}")
+```
+
+#### Boolean Indexing
+
+You can also use Boolean conditions to filter elements of an array.
+
+**Example: Boolean Indexing**
+
+```{code-cell} ipython3
+# Create a 1D array
+arr = np.array([10, 20, 30, 40, 50])
+
+# Boolean condition to select elements greater than 25
+condition = arr > 25
+print(f"Boolean condition: {condition}")
+
+# Use the condition to filter the array
+filtered_arr = arr[condition]
+print(f"Filtered array (elements > 25): {filtered_arr}")
+```
+
+#### Iterating Over Arrays
+
+You can iterate over NumPy arrays to access or modify elements. For 1D arrays, you can simply loop through the elements. For multi-dimensional arrays, you may want to iterate through rows or columns.
+
+**Example: Iterating Over a 1D Array**
+
+```{code-cell} ipython3
+# Create a 1D array
+arr = np.array([10, 20, 30, 40, 50])
+
+# Iterating through the array
+for element in arr:
+    print(f"Element: {element}")
+```
+
+**Example: Iterating Over a 2D Array**
+
+```{code-cell} ipython3
+# Create a 2D array
+arr_2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# Iterating through rows of the 2D array
+print("Iterating over rows:")
+for row in arr_2d:
+    print(row)
+
+# Iterating through each element of the 2D array
+print("\nIterating over each element:")
+for row in arr_2d:
+    for element in row:
+        print(element, end=" ")
+```
+
+### Modifying Array Elements
+
+You can also use indexing and slicing to modify elements of the array.
+
+**Example: Modifying Elements**
+
+```{code-cell} ipython3
+# Create a 1D array
+arr = np.array([10, 20, 30, 40, 50])
+
+# Modify the element at index 1
+arr[1] = 25
+print(f"Modified array: {arr}")
+
+# Modify multiple elements using slicing
+arr[2:4] = [35, 45]
+print(f"Modified array with slicing: {arr}")
+```
+
 ### Working with Geospatial Coordinates
 
 You can use `NumPy` to perform calculations on arrays of geospatial coordinates, such as converting from degrees to radians.
@@ -114,7 +319,7 @@ print(f"Coordinates in radians:\n{coords_radians}")
 
 ### Creating Pandas Series and DataFrames
 
-Let's create a `Pandas` Series and DataFrame.
+Let's create a `Pandas` Series and DataFrame. Each column in a DataFrame is a Series.
 
 ```{code-cell} ipython3
 import pandas as pd
@@ -163,6 +368,133 @@ df["Lat_Radians"] = np.radians(df["Latitude"])
 df
 ```
 
+### Grouping and Aggregation
+
+Pandas allows you to group data and perform aggregate functions, which is useful in summarizing large datasets.
+
+```{code-cell} ipython3
+# Creating a DataFrame
+data = {
+    "City": ["Tokyo", "Los Angeles", "London", "Paris", "Chicago"],
+    "Country": ["Japan", "USA", "UK", "France", "USA"],
+    "Population": [37400068, 3970000, 9126366, 2140526, 2665000],
+}
+df = pd.DataFrame(data)
+df
+```
+
+```{code-cell} ipython3
+# Group by 'Country' and calculate the total population for each country
+df_grouped = df.groupby("Country")["Population"].sum()
+print(f"Total Population by Country:\n{df_grouped}")
+```
+
+### Merging DataFrames
+
+Merging datasets is essential when combining different geospatial datasets, such as joining city data with demographic information.
+
+```{code-cell} ipython3
+# Creating two DataFrames to merge
+df1 = pd.DataFrame(
+    {"City": ["Tokyo", "Los Angeles", "London"], "Country": ["Japan", "USA", "UK"]}
+)
+df2 = pd.DataFrame(
+    {
+        "City": ["Tokyo", "Los Angeles", "London"],
+        "Population": [37400068, 3970000, 9126366],
+    }
+)
+```
+
+```{code-cell} ipython3
+df1
+```
+
+```{code-cell} ipython3
+df2
+```
+
+```{code-cell} ipython3
+# Merge the two DataFrames on the 'City' column
+df_merged = pd.merge(df1, df2, on="City")
+df_merged
+```
+
+### Handling Missing Data
+
+In real-world datasets, missing data is common. Pandas provides tools to handle missing data, such as filling or removing missing values.
+
+```{code-cell} ipython3
+# Creating a DataFrame with missing values
+data_with_nan = {
+    "City": ["Tokyo", "Los Angeles", "London", "Paris"],
+    "Population": [37400068, 3970000, None, 2140526],
+}
+df_nan = pd.DataFrame(data_with_nan)
+df_nan
+```
+
+```{code-cell} ipython3
+# Fill missing values with the mean population
+df_filled = df_nan.fillna(df_nan["Population"].mean())
+df_filled
+```
+
+### Reading Geospatial Data from a CSV File
+
+Pandas can read and write data in various formats, such as CSV, Excel, and SQL databases. This makes it easy to load and save data from different sources. For example, you can read a CSV file into a Pandas DataFrame and then perform operations on the data.
+
+Let's read a CSV file from an HTTP URL into a Pandas DataFrame and display the first few rows of the data.
+
+```{code-cell} ipython3
+url = "https://github.com/opengeos/datasets/releases/download/world/world_cities.csv"
+df = pd.read_csv(url)
+df.head()
+```
+
+The DataFrame contains information about world cities, including their names, countries, populations, and geographical coordinates. We can calculate the total population of all cities in the dataset using NumPy and Pandas as follows.
+
+```{code-cell} ipython3
+np.sum(df["population"])
+```
+
+### Creating plots with Pandas
+
+Pandas provides built-in plotting capabilities that allow you to create various types of plots directly from DataFrames.
+
+```{code-cell} ipython3
+# Load the dataset from an online source
+url = "https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/data/air_quality_no2.csv"
+air_quality = pd.read_csv(url, index_col=0, parse_dates=True)
+
+# Display the first few rows of the dataset
+air_quality.head()
+```
+
+To do a quick visual check of the data.
+
+```{code-cell} ipython3
+air_quality.plot()
+```
+
+To plot only the columns of the data table with the data from Paris.
+
+```{code-cell} ipython3
+air_quality["station_paris"].plot()
+```
+
+To visually compare the values measured in London versus Paris.
+
+```{code-cell} ipython3
+air_quality.plot.scatter(x="station_london", y="station_paris", alpha=0.5)
+```
+
+To visualize each of the columns in a separate subplot.
+
+```{code-cell} ipython3
+air_quality.plot.area(figsize=(12, 4), subplots=True)
+```
+
 ### Analyzing Geospatial Data
 
 In this example, we analyze a dataset of cities, calculating the distance between each pair using the Haversine formula.
@@ -193,7 +525,10 @@ city_pairs = pd.DataFrame(
         "Lon2": [-118.2437, -0.1278, -0.1278],
     }
 )
+city_pairs
+```
 
+```{code-cell} ipython3
 # Calculate distances between city pairs
 city_pairs["Distance_km"] = haversine_np(
     city_pairs["Lat1"], city_pairs["Lon1"], city_pairs["Lat2"], city_pairs["Lon2"]
@@ -218,25 +553,17 @@ def calculate_average_distance(df):
     return avg_distances
 
 
+# Creating a DataFrame
+data = {
+    "City": ["Tokyo", "Los Angeles", "London"],
+    "Latitude": [35.6895, 34.0522, 51.5074],
+    "Longitude": [139.6917, -118.2437, -0.1278],
+}
+df = pd.DataFrame(data)
+
 # Apply the function to calculate average distances
 df["Avg_Distance_km"] = calculate_average_distance(df)
 df
-```
-
-Pandas can read and write data in various formats, such as CSV, Excel, and SQL databases. This makes it easy to load and save data from different sources. For example, you can read a CSV file into a Pandas DataFrame and then perform operations on the data.
-
-Let's read a CSV file from an HTTP URL into a Pandas DataFrame and display the first few rows of the data.
-
-```{code-cell} ipython3
-url = "https://github.com/opengeos/datasets/releases/download/world/world_cities.csv"
-df = pd.read_csv(url)
-df.head()
-```
-
-The DataFrame contains information about world cities, including their names, countries, populations, and geographical coordinates. We can calculate the total population of all cities in the dataset using NumPy and Pandas as follows.
-
-```{code-cell} ipython3
-np.sum(df["population"])
 ```
 
 ## Exercises
