@@ -508,13 +508,30 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-numpy">8.3. Introduction to NumPy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-numpy-arrays">8.3.1. Creating NumPy Arrays</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-array-operations">8.3.2. Basic Array Operations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-geospatial-coordinates">8.3.3. Working with Geospatial Coordinates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-arrays">8.3.3. Reshaping Arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-functions-on-arrays">8.3.4. Mathematical Functions on Arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-operations">8.3.5. Statistical Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-data-generation-for-simulation">8.3.6. Random Data Generation for Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-slicing-and-iterating">8.3.7. Indexing, Slicing, and Iterating</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-in-numpy">8.3.7.1. Indexing in NumPy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-in-numpy">8.3.7.2. Slicing in NumPy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-indexing">8.3.7.3. Boolean Indexing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-over-arrays">8.3.7.4. Iterating Over Arrays</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-array-elements">8.3.8. Modifying Array Elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-geospatial-coordinates">8.3.9. Working with Geospatial Coordinates</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-pandas">8.4. Introduction to Pandas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-pandas-series-and-dataframes">8.4.1. Creating Pandas Series and DataFrames</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-dataframe-operations">8.4.2. Basic DataFrame Operations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-geospatial-data">8.4.3. Analyzing Geospatial Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-and-aggregation">8.4.3. Grouping and Aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-dataframes">8.4.4. Merging DataFrames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-missing-data">8.4.5. Handling Missing Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-geospatial-data-from-a-csv-file">8.4.6. Reading Geospatial Data from a CSV File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-plots-with-pandas">8.4.7. Creating plots with Pandas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-geospatial-data">8.4.8. Analyzing Geospatial Data</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-numpy-and-pandas">8.5. Combining NumPy and Pandas</a></li>
@@ -688,8 +705,370 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="reshaping-arrays">
+<h3><span class="section-number">8.3.3. </span>Reshaping Arrays<a class="headerlink" href="#reshaping-arrays" title="Link to this heading">#</a></h3>
+<p>Reshaping arrays can be particularly useful when you need to restructure data for specific computations or visualizations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reshape a 1D array into a 2D array</span>
+<span class="n">arr_reshaped</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reshaped 1D Array into 2D Array:</span><span class="se">\n</span><span class="si">{</span><span class="n">arr_reshaped</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reshaped 1D Array into 2D Array:
+[[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr_reshaped</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3, 4)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mathematical-functions-on-arrays">
+<h3><span class="section-number">8.3.4. </span>Mathematical Functions on Arrays<a class="headerlink" href="#mathematical-functions-on-arrays" title="Link to this heading">#</a></h3>
+<p>You can apply various mathematical functions to arrays, such as square roots, logarithms, and trigonometric functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Square root of each element in the array</span>
+<span class="n">sqrt_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">arr_reshaped</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Square Root of Array Elements:</span><span class="se">\n</span><span class="si">{</span><span class="n">sqrt_array</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Square Root of Array Elements:
+[[0.         1.         1.41421356 1.73205081]
+ [2.         2.23606798 2.44948974 2.64575131]
+ [2.82842712 3.         3.16227766 3.31662479]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Logarithm of each element (add 1 to avoid log(0))</span>
+<span class="n">log_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">arr_reshaped</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Logarithm (base e) of Array Elements:</span><span class="se">\n</span><span class="si">{</span><span class="n">log_array</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Logarithm (base e) of Array Elements:
+[[0.         0.69314718 1.09861229 1.38629436]
+ [1.60943791 1.79175947 1.94591015 2.07944154]
+ [2.19722458 2.30258509 2.39789527 2.48490665]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="statistical-operations">
+<h3><span class="section-number">8.3.5. </span>Statistical Operations<a class="headerlink" href="#statistical-operations" title="Link to this heading">#</a></h3>
+<p>NumPy provides a wide range of statistical functions for data analysis, such as mean, median, variance, and standard deviation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mean, median, and standard deviation of an array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">mean_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="n">median_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="n">std_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean: </span><span class="si">{</span><span class="n">mean_val</span><span class="si">}</span><span class="s2">, Median: </span><span class="si">{</span><span class="n">median_val</span><span class="si">}</span><span class="s2">, Standard Deviation: </span><span class="si">{</span><span class="n">std_val</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean: 5.5, Median: 5.5, Standard Deviation: 2.8723
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="random-data-generation-for-simulation">
+<h3><span class="section-number">8.3.6. </span>Random Data Generation for Simulation<a class="headerlink" href="#random-data-generation-for-simulation" title="Link to this heading">#</a></h3>
+<p>Random data generation is useful for simulations, such as generating random geospatial coordinates or sampling from distributions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate an array of random latitudes and longitudes</span>
+<span class="n">random_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mi">90</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Random Latitudes and Longitudes:</span><span class="se">\n</span><span class="si">{</span><span class="n">random_coords</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Latitudes and Longitudes:
+[[ 18.27152745  17.64696675]
+ [ 89.0770079  -12.71964605]
+ [ 41.49107707  68.41332284]
+ [-58.10567965  20.83793705]
+ [-14.80567354 -56.6259253 ]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="indexing-slicing-and-iterating">
+<h3><span class="section-number">8.3.7. </span>Indexing, Slicing, and Iterating<a class="headerlink" href="#indexing-slicing-and-iterating" title="Link to this heading">#</a></h3>
+<p>One of the most powerful features of <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> is its ability to quickly access and modify array elements using indexing and slicing. These operations allow you to select specific parts of the array, which is useful in many geospatial applications where you may want to work with subsets of your data (e.g., focusing on specific regions or coordinates).</p>
+<section id="indexing-in-numpy">
+<h4><span class="section-number">8.3.7.1. </span>Indexing in NumPy<a class="headerlink" href="#indexing-in-numpy" title="Link to this heading">#</a></h4>
+<p>You can access individual elements of an array using their indices. Remember that <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> arrays are zero-indexed, meaning that the first element is at index <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>Below are some examples of indexing 1D Arrays in <code class="docutils literal notranslate"><span class="pre">NumPy</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 1D array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+
+<span class="c1"># Accessing the first element</span>
+<span class="n">first_element</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First element: </span><span class="si">{</span><span class="n">first_element</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Accessing the last element</span>
+<span class="n">last_element</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Last element: </span><span class="si">{</span><span class="n">last_element</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First element: 10
+Last element: 50
+</pre></div>
+</div>
+</div>
+</div>
+<p>In 2D arrays, you can specify both row and column indices to access a particular element.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2D array</span>
+<span class="n">arr_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="n">arr_2d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accessing the element in the first row and second column</span>
+<span class="n">element</span> <span class="o">=</span> <span class="n">arr_2d</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Element at row 1, column 2: </span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Accessing the element in the last row and last column</span>
+<span class="n">element_last</span> <span class="o">=</span> <span class="n">arr_2d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Element at last row, last column: </span><span class="si">{</span><span class="n">element_last</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Element at row 1, column 2: 2
+Element at last row, last column: 9
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="slicing-in-numpy">
+<h4><span class="section-number">8.3.7.2. </span>Slicing in NumPy<a class="headerlink" href="#slicing-in-numpy" title="Link to this heading">#</a></h4>
+<p>Slicing allows you to access a subset of an array. You can use the : symbol to specify a range of indices.</p>
+<p><strong>Example: Slicing 1D Arrays in NumPy</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 1D array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+
+<span class="c1"># Slice elements from index 1 to 3 (exclusive)</span>
+<span class="n">slice_1d</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Slice from index 1 to 3: </span><span class="si">{</span><span class="n">slice_1d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Slice all elements from index 2 onwards</span>
+<span class="n">slice_2d</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Slice from index 2 onwards: </span><span class="si">{</span><span class="n">slice_2d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slice from index 1 to 3: [20 30 40]
+Slice from index 2 onwards: [30 40 50]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Example: Slicing 2D Arrays in NumPy</strong></p>
+<p>When slicing a 2D array, you can slice both rows and columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2D array</span>
+<span class="n">arr_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+<span class="n">arr_2d</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Slice the first two rows and all columns</span>
+<span class="n">slice_2d</span> <span class="o">=</span> <span class="n">arr_2d</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sliced 2D array (first two rows):</span><span class="se">\n</span><span class="si">{</span><span class="n">slice_2d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Slice the last two rows and the first two columns</span>
+<span class="n">slice_2d_partial</span> <span class="o">=</span> <span class="n">arr_2d</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sliced 2D array (last two rows, first two columns):</span><span class="se">\n</span><span class="si">{</span><span class="n">slice_2d_partial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sliced 2D array (first two rows):
+[[1 2 3]
+ [4 5 6]]
+Sliced 2D array (last two rows, first two columns):
+[[4 5]
+ [7 8]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="boolean-indexing">
+<h4><span class="section-number">8.3.7.3. </span>Boolean Indexing<a class="headerlink" href="#boolean-indexing" title="Link to this heading">#</a></h4>
+<p>You can also use Boolean conditions to filter elements of an array.</p>
+<p><strong>Example: Boolean Indexing</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 1D array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+
+<span class="c1"># Boolean condition to select elements greater than 25</span>
+<span class="n">condition</span> <span class="o">=</span> <span class="n">arr</span> <span class="o">&gt;</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Boolean condition: </span><span class="si">{</span><span class="n">condition</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Use the condition to filter the array</span>
+<span class="n">filtered_arr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">condition</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Filtered array (elements &gt; 25): </span><span class="si">{</span><span class="n">filtered_arr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Boolean condition: [False False  True  True  True]
+Filtered array (elements &gt; 25): [30 40 50]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="iterating-over-arrays">
+<h4><span class="section-number">8.3.7.4. </span>Iterating Over Arrays<a class="headerlink" href="#iterating-over-arrays" title="Link to this heading">#</a></h4>
+<p>You can iterate over NumPy arrays to access or modify elements. For 1D arrays, you can simply loop through the elements. For multi-dimensional arrays, you may want to iterate through rows or columns.</p>
+<p><strong>Example: Iterating Over a 1D Array</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 1D array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+
+<span class="c1"># Iterating through the array</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Element: </span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Element: 10
+Element: 20
+Element: 30
+Element: 40
+Element: 50
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Example: Iterating Over a 2D Array</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2D array</span>
+<span class="n">arr_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+
+<span class="c1"># Iterating through rows of the 2D array</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iterating over rows:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">arr_2d</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># Iterating through each element of the 2D array</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Iterating over each element:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">arr_2d</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iterating over rows:
+[1 2 3]
+[4 5 6]
+[7 8 9]
+
+Iterating over each element:
+1 2 3 4 5 6 7 8 9 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="modifying-array-elements">
+<h3><span class="section-number">8.3.8. </span>Modifying Array Elements<a class="headerlink" href="#modifying-array-elements" title="Link to this heading">#</a></h3>
+<p>You can also use indexing and slicing to modify elements of the array.</p>
+<p><strong>Example: Modifying Elements</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 1D array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">])</span>
+
+<span class="c1"># Modify the element at index 1</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Modified array: </span><span class="si">{</span><span class="n">arr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Modify multiple elements using slicing</span>
+<span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">35</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Modified array with slicing: </span><span class="si">{</span><span class="n">arr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Modified array: [10 25 30 40 50]
+Modified array with slicing: [10 25 35 45 50]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="working-with-geospatial-coordinates">
-<h3><span class="section-number">8.3.3. </span>Working with Geospatial Coordinates<a class="headerlink" href="#working-with-geospatial-coordinates" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">8.3.9. </span>Working with Geospatial Coordinates<a class="headerlink" href="#working-with-geospatial-coordinates" title="Link to this heading">#</a></h3>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> to perform calculations on arrays of geospatial coordinates, such as converting from degrees to radians.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -718,7 +1097,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">Pandas</span></code> is a powerful data manipulation library that provides data structures like Series and DataFrames to work with structured data. It is especially useful for handling tabular data.</p>
 <section id="creating-pandas-series-and-dataframes">
 <h3><span class="section-number">8.4.1. </span>Creating Pandas Series and DataFrames<a class="headerlink" href="#creating-pandas-series-and-dataframes" title="Link to this heading">#</a></h3>
-<p>Let’s create a <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> Series and DataFrame.</p>
+<p>Let’s create a <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> Series and DataFrame. Each column in a DataFrame is a Series.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -951,128 +1330,18 @@ Name: Latitude, dtype: float64
 </div></div></div>
 </div>
 </section>
-<section id="analyzing-geospatial-data">
-<h3><span class="section-number">8.4.3. </span>Analyzing Geospatial Data<a class="headerlink" href="#analyzing-geospatial-data" title="Link to this heading">#</a></h3>
-<p>In this example, we analyze a dataset of cities, calculating the distance between each pair using the Haversine formula.</p>
+<section id="grouping-and-aggregation">
+<h3><span class="section-number">8.4.3. </span>Grouping and Aggregation<a class="headerlink" href="#grouping-and-aggregation" title="Link to this heading">#</a></h3>
+<p>Pandas allows you to group data and perform aggregate functions, which is useful in summarizing large datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the Haversine formula using NumPy</span>
-<span class="k">def</span> <span class="nf">haversine_np</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">):</span>
-    <span class="n">R</span> <span class="o">=</span> <span class="mf">6371.0</span>  <span class="c1"># Earth radius in kilometers</span>
-    <span class="n">dlat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span>
-    <span class="n">dlon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
-        <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat1</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlon</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
-    <span class="p">)</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
-    <span class="n">distance</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">c</span>
-    <span class="k">return</span> <span class="n">distance</span>
-
-
-<span class="c1"># Create a new DataFrame with city pairs</span>
-<span class="n">city_pairs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">{</span>
-        <span class="s2">&quot;City1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;City2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;Lat1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">35.6895</span><span class="p">,</span> <span class="mf">34.0522</span><span class="p">],</span>
-        <span class="s2">&quot;Lon1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6917</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">],</span>
-        <span class="s2">&quot;Lat2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">34.0522</span><span class="p">,</span> <span class="mf">51.5074</span><span class="p">,</span> <span class="mf">51.5074</span><span class="p">],</span>
-        <span class="s2">&quot;Lon2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">],</span>
-    <span class="p">}</span>
-<span class="p">)</span>
-
-<span class="c1"># Calculate distances between city pairs</span>
-<span class="n">city_pairs</span><span class="p">[</span><span class="s2">&quot;Distance_km&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">haversine_np</span><span class="p">(</span>
-    <span class="n">city_pairs</span><span class="p">[</span><span class="s2">&quot;Lat1&quot;</span><span class="p">],</span> <span class="n">city_pairs</span><span class="p">[</span><span class="s2">&quot;Lon1&quot;</span><span class="p">],</span> <span class="n">city_pairs</span><span class="p">[</span><span class="s2">&quot;Lat2&quot;</span><span class="p">],</span> <span class="n">city_pairs</span><span class="p">[</span><span class="s2">&quot;Lon2&quot;</span><span class="p">]</span>
-<span class="p">)</span>
-<span class="n">city_pairs</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>City1</th>
-      <th>City2</th>
-      <th>Lat1</th>
-      <th>Lon1</th>
-      <th>Lat2</th>
-      <th>Lon2</th>
-      <th>Distance_km</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Tokyo</td>
-      <td>Los Angeles</td>
-      <td>35.6895</td>
-      <td>139.6917</td>
-      <td>34.0522</td>
-      <td>-118.2437</td>
-      <td>8815.473356</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Tokyo</td>
-      <td>London</td>
-      <td>35.6895</td>
-      <td>139.6917</td>
-      <td>51.5074</td>
-      <td>-0.1278</td>
-      <td>9558.713695</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Los Angeles</td>
-      <td>London</td>
-      <td>34.0522</td>
-      <td>-118.2437</td>
-      <td>51.5074</td>
-      <td>-0.1278</td>
-      <td>8755.602341</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</section>
-</section>
-<section id="combining-numpy-and-pandas">
-<h2><span class="section-number">8.5. </span>Combining NumPy and Pandas<a class="headerlink" href="#combining-numpy-and-pandas" title="Link to this heading">#</a></h2>
-<p>You can combine <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> and <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> to perform complex data manipulations. For instance, you might want to apply <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> functions to a <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> DataFrame or use <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> to organize and visualize the results of <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> operations.</p>
-<p>Let’s say you have a dataset of cities, and you want to calculate the average distance from each city to all other cities.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to calculate distances from a city to all other cities</span>
-<span class="k">def</span> <span class="nf">calculate_average_distance</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="n">lat1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">lon1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-    <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">)</span>
-    <span class="n">distances</span> <span class="o">=</span> <span class="n">haversine_np</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">)</span>
-    <span class="n">avg_distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">avg_distances</span>
-
-
-<span class="c1"># Apply the function to calculate average distances</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Avg_Distance_km&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_average_distance</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Paris&quot;</span><span class="p">,</span> <span class="s2">&quot;Chicago&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Country&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Japan&quot;</span><span class="p">,</span> <span class="s2">&quot;USA&quot;</span><span class="p">,</span> <span class="s2">&quot;UK&quot;</span><span class="p">,</span> <span class="s2">&quot;France&quot;</span><span class="p">,</span> <span class="s2">&quot;USA&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Population&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">37400068</span><span class="p">,</span> <span class="mi">3970000</span><span class="p">,</span> <span class="mi">9126366</span><span class="p">,</span> <span class="mi">2140526</span><span class="p">,</span> <span class="mi">2665000</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -1097,41 +1366,361 @@ Name: Latitude, dtype: float64
     <tr style="text-align: right;">
       <th></th>
       <th>City</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Lat_Radians</th>
-      <th>Avg_Distance_km</th>
+      <th>Country</th>
+      <th>Population</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
       <td>Tokyo</td>
-      <td>35.6895</td>
-      <td>139.6917</td>
-      <td>0.622899</td>
-      <td>5624.601390</td>
+      <td>Japan</td>
+      <td>37400068</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Los Angeles</td>
-      <td>34.0522</td>
-      <td>-118.2437</td>
-      <td>0.594323</td>
-      <td>5294.682354</td>
+      <td>USA</td>
+      <td>3970000</td>
     </tr>
     <tr>
       <th>2</th>
       <td>London</td>
-      <td>51.5074</td>
-      <td>-0.1278</td>
-      <td>0.898974</td>
-      <td>7041.924003</td>
+      <td>UK</td>
+      <td>9126366</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Paris</td>
+      <td>France</td>
+      <td>2140526</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Chicago</td>
+      <td>USA</td>
+      <td>2665000</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group by &#39;Country&#39; and calculate the total population for each country</span>
+<span class="n">df_grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Country&quot;</span><span class="p">)[</span><span class="s2">&quot;Population&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Population by Country:</span><span class="se">\n</span><span class="si">{</span><span class="n">df_grouped</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total Population by Country:
+Country
+France     2140526
+Japan     37400068
+UK         9126366
+USA        6635000
+Name: Population, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="merging-dataframes">
+<h3><span class="section-number">8.4.4. </span>Merging DataFrames<a class="headerlink" href="#merging-dataframes" title="Link to this heading">#</a></h3>
+<p>Merging datasets is essential when combining different geospatial datasets, such as joining city data with demographic information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating two DataFrames to merge</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">],</span> <span class="s2">&quot;Country&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Japan&quot;</span><span class="p">,</span> <span class="s2">&quot;USA&quot;</span><span class="p">,</span> <span class="s2">&quot;UK&quot;</span><span class="p">]}</span>
+<span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Population&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">37400068</span><span class="p">,</span> <span class="mi">3970000</span><span class="p">,</span> <span class="mi">9126366</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City</th>
+      <th>Country</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tokyo</td>
+      <td>Japan</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Los Angeles</td>
+      <td>USA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>London</td>
+      <td>UK</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City</th>
+      <th>Population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tokyo</td>
+      <td>37400068</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Los Angeles</td>
+      <td>3970000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>London</td>
+      <td>9126366</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Merge the two DataFrames on the &#39;City&#39; column</span>
+<span class="n">df_merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;City&quot;</span><span class="p">)</span>
+<span class="n">df_merged</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tokyo</td>
+      <td>Japan</td>
+      <td>37400068</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Los Angeles</td>
+      <td>USA</td>
+      <td>3970000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>London</td>
+      <td>UK</td>
+      <td>9126366</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="handling-missing-data">
+<h3><span class="section-number">8.4.5. </span>Handling Missing Data<a class="headerlink" href="#handling-missing-data" title="Link to this heading">#</a></h3>
+<p>In real-world datasets, missing data is common. Pandas provides tools to handle missing data, such as filling or removing missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a DataFrame with missing values</span>
+<span class="n">data_with_nan</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;Paris&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Population&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">37400068</span><span class="p">,</span> <span class="mi">3970000</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">2140526</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">df_nan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_with_nan</span><span class="p">)</span>
+<span class="n">df_nan</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City</th>
+      <th>Population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tokyo</td>
+      <td>37400068.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Los Angeles</td>
+      <td>3970000.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>London</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Paris</td>
+      <td>2140526.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fill missing values with the mean population</span>
+<span class="n">df_filled</span> <span class="o">=</span> <span class="n">df_nan</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_nan</span><span class="p">[</span><span class="s2">&quot;Population&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="n">df_filled</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City</th>
+      <th>Population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tokyo</td>
+      <td>3.740007e+07</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Los Angeles</td>
+      <td>3.970000e+06</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>London</td>
+      <td>1.450353e+07</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Paris</td>
+      <td>2.140526e+06</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="reading-geospatial-data-from-a-csv-file">
+<h3><span class="section-number">8.4.6. </span>Reading Geospatial Data from a CSV File<a class="headerlink" href="#reading-geospatial-data-from-a-csv-file" title="Link to this heading">#</a></h3>
 <p>Pandas can read and write data in various formats, such as CSV, Excel, and SQL databases. This makes it easy to load and save data from different sources. For example, you can read a CSV file into a Pandas DataFrame and then perform operations on the data.</p>
 <p>Let’s read a CSV file from an HTTP URL into a Pandas DataFrame and display the first few rows of the data.</p>
 <div class="cell docutils container">
@@ -1233,6 +1822,393 @@ Name: Latitude, dtype: float64
 </div>
 </div>
 </section>
+<section id="creating-plots-with-pandas">
+<h3><span class="section-number">8.4.7. </span>Creating plots with Pandas<a class="headerlink" href="#creating-plots-with-pandas" title="Link to this heading">#</a></h3>
+<p>Pandas provides built-in plotting capabilities that allow you to create various types of plots directly from DataFrames.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the dataset from an online source</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/pandas-dev/pandas/main/doc/data/air_quality_no2.csv&quot;</span>
+<span class="n">air_quality</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Display the first few rows of the dataset</span>
+<span class="n">air_quality</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station_antwerp</th>
+      <th>station_paris</th>
+      <th>station_london</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-05-07 02:00:00</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 03:00:00</th>
+      <td>50.5</td>
+      <td>25.0</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 04:00:00</th>
+      <td>45.0</td>
+      <td>27.7</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 05:00:00</th>
+      <td>NaN</td>
+      <td>50.4</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>2019-05-07 06:00:00</th>
+      <td>NaN</td>
+      <td>61.9</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>To do a quick visual check of the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;datetime&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/52b6d380ef89c6ed309d33d6fb9c0f30ab50d389c54861c6d75ce9307ad56308.png" src="../../_images/52b6d380ef89c6ed309d33d6fb9c0f30ab50d389c54861c6d75ce9307ad56308.png" />
+</div>
+</div>
+<p>To plot only the columns of the data table with the data from Paris.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="p">[</span><span class="s2">&quot;station_paris&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;datetime&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/cf0a2c5ef902c597987491bff1d6447e6caff295eb664efbb0bae77f09081242.png" src="../../_images/cf0a2c5ef902c597987491bff1d6447e6caff295eb664efbb0bae77f09081242.png" />
+</div>
+</div>
+<p>To visually compare the values measured in London versus Paris.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;station_london&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;station_paris&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;station_london&#39;, ylabel=&#39;station_paris&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/429bd62104da6e889f24de74026c6ea378a0674a303be16fdafa5b9bb3b35fb6.png" src="../../_images/429bd62104da6e889f24de74026c6ea378a0674a303be16fdafa5b9bb3b35fb6.png" />
+</div>
+</div>
+<p>To visualize each of the columns in a separate subplot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">air_quality</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">area</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;Axes: xlabel=&#39;datetime&#39;&gt;, &lt;Axes: xlabel=&#39;datetime&#39;&gt;,
+       &lt;Axes: xlabel=&#39;datetime&#39;&gt;], dtype=object)
+</pre></div>
+</div>
+<img alt="../../_images/38e75ca2ef865062eca603284480f623d4c712b8fed197b5fc13c2f8fe25923c.png" src="../../_images/38e75ca2ef865062eca603284480f623d4c712b8fed197b5fc13c2f8fe25923c.png" />
+</div>
+</div>
+</section>
+<section id="analyzing-geospatial-data">
+<h3><span class="section-number">8.4.8. </span>Analyzing Geospatial Data<a class="headerlink" href="#analyzing-geospatial-data" title="Link to this heading">#</a></h3>
+<p>In this example, we analyze a dataset of cities, calculating the distance between each pair using the Haversine formula.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the Haversine formula using NumPy</span>
+<span class="k">def</span> <span class="nf">haversine_np</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">):</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="mf">6371.0</span>  <span class="c1"># Earth radius in kilometers</span>
+    <span class="n">dlat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span> <span class="o">-</span> <span class="n">lat1</span><span class="p">)</span>
+    <span class="n">dlon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lon2</span> <span class="o">-</span> <span class="n">lon1</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+        <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat1</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">lat2</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">dlon</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">a</span><span class="p">))</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">c</span>
+    <span class="k">return</span> <span class="n">distance</span>
+
+
+<span class="c1"># Create a new DataFrame with city pairs</span>
+<span class="n">city_pairs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;City1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;City2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Lat1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">35.6895</span><span class="p">,</span> <span class="mf">34.0522</span><span class="p">],</span>
+        <span class="s2">&quot;Lon1&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6917</span><span class="p">,</span> <span class="mf">139.6917</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">],</span>
+        <span class="s2">&quot;Lat2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">34.0522</span><span class="p">,</span> <span class="mf">51.5074</span><span class="p">,</span> <span class="mf">51.5074</span><span class="p">],</span>
+        <span class="s2">&quot;Lon2&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">city_pairs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City1</th>
+      <th>City2</th>
+      <th>Lat1</th>
+      <th>Lon1</th>
+      <th>Lat2</th>
+      <th>Lon2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tokyo</td>
+      <td>Los Angeles</td>
+      <td>35.6895</td>
+      <td>139.6917</td>
+      <td>34.0522</td>
+      <td>-118.2437</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Tokyo</td>
+      <td>London</td>
+      <td>35.6895</td>
+      <td>139.6917</td>
+      <td>51.5074</td>
+      <td>-0.1278</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Los Angeles</td>
+      <td>London</td>
+      <td>34.0522</td>
+      <td>-118.2437</td>
+      <td>51.5074</td>
+      <td>-0.1278</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate distances between city pairs</span>
+<span class="n">city_pairs</span><span class="p">[</span><span class="s2">&quot;Distance_km&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">haversine_np</span><span class="p">(</span>
+    <span class="n">city_pairs</span><span class="p">[</span><span class="s2">&quot;Lat1&quot;</span><span class="p">],</span> <span class="n">city_pairs</span><span class="p">[</span><span class="s2">&quot;Lon1&quot;</span><span class="p">],</span> <span class="n">city_pairs</span><span class="p">[</span><span class="s2">&quot;Lat2&quot;</span><span class="p">],</span> <span class="n">city_pairs</span><span class="p">[</span><span class="s2">&quot;Lon2&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">city_pairs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City1</th>
+      <th>City2</th>
+      <th>Lat1</th>
+      <th>Lon1</th>
+      <th>Lat2</th>
+      <th>Lon2</th>
+      <th>Distance_km</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tokyo</td>
+      <td>Los Angeles</td>
+      <td>35.6895</td>
+      <td>139.6917</td>
+      <td>34.0522</td>
+      <td>-118.2437</td>
+      <td>8815.473356</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Tokyo</td>
+      <td>London</td>
+      <td>35.6895</td>
+      <td>139.6917</td>
+      <td>51.5074</td>
+      <td>-0.1278</td>
+      <td>9558.713695</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Los Angeles</td>
+      <td>London</td>
+      <td>34.0522</td>
+      <td>-118.2437</td>
+      <td>51.5074</td>
+      <td>-0.1278</td>
+      <td>8755.602341</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="combining-numpy-and-pandas">
+<h2><span class="section-number">8.5. </span>Combining NumPy and Pandas<a class="headerlink" href="#combining-numpy-and-pandas" title="Link to this heading">#</a></h2>
+<p>You can combine <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> and <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> to perform complex data manipulations. For instance, you might want to apply <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> functions to a <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> DataFrame or use <code class="docutils literal notranslate"><span class="pre">Pandas</span></code> to organize and visualize the results of <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> operations.</p>
+<p>Let’s say you have a dataset of cities, and you want to calculate the average distance from each city to all other cities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to calculate distances from a city to all other cities</span>
+<span class="k">def</span> <span class="nf">calculate_average_distance</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">lat1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Latitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">lon1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Longitude&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">)</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">haversine_np</span><span class="p">(</span><span class="n">lat1</span><span class="p">,</span> <span class="n">lon1</span><span class="p">,</span> <span class="n">lat2</span><span class="p">,</span> <span class="n">lon2</span><span class="p">)</span>
+    <span class="n">avg_distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">distances</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">avg_distances</span>
+
+
+<span class="c1"># Creating a DataFrame</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;City&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tokyo&quot;</span><span class="p">,</span> <span class="s2">&quot;Los Angeles&quot;</span><span class="p">,</span> <span class="s2">&quot;London&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;Latitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">35.6895</span><span class="p">,</span> <span class="mf">34.0522</span><span class="p">,</span> <span class="mf">51.5074</span><span class="p">],</span>
+    <span class="s2">&quot;Longitude&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">139.6917</span><span class="p">,</span> <span class="o">-</span><span class="mf">118.2437</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1278</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Apply the function to calculate average distances</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Avg_Distance_km&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_average_distance</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>City</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Avg_Distance_km</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Tokyo</td>
+      <td>35.6895</td>
+      <td>139.6917</td>
+      <td>5624.601390</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Los Angeles</td>
+      <td>34.0522</td>
+      <td>-118.2437</td>
+      <td>5294.682354</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>London</td>
+      <td>51.5074</td>
+      <td>-0.1278</td>
+      <td>7041.924003</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
 <section id="exercises">
 <h2><span class="section-number">8.6. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
@@ -1316,13 +2292,30 @@ Name: Latitude, dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-numpy">8.3. Introduction to NumPy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-numpy-arrays">8.3.1. Creating NumPy Arrays</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-array-operations">8.3.2. Basic Array Operations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-geospatial-coordinates">8.3.3. Working with Geospatial Coordinates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reshaping-arrays">8.3.3. Reshaping Arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-functions-on-arrays">8.3.4. Mathematical Functions on Arrays</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-operations">8.3.5. Statistical Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-data-generation-for-simulation">8.3.6. Random Data Generation for Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-slicing-and-iterating">8.3.7. Indexing, Slicing, and Iterating</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-in-numpy">8.3.7.1. Indexing in NumPy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing-in-numpy">8.3.7.2. Slicing in NumPy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-indexing">8.3.7.3. Boolean Indexing</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-over-arrays">8.3.7.4. Iterating Over Arrays</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-array-elements">8.3.8. Modifying Array Elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-geospatial-coordinates">8.3.9. Working with Geospatial Coordinates</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-pandas">8.4. Introduction to Pandas</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-pandas-series-and-dataframes">8.4.1. Creating Pandas Series and DataFrames</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-dataframe-operations">8.4.2. Basic DataFrame Operations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-geospatial-data">8.4.3. Analyzing Geospatial Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-and-aggregation">8.4.3. Grouping and Aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#merging-dataframes">8.4.4. Merging DataFrames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-missing-data">8.4.5. Handling Missing Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-geospatial-data-from-a-csv-file">8.4.6. Reading Geospatial Data from a CSV File</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-plots-with-pandas">8.4.7. Creating plots with Pandas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-geospatial-data">8.4.8. Analyzing Geospatial Data</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-numpy-and-pandas">8.5. Combining NumPy and Pandas</a></li>
