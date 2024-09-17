@@ -76,7 +76,7 @@ Once you've set up your environment, it's important to verify that everything is
 1. Import the `leafmap` library:
 
 ```{code-cell} ipython3
-import leafmap
+import leafmap.foliumap as leafmap
 ```
 
 2. Create an interactive map using leafmap.Map() and display it:
