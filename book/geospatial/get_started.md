@@ -60,7 +60,7 @@ conda activate geo
 
 ### 3. Install Geospatial Libraries
 
-To manage the installation of multiple geospatial libraries more efficiently, we'll use mamba, a faster alternative to conda. Install it first, then proceed with the geospatial libraries:
+To manage the installation of multiple geospatial libraries more efficiently, we'll use mamba, a faster alternative to conda. Install it first, then proceed with the [geospatial](https://geospatial.gishub.org) package, which includes many of the libraries we'll use in this book:
 
 ```bash
 conda install -c conda-forge mamba
@@ -76,7 +76,7 @@ Once you've set up your environment, it's important to verify that everything is
 1. Import the `leafmap` library:
 
 ```{code-cell} ipython3
-import leafmap
+import leafmap.foliumap as leafmap
 ```
 
 2. Create an interactive map using leafmap.Map() and display it:

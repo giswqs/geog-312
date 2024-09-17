@@ -31,3 +31,4 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+book/geospatial/nyc_boroughs.*
