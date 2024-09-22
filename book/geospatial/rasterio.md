@@ -15,11 +15,21 @@ kernelspec:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/rasterio.ipynb)
 
-## Introduction
+## Overview
 
 [Rasterio](https://rasterio.readthedocs.io/) is a Python library that allows you to read, write, and analyze geospatial raster data. Built on top of [GDAL](https://gdal.org) (Geospatial Data Abstraction Library), it provides an efficient interface to work with raster datasets, such as satellite images, digital elevation models (DEMs), and other gridded data. Rasterio simplifies common geospatial tasks and helps to bridge the gap between raw geospatial data and analysis, especially when combined with other Python libraries like `numpy`, `pandas`, and `matplotlib`.
 
 Raster data is essentially a grid of pixels (cells), where each pixel contains a value representing some geographic information such as elevation, temperature, or reflectance. Rasterio provides an easy way to handle these data types while preserving their georeferenced characteristics.
+
+## Learning Objectives
+
+By the end of this lecture, you should be able to:
+
+- Read, write, and manipulate raster datasets using the Rasterio library.
+- Extract metadata and perform operations on raster bands.
+- Visualize raster datasets and overlay them with vector data.
+- Perform geospatial operations such as clipping, reprojecting, and raster algebra.
+- Apply Rasterio to practical geospatial analysis tasks, such as calculating indices and manipulating raster data for specific use cases.
 
 +++
 
