@@ -6,7 +6,7 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.16.4
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -28,7 +28,7 @@ Raster data is essentially a grid of pixels (cells), where each pixel contains a
 Before working with Rasterio, you need to install the library. You can do this by running the following command in your Python environment. Uncomment the line below if you're working in a Jupyter notebook or other interactive Python environment.
 
 ```{code-cell} ipython3
-# %pip install rasterio
+# %pip install rasterio fiona
 ```
 
 ## Importing libraries
@@ -43,11 +43,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 ```
 
-- `rasterio`: The main library for reading and writing raster data.
-- `rasterio.plot`: A submodule of Rasterio for plotting raster data.
-- `geopandas`: A popular library for handling vector geospatial data.
-- `numpy`: A powerful library for array manipulations, which is very useful for raster data.
-- `matplotlib`: A standard plotting library in Python for creating visualizations.
+* `rasterio`: The main library for reading and writing raster data.
+* `rasterio.plot`: A submodule of Rasterio for plotting raster data.
+* `geopandas`: A popular library for handling vector geospatial data.
+* `numpy`: A powerful library for array manipulations, which is very useful for raster data.
+* `matplotlib`: A standard plotting library in Python for creating visualizations.
 
 +++
 
@@ -269,15 +269,15 @@ This dataset contains multiple bands, each corresponding to a specific wavelengt
 
 +++
 
-| Name  | Wavelength     | Description                                              |
-| ----- | -------------- | -------------------------------------------------------- |
-| SR_B1 | 0.435-0.451 μm | Band 1 (ultra blue, coastal aerosol) surface reflectance |
-| SR_B2 | 0.452-0.512 μm | Band 2 (blue) surface reflectance                        |
-| SR_B3 | 0.533-0.590 μm | Band 3 (green) surface reflectance                       |
-| SR_B4 | 0.636-0.673 μm | Band 4 (red) surface reflectance                         |
-| SR_B5 | 0.851-0.879 μm | Band 5 (near infrared) surface reflectance               |
-| SR_B6 | 1.566-1.651 μm | Band 6 (shortwave infrared 1) surface reflectance        |
-| SR_B7 | 2.107-2.294 μm | Band 7 (shortwave infrared 2) surface reflectance        |
+| Name   | Wavelength       | Description                                        |
+|--------|------------------|----------------------------------------------------|
+| SR_B1  | 0.435-0.451 μm   | Band 1 (ultra blue, coastal aerosol) surface reflectance |
+| SR_B2  | 0.452-0.512 μm   | Band 2 (blue) surface reflectance                   |
+| SR_B3  | 0.533-0.590 μm   | Band 3 (green) surface reflectance                  |
+| SR_B4  | 0.636-0.673 μm   | Band 4 (red) surface reflectance                    |
+| SR_B5  | 0.851-0.879 μm   | Band 5 (near infrared) surface reflectance          |
+| SR_B6  | 1.566-1.651 μm   | Band 6 (shortwave infrared 1) surface reflectance   |
+| SR_B7  | 2.107-2.294 μm   | Band 7 (shortwave infrared 2) surface reflectance   |
 
 For convenience, let's define a list of human-readable band names:
 
@@ -633,7 +633,6 @@ with rasterio.open(
 ## Exercises
 
 ### Sample datasets:
-
 - Singlg-band image (DEM): https://github.com/opengeos/datasets/releases/download/raster/dem_90m.tif
 - Multispectral image (Landsat): https://github.com/opengeos/datasets/releases/download/raster/cog.tif
 
@@ -660,7 +659,7 @@ with rasterio.open(
 1. Open the multispectral image and extract the Green and Near-Infrared (NIR) bands.
 2. Compute the Normalized Difference Water Index ([NDWI](https://en.wikipedia.org/wiki/Normalized_difference_water_index)) using the formula:
 
-   NDWI= (Green - NIR) / (Green + NIR)
+    NDWI= (Green - NIR) / (Green + NIR)
 
 3. Visualize the NDWI result using a water-friendly colormap (e.g., cmap='Blues') to highlight water bodies.
 4. Save the resulting NDWI image as a new raster file named ndwi.tif.

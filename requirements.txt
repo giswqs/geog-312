@@ -1,3 +1,4 @@
+fiona
 geemap==0.34.*
 # geospatial==0.10.*
 geopandas
