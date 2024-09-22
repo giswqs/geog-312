@@ -58,6 +58,9 @@ Before we start, ensure that Xarray is installed. You can install it via pip:
 import matplotlib.pyplot as plt
 import numpy as np
 import xarray as xr
+
+xr.set_options(keep_attrs=True, display_expand_data=False)
+np.set_printoptions(threshold=10, edgeitems=2)
 ```
 
 ## Xarray Data Structures
@@ -185,7 +188,7 @@ temperature = ds["air"]
 ```{code-cell} ipython3
 # Perform operations on the Dataset
 mean_temp_ds = ds.mean(dim="time")
-print(mean_temp_ds)
+mean_temp_ds
 ```
 
 ## Why Use Xarray?
