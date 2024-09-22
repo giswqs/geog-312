@@ -632,29 +632,42 @@ with rasterio.open(
 
 ## Exercises
 
-### Sample datasets:
+**Sample datasets**
+
 - Singlg-band image (DEM): https://github.com/opengeos/datasets/releases/download/raster/dem_90m.tif
 - Multispectral image (Landsat): https://github.com/opengeos/datasets/releases/download/raster/cog.tif
 
-### Exercise 1: Reading and Exploring Raster Data
+**Exercise 1: Reading and Exploring Raster Data**
 
 1. Open the single-band DEM image using `rasterio`.
 2. Retrieve and print the raster metadata, including the CRS, resolution, bounds, number of bands, and data types.
 3. Display the raster’s width, height, and pixel data types to understand the grid dimensions and data structure.
 
-### Exercise 2: Visualizing and Manipulating Raster Bands
+```{code-cell} ipython3
+
+```
+
+**Exercise 2: Visualizing and Manipulating Raster Bands**
 
 1. Visualize the single-band DEM using a custom colormap (e.g., cmap='terrain').
 2. Open the multispectral image and visualize the first band using a suitable colormap.
 3. Combine multiple bands from the multispectral image (e.g., Red, Green, and Blue) and stack them to create an RGB composite image.
 
-### Exercise 3: Raster Clipping with Array Indexing
+```{code-cell} ipython3
+
+```
+
+**Exercise 3: Raster Clipping with Array Indexing**
 
 1. Open the multispectral image and clip a geographic subset using array indexing (specifying row and column ranges).
 2. Visualize the clipped portion of the image using matplotlib to ensure the subset is correct.
 3. Save the clipped raster subset to a new file named `clipped_multispectral.tif`.
 
-### Exercise 4: Calculating NDWI (Band Math)
+```{code-cell} ipython3
+
+```
+
+**Exercise 4: Calculating NDWI (Band Math)**
 
 1. Open the multispectral image and extract the Green and Near-Infrared (NIR) bands.
 2. Compute the Normalized Difference Water Index ([NDWI](https://en.wikipedia.org/wiki/Normalized_difference_water_index)) using the formula:
@@ -664,7 +677,11 @@ with rasterio.open(
 3. Visualize the NDWI result using a water-friendly colormap (e.g., cmap='Blues') to highlight water bodies.
 4. Save the resulting NDWI image as a new raster file named ndwi.tif.
 
-### Exercise 5: Reprojecting Raster Data
+```{code-cell} ipython3
+
+```
+
+**Exercise 5: Reprojecting Raster Data**
 
 1. Reproject the single-band DEM raster from its original CRS to EPSG:4326 (WGS 84) using the `rasterio.warp.reproject` function.
 2. Save the reprojected raster to a new GeoTIFF file named `reprojected_dem.tif`.
