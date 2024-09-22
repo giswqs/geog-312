@@ -1,9 +1,12 @@
+fiona
 geemap==0.34.*
 # geospatial==0.10.*
+geopandas
 ghp-import==2.1.*
 jupyter-book==1.0.*
 jupytext==1.16.*
 leafmap[maplibre]==0.37.*
 matplotlib==3.9.*
 numpy==2.1.*
+rasterio
 requests
