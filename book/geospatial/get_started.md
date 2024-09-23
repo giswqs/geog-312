@@ -43,7 +43,7 @@ To follow along with the examples and exercises in this book, you need to set up
 
 ### uv
 
-[uv](https://github.com/astral-sh/uv) is an extremely fast Python package and project manager, written in Rust. It is designed to be a drop-in replacement for pip. 
+[uv](https://github.com/astral-sh/uv) is an extremely fast Python package and project manager, written in Rust. It is designed to be a drop-in replacement for pip.
 
 #### Install uv
 
@@ -65,7 +65,7 @@ pip install uv
 To install the [geospatial](https://geospatial.gishub.org) package, which includes many of the libraries we'll use in this book, run the following commands:
 
 ```bash
-uv venv 
+uv venv
 
 # macOS and Linux:
 source .venv/bin/activate
