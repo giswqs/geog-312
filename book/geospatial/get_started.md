@@ -4,9 +4,9 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.16.2
+    jupytext_version: 1.16.4
 kernelspec:
-  display_name: Python 3
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -39,15 +39,52 @@ These libraries will be introduced progressively, and we'll explore their capabi
 
 ## Setting Up Your Python Environment
 
-To follow along with the examples and exercises in this book, you need to set up a Python environment with the required geospatial libraries. One of the easiest ways to manage packages and environments in Python is by using **conda**—a powerful package manager.
+To follow along with the examples and exercises in this book, you need to set up a Python environment with the required geospatial libraries. There are two main ways to set up your Python environment: using **uv** or **conda**.
 
-If you haven't already installed **conda**, follow these steps:
+### uv
 
-### 1. Install Miniconda
+[uv](https://github.com/astral-sh/uv) is an extremely fast Python package and project manager, written in Rust. It is designed to be a drop-in replacement for pip.
+
+#### Install uv
+
+You can install uv as follows:
+
+```bash
+# macOS and Linux:
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Windows:
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# pip
+pip install uv
+```
+
+#### Install geospatial
+
+To install the [geospatial](https://geospatial.gishub.org) package, which includes many of the libraries we'll use in this book, run the following commands:
+
+```bash
+uv venv
+
+# macOS and Linux:
+source .venv/bin/activate
+
+# Windows:
+.venv\Scripts\activate
+
+uv pip install geospatial
+uv pip install --find-links https://girder.github.io/large_image_wheels gdal pyproj
+```
+
+
+### conda
+
+#### Install Miniconda
 
 Miniconda is a lightweight version of Anaconda and provides all the core functionality needed to manage environments. You can download and install it from the official Miniconda page: [Miniconda Installation Guide](https://docs.anaconda.com/miniconda).
 
-### 2. Create a New Conda Environment
+#### Create a New Conda Environment
 
 Once Miniconda is installed, you can create a new environment specifically for geospatial programming. This isolates your geospatial tools from other Python projects, helping avoid version conflicts.
 
@@ -58,7 +95,7 @@ conda create -n geo python=3.11
 conda activate geo
 ```
 
-### 3. Install Geospatial Libraries
+#### Install Geospatial Libraries
 
 To manage the installation of multiple geospatial libraries more efficiently, we'll use mamba, a faster alternative to conda. Install it first, then proceed with the [geospatial](https://geospatial.gishub.org) package, which includes many of the libraries we'll use in this book:
 
