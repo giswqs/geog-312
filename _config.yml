@@ -79,6 +79,7 @@ sphinx:
           thebe: true,
         }
     bibtex_reference_style: author_year
+    exclude_patterns: [".venv"]
 
 # Define the name of the latex output file for PDF builds
 # latex:
