@@ -9,38 +9,44 @@ on:
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   build-book:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest]
-        python-version: ["3.11"]
+        python-version: ["3.12"]
+
     env:
       USE_MKDOCS: ${{ secrets.USE_MKDOCS }}
     steps:
       - uses: actions/checkout@v4
-
-      # Install dependencies
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
         with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install GDAL
-        run: |
-          python -m pip install --upgrade pip
-          pip install --no-cache-dir Cython
-          pip install --find-links=https://girder.github.io/large_image_wheels --no-cache GDAL
-      - name: Test GDAL installation
-        run: |
-          python -c "from osgeo import gdal"
-          gdalinfo --version
+          fetch-depth: 0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v2
+        with:
+          version: "0.4.12"
+          enable-cache: true
+
+      - name: Set up Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
+
       - name: Install dependencies
+        run: uv sync --python ${{ matrix.python-version }}
+
+      - name: Install optional dependencies
         run: |
-          pip install -r requirements.txt
+          uv pip install --find-links https://girder.github.io/large_image_wheels GDAL pyproj
+
+      - name: Test import
+        run: |
+          uv run python -c "import leafmap; print('leafmap import successful')"
+          uv run python -c "from osgeo import gdal; print('gdal import successful')"
+          uv run gdalinfo --version
 
       # Build the book
       - name: Build the book
         run: |
-          jupyter-book build .
+          uv run jupyter-book build .
 
       # Deploy the book's HTML to gh-pages branch
       - name: GitHub Pages action
