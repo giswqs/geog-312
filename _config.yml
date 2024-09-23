@@ -29,6 +29,7 @@ execute:
       "book/geospatial/samgeo.ipynb",
       "book/geospatial/hypercoast.ipynb",
       "book/geospatial/duckdb.ipynb",
+      ".venv/*",
     ] # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
   timeout: 100 # The maximum time (in seconds) each notebook cell is allowed to run.
   run_in_temp:
@@ -78,6 +79,7 @@ sphinx:
           thebe: true,
         }
     bibtex_reference_style: author_year
+    exclude_patterns: [".venv"]
 
 # Define the name of the latex output file for PDF builds
 # latex:
