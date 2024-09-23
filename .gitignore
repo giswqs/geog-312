@@ -12,6 +12,7 @@ __pycache__/
 *.geojson
 *.tif
 *.nc
+uv.lock
 
 private/
 .Python
