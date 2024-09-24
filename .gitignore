@@ -33,3 +33,6 @@ wheels/
 .installed.cfg
 *.egg
 book/geospatial/nyc_boroughs.*
+# pixi environments
+.pixi
+*.egg-info
