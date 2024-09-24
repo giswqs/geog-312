@@ -241,9 +241,9 @@ When visualizing raster data, colormaps help map pixel values to colors, while c
 Let's read the first band and plot it with a colormap:
 
 ```{code-cell} ipython3
-red_band = src.read(1)
+elev_band = src.read(1)
 plt.figure(figsize=(8, 8))
-plt.imshow(red_band, cmap="terrain")
+plt.imshow(elev_band, cmap="terrain")
 plt.colorbar(label="Elevation (meters)", shrink=0.5)
 plt.title("DEM with Terrain Colormap")
 plt.show()
