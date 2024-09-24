@@ -77,6 +77,38 @@ uv pip install geospatial
 uv pip install --find-links https://girder.github.io/large_image_wheels gdal pyproj
 ```
 
+### pixi
+
+[Pixi](https://pixi.sh) is a package management tool for installing libraries and applications in a reproducible way. It can install packages from the conda-forge channel, PyPI, and other sources. If you have trouble installing geospatial libraries like gdal using uv, you can try using pixi.
+
+#### Install pixi
+
+You can install pixi as follows:
+
+```bash
+# macOS and Linux:
+curl -fsSL https://pixi.sh/install.sh | bash
+
+# Windows:
+iwr -useb https://pixi.sh/install.ps1 | iex
+```
+
+Close and reopen your terminal or command prompt to make sure the pixi command is available.
+
+#### Install gdal
+
+To install the gdal and jupyterlab packages,run the following commands:
+
+```bash
+pixi init
+pixi add gdal jupyterlab
+```
+
+After installing the packages, you can open Jupyter Lab to start working with geospatial data:
+
+```bash
+pixi run jupyter lab
+```
 
 ### conda
 
