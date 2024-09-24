@@ -511,10 +511,15 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geospatial">9.2.1.2. Install geospatial</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">9.2.2. conda</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniconda">9.2.2.1. Install Miniconda</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-conda-environment">9.2.2.2. Create a New Conda Environment</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geospatial-libraries">9.2.2.3. Install Geospatial Libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pixi">9.2.2. pixi</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-pixi">9.2.2.1. Install pixi</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-gdal">9.2.2.2. Install gdal</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">9.2.3. conda</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniconda">9.2.3.1. Install Miniconda</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-conda-environment">9.2.3.2. Create a New Conda Environment</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geospatial-libraries">9.2.3.3. Install Geospatial Libraries</a></li>
 </ul>
 </li>
 </ul>
@@ -577,7 +582,7 @@ pip<span class="w"> </span>install<span class="w"> </span>uv
 <section id="install-geospatial">
 <h4><span class="section-number">9.2.1.2. </span>Install geospatial<a class="headerlink" href="#install-geospatial" title="Link to this heading">#</a></h4>
 <p>To install the <a class="reference external" href="https://geospatial.gishub.org">geospatial</a> package, which includes many of the libraries we’ll use in this book, run the following commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>venv<span class="w"> </span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>venv
 
 <span class="c1"># macOS and Linux:</span>
 <span class="nb">source</span><span class="w"> </span>.venv/bin/activate
@@ -591,14 +596,42 @@ uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </s
 </div>
 </section>
 </section>
+<section id="pixi">
+<h3><span class="section-number">9.2.2. </span>pixi<a class="headerlink" href="#pixi" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://pixi.sh">Pixi</a> is a package management tool for installing libraries and applications in a reproducible way. It can install packages from the conda-forge channel, PyPI, and other sources. If you have trouble installing geospatial libraries like gdal using uv, you can try using pixi.</p>
+<section id="install-pixi">
+<h4><span class="section-number">9.2.2.1. </span>Install pixi<a class="headerlink" href="#install-pixi" title="Link to this heading">#</a></h4>
+<p>You can install pixi as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># macOS and Linux:</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://pixi.sh/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+
+<span class="c1"># Windows:</span>
+iwr<span class="w"> </span>-useb<span class="w"> </span>https://pixi.sh/install.ps1<span class="w"> </span><span class="p">|</span><span class="w"> </span>iex
+</pre></div>
+</div>
+<p>Close and reopen your terminal or command prompt to make sure the pixi command is available.</p>
+</section>
+<section id="install-gdal">
+<h4><span class="section-number">9.2.2.2. </span>Install gdal<a class="headerlink" href="#install-gdal" title="Link to this heading">#</a></h4>
+<p>To install the gdal and jupyterlab packages,run the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pixi<span class="w"> </span>init
+pixi<span class="w"> </span>add<span class="w"> </span>gdal<span class="w"> </span>jupyterlab
+</pre></div>
+</div>
+<p>After installing the packages, you can open Jupyter Lab to start working with geospatial data:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pixi<span class="w"> </span>run<span class="w"> </span>jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+</section>
+</section>
 <section id="conda">
-<h3><span class="section-number">9.2.2. </span>conda<a class="headerlink" href="#conda" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">9.2.3. </span>conda<a class="headerlink" href="#conda" title="Link to this heading">#</a></h3>
 <section id="install-miniconda">
-<h4><span class="section-number">9.2.2.1. </span>Install Miniconda<a class="headerlink" href="#install-miniconda" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.2.3.1. </span>Install Miniconda<a class="headerlink" href="#install-miniconda" title="Link to this heading">#</a></h4>
 <p>Miniconda is a lightweight version of Anaconda and provides all the core functionality needed to manage environments. You can download and install it from the official Miniconda page: <a class="reference external" href="https://docs.anaconda.com/miniconda">Miniconda Installation Guide</a>.</p>
 </section>
 <section id="create-a-new-conda-environment">
-<h4><span class="section-number">9.2.2.2. </span>Create a New Conda Environment<a class="headerlink" href="#create-a-new-conda-environment" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.2.3.2. </span>Create a New Conda Environment<a class="headerlink" href="#create-a-new-conda-environment" title="Link to this heading">#</a></h4>
 <p>Once Miniconda is installed, you can create a new environment specifically for geospatial programming. This isolates your geospatial tools from other Python projects, helping avoid version conflicts.</p>
 <p>Run the following commands in your terminal or command prompt:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>geo<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.11
@@ -607,7 +640,7 @@ conda<span class="w"> </span>activate<span class="w"> </span>geo
 </div>
 </section>
 <section id="install-geospatial-libraries">
-<h4><span class="section-number">9.2.2.3. </span>Install Geospatial Libraries<a class="headerlink" href="#install-geospatial-libraries" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">9.2.3.3. </span>Install Geospatial Libraries<a class="headerlink" href="#install-geospatial-libraries" title="Link to this heading">#</a></h4>
 <p>To manage the installation of multiple geospatial libraries more efficiently, we’ll use mamba, a faster alternative to conda. Install it first, then proceed with the <a class="reference external" href="https://geospatial.gishub.org">geospatial</a> package, which includes many of the libraries we’ll use in this book:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>mamba
 mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>geospatail
@@ -667,7 +700,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_f7a8b3d1b589cedeb5515aa1cd0155ad {
+                #map_8986705f0c3691d48a60564fac652309 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -689,14 +722,14 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_f7a8b3d1b589cedeb5515aa1cd0155ad&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_8986705f0c3691d48a60564fac652309&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_f7a8b3d1b589cedeb5515aa1cd0155ad = L.map(
-                &quot;map_f7a8b3d1b589cedeb5515aa1cd0155ad&quot;,
+            var map_8986705f0c3691d48a60564fac652309 = L.map(
+                &quot;map_8986705f0c3691d48a60564fac652309&quot;,
                 {
                     center: [20.0, 0.0],
                     crs: L.CRS.EPSG3857,
@@ -707,24 +740,24 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
                     layersControl: true,
                 }
             );
-            L.control.scale().addTo(map_f7a8b3d1b589cedeb5515aa1cd0155ad);
+            L.control.scale().addTo(map_8986705f0c3691d48a60564fac652309);
 
             
 
         
     
-            var tile_layer_503e09ca1dc0c544218a7eae8936e339 = L.tileLayer(
+            var tile_layer_20ae9d4e42fabaa44c4ec7508b5ebbbd = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {&quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 19, &quot;maxZoom&quot;: 24, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
             );
         
     
-            tile_layer_503e09ca1dc0c544218a7eae8936e339.addTo(map_f7a8b3d1b589cedeb5515aa1cd0155ad);
+            tile_layer_20ae9d4e42fabaa44c4ec7508b5ebbbd.addTo(map_8986705f0c3691d48a60564fac652309);
         
     
             L.control.fullscreen(
                 {&quot;forceSeparateButton&quot;: false, &quot;position&quot;: &quot;topleft&quot;, &quot;title&quot;: &quot;Full Screen&quot;, &quot;titleCancel&quot;: &quot;Exit Full Screen&quot;}
-            ).addTo(map_f7a8b3d1b589cedeb5515aa1cd0155ad);
+            ).addTo(map_8986705f0c3691d48a60564fac652309);
         
     
             var options = {
@@ -733,14 +766,14 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
               edit: {},
             }
             // FeatureGroup is to store editable layers.
-            var drawnItems_draw_control_9af3d37058c0e034a078c56b4a86f3c9 = new L.featureGroup().addTo(
-                map_f7a8b3d1b589cedeb5515aa1cd0155ad
+            var drawnItems_draw_control_3c4275b739a0812b3ebd9e97cae9db00 = new L.featureGroup().addTo(
+                map_8986705f0c3691d48a60564fac652309
             );
-            options.edit.featureGroup = drawnItems_draw_control_9af3d37058c0e034a078c56b4a86f3c9;
-            var draw_control_9af3d37058c0e034a078c56b4a86f3c9 = new L.Control.Draw(
+            options.edit.featureGroup = drawnItems_draw_control_3c4275b739a0812b3ebd9e97cae9db00;
+            var draw_control_3c4275b739a0812b3ebd9e97cae9db00 = new L.Control.Draw(
                 options
-            ).addTo( map_f7a8b3d1b589cedeb5515aa1cd0155ad );
-            map_f7a8b3d1b589cedeb5515aa1cd0155ad.on(L.Draw.Event.CREATED, function(e) {
+            ).addTo( map_8986705f0c3691d48a60564fac652309 );
+            map_8986705f0c3691d48a60564fac652309.on(L.Draw.Event.CREATED, function(e) {
                 var layer = e.layer,
                     type = e.layerType;
                 var coords = JSON.stringify(layer.toGeoJSON());
@@ -748,17 +781,17 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
                     alert(coords);
                     console.log(coords);
                 });
-                drawnItems_draw_control_9af3d37058c0e034a078c56b4a86f3c9.addLayer(layer);
+                drawnItems_draw_control_3c4275b739a0812b3ebd9e97cae9db00.addLayer(layer);
              });
-            map_f7a8b3d1b589cedeb5515aa1cd0155ad.on(&#x27;draw:created&#x27;, function(e) {
-                drawnItems_draw_control_9af3d37058c0e034a078c56b4a86f3c9.addLayer(e.layer);
+            map_8986705f0c3691d48a60564fac652309.on(&#x27;draw:created&#x27;, function(e) {
+                drawnItems_draw_control_3c4275b739a0812b3ebd9e97cae9db00.addLayer(e.layer);
             });
             
         
     
-            var measure_control_bd13242445f610faf312f83423761545 = new L.Control.Measure(
+            var measure_control_1eadfdae01ec4d823e3e7c3a98b8ab16 = new L.Control.Measure(
                 {&quot;position&quot;: &quot;bottomleft&quot;, &quot;primaryAreaUnit&quot;: &quot;sqmeters&quot;, &quot;primaryLengthUnit&quot;: &quot;meters&quot;, &quot;secondaryAreaUnit&quot;: &quot;acres&quot;, &quot;secondaryLengthUnit&quot;: &quot;miles&quot;});
-            map_f7a8b3d1b589cedeb5515aa1cd0155ad.addControl(measure_control_bd13242445f610faf312f83423761545);
+            map_8986705f0c3691d48a60564fac652309.addControl(measure_control_1eadfdae01ec4d823e3e7c3a98b8ab16);
 
             // Workaround for using this plugin with Leaflet&gt;=1.8.0
             // https://github.com/ljagis/leaflet-measure/issues/171
@@ -778,43 +811,43 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
         
     
 
-            var geocoderOpts_geocoder_ca5e8b5c2c53804457c4440c347c14ed = {&quot;collapsed&quot;: true, &quot;defaultMarkGeocode&quot;: true, &quot;position&quot;: &quot;topleft&quot;, &quot;provider&quot;: &quot;nominatim&quot;, &quot;providerOptions&quot;: {}, &quot;zoom&quot;: 11};
+            var geocoderOpts_geocoder_35affa9d9af025da87f057f206f03a6b = {&quot;collapsed&quot;: true, &quot;defaultMarkGeocode&quot;: true, &quot;position&quot;: &quot;topleft&quot;, &quot;provider&quot;: &quot;nominatim&quot;, &quot;providerOptions&quot;: {}, &quot;zoom&quot;: 11};
 
             // note: geocoder name should start with lowercase
-            var geocoderName_geocoder_ca5e8b5c2c53804457c4440c347c14ed = geocoderOpts_geocoder_ca5e8b5c2c53804457c4440c347c14ed[&quot;provider&quot;];
+            var geocoderName_geocoder_35affa9d9af025da87f057f206f03a6b = geocoderOpts_geocoder_35affa9d9af025da87f057f206f03a6b[&quot;provider&quot;];
 
-            var customGeocoder_geocoder_ca5e8b5c2c53804457c4440c347c14ed = L.Control.Geocoder[ geocoderName_geocoder_ca5e8b5c2c53804457c4440c347c14ed ](
-                geocoderOpts_geocoder_ca5e8b5c2c53804457c4440c347c14ed[&#x27;providerOptions&#x27;]
+            var customGeocoder_geocoder_35affa9d9af025da87f057f206f03a6b = L.Control.Geocoder[ geocoderName_geocoder_35affa9d9af025da87f057f206f03a6b ](
+                geocoderOpts_geocoder_35affa9d9af025da87f057f206f03a6b[&#x27;providerOptions&#x27;]
             );
-            geocoderOpts_geocoder_ca5e8b5c2c53804457c4440c347c14ed[&quot;geocoder&quot;] = customGeocoder_geocoder_ca5e8b5c2c53804457c4440c347c14ed;
+            geocoderOpts_geocoder_35affa9d9af025da87f057f206f03a6b[&quot;geocoder&quot;] = customGeocoder_geocoder_35affa9d9af025da87f057f206f03a6b;
 
             L.Control.geocoder(
-                geocoderOpts_geocoder_ca5e8b5c2c53804457c4440c347c14ed
+                geocoderOpts_geocoder_35affa9d9af025da87f057f206f03a6b
             ).on(&#x27;markgeocode&#x27;, function(e) {
-                var zoom = geocoderOpts_geocoder_ca5e8b5c2c53804457c4440c347c14ed[&#x27;zoom&#x27;] || map_f7a8b3d1b589cedeb5515aa1cd0155ad.getZoom();
-                map_f7a8b3d1b589cedeb5515aa1cd0155ad.setView(e.geocode.center, zoom);
-            }).addTo(map_f7a8b3d1b589cedeb5515aa1cd0155ad);
+                var zoom = geocoderOpts_geocoder_35affa9d9af025da87f057f206f03a6b[&#x27;zoom&#x27;] || map_8986705f0c3691d48a60564fac652309.getZoom();
+                map_8986705f0c3691d48a60564fac652309.setView(e.geocode.center, zoom);
+            }).addTo(map_8986705f0c3691d48a60564fac652309);
 
         
     
-            map_f7a8b3d1b589cedeb5515aa1cd0155ad.fitBounds(
+            map_8986705f0c3691d48a60564fac652309.fitBounds(
                 [[20, 0], [20, 0]],
                 {&quot;maxZoom&quot;: 2}
             );
         
     
-            var layer_control_a9c9903b9af341f521404e755e882fe0_layers = {
+            var layer_control_5a2c54f366d8327192a17846c20430bf_layers = {
                 base_layers : {
-                    &quot;openstreetmap&quot; : tile_layer_503e09ca1dc0c544218a7eae8936e339,
+                    &quot;openstreetmap&quot; : tile_layer_20ae9d4e42fabaa44c4ec7508b5ebbbd,
                 },
                 overlays :  {
                 },
             };
-            let layer_control_a9c9903b9af341f521404e755e882fe0 = L.control.layers(
-                layer_control_a9c9903b9af341f521404e755e882fe0_layers.base_layers,
-                layer_control_a9c9903b9af341f521404e755e882fe0_layers.overlays,
+            let layer_control_5a2c54f366d8327192a17846c20430bf = L.control.layers(
+                layer_control_5a2c54f366d8327192a17846c20430bf_layers.base_layers,
+                layer_control_5a2c54f366d8327192a17846c20430bf_layers.overlays,
                 {&quot;autoZIndex&quot;: true, &quot;collapsed&quot;: true, &quot;position&quot;: &quot;topright&quot;}
-            ).addTo(map_f7a8b3d1b589cedeb5515aa1cd0155ad);
+            ).addTo(map_8986705f0c3691d48a60564fac652309);
 
         
 &lt;/script&gt;
@@ -900,10 +933,15 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geospatial">9.2.1.2. Install geospatial</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">9.2.2. conda</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniconda">9.2.2.1. Install Miniconda</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-conda-environment">9.2.2.2. Create a New Conda Environment</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geospatial-libraries">9.2.2.3. Install Geospatial Libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pixi">9.2.2. pixi</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-pixi">9.2.2.1. Install pixi</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-gdal">9.2.2.2. Install gdal</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda">9.2.3. conda</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniconda">9.2.3.1. Install Miniconda</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-conda-environment">9.2.3.2. Create a New Conda Environment</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geospatial-libraries">9.2.3.3. Install Geospatial Libraries</a></li>
 </ul>
 </li>
 </ul>
