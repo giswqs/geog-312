@@ -59,3 +59,4 @@ parts:
       - file: book/labs/lab_02
       - file: book/labs/lab_03
       - file: book/labs/lab_04
+      - file: book/labs/lab_05
