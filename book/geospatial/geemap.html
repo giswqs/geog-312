@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>18. Geemap &#8212; Introduction to GIS Programming</title>
+    <title>19. Geemap &#8212; Introduction to GIS Programming</title>
   
   
   
@@ -62,8 +62,8 @@
     <link rel="icon" href="../../_static/fav.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="19. SAMGeo" href="samgeo.html" />
-    <link rel="prev" title="17. WhiteboxTools" href="whitebox.html" />
+    <link rel="next" title="20. SAMGeo" href="samgeo.html" />
+    <link rel="prev" title="18. WhiteboxTools" href="whitebox.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -208,15 +208,16 @@
 <li class="toctree-l1"><a class="reference internal" href="geopandas.html">10. GeoPandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rasterio.html">11. Rasterio</a></li>
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">12. Xarray</a></li>
-<li class="toctree-l1"><a class="reference internal" href="leafmap.html">13. Leafmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">14. Vector Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">15. Raster Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maplibre.html">16. MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whitebox.html">17. WhiteboxTools</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">18. Geemap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="samgeo.html">19. SAMGeo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">20. HyperCoast</a></li>
-<li class="toctree-l1"><a class="reference internal" href="duckdb.html">21. DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rioxarray.html">13. Rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="leafmap.html">14. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">15. Vector Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">16. Raster Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">17. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">18. WhiteboxTools</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">19. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">20. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">21. HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="duckdb.html">22. DuckDB</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -505,86 +506,86 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">18.1. Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">18.1.1. Prerequisites</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">18.1.2. Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">19.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">19.1.1. Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">19.1.2. Agenda</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-earth-engine-and-geemap">18.2. Introduction to Earth Engine and geemap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab-and-earth-engine-python-api-authentication">18.3. Google Colab and Earth Engine Python API authentication</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-colab-dark-theme">18.3.1. Change Colab dark theme</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geemap">18.3.2. Install geemap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">18.3.3. Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-and-initialize-earth-engine">18.3.4. Authenticate and initialize Earth Engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-earth-engine-and-geemap">19.2. Introduction to Earth Engine and geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab-and-earth-engine-python-api-authentication">19.3. Google Colab and Earth Engine Python API authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-colab-dark-theme">19.3.1. Change Colab dark theme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geemap">19.3.2. Install geemap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">19.3.3. Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-and-initialize-earth-engine">19.3.4. Authenticate and initialize Earth Engine</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">18.4. Creating interactive maps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">18.4.1. Adding basemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">19.4. Creating interactive maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">19.4.1. Adding basemaps</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-earth-engine-data">18.5. Using Earth Engine data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-types">18.5.1. Earth Engine data types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">18.5.2. Image</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-earth-engine-images">18.5.2.1. Loading Earth Engine images</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-images">18.5.2.2. Visualizing Earth Engine images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-earth-engine-data">19.5. Using Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-types">19.5.1. Earth Engine data types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">19.5.2. Image</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-earth-engine-images">19.5.2.1. Loading Earth Engine images</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-images">19.5.2.2. Visualizing Earth Engine images</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagecollection">18.5.3. ImageCollection</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-image-collections">18.5.3.1. Loading image collections</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-image-collections">18.5.3.2. Visualizing image collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagecollection">19.5.3. ImageCollection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-image-collections">19.5.3.1. Loading image collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-image-collections">19.5.3.2. Visualizing image collections</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#featurecollection">18.5.4. FeatureCollection</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-feature-collections">18.5.4.1. Loading feature collections</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-feature-collections">18.5.4.2. Filtering feature collections</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-feature-collections">18.5.4.3. Visualizing feature collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#featurecollection">19.5.4. FeatureCollection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-feature-collections">19.5.4.1. Loading feature collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-feature-collections">19.5.4.2. Filtering feature collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-feature-collections">19.5.4.3. Visualizing feature collections</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-catalog">18.5.5. Earth Engine Data Catalog</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-datasets">18.5.5.1. Searching for datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-catalog">19.5.5. Earth Engine Data Catalog</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-datasets">19.5.5.1. Searching for datasets</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-cloud-free-imagery">18.5.6. Exercise 1 - Creating cloud-free imagery</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-cloud-free-imagery">19.5.6. Exercise 1 - Creating cloud-free imagery</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-data">18.6. Visualizing Earth Engine data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-inspector-tool">18.6.1. Using the inspector tool</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-plotting-tool">18.6.2. Using the plotting tool</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legends-color-bars-and-labels">18.6.3. Legends, color bars, and labels</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-legends">18.6.3.1. Built-in legends</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-legends">18.6.3.2. Custom legends</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-color-bars">18.6.3.3. Creating color bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-data">19.6. Visualizing Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-inspector-tool">19.6.1. Using the inspector tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-plotting-tool">19.6.2. Using the plotting tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legends-color-bars-and-labels">19.6.3. Legends, color bars, and labels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-legends">19.6.3.1. Built-in legends</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-legends">19.6.3.2. Custom legends</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-color-bars">19.6.3.3. Creating color bars</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-map-and-linked-maps">18.6.4. Split-panel map and linked maps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-maps">18.6.5. Split-panel maps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linked-maps">18.6.6. Linked maps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector-and-time-slider">18.6.7. Timeseries inspector and time slider</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector">18.6.7.1. Timeseries inspector</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-slider">18.6.7.2. Time slider</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-map-and-linked-maps">19.6.4. Split-panel map and linked maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-maps">19.6.5. Split-panel maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linked-maps">19.6.6. Linked maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector-and-time-slider">19.6.7. Timeseries inspector and time slider</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector">19.6.7.1. Timeseries inspector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-slider">19.6.7.2. Time slider</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualizing-satellite-data-for-an-area-of-interest">18.6.8. Exercise 2 - Visualizing satellite data for an area of interest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualizing-satellite-data-for-an-area-of-interest">19.6.8. Exercise 2 - Visualizing satellite data for an area of interest</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-earth-engine-data">18.7. Analyzing Earth Engine data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics">18.7.1. Zonal statistics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-by-group">18.7.2. Zonal statistics by group</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-earth-engine-data">19.7. Analyzing Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics">19.7.1. Zonal statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-by-group">19.7.2. Zonal statistics by group</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-earth-engine-data">18.8. Exporting Earth Engine data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-images">18.8.1. Exporting images</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-image-collections">18.8.2. Export image collections</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-feature-collections">18.8.3. Exporting feature collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-earth-engine-data">19.8. Exporting Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-images">19.8.1. Exporting images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-image-collections">19.8.2. Export image collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-feature-collections">19.8.3. Exporting feature collections</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-timelapse-animations">18.9. Creating timelapse animations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-timelapse">18.9.1. Landsat timelapse</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-2-timelapse">18.9.2. Sentinel-2 timelapse</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-vegetation-indices">18.9.3. MODIS vegetation indices</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-temperature-data">18.9.4. MODIS temperature data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goes-timelapse">18.9.5. GOES timelapse</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-creating-timelapse-animations">18.9.6. Exercise 3 - Creating timelapse animations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-timelapse-animations">19.9. Creating timelapse animations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-timelapse">19.9.1. Landsat timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-2-timelapse">19.9.2. Sentinel-2 timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-vegetation-indices">19.9.3. MODIS vegetation indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-temperature-data">19.9.4. MODIS temperature data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goes-timelapse">19.9.5. GOES timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-creating-timelapse-animations">19.9.6. Exercise 3 - Creating timelapse animations</a></li>
 </ul>
 </li>
 </ul>
@@ -599,13 +600,13 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="geemap">
-<h1><span class="section-number">18. </span>Geemap<a class="headerlink" href="#geemap" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">19. </span>Geemap<a class="headerlink" href="#geemap" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/geemap.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="introduction">
-<h2><span class="section-number">18.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This notebook is designed for users who are new to Google Earth Engine and geemap. It provides an introduction to Earth Engine and geemap, and demonstrates how to use geemap to explore and analyze Earth Engine data.</p>
 <section id="prerequisites">
-<h3><span class="section-number">18.1.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.1.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>To use geemap and the Earth Engine Python API, you must <a class="reference external" href="https://code.earthengine.google.com/register">register</a> for an Earth Engine account and follow the instructions <a class="reference external" href="https://docs.google.com/document/d/1ZGSmrNm6_baqd8CHt33kIBWOlvkh-HLr46bODgJN1h0/edit?usp=sharing">here</a> to create a Cloud Project. Earth Engine is free for <a class="reference external" href="https://earthengine.google.com/noncommercial">noncommercial and research use</a>. To test whether you can use authenticate the Earth Engine Python API, please run <a class="reference external" href="https://colab.research.google.com/github/gee-community/geemap/blob/master/docs/notebooks/geemap_colab.ipynb">this notebook</a> on Google Colab.</p></li>
 <li><p>It is recommended that attendees have a basic understanding of Python and Jupyter Notebook.</p></li>
@@ -614,7 +615,7 @@ document.write(`
 </ul>
 </section>
 <section id="agenda">
-<h3><span class="section-number">18.1.2. </span>Agenda<a class="headerlink" href="#agenda" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.1.2. </span>Agenda<a class="headerlink" href="#agenda" title="Link to this heading">#</a></h3>
 <p>The main topics to be covered in this workshop include:</p>
 <ul class="simple">
 <li><p>Create interactive maps</p></li>
@@ -627,21 +628,21 @@ document.write(`
 </section>
 </section>
 <section id="introduction-to-earth-engine-and-geemap">
-<h2><span class="section-number">18.2. </span>Introduction to Earth Engine and geemap<a class="headerlink" href="#introduction-to-earth-engine-and-geemap" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.2. </span>Introduction to Earth Engine and geemap<a class="headerlink" href="#introduction-to-earth-engine-and-geemap" title="Link to this heading">#</a></h2>
 <p>Earth Engine is free for <a class="reference external" href="https://earthengine.google.com/noncommercial">noncommercial and research use</a>. For more than a decade, Earth Engine has enabled planetary-scale Earth data science and analysis by nonprofit organizations, research scientists, and other impact users.</p>
 <p>With the launch of Earth Engine for <a class="reference external" href="https://earthengine.google.com/commercial">commercial use</a>, commercial customers will be charged for Earth Engine services. However, Earth Engine will remain free of charge for noncommercial use and research projects. Nonprofit organizations, academic institutions, educators, news media, Indigenous governments, and government researchers are eligible to use Earth Engine free of charge, just as they have done for over a decade.</p>
 <p>The geemap Python package is built upon the Earth Engine Python API and open-source mapping libraries. It allows Earth Engine users to interactively manipulate, analyze, and visualize geospatial big data in a Jupyter environment. Since its creation in April 2020, geemap has received over 3,300 GitHub stars and is being used by over 2,700 projects on GitHub.</p>
 </section>
 <section id="google-colab-and-earth-engine-python-api-authentication">
-<h2><span class="section-number">18.3. </span>Google Colab and Earth Engine Python API authentication<a class="headerlink" href="#google-colab-and-earth-engine-python-api-authentication" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.3. </span>Google Colab and Earth Engine Python API authentication<a class="headerlink" href="#google-colab-and-earth-engine-python-api-authentication" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://colab.research.google.com/github/gee-community/geemap/blob/master/docs/workshops/Taiwan_2024.ipynb"><img alt="image" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="change-colab-dark-theme">
-<h3><span class="section-number">18.3.1. </span>Change Colab dark theme<a class="headerlink" href="#change-colab-dark-theme" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.3.1. </span>Change Colab dark theme<a class="headerlink" href="#change-colab-dark-theme" title="Link to this heading">#</a></h3>
 <p>Currently, ipywidgets does not work well with Colab dark theme. Some of the geemap widgets may not display properly in Colab dark <a class="reference external" href="http://theme.It">theme.It</a> is recommended that you change Colab to the light theme.</p>
 <p><img alt="" src="https://i.imgur.com/EJ0GDP8.png" /></p>
 </section>
 <section id="install-geemap">
-<h3><span class="section-number">18.3.2. </span>Install geemap<a class="headerlink" href="#install-geemap" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.3.2. </span>Install geemap<a class="headerlink" href="#install-geemap" title="Link to this heading">#</a></h3>
 <p>The geemap package is pre-installed in Google Colab and is updated to the latest minor or major release every few weeks. Some optional dependencies of geemap being used by this notebook are not pre-installed in Colab. Uncomment the following code block to install geemap and some optional dependencies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -659,7 +660,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="import-libraries">
-<h3><span class="section-number">18.3.3. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.3.3. </span>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
 <p>Import the earthengine-api and geemap.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -671,7 +672,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="authenticate-and-initialize-earth-engine">
-<h3><span class="section-number">18.3.4. </span>Authenticate and initialize Earth Engine<a class="headerlink" href="#authenticate-and-initialize-earth-engine" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.3.4. </span>Authenticate and initialize Earth Engine<a class="headerlink" href="#authenticate-and-initialize-earth-engine" title="Link to this heading">#</a></h3>
 <p>You will need to create a <a class="reference external" href="https://console.cloud.google.com/projectcreate">Google Cloud Project</a> and enable the <a class="reference external" href="https://console.cloud.google.com/apis/api/earthengine.googleapis.com">Earth Engine API</a> for the project. You can find detailed instructions <a class="reference external" href="https://book.geemap.org/chapters/01_introduction.html#earth-engine-authentication">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -690,7 +691,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="creating-interactive-maps">
-<h2><span class="section-number">18.4. </span>Creating interactive maps<a class="headerlink" href="#creating-interactive-maps" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.4. </span>Creating interactive maps<a class="headerlink" href="#creating-interactive-maps" title="Link to this heading">#</a></h2>
 <p>Let’s create an interactive map using the <code class="docutils literal notranslate"><span class="pre">ipyleaflet</span></code> plotting backend. The <a class="reference external" href="https://geemap.org/geemap/#geemap.geemap.m"><code class="docutils literal notranslate"><span class="pre">geemap.Map</span></code></a> class inherits the <a class="reference external" href="https://ipyleaflet.readthedocs.io/en/latest/map_and_basemaps/map.html"><code class="docutils literal notranslate"><span class="pre">ipyleaflet.Map</span></code></a> class. Therefore, you can use the same syntax to create an interactive map as you would with <code class="docutils literal notranslate"><span class="pre">ipyleaflet.Map</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -726,7 +727,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </div>
 <section id="adding-basemaps">
-<h3><span class="section-number">18.4.1. </span>Adding basemaps<a class="headerlink" href="#adding-basemaps" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.4.1. </span>Adding basemaps<a class="headerlink" href="#adding-basemaps" title="Link to this heading">#</a></h3>
 <p>There are several ways to add basemaps to a map. You can specify the basemap to use in the <code class="docutils literal notranslate"><span class="pre">basemap</span></code> keyword argument when creating the map. Alternatively, you can add basemap layers to the map using the <code class="docutils literal notranslate"><span class="pre">add_basemap</span></code> method. Geemap has hundreds of built-in basemaps available that can be easily added to the map with only one line of code.</p>
 <p>Create a map by specifying the basemap to use as follows. For example, the <code class="docutils literal notranslate"><span class="pre">Esri.WorldImagery</span></code> basemap represents the Esri world imagery basemap.</p>
 <div class="cell docutils container">
@@ -758,9 +759,9 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="using-earth-engine-data">
-<h2><span class="section-number">18.5. </span>Using Earth Engine data<a class="headerlink" href="#using-earth-engine-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.5. </span>Using Earth Engine data<a class="headerlink" href="#using-earth-engine-data" title="Link to this heading">#</a></h2>
 <section id="earth-engine-data-types">
-<h3><span class="section-number">18.5.1. </span>Earth Engine data types<a class="headerlink" href="#earth-engine-data-types" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.5.1. </span>Earth Engine data types<a class="headerlink" href="#earth-engine-data-types" title="Link to this heading">#</a></h3>
 <p>Earth Engine objects are server-side objects rather than client-side objects, which means that they are not stored locally on your computer. Similar to video streaming services (e.g., YouTube, Netflix, and Hulu), which store videos/movies on their servers, Earth Engine data are stored on the Earth Engine servers. We can stream geospatial data from Earth Engine on-the-fly without having to download the data just like we can watch videos from streaming services using a web browser without having to download the entire video to your computer.</p>
 <ul class="simple">
 <li><p><strong>Image</strong>: the fundamental raster data type in Earth Engine.</p></li>
@@ -771,10 +772,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </ul>
 </section>
 <section id="image">
-<h3><span class="section-number">18.5.2. </span>Image<a class="headerlink" href="#image" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.5.2. </span>Image<a class="headerlink" href="#image" title="Link to this heading">#</a></h3>
 <p>Raster data in Earth Engine are represented as <strong>Image</strong> objects. Images are composed of one or more bands and each band has its own name, data type, scale, mask and projection. Each image has metadata stored as a set of properties.</p>
 <section id="loading-earth-engine-images">
-<h4><span class="section-number">18.5.2.1. </span>Loading Earth Engine images<a class="headerlink" href="#loading-earth-engine-images" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.5.2.1. </span>Loading Earth Engine images<a class="headerlink" href="#loading-earth-engine-images" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;USGS/SRTMGL1_003&quot;</span><span class="p">)</span>
@@ -785,7 +786,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="visualizing-earth-engine-images">
-<h4><span class="section-number">18.5.2.2. </span>Visualizing Earth Engine images<a class="headerlink" href="#visualizing-earth-engine-images" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.5.2.2. </span>Visualizing Earth Engine images<a class="headerlink" href="#visualizing-earth-engine-images" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">23.5790</span><span class="p">,</span> <span class="mf">121.4181</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
@@ -804,10 +805,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="imagecollection">
-<h3><span class="section-number">18.5.3. </span>ImageCollection<a class="headerlink" href="#imagecollection" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.5.3. </span>ImageCollection<a class="headerlink" href="#imagecollection" title="Link to this heading">#</a></h3>
 <p>An <code class="docutils literal notranslate"><span class="pre">ImageCollection</span></code> is a stack or sequence of images. An <code class="docutils literal notranslate"><span class="pre">ImageCollection</span></code> can be loaded by passing an Earth Engine asset ID into the <code class="docutils literal notranslate"><span class="pre">ImageCollection</span></code> constructor. You can find <code class="docutils literal notranslate"><span class="pre">ImageCollection</span></code> IDs in the <a class="reference external" href="https://developers.google.com/earth-engine/datasets">Earth Engine Data Catalog</a>.</p>
 <section id="loading-image-collections">
-<h4><span class="section-number">18.5.3.1. </span>Loading image collections<a class="headerlink" href="#loading-image-collections" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.5.3.1. </span>Loading image collections<a class="headerlink" href="#loading-image-collections" title="Link to this heading">#</a></h4>
 <p>For example, to load the image collection of the <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR">Sentinel-2 surface reflectance</a>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -818,7 +819,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="visualizing-image-collections">
-<h4><span class="section-number">18.5.3.2. </span>Visualizing image collections<a class="headerlink" href="#visualizing-image-collections" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.5.3.2. </span>Visualizing image collections<a class="headerlink" href="#visualizing-image-collections" title="Link to this heading">#</a></h4>
 <p>To visualize an Earth Engine <strong>ImageCollection</strong>, we need to convert an <strong>ImageCollection</strong> to an <strong>Image</strong> by compositing all the images in the collection to a single image representing, for example, the min, max, median, mean or standard deviation of the images. For example, to create a median value image from a collection, use the <code class="docutils literal notranslate"><span class="pre">collection.median()</span></code> method. Let’s create a median image from the Sentinel-2 surface reflectance collection:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -846,10 +847,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="featurecollection">
-<h3><span class="section-number">18.5.4. </span>FeatureCollection<a class="headerlink" href="#featurecollection" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.5.4. </span>FeatureCollection<a class="headerlink" href="#featurecollection" title="Link to this heading">#</a></h3>
 <p>A <strong>FeatureCollection</strong> is a collection of Features. A FeatureCollection is analogous to a GeoJSON FeatureCollection object, i.e., a collection of features with associated properties/attributes. Data contained in a shapefile can be represented as a FeatureCollection.</p>
 <section id="loading-feature-collections">
-<h4><span class="section-number">18.5.4.1. </span>Loading feature collections<a class="headerlink" href="#loading-feature-collections" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.5.4.1. </span>Loading feature collections<a class="headerlink" href="#loading-feature-collections" title="Link to this heading">#</a></h4>
 <p>The <a class="reference external" href="https://developers.google.com/earth-engine/datasets">Earth Engine Data Catalog</a> hosts a variety of vector datasets (e.g,, US Census data, country boundaries, and more) as feature collections. You can find feature collection IDs by searching the data catalog. For example, to load the <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/TIGER_2016_Roads">TIGER roads data</a> by the U.S. Census Bureau:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -864,7 +865,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="filtering-feature-collections">
-<h4><span class="section-number">18.5.4.2. </span>Filtering feature collections<a class="headerlink" href="#filtering-feature-collections" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.5.4.2. </span>Filtering feature collections<a class="headerlink" href="#filtering-feature-collections" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/WM_geoLab_geoBoundaries_600_ADM0">geoBoundaries: Political administrative boundaries at Country level (ADM0)</a></p></li>
 <li><p><a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/WM_geoLab_geoBoundaries_600_ADM1">geoBoundaries: Political administrative boundaries at District level (ADM1)</a></p></li>
@@ -908,7 +909,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="visualizing-feature-collections">
-<h4><span class="section-number">18.5.4.3. </span>Visualizing feature collections<a class="headerlink" href="#visualizing-feature-collections" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.5.4.3. </span>Visualizing feature collections<a class="headerlink" href="#visualizing-feature-collections" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -950,10 +951,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="earth-engine-data-catalog">
-<h3><span class="section-number">18.5.5. </span>Earth Engine Data Catalog<a class="headerlink" href="#earth-engine-data-catalog" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.5.5. </span>Earth Engine Data Catalog<a class="headerlink" href="#earth-engine-data-catalog" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://developers.google.com/earth-engine/datasets">Earth Engine Data Catalog</a> hosts a variety of geospatial datasets. As of July 2024, the catalog contains over <a class="reference external" href="https://github.com/opengeos/Earth-Engine-Catalog/blob/master/gee_catalog.tsv">1,100 datasets</a> with a total size of over 100 petabytes. Some notable datasets include: Landsat, Sentinel, MODIS, NAIP, etc. For a complete list of datasets in CSV or JSON formats, see the <a class="reference external" href="https://github.com/giswqs/Earth-Engine-Catalog/blob/master/gee_catalog.tsv">Earth Engine Datasets List</a>.</p>
 <section id="searching-for-datasets">
-<h4><span class="section-number">18.5.5.1. </span>Searching for datasets<a class="headerlink" href="#searching-for-datasets" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.5.5.1. </span>Searching for datasets<a class="headerlink" href="#searching-for-datasets" title="Link to this heading">#</a></h4>
 <p>The <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog">Earth Engine Data Catalog</a> is searchable. You can search datasets by name, keyword, or tag. For example, enter “elevation” in the search box will filter the catalog to show only datasets containing “elevation” in their name, description, or tags. 52 datasets are returned for this search query. Scroll down the list to find the <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/USGS_SRTMGL1_003#description">NASA SRTM Digital Elevation 30m</a> dataset. On each dataset page, you can find the following information, including Dataset Availability, Dataset Provider, Earth Engine Snippet, Tags, Description, Code Example, and more. One important piece of information is the Image/ImageCollection/FeatureCollection ID of each dataset, which is essential for accessing the dataset through the Earth Engine JavaScript or Python APIs.</p>
 <p><img alt="" src="https://i.imgur.com/B3rf4QN.jpg" /></p>
 <div class="cell docutils container">
@@ -1002,7 +1003,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="exercise-1-creating-cloud-free-imagery">
-<h3><span class="section-number">18.5.6. </span>Exercise 1 - Creating cloud-free imagery<a class="headerlink" href="#exercise-1-creating-cloud-free-imagery" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.5.6. </span>Exercise 1 - Creating cloud-free imagery<a class="headerlink" href="#exercise-1-creating-cloud-free-imagery" title="Link to this heading">#</a></h3>
 <p>Create a cloud-free imagery of Taiwan for the year of 2023. You can use either Landsat 9 or Sentinel-2 imagery. Relevant Earth Engine assets:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/TIGER_2018_States">ee.FeatureCollection(“TIGER/2018/States”)</a></p></li>
@@ -1021,9 +1022,9 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="visualizing-earth-engine-data">
-<h2><span class="section-number">18.6. </span>Visualizing Earth Engine data<a class="headerlink" href="#visualizing-earth-engine-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.6. </span>Visualizing Earth Engine data<a class="headerlink" href="#visualizing-earth-engine-data" title="Link to this heading">#</a></h2>
 <section id="using-the-inspector-tool">
-<h3><span class="section-number">18.6.1. </span>Using the inspector tool<a class="headerlink" href="#using-the-inspector-tool" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.6.1. </span>Using the inspector tool<a class="headerlink" href="#using-the-inspector-tool" title="Link to this heading">#</a></h3>
 <p>Inspect pixel values and vector features using the inspector tool.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1059,7 +1060,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="using-the-plotting-tool">
-<h3><span class="section-number">18.6.2. </span>Using the plotting tool<a class="headerlink" href="#using-the-plotting-tool" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.6.2. </span>Using the plotting tool<a class="headerlink" href="#using-the-plotting-tool" title="Link to this heading">#</a></h3>
 <p>Plot spectral profiles of pixels using the plotting tool.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1107,9 +1108,9 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="legends-color-bars-and-labels">
-<h3><span class="section-number">18.6.3. </span>Legends, color bars, and labels<a class="headerlink" href="#legends-color-bars-and-labels" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.6.3. </span>Legends, color bars, and labels<a class="headerlink" href="#legends-color-bars-and-labels" title="Link to this heading">#</a></h3>
 <section id="built-in-legends">
-<h4><span class="section-number">18.6.3.1. </span>Built-in legends<a class="headerlink" href="#built-in-legends" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.6.3.1. </span>Built-in legends<a class="headerlink" href="#built-in-legends" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">geemap.legends</span> <span class="kn">import</span> <span class="n">builtin_legends</span>
@@ -1144,7 +1145,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="custom-legends">
-<h4><span class="section-number">18.6.3.2. </span>Custom legends<a class="headerlink" href="#custom-legends" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.6.3.2. </span>Custom legends<a class="headerlink" href="#custom-legends" title="Link to this heading">#</a></h4>
 <p>Add a custom legend by specifying a dictionary of colors and labels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1176,7 +1177,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="creating-color-bars">
-<h4><span class="section-number">18.6.3.3. </span>Creating color bars<a class="headerlink" href="#creating-color-bars" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.6.3.3. </span>Creating color bars<a class="headerlink" href="#creating-color-bars" title="Link to this heading">#</a></h4>
 <p>Add a horizontal color bar.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1230,10 +1231,10 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="split-panel-map-and-linked-maps">
-<h3><span class="section-number">18.6.4. </span>Split-panel map and linked maps<a class="headerlink" href="#split-panel-map-and-linked-maps" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.6.4. </span>Split-panel map and linked maps<a class="headerlink" href="#split-panel-map-and-linked-maps" title="Link to this heading">#</a></h3>
 </section>
 <section id="split-panel-maps">
-<h3><span class="section-number">18.6.5. </span>Split-panel maps<a class="headerlink" href="#split-panel-maps" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.6.5. </span>Split-panel maps<a class="headerlink" href="#split-panel-maps" title="Link to this heading">#</a></h3>
 <p>Create a split map with basemaps. Note that ipyleaflet has a bug with the SplitControl. You can’t pan the map, which should be resolved in the next ipyleaflet release.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1269,7 +1270,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="linked-maps">
-<h3><span class="section-number">18.6.6. </span>Linked maps<a class="headerlink" href="#linked-maps" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.6.6. </span>Linked maps<a class="headerlink" href="#linked-maps" title="Link to this heading">#</a></h3>
 <p>Create a 2x2 linked map for visualizing Sentinel-2 imagery with different band combinations. Note that this feature does not work properly with Colab. Panning one map would not pan other maps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1316,9 +1317,9 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="timeseries-inspector-and-time-slider">
-<h3><span class="section-number">18.6.7. </span>Timeseries inspector and time slider<a class="headerlink" href="#timeseries-inspector-and-time-slider" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.6.7. </span>Timeseries inspector and time slider<a class="headerlink" href="#timeseries-inspector-and-time-slider" title="Link to this heading">#</a></h3>
 <section id="timeseries-inspector">
-<h4><span class="section-number">18.6.7.1. </span>Timeseries inspector<a class="headerlink" href="#timeseries-inspector" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.6.7.1. </span>Timeseries inspector<a class="headerlink" href="#timeseries-inspector" title="Link to this heading">#</a></h4>
 <p>Check the available years of NLCD.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1350,7 +1351,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="time-slider">
-<h4><span class="section-number">18.6.7.2. </span>Time slider<a class="headerlink" href="#time-slider" title="Link to this heading">#</a></h4>
+<h4><span class="section-number">19.6.7.2. </span>Time slider<a class="headerlink" href="#time-slider" title="Link to this heading">#</a></h4>
 <p>Note that this feature may not work properly with in the Colab environment. Restart Colab runtime if the time slider does not work.</p>
 <p>Create a map for visualizing MODIS vegetation data.</p>
 <div class="cell docutils container">
@@ -1421,7 +1422,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="exercise-2-visualizing-satellite-data-for-an-area-of-interest">
-<h3><span class="section-number">18.6.8. </span>Exercise 2 - Visualizing satellite data for an area of interest<a class="headerlink" href="#exercise-2-visualizing-satellite-data-for-an-area-of-interest" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.6.8. </span>Exercise 2 - Visualizing satellite data for an area of interest<a class="headerlink" href="#exercise-2-visualizing-satellite-data-for-an-area-of-interest" title="Link to this heading">#</a></h3>
 <p>Visualize the time series of <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED">Sentinel-2</a> imagery for an area of interest in Taiwan. You can use the following Earth Engine assets:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">ee.ImageCollection(&quot;COPERNICUS/S2_SR_HARMONIZED&quot;)</span></code></p></li>
@@ -1429,9 +1430,9 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="analyzing-earth-engine-data">
-<h2><span class="section-number">18.7. </span>Analyzing Earth Engine data<a class="headerlink" href="#analyzing-earth-engine-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.7. </span>Analyzing Earth Engine data<a class="headerlink" href="#analyzing-earth-engine-data" title="Link to this heading">#</a></h2>
 <section id="zonal-statistics">
-<h3><span class="section-number">18.7.1. </span>Zonal statistics<a class="headerlink" href="#zonal-statistics" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.7.1. </span>Zonal statistics<a class="headerlink" href="#zonal-statistics" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1496,7 +1497,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="zonal-statistics-by-group">
-<h3><span class="section-number">18.7.2. </span>Zonal statistics by group<a class="headerlink" href="#zonal-statistics-by-group" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.7.2. </span>Zonal statistics by group<a class="headerlink" href="#zonal-statistics-by-group" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1563,9 +1564,9 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="exporting-earth-engine-data">
-<h2><span class="section-number">18.8. </span>Exporting Earth Engine data<a class="headerlink" href="#exporting-earth-engine-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.8. </span>Exporting Earth Engine data<a class="headerlink" href="#exporting-earth-engine-data" title="Link to this heading">#</a></h2>
 <section id="exporting-images">
-<h3><span class="section-number">18.8.1. </span>Exporting images<a class="headerlink" href="#exporting-images" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.8.1. </span>Exporting images<a class="headerlink" href="#exporting-images" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1624,7 +1625,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="export-image-collections">
-<h3><span class="section-number">18.8.2. </span>Export image collections<a class="headerlink" href="#export-image-collections" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.8.2. </span>Export image collections<a class="headerlink" href="#export-image-collections" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">99.2222</span><span class="p">,</span> <span class="mf">46.7816</span><span class="p">)</span>
@@ -1661,7 +1662,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="exporting-feature-collections">
-<h3><span class="section-number">18.8.3. </span>Exporting feature collections<a class="headerlink" href="#exporting-feature-collections" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.8.3. </span>Exporting feature collections<a class="headerlink" href="#exporting-feature-collections" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1730,9 +1731,9 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </section>
 </section>
 <section id="creating-timelapse-animations">
-<h2><span class="section-number">18.9. </span>Creating timelapse animations<a class="headerlink" href="#creating-timelapse-animations" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.9. </span>Creating timelapse animations<a class="headerlink" href="#creating-timelapse-animations" title="Link to this heading">#</a></h2>
 <section id="landsat-timelapse">
-<h3><span class="section-number">18.9.1. </span>Landsat timelapse<a class="headerlink" href="#landsat-timelapse" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.9.1. </span>Landsat timelapse<a class="headerlink" href="#landsat-timelapse" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1812,7 +1813,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="sentinel-2-timelapse">
-<h3><span class="section-number">18.9.2. </span>Sentinel-2 timelapse<a class="headerlink" href="#sentinel-2-timelapse" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.9.2. </span>Sentinel-2 timelapse<a class="headerlink" href="#sentinel-2-timelapse" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1854,7 +1855,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="modis-vegetation-indices">
-<h3><span class="section-number">18.9.3. </span>MODIS vegetation indices<a class="headerlink" href="#modis-vegetation-indices" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.9.3. </span>MODIS vegetation indices<a class="headerlink" href="#modis-vegetation-indices" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1894,7 +1895,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="modis-temperature-data">
-<h3><span class="section-number">18.9.4. </span>MODIS temperature data<a class="headerlink" href="#modis-temperature-data" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.9.4. </span>MODIS temperature data<a class="headerlink" href="#modis-temperature-data" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
@@ -1934,7 +1935,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="goes-timelapse">
-<h3><span class="section-number">18.9.5. </span>GOES timelapse<a class="headerlink" href="#goes-timelapse" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.9.5. </span>GOES timelapse<a class="headerlink" href="#goes-timelapse" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roi</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">BBox</span><span class="p">(</span><span class="mf">167.1898</span><span class="p">,</span> <span class="o">-</span><span class="mf">28.5757</span><span class="p">,</span> <span class="mf">202.6258</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.4411</span><span class="p">)</span>
@@ -2000,7 +2001,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
 </div>
 </section>
 <section id="exercise-3-creating-timelapse-animations">
-<h3><span class="section-number">18.9.6. </span>Exercise 3 - Creating timelapse animations<a class="headerlink" href="#exercise-3-creating-timelapse-animations" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.9.6. </span>Exercise 3 - Creating timelapse animations<a class="headerlink" href="#exercise-3-creating-timelapse-animations" title="Link to this heading">#</a></h3>
 <p>Use the geemap timelapse GUI to create a timelapse animation for any location of your choice. Share the timelapse on social media and use the hashtag such as #EarthEngine and #geemap. See <a class="reference external" href="https://i.imgur.com/YaCHvKC.gif">this</a> example.</p>
 <p><img alt="" src="https://i.imgur.com/ohrXeFC.png" /></p>
 <div class="cell docutils container">
@@ -2052,7 +2053,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">17. </span>WhiteboxTools</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>WhiteboxTools</p>
       </div>
     </a>
     <a class="right-next"
@@ -2060,7 +2061,7 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">19. </span>SAMGeo</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>SAMGeo</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2080,86 +2081,86 @@ mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> <
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">18.1. Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">18.1.1. Prerequisites</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">18.1.2. Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">19.1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">19.1.1. Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">19.1.2. Agenda</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-earth-engine-and-geemap">18.2. Introduction to Earth Engine and geemap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab-and-earth-engine-python-api-authentication">18.3. Google Colab and Earth Engine Python API authentication</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-colab-dark-theme">18.3.1. Change Colab dark theme</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geemap">18.3.2. Install geemap</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">18.3.3. Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-and-initialize-earth-engine">18.3.4. Authenticate and initialize Earth Engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-earth-engine-and-geemap">19.2. Introduction to Earth Engine and geemap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab-and-earth-engine-python-api-authentication">19.3. Google Colab and Earth Engine Python API authentication</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-colab-dark-theme">19.3.1. Change Colab dark theme</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-geemap">19.3.2. Install geemap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">19.3.3. Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-and-initialize-earth-engine">19.3.4. Authenticate and initialize Earth Engine</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">18.4. Creating interactive maps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">18.4.1. Adding basemaps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-interactive-maps">19.4. Creating interactive maps</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-basemaps">19.4.1. Adding basemaps</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-earth-engine-data">18.5. Using Earth Engine data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-types">18.5.1. Earth Engine data types</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">18.5.2. Image</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-earth-engine-images">18.5.2.1. Loading Earth Engine images</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-images">18.5.2.2. Visualizing Earth Engine images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-earth-engine-data">19.5. Using Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-types">19.5.1. Earth Engine data types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">19.5.2. Image</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-earth-engine-images">19.5.2.1. Loading Earth Engine images</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-images">19.5.2.2. Visualizing Earth Engine images</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagecollection">18.5.3. ImageCollection</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-image-collections">18.5.3.1. Loading image collections</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-image-collections">18.5.3.2. Visualizing image collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#imagecollection">19.5.3. ImageCollection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-image-collections">19.5.3.1. Loading image collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-image-collections">19.5.3.2. Visualizing image collections</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#featurecollection">18.5.4. FeatureCollection</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-feature-collections">18.5.4.1. Loading feature collections</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-feature-collections">18.5.4.2. Filtering feature collections</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-feature-collections">18.5.4.3. Visualizing feature collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#featurecollection">19.5.4. FeatureCollection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-feature-collections">19.5.4.1. Loading feature collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-feature-collections">19.5.4.2. Filtering feature collections</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-feature-collections">19.5.4.3. Visualizing feature collections</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-catalog">18.5.5. Earth Engine Data Catalog</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-datasets">18.5.5.1. Searching for datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#earth-engine-data-catalog">19.5.5. Earth Engine Data Catalog</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-datasets">19.5.5.1. Searching for datasets</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-cloud-free-imagery">18.5.6. Exercise 1 - Creating cloud-free imagery</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-cloud-free-imagery">19.5.6. Exercise 1 - Creating cloud-free imagery</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-data">18.6. Visualizing Earth Engine data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-inspector-tool">18.6.1. Using the inspector tool</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-plotting-tool">18.6.2. Using the plotting tool</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legends-color-bars-and-labels">18.6.3. Legends, color bars, and labels</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-legends">18.6.3.1. Built-in legends</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-legends">18.6.3.2. Custom legends</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-color-bars">18.6.3.3. Creating color bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-earth-engine-data">19.6. Visualizing Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-inspector-tool">19.6.1. Using the inspector tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-plotting-tool">19.6.2. Using the plotting tool</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#legends-color-bars-and-labels">19.6.3. Legends, color bars, and labels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#built-in-legends">19.6.3.1. Built-in legends</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-legends">19.6.3.2. Custom legends</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-color-bars">19.6.3.3. Creating color bars</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-map-and-linked-maps">18.6.4. Split-panel map and linked maps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-maps">18.6.5. Split-panel maps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linked-maps">18.6.6. Linked maps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector-and-time-slider">18.6.7. Timeseries inspector and time slider</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector">18.6.7.1. Timeseries inspector</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-slider">18.6.7.2. Time slider</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-map-and-linked-maps">19.6.4. Split-panel map and linked maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-panel-maps">19.6.5. Split-panel maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linked-maps">19.6.6. Linked maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector-and-time-slider">19.6.7. Timeseries inspector and time slider</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-inspector">19.6.7.1. Timeseries inspector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-slider">19.6.7.2. Time slider</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualizing-satellite-data-for-an-area-of-interest">18.6.8. Exercise 2 - Visualizing satellite data for an area of interest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualizing-satellite-data-for-an-area-of-interest">19.6.8. Exercise 2 - Visualizing satellite data for an area of interest</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-earth-engine-data">18.7. Analyzing Earth Engine data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics">18.7.1. Zonal statistics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-by-group">18.7.2. Zonal statistics by group</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-earth-engine-data">19.7. Analyzing Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics">19.7.1. Zonal statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zonal-statistics-by-group">19.7.2. Zonal statistics by group</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-earth-engine-data">18.8. Exporting Earth Engine data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-images">18.8.1. Exporting images</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-image-collections">18.8.2. Export image collections</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-feature-collections">18.8.3. Exporting feature collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-earth-engine-data">19.8. Exporting Earth Engine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-images">19.8.1. Exporting images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#export-image-collections">19.8.2. Export image collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exporting-feature-collections">19.8.3. Exporting feature collections</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-timelapse-animations">18.9. Creating timelapse animations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-timelapse">18.9.1. Landsat timelapse</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-2-timelapse">18.9.2. Sentinel-2 timelapse</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-vegetation-indices">18.9.3. MODIS vegetation indices</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-temperature-data">18.9.4. MODIS temperature data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goes-timelapse">18.9.5. GOES timelapse</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-creating-timelapse-animations">18.9.6. Exercise 3 - Creating timelapse animations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-timelapse-animations">19.9. Creating timelapse animations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#landsat-timelapse">19.9.1. Landsat timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sentinel-2-timelapse">19.9.2. Sentinel-2 timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-vegetation-indices">19.9.3. MODIS vegetation indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modis-temperature-data">19.9.4. MODIS temperature data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#goes-timelapse">19.9.5. GOES timelapse</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-creating-timelapse-animations">19.9.6. Exercise 3 - Creating timelapse animations</a></li>
 </ul>
 </li>
 </ul>
