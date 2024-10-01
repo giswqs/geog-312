@@ -41,6 +41,7 @@ parts:
       - file: book/geospatial/geopandas
       - file: book/geospatial/rasterio
       - file: book/geospatial/xarray
+      - file: book/geospatial/rioxarray
       - file: book/geospatial/leafmap
       - file: book/geospatial/vector_viz
       - file: book/geospatial/raster_viz
