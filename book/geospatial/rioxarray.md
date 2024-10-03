@@ -42,6 +42,7 @@ You can start by importing `rioxarray` and other necessary libraries:
 
 ```{code-cell} ipython3
 import rioxarray
+import numpy as np
 import xarray as xr
 import matplotlib.pyplot as plt
 
@@ -67,11 +68,11 @@ You can easily inspect the loaded dataset, including its dimensions, coordinates
 
 ```{code-cell} ipython3
 # View the structure of the DataArray
-print(data.dims)  # Dimensions (e.g., band, y, x)
+data.dims  # Dimensions (e.g., band, y, x)
 ```
 
 ```{code-cell} ipython3
-print(data.coords)  # Coordinates (e.g., y, x in geographic or projected CRS)
+data.coords  # Coordinates (e.g., y, x in geographic or projected CRS)
 ```
 
 ```{code-cell} ipython3
@@ -84,19 +85,26 @@ print(data.attrs)  # Metadata (including CRS)
 
 ```{code-cell} ipython3
 # Check the CRS of the dataset
-print(data.rio.crs)
+data.rio.crs
 ```
 
 ```{code-cell} ipython3
 # Check the affine transformation (mapping pixel coordinates to geographic coordinates)
-print(data.rio.transform())
+data.rio.transform()
+```
+
+Sometimes, raster data may not have a CRS, or the CRS could be incorrect. You can assign a CRS manually if necessary:
+
+```{code-cell} ipython3
+# If the CRS is missing or incorrect, assign a CRS
+data = data.rio.write_crs("EPSG:32611", inplace=True)
 ```
 
 ## Basic Geospatial Operations
 
 ### Reprojecting a Dataset
 
-You can reproject raster data to a different CRS using `rioxarray`. For example, to reproject the dataset to EPSG:4326 (WGS84), use the `rio.reproject` method:
+Reprojecting raster data to another CRS is common in geospatial analysis. For example, you may want to reproject the dataset from its native projection to the WGS84 geographic coordinate system (EPSG:4326):
 
 ```{code-cell} ipython3
 # Reproject the dataset to WGS84 (EPSG:4326)
@@ -106,7 +114,7 @@ print(data_reprojected.rio.crs)
 
 ### Clipping a Raster
 
-You can clip a raster to a specific geographic region by defining a bounding box or using a shapefile. Here’s an example of clipping a raster with a bounding box:
+Clipping a raster dataset is useful when you only want to focus on a specific geographic area. You can clip a dataset using a bounding box in the same CRS as the data:
 
 ```{code-cell} ipython3
 # Define a bounding box (in the same CRS as the dataset)
@@ -120,7 +128,7 @@ clipped_data = data_reprojected.rio.clip_box(*bbox)
 clipped_data.shape
 ```
 
-Alternatively, you can clip the raster using a shapefile containing polygon geometries:
+Alternatively, you can clip the raster using a vector dataset containing polygon geometries:
 
 ```{code-cell} ipython3
 import geopandas as gpd
@@ -162,13 +170,15 @@ You can extract spatial subsets of the dataset by selecting specific coordinate 
 # Select a subset of the data within a lat/lon range
 min_x, max_x = -115.391, -114.988
 min_y, max_y = 35.982, 36.425
-subset = data_reprojected.sel(x=slice(min_x, max_x), y=slice(max_y, min_y))  # Slice y in reverse order
+subset = data_reprojected.sel(
+    x=slice(min_x, max_x), y=slice(max_y, min_y)
+)  # Slice y in reverse order
 subset.shape
 ```
 
 ## Visualization of Georeferenced Data
 
-`rioxarray` integrates smoothly with Matplotlib and other visualization libraries, allowing for easy plotting of raster data:
+Once you have performed operations on the data, you can visualize it using matplotlib. For example, to plot a multi-band image using bands 4, 3, and 2:
 
 ```{code-cell} ipython3
 # Plot the raster data
@@ -192,13 +202,14 @@ plt.ylabel("Latitude")
 plt.show()
 ```
 
-For more advanced plots, such as overlaying a shapefile on the raster data, you can combine `rioxarray` with `geopandas` and `matplotlib`:
+For more advanced plots, such as overlaying a vector dataset on the raster data, you can combine `rioxarray` with `geopandas` and `matplotlib`:
 
 ```{code-cell} ipython3
 # Plot raster with GeoJSON overlay
 fig, ax = plt.subplots(figsize=(8, 8))
+data.attrs["long_name"] = "Surface Reflectance"  # Update the long_name attribute
 data.sel(band=4).plot.imshow(ax=ax, vmin=0, vmax=0.4, cmap="gray")
-bounds.boundary.plot(ax=ax, color='red')
+bounds.boundary.plot(ax=ax, color="red")
 plt.title("Raster with Vector Overlay")
 plt.show()
 ```
@@ -212,11 +223,108 @@ Just like loading data, you can export `rioxarray` datasets to disk. For example
 data.rio.to_raster("output_raster.tif")
 ```
 
+## Handling NoData Values
+
+If your dataset contains NoData values, you can manage them using the following functions:
+
+```{code-cell} ipython3
+# Assign NoData value
+data2 = data.rio.set_nodata(-9999)
+
+# Remove NoData values (mask them)
+data_clean = data2.rio.write_nodata(-9999, inplace=True)
+```
+
+## Reproject to Multiple CRS
+
+You can reproject the dataset to multiple CRS and compare them. For instance:
+
+```{code-cell} ipython3
+# Reproject to WGS 84 (EPSG:4326)
+data = data.rio.reproject("EPSG:4326")
+print(data.rio.crs)
+```
+
+```{code-cell} ipython3
+# Reproject to EPSG:3857 (Web Mercator)
+mercator_data = data.rio.reproject("EPSG:3857")
+print(mercator_data.rio.crs)
+```
+
+```{code-cell} ipython3
+# Plot the raster data in WGS84
+plt.figure(figsize=(6, 6))
+data.sel(band=[4, 3, 2]).plot.imshow(vmin=0, vmax=0.3)
+plt.title("EPSG:4326")
+plt.xlabel("Longitude")
+plt.ylabel("Latitude")
+plt.show()
+```
+
+```{code-cell} ipython3
+# Plot the raster data in Web Mercator
+plt.figure(figsize=(6, 6))
+mercator_data.sel(band=[4, 3, 2]).plot.imshow(vmin=0, vmax=0.3)
+plt.title("EPSG:3857")
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.show()
+```
+
+## Basic Band Math (NDVI Calculation)
+
+Band math enables us to perform computations across different bands. A common application is calculating the Normalized Difference Vegetation Index (NDVI), which is an indicator of vegetation health.
+
+NDVI is calculated as:
+
+NDVI = (NIR - Red) / (NIR + Red)
+
+We can compute and plot the NDVI as follows:
+
+```{code-cell} ipython3
+# Select the red (band 4) and NIR (band 5) bands
+red_band = data.sel(band=4)
+nir_band = data.sel(band=5)
+
+# Calculate NDVI
+ndvi = (nir_band - red_band) / (nir_band + red_band)
+ndvi = ndvi.clip(min=-1, max=1)  # Clip values to the range [-1, 1]
+ndvi.attrs["long_name"] = "NDVI"
+```
+
+To visualize the NDVI, we can plot it using matplotlib:
+
+```{code-cell} ipython3
+# Plot the NDVI values
+ndvi.plot(cmap="RdYlGn", vmin=-1, vmax=1)
+plt.title("NDVI of the Landsat Image")
+plt.xlabel("Longitude")
+plt.ylabel("Latitude")
+plt.show()
+```
+
+You can also mask out non-vegetated areas or areas with invalid NDVI values (such as water or urban regions) by applying a threshold:
+
+```{code-cell} ipython3
+# Mask out non-vegetated areas (NDVI < 0.2)
+ndvi_clean = ndvi.where(ndvi > 0.2)
+ndvi_clean.plot(cmap="Greens", vmin=0.2, vmax=0.5)
+plt.title("Cleaned NDVI (non-vegetated areas masked)")
+plt.xlabel("Longitude")
+plt.ylabel("Latitude")
+plt.show()
+```
+
 ## Exercises
+
+### Sample Dataset
+
+For the exercises, we will use a sample GeoTIFF raster dataset of Libya, which is available at the following URL:
+https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-09-13.tif
 
 ### Exercise 1: Load and Inspect a Raster Dataset
 
-1. Use `rioxarray` to load a GeoTIFF raster file (`raster_file.tif`).
+1. Use `rioxarray` to load the GeoTIFF raster file .
 2. Inspect the dataset by printing its dimensions, coordinates, and attributes.
 3. Check and print the CRS and affine transformation of the dataset.
 
@@ -236,7 +344,7 @@ data.rio.to_raster("output_raster.tif")
 
 ### Exercise 3: Clip the Raster Using a Bounding Box
 
-1. Define a bounding box with specific coordinates in the raster’s CRS (e.g., `xmin`, `ymin`, `xmax`, `ymax`).
+1. Define a bounding box (e.g., `xmin`, `ymin`, `xmax`, `ymax`) that covers the land area of Libya.
 2. Clip the raster dataset using this bounding box.
 3. Plot the clipped data to visualize the result.
 
@@ -244,10 +352,10 @@ data.rio.to_raster("output_raster.tif")
 
 ```
 
-### Exercise 4: Mask the Raster Using a Shapefile
+### Exercise 4: Mask the Raster Using a Vector Dataset
 
-1. Load a shapefile (e.g., a region of interest) using `geopandas`.
-2. Use the shapefile to mask the raster dataset, keeping only the data within the shapefile boundaries.
+1. Load the GeoJSON file at https://github.com/opengeos/datasets/releases/download/raster/Derna_Libya.geojson using `geopandas`.
+2. Use the GeoJSON to mask the raster dataset, keeping only the data within the GeoJSON boundaries.
 3. Plot the masked raster data.
 
 ```{code-cell} ipython3
@@ -256,7 +364,7 @@ data.rio.to_raster("output_raster.tif")
 
 ### Exercise 5: Resample the Raster to a Different Resolution
 
-1. Resample the raster dataset to a 1km resolution, using an average resampling method.
+1. Resample the raster dataset to a 3m resolution, using an average resampling method.
 2. Check the new dimensions and coordinates after resampling.
 3. Save the resampled raster dataset as a new GeoTIFF file.
 
