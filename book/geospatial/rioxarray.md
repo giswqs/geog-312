@@ -324,7 +324,7 @@ https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-09-13.t
 
 ### Exercise 1: Load and Inspect a Raster Dataset
 
-1. Use `rioxarray` to load the GeoTIFF raster file .
+1. Use `rioxarray` to load the GeoTIFF raster file.
 2. Inspect the dataset by printing its dimensions, coordinates, and attributes.
 3. Check and print the CRS and affine transformation of the dataset.
 
