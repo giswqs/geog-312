@@ -505,8 +505,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-libraries">Required Libraries:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-libraries">Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-datasets">Sample Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-reading-and-exploring-raster-data">Exercise 1: Reading and Exploring Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualizing-and-manipulating-raster-bands">Exercise 2: Visualizing and Manipulating Raster Bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-raster-clipping-with-array-indexing">Exercise 3: Raster Clipping with Array Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-calculating-ndwi-band-math">Exercise 4: Calculating NDWI (Band Math)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-reprojecting-raster-data">Exercise 5: Reprojecting Raster Data</a></li>
 </ul>
             </nav>
         </div>
@@ -522,7 +528,7 @@ document.write(`
 <h1>Lab 5<a class="headerlink" href="#lab-5" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/labs/lab_05.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="objective">
-<h2>Objective:<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
 <p>This lab introduces you to essential GIS raster operations using Python’s rasterio and matplotlib libraries. By the end of this lab, you will have learned to:</p>
 <ul class="simple">
 <li><p>Read and explore raster data files.</p></li>
@@ -532,7 +538,7 @@ document.write(`
 </ul>
 </section>
 <section id="required-libraries">
-<h2>Required Libraries:<a class="headerlink" href="#required-libraries" title="Link to this heading">#</a></h2>
+<h2>Required Libraries<a class="headerlink" href="#required-libraries" title="Link to this heading">#</a></h2>
 <p>Make sure you have the following libraries installed:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -541,30 +547,40 @@ document.write(`
 </div>
 </div>
 </div>
-<p><strong>Sample datasets</strong></p>
+</section>
+<section id="sample-datasets">
+<h2>Sample Datasets<a class="headerlink" href="#sample-datasets" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Singlg-band image (DEM): <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/raster/dem_90m.tif">opengeos/datasets</a></p></li>
 <li><p>Multispectral image (Landsat): <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/raster/cog.tif">opengeos/datasets</a></p></li>
 </ul>
-<p><strong>Exercise 1: Reading and Exploring Raster Data</strong></p>
+</section>
+<section id="exercise-1-reading-and-exploring-raster-data">
+<h2>Exercise 1: Reading and Exploring Raster Data<a class="headerlink" href="#exercise-1-reading-and-exploring-raster-data" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Open the single-band DEM image using <code class="docutils literal notranslate"><span class="pre">rasterio</span></code>.</p></li>
 <li><p>Retrieve and print the raster metadata, including the CRS, resolution, bounds, number of bands, and data types.</p></li>
 <li><p>Display the raster’s width, height, and pixel data types to understand the grid dimensions and data structure.</p></li>
 </ol>
-<p><strong>Exercise 2: Visualizing and Manipulating Raster Bands</strong></p>
+</section>
+<section id="exercise-2-visualizing-and-manipulating-raster-bands">
+<h2>Exercise 2: Visualizing and Manipulating Raster Bands<a class="headerlink" href="#exercise-2-visualizing-and-manipulating-raster-bands" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Visualize the single-band DEM using a custom colormap (e.g., cmap=’terrain’).</p></li>
 <li><p>Open the multispectral image and visualize the first band using a suitable colormap.</p></li>
 <li><p>Combine multiple bands from the multispectral image (e.g., Red, Green, and Blue) and stack them to create an RGB composite image.</p></li>
 </ol>
-<p><strong>Exercise 3: Raster Clipping with Array Indexing</strong></p>
+</section>
+<section id="exercise-3-raster-clipping-with-array-indexing">
+<h2>Exercise 3: Raster Clipping with Array Indexing<a class="headerlink" href="#exercise-3-raster-clipping-with-array-indexing" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Open the multispectral image and clip a geographic subset using array indexing (specifying row and column ranges).</p></li>
 <li><p>Visualize the clipped portion of the image using matplotlib to ensure the subset is correct.</p></li>
 <li><p>Save the clipped raster subset to a new file named <code class="docutils literal notranslate"><span class="pre">clipped_multispectral.tif</span></code>.</p></li>
 </ol>
-<p><strong>Exercise 4: Calculating NDWI (Band Math)</strong></p>
+</section>
+<section id="exercise-4-calculating-ndwi-band-math">
+<h2>Exercise 4: Calculating NDWI (Band Math)<a class="headerlink" href="#exercise-4-calculating-ndwi-band-math" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>Open the multispectral image and extract the Green and Near-Infrared (NIR) bands.</p></li>
 <li><p>Compute the Normalized Difference Water Index (<a class="reference external" href="https://en.wikipedia.org/wiki/Normalized_difference_water_index">NDWI</a>) using the formula:</p>
@@ -573,7 +589,9 @@ document.write(`
 <li><p>Visualize the NDWI result using a water-friendly colormap (e.g., cmap=’Blues’) to highlight water bodies.</p></li>
 <li><p>Save the resulting NDWI image as a new raster file named ndwi.tif.</p></li>
 </ol>
-<p><strong>Exercise 5: Reprojecting Raster Data</strong></p>
+</section>
+<section id="exercise-5-reprojecting-raster-data">
+<h2>Exercise 5: Reprojecting Raster Data<a class="headerlink" href="#exercise-5-reprojecting-raster-data" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Reproject the single-band DEM raster from its original CRS to EPSG:4326 (WGS 84) using the <code class="docutils literal notranslate"><span class="pre">rasterio.warp.reproject</span></code> function.</p></li>
 <li><p>Save the reprojected raster to a new GeoTIFF file named <code class="docutils literal notranslate"><span class="pre">reprojected_dem.tif</span></code>.</p></li>
@@ -637,8 +655,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-libraries">Required Libraries:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-libraries">Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-datasets">Sample Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-reading-and-exploring-raster-data">Exercise 1: Reading and Exploring Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-visualizing-and-manipulating-raster-bands">Exercise 2: Visualizing and Manipulating Raster Bands</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-raster-clipping-with-array-indexing">Exercise 3: Raster Clipping with Array Indexing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-calculating-ndwi-band-math">Exercise 4: Calculating NDWI (Band Math)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-reprojecting-raster-data">Exercise 5: Reprojecting Raster Data</a></li>
 </ul>
   </nav></div>
 
