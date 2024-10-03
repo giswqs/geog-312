@@ -527,15 +527,19 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-georeferenced-data">13.8. Visualization of Georeferenced Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data">13.9. Saving Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">13.10. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-and-inspect-a-raster-dataset">13.10.1. Exercise 1: Load and Inspect a Raster Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-reproject-the-raster-to-a-new-crs">13.10.2. Exercise 2: Reproject the Raster to a New CRS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-clip-the-raster-using-a-bounding-box">13.10.3. Exercise 3: Clip the Raster Using a Bounding Box</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-mask-the-raster-using-a-shapefile">13.10.4. Exercise 4: Mask the Raster Using a Shapefile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-resample-the-raster-to-a-different-resolution">13.10.5. Exercise 5: Resample the Raster to a Different Resolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-nodata-values">13.10. Handling NoData Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproject-to-multiple-crs">13.11. Reproject to Multiple CRS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-band-math-ndvi-calculation">13.12. Basic Band Math (NDVI Calculation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">13.13. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-dataset">13.13.1. Sample Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-and-inspect-a-raster-dataset">13.13.2. Exercise 1: Load and Inspect a Raster Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-reproject-the-raster-to-a-new-crs">13.13.3. Exercise 2: Reproject the Raster to a New CRS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-clip-the-raster-using-a-bounding-box">13.13.4. Exercise 3: Clip the Raster Using a Bounding Box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-mask-the-raster-using-a-vector-dataset">13.13.5. Exercise 4: Mask the Raster Using a Vector Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-resample-the-raster-to-a-different-resolution">13.13.6. Exercise 5: Resample the Raster to a Different Resolution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">13.11. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">13.14. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -582,6 +586,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rioxarray</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -590,7 +595,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.core.options.set_options at 0x7f18badfb410&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.core.options.set_options at 0x7f813eaff4d0&gt;
 </pre></div>
 </div>
 </div>
@@ -993,17 +998,17 @@ Attributes: (12/96)
     _FillValue:                            -inf
     scale_factor:                          1.0
     add_offset:                            0.0
-    long_name:                             (&#x27;SR_B1&#x27;, &#x27;SR_B2&#x27;, &#x27;SR_B3&#x27;, &#x27;SR_B4...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 7</li><li><span class='xr-has-index'>y</span>: 2563</li><li><span class='xr-has-index'>x</span>: 2485</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-95cf9cfb-c6d9-4a2f-af46-b3bf1ab9751e' class='xr-array-in' type='checkbox' ><label for='section-95cf9cfb-c6d9-4a2f-af46-b3bf1ab9751e' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>...</span></div><div class='xr-array-data'><pre>[44583385 values with dtype=float32]</pre></div></div></li><li class='xr-section-item'><input id='section-5f0f8bd8-65b5-46a0-9f0c-3a9884f11473' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5f0f8bd8-65b5-46a0-9f0c-3a9884f11473' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7</div><input id='attrs-987fb6de-1971-4c70-be96-b6db235b70e2' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-987fb6de-1971-4c70-be96-b6db235b70e2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0ae741d8-9207-42b4-a2f4-b843f8bf252e' class='xr-var-data-in' type='checkbox'><label for='data-0ae741d8-9207-42b4-a2f4-b843f8bf252e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1, 2, 3, 4, 5, 6, 7])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.824e+05 5.825e+05 ... 8.06e+05</div><input id='attrs-a7399aef-8a8a-434d-bef9-be38fc1a9cb2' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-a7399aef-8a8a-434d-bef9-be38fc1a9cb2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4b9f6f56-5ea2-46c3-99be-a84d3ed6fa14' class='xr-var-data-in' type='checkbox'><label for='data-4b9f6f56-5ea2-46c3-99be-a84d3ed6fa14' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([582435., 582525., 582615., ..., 805815., 805905., 805995.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>4.106e+06 4.105e+06 ... 3.875e+06</div><input id='attrs-559c6ce4-720e-4f46-b40b-d673779b3b1e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-559c6ce4-720e-4f46-b40b-d673779b3b1e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9f604000-a4a8-44fb-8bf0-5b75730773f4' class='xr-var-data-in' type='checkbox'><label for='data-9f604000-a4a8-44fb-8bf0-5b75730773f4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([4105575., 4105485., 4105395., ..., 3875175., 3875085., 3874995.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-62e711a5-a3d2-488f-babf-157cdfd73a36' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-62e711a5-a3d2-488f-babf-157cdfd73a36' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5abcd8d1-8055-4754-9fc3-3d4e4a67d418' class='xr-var-data-in' type='checkbox'><label for='data-5abcd8d1-8055-4754-9fc3-3d4e4a67d418' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 11N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-117],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32611&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 11N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>-117.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 11N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-117],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32611&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>582390.0 90.0 0.0 4105620.0 0.0 -90.0</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-27ffd813-bef7-43fd-9c0c-25456fdb2e61' class='xr-section-summary-in' type='checkbox'  ><label for='section-27ffd813-bef7-43fd-9c0c-25456fdb2e61' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>band</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-5ce5a6fe-4e88-49a4-978f-201d5205bfc9' class='xr-index-data-in' type='checkbox'/><label for='index-5ce5a6fe-4e88-49a4-978f-201d5205bfc9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([1, 2, 3, 4, 5, 6, 7], dtype=&#x27;int64&#x27;, name=&#x27;band&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b45678f4-c6c3-4d7e-a835-8b016f676a97' class='xr-index-data-in' type='checkbox'/><label for='index-b45678f4-c6c3-4d7e-a835-8b016f676a97' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([582435.0, 582525.0, 582615.0, 582705.0, 582795.0, 582885.0, 582975.0,
+    long_name:                             (&#x27;SR_B1&#x27;, &#x27;SR_B2&#x27;, &#x27;SR_B3&#x27;, &#x27;SR_B4...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'></div><ul class='xr-dim-list'><li><span class='xr-has-index'>band</span>: 7</li><li><span class='xr-has-index'>y</span>: 2563</li><li><span class='xr-has-index'>x</span>: 2485</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-7fdc85cb-57ac-4b03-aab0-cd907d882dc5' class='xr-array-in' type='checkbox' ><label for='section-7fdc85cb-57ac-4b03-aab0-cd907d882dc5' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>...</span></div><div class='xr-array-data'><pre>[44583385 values with dtype=float32]</pre></div></div></li><li class='xr-section-item'><input id='section-4765b21f-a62a-4a88-864f-6d4e5c0687a1' class='xr-section-summary-in' type='checkbox'  checked><label for='section-4765b21f-a62a-4a88-864f-6d4e5c0687a1' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>band</span></div><div class='xr-var-dims'>(band)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7</div><input id='attrs-70d84231-2299-4aa2-aaf4-94554e6d68ab' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-70d84231-2299-4aa2-aaf4-94554e6d68ab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2d77cf34-7c01-479d-82ae-d91f113d0be2' class='xr-var-data-in' type='checkbox'><label for='data-2d77cf34-7c01-479d-82ae-d91f113d0be2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([1, 2, 3, 4, 5, 6, 7])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>5.824e+05 5.825e+05 ... 8.06e+05</div><input id='attrs-53322718-d40b-49fc-8e64-7bf4cde39c2f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-53322718-d40b-49fc-8e64-7bf4cde39c2f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-647158d3-7f1d-4def-82be-7f38e54c2535' class='xr-var-data-in' type='checkbox'><label for='data-647158d3-7f1d-4def-82be-7f38e54c2535' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([582435., 582525., 582615., ..., 805815., 805905., 805995.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>4.106e+06 4.105e+06 ... 3.875e+06</div><input id='attrs-c64444a8-3694-42b2-a9d3-bdd50fa6a6a5' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-c64444a8-3694-42b2-a9d3-bdd50fa6a6a5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f547cf04-dbd4-4ebf-8768-19d49a10fad9' class='xr-var-data-in' type='checkbox'><label for='data-f547cf04-dbd4-4ebf-8768-19d49a10fad9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([4105575., 4105485., 4105395., ..., 3875175., 3875085., 3874995.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0</div><input id='attrs-11659847-133d-4be1-958f-3f286a64fe10' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-11659847-133d-4be1-958f-3f286a64fe10' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5c7a83fd-ccbf-4c8c-ba2f-725a1cf8a8fa' class='xr-var-data-in' type='checkbox'><label for='data-5c7a83fd-ccbf-4c8c-ba2f-725a1cf8a8fa' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>crs_wkt :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 11N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-117],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32611&quot;]]</dd><dt><span>semi_major_axis :</span></dt><dd>6378137.0</dd><dt><span>semi_minor_axis :</span></dt><dd>6356752.314245179</dd><dt><span>inverse_flattening :</span></dt><dd>298.257223563</dd><dt><span>reference_ellipsoid_name :</span></dt><dd>WGS 84</dd><dt><span>longitude_of_prime_meridian :</span></dt><dd>0.0</dd><dt><span>prime_meridian_name :</span></dt><dd>Greenwich</dd><dt><span>geographic_crs_name :</span></dt><dd>WGS 84</dd><dt><span>horizontal_datum_name :</span></dt><dd>World Geodetic System 1984</dd><dt><span>projected_crs_name :</span></dt><dd>WGS 84 / UTM zone 11N</dd><dt><span>grid_mapping_name :</span></dt><dd>transverse_mercator</dd><dt><span>latitude_of_projection_origin :</span></dt><dd>0.0</dd><dt><span>longitude_of_central_meridian :</span></dt><dd>-117.0</dd><dt><span>false_easting :</span></dt><dd>500000.0</dd><dt><span>false_northing :</span></dt><dd>0.0</dd><dt><span>scale_factor_at_central_meridian :</span></dt><dd>0.9996</dd><dt><span>spatial_ref :</span></dt><dd>PROJCS[&quot;WGS 84 / UTM zone 11N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,-117],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32611&quot;]]</dd><dt><span>GeoTransform :</span></dt><dd>582390.0 90.0 0.0 4105620.0 0.0 -90.0</dd></dl></div><div class='xr-var-data'><pre>array(0)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-4cec41d6-e115-41ab-b2b3-549af3312b6a' class='xr-section-summary-in' type='checkbox'  ><label for='section-4cec41d6-e115-41ab-b2b3-549af3312b6a' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>band</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-a8250726-fe66-45d3-a5f9-c5b5970b1b1c' class='xr-index-data-in' type='checkbox'/><label for='index-a8250726-fe66-45d3-a5f9-c5b5970b1b1c' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([1, 2, 3, 4, 5, 6, 7], dtype=&#x27;int64&#x27;, name=&#x27;band&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-8b08d168-3346-4436-a8d0-c8de63d37d6a' class='xr-index-data-in' type='checkbox'/><label for='index-8b08d168-3346-4436-a8d0-c8de63d37d6a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([582435.0, 582525.0, 582615.0, 582705.0, 582795.0, 582885.0, 582975.0,
        583065.0, 583155.0, 583245.0,
        ...
        805185.0, 805275.0, 805365.0, 805455.0, 805545.0, 805635.0, 805725.0,
        805815.0, 805905.0, 805995.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;, length=2485))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-71f9cbc0-f24f-4969-bfc8-ad89e41b1bc0' class='xr-index-data-in' type='checkbox'/><label for='index-71f9cbc0-f24f-4969-bfc8-ad89e41b1bc0' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([4105575.0, 4105485.0, 4105395.0, 4105305.0, 4105215.0, 4105125.0,
+      dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;, length=2485))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-741e1120-027b-4cf4-bdb4-bf116d895b2a' class='xr-index-data-in' type='checkbox'/><label for='index-741e1120-027b-4cf4-bdb4-bf116d895b2a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([4105575.0, 4105485.0, 4105395.0, 4105305.0, 4105215.0, 4105125.0,
        4105035.0, 4104945.0, 4104855.0, 4104765.0,
        ...
        3875805.0, 3875715.0, 3875625.0, 3875535.0, 3875445.0, 3875355.0,
        3875265.0, 3875175.0, 3875085.0, 3874995.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;, length=2563))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-4912c20f-cfe4-4665-8678-9a2dfcf57b72' class='xr-section-summary-in' type='checkbox'  ><label for='section-4912c20f-cfe4-4665-8678-9a2dfcf57b72' class='xr-section-summary' >Attributes: <span>(96)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ALGORITHM_SOURCE_SURFACE_REFLECTANCE :</span></dt><dd>LaSRC_1.6.0</dd><dt><span>ALGORITHM_SOURCE_SURFACE_TEMPERATURE :</span></dt><dd>st_1.5.0</dd><dt><span>CLOUD_COVER :</span></dt><dd>0</dd><dt><span>CLOUD_COVER_LAND :</span></dt><dd>0</dd><dt><span>COLLECTION_CATEGORY :</span></dt><dd>T1</dd><dt><span>COLLECTION_NUMBER :</span></dt><dd>2</dd><dt><span>DATA_SOURCE_AIR_TEMPERATURE :</span></dt><dd>VIIRS</dd><dt><span>DATA_SOURCE_ELEVATION :</span></dt><dd>GLS2000</dd><dt><span>DATA_SOURCE_OZONE :</span></dt><dd>VIIRS</dd><dt><span>DATA_SOURCE_PRESSURE :</span></dt><dd>Calculated</dd><dt><span>DATA_SOURCE_REANALYSIS :</span></dt><dd>GEOS-5 IT</dd><dt><span>DATA_SOURCE_WATER_VAPOR :</span></dt><dd>VIIRS</dd><dt><span>DATE_ACQUIRED :</span></dt><dd>2024-07-08</dd><dt><span>DATE_PRODUCT_GENERATED :</span></dt><dd>1720562288000</dd><dt><span>DATUM :</span></dt><dd>WGS84</dd><dt><span>EARTH_SUN_DISTANCE :</span></dt><dd>1.016687</dd><dt><span>ELLIPSOID :</span></dt><dd>WGS84</dd><dt><span>GEOMETRIC_RMSE_MODEL :</span></dt><dd>3.828</dd><dt><span>GEOMETRIC_RMSE_MODEL_X :</span></dt><dd>2.822</dd><dt><span>GEOMETRIC_RMSE_MODEL_Y :</span></dt><dd>2.586</dd><dt><span>GEOMETRIC_RMSE_VERIFY :</span></dt><dd>1.342</dd><dt><span>GRID_CELL_SIZE_REFLECTIVE :</span></dt><dd>30</dd><dt><span>GRID_CELL_SIZE_THERMAL :</span></dt><dd>30</dd><dt><span>GROUND_CONTROL_POINTS_MODEL :</span></dt><dd>1015</dd><dt><span>GROUND_CONTROL_POINTS_VERIFY :</span></dt><dd>244</dd><dt><span>GROUND_CONTROL_POINTS_VERSION :</span></dt><dd>5</dd><dt><span>IMAGE_QUALITY_OLI :</span></dt><dd>9</dd><dt><span>IMAGE_QUALITY_TIRS :</span></dt><dd>9</dd><dt><span>L1_DATE_PRODUCT_GENERATED :</span></dt><dd>2024-07-08T23:15:25Z</dd><dt><span>L1_LANDSAT_PRODUCT_ID :</span></dt><dd>LC09_L1TP_039035_20240708_20240708_02_T1</dd><dt><span>L1_PROCESSING_LEVEL :</span></dt><dd>L1TP</dd><dt><span>L1_PROCESSING_SOFTWARE_VERSION :</span></dt><dd>LPGS_16.4.0</dd><dt><span>L1_REQUEST_ID :</span></dt><dd>190852400045</dd><dt><span>LANDSAT_PRODUCT_ID :</span></dt><dd>LC09_L2SP_039035_20240708_20240709_02_T1</dd><dt><span>LANDSAT_SCENE_ID :</span></dt><dd>LC90390352024190LGN00</dd><dt><span>LICENSE :</span></dt><dd>https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC09_C02_T1_L2#terms-of-use</dd><dt><span>MAP_PROJECTION :</span></dt><dd>UTM</dd><dt><span>NADIR_OFFNADIR :</span></dt><dd>NADIR</dd><dt><span>ORIENTATION :</span></dt><dd>NORTH_UP</dd><dt><span>OVR_RESAMPLING_ALG :</span></dt><dd>NEAREST</dd><dt><span>PROCESSING_LEVEL :</span></dt><dd>L2SP</dd><dt><span>PROCESSING_SOFTWARE_VERSION :</span></dt><dd>LPGS_16.4.0</dd><dt><span>REFLECTANCE_ADD_BAND_1 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_2 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_3 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_4 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_5 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_6 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_7 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_MULT_BAND_1 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_2 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_3 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_4 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_5 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_6 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_7 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTIVE_LINES :</span></dt><dd>7721</dd><dt><span>REFLECTIVE_SAMPLES :</span></dt><dd>7591</dd><dt><span>REQUEST_ID :</span></dt><dd>190888500045</dd><dt><span>ROLL_ANGLE :</span></dt><dd>0</dd><dt><span>SATURATION_BAND_1 :</span></dt><dd>N</dd><dt><span>SATURATION_BAND_2 :</span></dt><dd>N</dd><dt><span>SATURATION_BAND_3 :</span></dt><dd>N</dd><dt><span>SATURATION_BAND_4 :</span></dt><dd>Y</dd><dt><span>SATURATION_BAND_5 :</span></dt><dd>Y</dd><dt><span>SATURATION_BAND_6 :</span></dt><dd>Y</dd><dt><span>SATURATION_BAND_7 :</span></dt><dd>Y</dd><dt><span>SATURATION_BAND_8 :</span></dt><dd>N</dd><dt><span>SATURATION_BAND_9 :</span></dt><dd>N</dd><dt><span>SCENE_CENTER_TIME :</span></dt><dd>18:14:55.5609230Z</dd><dt><span>SENSOR_ID :</span></dt><dd>OLI_TIRS</dd><dt><span>SPACECRAFT_ID :</span></dt><dd>LANDSAT_9</dd><dt><span>STATION_ID :</span></dt><dd>LGN</dd><dt><span>SUN_AZIMUTH :</span></dt><dd>119.00639877</dd><dt><span>SUN_ELEVATION :</span></dt><dd>66.21066536</dd><dt><span>system-asset_size :</span></dt><dd>944562046</dd><dt><span>system-index :</span></dt><dd>LC09_039035_20240708</dd><dt><span>system-time_end :</span></dt><dd>1720462495560</dd><dt><span>system-time_start :</span></dt><dd>1720462495560</dd><dt><span>TARGET_WRS_PATH :</span></dt><dd>39</dd><dt><span>TARGET_WRS_ROW :</span></dt><dd>35</dd><dt><span>TEMPERATURE_ADD_BAND_ST_B10 :</span></dt><dd>149</dd><dt><span>TEMPERATURE_MAXIMUM_BAND_ST_B10 :</span></dt><dd>372.999941</dd><dt><span>TEMPERATURE_MINIMUM_BAND_ST_B10 :</span></dt><dd>149.003418</dd><dt><span>TEMPERATURE_MULT_BAND_ST_B10 :</span></dt><dd>0.00341802</dd><dt><span>THERMAL_LINES :</span></dt><dd>7721</dd><dt><span>THERMAL_SAMPLES :</span></dt><dd>7591</dd><dt><span>UTM_ZONE :</span></dt><dd>11</dd><dt><span>WRS_PATH :</span></dt><dd>39</dd><dt><span>WRS_ROW :</span></dt><dd>35</dd><dt><span>WRS_TYPE :</span></dt><dd>2</dd><dt><span>AREA_OR_POINT :</span></dt><dd>Area</dd><dt><span>_FillValue :</span></dt><dd>-inf</dd><dt><span>scale_factor :</span></dt><dd>1.0</dd><dt><span>add_offset :</span></dt><dd>0.0</dd><dt><span>long_name :</span></dt><dd>(&#x27;SR_B1&#x27;, &#x27;SR_B2&#x27;, &#x27;SR_B3&#x27;, &#x27;SR_B4&#x27;, &#x27;SR_B5&#x27;, &#x27;SR_B6&#x27;, &#x27;SR_B7&#x27;)</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;, length=2563))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-26f20617-a371-41dd-b9bf-51f2af90caa0' class='xr-section-summary-in' type='checkbox'  ><label for='section-26f20617-a371-41dd-b9bf-51f2af90caa0' class='xr-section-summary' >Attributes: <span>(96)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>ALGORITHM_SOURCE_SURFACE_REFLECTANCE :</span></dt><dd>LaSRC_1.6.0</dd><dt><span>ALGORITHM_SOURCE_SURFACE_TEMPERATURE :</span></dt><dd>st_1.5.0</dd><dt><span>CLOUD_COVER :</span></dt><dd>0</dd><dt><span>CLOUD_COVER_LAND :</span></dt><dd>0</dd><dt><span>COLLECTION_CATEGORY :</span></dt><dd>T1</dd><dt><span>COLLECTION_NUMBER :</span></dt><dd>2</dd><dt><span>DATA_SOURCE_AIR_TEMPERATURE :</span></dt><dd>VIIRS</dd><dt><span>DATA_SOURCE_ELEVATION :</span></dt><dd>GLS2000</dd><dt><span>DATA_SOURCE_OZONE :</span></dt><dd>VIIRS</dd><dt><span>DATA_SOURCE_PRESSURE :</span></dt><dd>Calculated</dd><dt><span>DATA_SOURCE_REANALYSIS :</span></dt><dd>GEOS-5 IT</dd><dt><span>DATA_SOURCE_WATER_VAPOR :</span></dt><dd>VIIRS</dd><dt><span>DATE_ACQUIRED :</span></dt><dd>2024-07-08</dd><dt><span>DATE_PRODUCT_GENERATED :</span></dt><dd>1720562288000</dd><dt><span>DATUM :</span></dt><dd>WGS84</dd><dt><span>EARTH_SUN_DISTANCE :</span></dt><dd>1.016687</dd><dt><span>ELLIPSOID :</span></dt><dd>WGS84</dd><dt><span>GEOMETRIC_RMSE_MODEL :</span></dt><dd>3.828</dd><dt><span>GEOMETRIC_RMSE_MODEL_X :</span></dt><dd>2.822</dd><dt><span>GEOMETRIC_RMSE_MODEL_Y :</span></dt><dd>2.586</dd><dt><span>GEOMETRIC_RMSE_VERIFY :</span></dt><dd>1.342</dd><dt><span>GRID_CELL_SIZE_REFLECTIVE :</span></dt><dd>30</dd><dt><span>GRID_CELL_SIZE_THERMAL :</span></dt><dd>30</dd><dt><span>GROUND_CONTROL_POINTS_MODEL :</span></dt><dd>1015</dd><dt><span>GROUND_CONTROL_POINTS_VERIFY :</span></dt><dd>244</dd><dt><span>GROUND_CONTROL_POINTS_VERSION :</span></dt><dd>5</dd><dt><span>IMAGE_QUALITY_OLI :</span></dt><dd>9</dd><dt><span>IMAGE_QUALITY_TIRS :</span></dt><dd>9</dd><dt><span>L1_DATE_PRODUCT_GENERATED :</span></dt><dd>2024-07-08T23:15:25Z</dd><dt><span>L1_LANDSAT_PRODUCT_ID :</span></dt><dd>LC09_L1TP_039035_20240708_20240708_02_T1</dd><dt><span>L1_PROCESSING_LEVEL :</span></dt><dd>L1TP</dd><dt><span>L1_PROCESSING_SOFTWARE_VERSION :</span></dt><dd>LPGS_16.4.0</dd><dt><span>L1_REQUEST_ID :</span></dt><dd>190852400045</dd><dt><span>LANDSAT_PRODUCT_ID :</span></dt><dd>LC09_L2SP_039035_20240708_20240709_02_T1</dd><dt><span>LANDSAT_SCENE_ID :</span></dt><dd>LC90390352024190LGN00</dd><dt><span>LICENSE :</span></dt><dd>https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC09_C02_T1_L2#terms-of-use</dd><dt><span>MAP_PROJECTION :</span></dt><dd>UTM</dd><dt><span>NADIR_OFFNADIR :</span></dt><dd>NADIR</dd><dt><span>ORIENTATION :</span></dt><dd>NORTH_UP</dd><dt><span>OVR_RESAMPLING_ALG :</span></dt><dd>NEAREST</dd><dt><span>PROCESSING_LEVEL :</span></dt><dd>L2SP</dd><dt><span>PROCESSING_SOFTWARE_VERSION :</span></dt><dd>LPGS_16.4.0</dd><dt><span>REFLECTANCE_ADD_BAND_1 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_2 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_3 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_4 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_5 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_6 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_ADD_BAND_7 :</span></dt><dd>-0.2</dd><dt><span>REFLECTANCE_MULT_BAND_1 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_2 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_3 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_4 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_5 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_6 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTANCE_MULT_BAND_7 :</span></dt><dd>2.75e-05</dd><dt><span>REFLECTIVE_LINES :</span></dt><dd>7721</dd><dt><span>REFLECTIVE_SAMPLES :</span></dt><dd>7591</dd><dt><span>REQUEST_ID :</span></dt><dd>190888500045</dd><dt><span>ROLL_ANGLE :</span></dt><dd>0</dd><dt><span>SATURATION_BAND_1 :</span></dt><dd>N</dd><dt><span>SATURATION_BAND_2 :</span></dt><dd>N</dd><dt><span>SATURATION_BAND_3 :</span></dt><dd>N</dd><dt><span>SATURATION_BAND_4 :</span></dt><dd>Y</dd><dt><span>SATURATION_BAND_5 :</span></dt><dd>Y</dd><dt><span>SATURATION_BAND_6 :</span></dt><dd>Y</dd><dt><span>SATURATION_BAND_7 :</span></dt><dd>Y</dd><dt><span>SATURATION_BAND_8 :</span></dt><dd>N</dd><dt><span>SATURATION_BAND_9 :</span></dt><dd>N</dd><dt><span>SCENE_CENTER_TIME :</span></dt><dd>18:14:55.5609230Z</dd><dt><span>SENSOR_ID :</span></dt><dd>OLI_TIRS</dd><dt><span>SPACECRAFT_ID :</span></dt><dd>LANDSAT_9</dd><dt><span>STATION_ID :</span></dt><dd>LGN</dd><dt><span>SUN_AZIMUTH :</span></dt><dd>119.00639877</dd><dt><span>SUN_ELEVATION :</span></dt><dd>66.21066536</dd><dt><span>system-asset_size :</span></dt><dd>944562046</dd><dt><span>system-index :</span></dt><dd>LC09_039035_20240708</dd><dt><span>system-time_end :</span></dt><dd>1720462495560</dd><dt><span>system-time_start :</span></dt><dd>1720462495560</dd><dt><span>TARGET_WRS_PATH :</span></dt><dd>39</dd><dt><span>TARGET_WRS_ROW :</span></dt><dd>35</dd><dt><span>TEMPERATURE_ADD_BAND_ST_B10 :</span></dt><dd>149</dd><dt><span>TEMPERATURE_MAXIMUM_BAND_ST_B10 :</span></dt><dd>372.999941</dd><dt><span>TEMPERATURE_MINIMUM_BAND_ST_B10 :</span></dt><dd>149.003418</dd><dt><span>TEMPERATURE_MULT_BAND_ST_B10 :</span></dt><dd>0.00341802</dd><dt><span>THERMAL_LINES :</span></dt><dd>7721</dd><dt><span>THERMAL_SAMPLES :</span></dt><dd>7591</dd><dt><span>UTM_ZONE :</span></dt><dd>11</dd><dt><span>WRS_PATH :</span></dt><dd>39</dd><dt><span>WRS_ROW :</span></dt><dd>35</dd><dt><span>WRS_TYPE :</span></dt><dd>2</dd><dt><span>AREA_OR_POINT :</span></dt><dd>Area</dd><dt><span>_FillValue :</span></dt><dd>-inf</dd><dt><span>scale_factor :</span></dt><dd>1.0</dd><dt><span>add_offset :</span></dt><dd>0.0</dd><dt><span>long_name :</span></dt><dd>(&#x27;SR_B1&#x27;, &#x27;SR_B2&#x27;, &#x27;SR_B3&#x27;, &#x27;SR_B4&#x27;, &#x27;SR_B5&#x27;, &#x27;SR_B6&#x27;, &#x27;SR_B7&#x27;)</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Here, <code class="docutils literal notranslate"><span class="pre">rioxarray.open_rasterio</span></code> loads the raster data into an Xarray <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> and automatically attaches the geospatial metadata, including CRS, affine transformations, and spatial coordinates.</p>
 <section id="inspecting-the-dataset">
@@ -1012,24 +1017,24 @@ Attributes: (12/96)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># View the structure of the DataArray</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>  <span class="c1"># Dimensions (e.g., band, y, x)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">dims</span>  <span class="c1"># Dimensions (e.g., band, y, x)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;band&#39;, &#39;y&#39;, &#39;x&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;band&#39;, &#39;y&#39;, &#39;x&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>  <span class="c1"># Coordinates (e.g., y, x in geographic or projected CRS)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">coords</span>  <span class="c1"># Coordinates (e.g., y, x in geographic or projected CRS)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coordinates:
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coordinates:
   * band         (band) int64 56B 1 2 3 4 5 6 7
   * x            (x) float64 20kB 5.824e+05 5.825e+05 ... 8.059e+05 8.06e+05
   * y            (y) float64 21kB 4.106e+06 4.105e+06 ... 3.875e+06 3.875e+06
@@ -1057,12 +1062,12 @@ Attributes: (12/96)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the CRS of the dataset</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EPSG:32611
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CRS.from_epsg(32611)
 </pre></div>
 </div>
 </div>
@@ -1070,14 +1075,22 @@ Attributes: (12/96)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the affine transformation (mapping pixel coordinates to geographic coordinates)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">())</span>
+<span class="n">data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">transform</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 90.00, 0.00, 582390.00|
-| 0.00,-90.00, 4105620.00|
-| 0.00, 0.00, 1.00|
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Affine(90.0, 0.0, 582390.0,
+       0.0, -90.0, 4105620.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sometimes, raster data may not have a CRS, or the CRS could be incorrect. You can assign a CRS manually if necessary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If the CRS is missing or incorrect, assign a CRS</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:32611&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1088,7 +1101,7 @@ Attributes: (12/96)
 <h2><span class="section-number">13.6. </span>Basic Geospatial Operations<a class="headerlink" href="#basic-geospatial-operations" title="Link to this heading">#</a></h2>
 <section id="reprojecting-a-dataset">
 <h3><span class="section-number">13.6.1. </span>Reprojecting a Dataset<a class="headerlink" href="#reprojecting-a-dataset" title="Link to this heading">#</a></h3>
-<p>You can reproject raster data to a different CRS using <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code>. For example, to reproject the dataset to EPSG:4326 (WGS84), use the <code class="docutils literal notranslate"><span class="pre">rio.reproject</span></code> method:</p>
+<p>Reprojecting raster data to another CRS is common in geospatial analysis. For example, you may want to reproject the dataset from its native projection to the WGS84 geographic coordinate system (EPSG:4326):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reproject the dataset to WGS84 (EPSG:4326)</span>
@@ -1106,7 +1119,7 @@ Attributes: (12/96)
 </section>
 <section id="clipping-a-raster">
 <h3><span class="section-number">13.6.2. </span>Clipping a Raster<a class="headerlink" href="#clipping-a-raster" title="Link to this heading">#</a></h3>
-<p>You can clip a raster to a specific geographic region by defining a bounding box or using a shapefile. Here’s an example of clipping a raster with a bounding box:</p>
+<p>Clipping a raster dataset is useful when you only want to focus on a specific geographic area. You can clip a dataset using a bounding box in the same CRS as the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a bounding box (in the same CRS as the dataset)</span>
@@ -1130,7 +1143,7 @@ Attributes: (12/96)
 </div>
 </div>
 </div>
-<p>Alternatively, you can clip the raster using a shapefile containing polygon geometries:</p>
+<p>Alternatively, you can clip the raster using a vector dataset containing polygon geometries:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
@@ -1211,7 +1224,7 @@ Attributes: (12/96)
 </section>
 <section id="visualization-of-georeferenced-data">
 <h2><span class="section-number">13.8. </span>Visualization of Georeferenced Data<a class="headerlink" href="#visualization-of-georeferenced-data" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> integrates smoothly with Matplotlib and other visualization libraries, allowing for easy plotting of raster data:</p>
+<p>Once you have performed operations on the data, you can visualize it using matplotlib. For example, to plot a multi-band image using bands 4, 3, and 2:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the raster data</span>
@@ -1245,11 +1258,12 @@ Attributes: (12/96)
 <img alt="../../_images/0a464cfab016e81ebb7ca9ec75c30938bfcd67a84a9137a43d262e4ac0594dec.png" src="../../_images/0a464cfab016e81ebb7ca9ec75c30938bfcd67a84a9137a43d262e4ac0594dec.png" />
 </div>
 </div>
-<p>For more advanced plots, such as overlaying a shapefile on the raster data, you can combine <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> with <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>:</p>
+<p>For more advanced plots, such as overlaying a vector dataset on the raster data, you can combine <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> with <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> and <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot raster with GeoJSON overlay</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;long_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Surface Reflectance&quot;</span>  <span class="c1"># Update the long_name attribute</span>
 <span class="n">data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 <span class="n">bounds</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Raster with Vector Overlay&quot;</span><span class="p">)</span>
@@ -1258,7 +1272,7 @@ Attributes: (12/96)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/825495c02550acd8cc939ab45590de0b8313d60edf6b1334257324ebc69e7d03.png" src="../../_images/825495c02550acd8cc939ab45590de0b8313d60edf6b1334257324ebc69e7d03.png" />
+<img alt="../../_images/79ee821c008a74947587075c76bb05c0941724b0ee59513192a2f477b6f56d7d.png" src="../../_images/79ee821c008a74947587075c76bb05c0941724b0ee59513192a2f477b6f56d7d.png" />
 </div>
 </div>
 </section>
@@ -1274,18 +1288,156 @@ Attributes: (12/96)
 </div>
 </div>
 </section>
+<section id="handling-nodata-values">
+<h2><span class="section-number">13.10. </span>Handling NoData Values<a class="headerlink" href="#handling-nodata-values" title="Link to this heading">#</a></h2>
+<p>If your dataset contains NoData values, you can manage them using the following functions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign NoData value</span>
+<span class="n">data2</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">set_nodata</span><span class="p">(</span><span class="o">-</span><span class="mi">9999</span><span class="p">)</span>
+
+<span class="c1"># Remove NoData values (mask them)</span>
+<span class="n">data_clean</span> <span class="o">=</span> <span class="n">data2</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_nodata</span><span class="p">(</span><span class="o">-</span><span class="mi">9999</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reproject-to-multiple-crs">
+<h2><span class="section-number">13.11. </span>Reproject to Multiple CRS<a class="headerlink" href="#reproject-to-multiple-crs" title="Link to this heading">#</a></h2>
+<p>You can reproject the dataset to multiple CRS and compare them. For instance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reproject to WGS 84 (EPSG:4326)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EPSG:4326
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reproject to EPSG:3857 (Web Mercator)</span>
+<span class="n">mercator_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mercator_data</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EPSG:3857
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the raster data in WGS84</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/63513d7ca8b786c6205bb6cc4d888bb92bb65ac4bb91a87cc2d35e3c5a8374de.png" src="../../_images/63513d7ca8b786c6205bb6cc4d888bb92bb65ac4bb91a87cc2d35e3c5a8374de.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the raster data in Web Mercator</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">mercator_data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d1057f824fd9b3507e7fe748c054ffaf2df2bbb1336cb4a6381076cebffea705.png" src="../../_images/d1057f824fd9b3507e7fe748c054ffaf2df2bbb1336cb4a6381076cebffea705.png" />
+</div>
+</div>
+</section>
+<section id="basic-band-math-ndvi-calculation">
+<h2><span class="section-number">13.12. </span>Basic Band Math (NDVI Calculation)<a class="headerlink" href="#basic-band-math-ndvi-calculation" title="Link to this heading">#</a></h2>
+<p>Band math enables us to perform computations across different bands. A common application is calculating the Normalized Difference Vegetation Index (NDVI), which is an indicator of vegetation health.</p>
+<p>NDVI is calculated as:</p>
+<p>NDVI = (NIR - Red) / (NIR + Red)</p>
+<p>We can compute and plot the NDVI as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select the red (band 4) and NIR (band 5) bands</span>
+<span class="n">red_band</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">nir_band</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">band</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Calculate NDVI</span>
+<span class="n">ndvi</span> <span class="o">=</span> <span class="p">(</span><span class="n">nir_band</span> <span class="o">-</span> <span class="n">red_band</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">nir_band</span> <span class="o">+</span> <span class="n">red_band</span><span class="p">)</span>
+<span class="n">ndvi</span> <span class="o">=</span> <span class="n">ndvi</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># Clip values to the range [-1, 1]</span>
+<span class="n">ndvi</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;long_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;NDVI&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To visualize the NDVI, we can plot it using matplotlib:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the NDVI values</span>
+<span class="n">ndvi</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;RdYlGn&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;NDVI of the Landsat Image&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5e5a0f008e666ca1a79f9468fea44f045914ce4ca13c3f1751bc11483fc9c093.png" src="../../_images/5e5a0f008e666ca1a79f9468fea44f045914ce4ca13c3f1751bc11483fc9c093.png" />
+</div>
+</div>
+<p>You can also mask out non-vegetated areas or areas with invalid NDVI values (such as water or urban regions) by applying a threshold:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mask out non-vegetated areas (NDVI &lt; 0.2)</span>
+<span class="n">ndvi_clean</span> <span class="o">=</span> <span class="n">ndvi</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ndvi</span> <span class="o">&gt;</span> <span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ndvi_clean</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cleaned NDVI (non-vegetated areas masked)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/75f40f282a6770053bfb099fb03d015beb44951fbd22f9b9b26e0c99e1b58314.png" src="../../_images/75f40f282a6770053bfb099fb03d015beb44951fbd22f9b9b26e0c99e1b58314.png" />
+</div>
+</div>
+</section>
 <section id="exercises">
-<h2><span class="section-number">13.10. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.13. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="sample-dataset">
+<h3><span class="section-number">13.13.1. </span>Sample Dataset<a class="headerlink" href="#sample-dataset" title="Link to this heading">#</a></h3>
+<p>For the exercises, we will use a sample GeoTIFF raster dataset of Libya, which is available at the following URL:
+<a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-09-13.tif">opengeos/datasets</a></p>
+</section>
 <section id="exercise-1-load-and-inspect-a-raster-dataset">
-<h3><span class="section-number">13.10.1. </span>Exercise 1: Load and Inspect a Raster Dataset<a class="headerlink" href="#exercise-1-load-and-inspect-a-raster-dataset" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.13.2. </span>Exercise 1: Load and Inspect a Raster Dataset<a class="headerlink" href="#exercise-1-load-and-inspect-a-raster-dataset" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> to load a GeoTIFF raster file (<code class="docutils literal notranslate"><span class="pre">raster_file.tif</span></code>).</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code> to load the GeoTIFF raster file .</p></li>
 <li><p>Inspect the dataset by printing its dimensions, coordinates, and attributes.</p></li>
 <li><p>Check and print the CRS and affine transformation of the dataset.</p></li>
 </ol>
 </section>
 <section id="exercise-2-reproject-the-raster-to-a-new-crs">
-<h3><span class="section-number">13.10.2. </span>Exercise 2: Reproject the Raster to a New CRS<a class="headerlink" href="#exercise-2-reproject-the-raster-to-a-new-crs" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.13.3. </span>Exercise 2: Reproject the Raster to a New CRS<a class="headerlink" href="#exercise-2-reproject-the-raster-to-a-new-crs" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Reproject the loaded raster dataset from its original CRS to EPSG:4326 (WGS84).</p></li>
 <li><p>Print the new CRS and check the dimensions and coordinates of the reprojected data.</p></li>
@@ -1293,32 +1445,32 @@ Attributes: (12/96)
 </ol>
 </section>
 <section id="exercise-3-clip-the-raster-using-a-bounding-box">
-<h3><span class="section-number">13.10.3. </span>Exercise 3: Clip the Raster Using a Bounding Box<a class="headerlink" href="#exercise-3-clip-the-raster-using-a-bounding-box" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.13.4. </span>Exercise 3: Clip the Raster Using a Bounding Box<a class="headerlink" href="#exercise-3-clip-the-raster-using-a-bounding-box" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Define a bounding box with specific coordinates in the raster’s CRS (e.g., <code class="docutils literal notranslate"><span class="pre">xmin</span></code>, <code class="docutils literal notranslate"><span class="pre">ymin</span></code>, <code class="docutils literal notranslate"><span class="pre">xmax</span></code>, <code class="docutils literal notranslate"><span class="pre">ymax</span></code>).</p></li>
+<li><p>Define a bounding box (e.g., <code class="docutils literal notranslate"><span class="pre">xmin</span></code>, <code class="docutils literal notranslate"><span class="pre">ymin</span></code>, <code class="docutils literal notranslate"><span class="pre">xmax</span></code>, <code class="docutils literal notranslate"><span class="pre">ymax</span></code>) that covers the land area of Libya.</p></li>
 <li><p>Clip the raster dataset using this bounding box.</p></li>
 <li><p>Plot the clipped data to visualize the result.</p></li>
 </ol>
 </section>
-<section id="exercise-4-mask-the-raster-using-a-shapefile">
-<h3><span class="section-number">13.10.4. </span>Exercise 4: Mask the Raster Using a Shapefile<a class="headerlink" href="#exercise-4-mask-the-raster-using-a-shapefile" title="Link to this heading">#</a></h3>
+<section id="exercise-4-mask-the-raster-using-a-vector-dataset">
+<h3><span class="section-number">13.13.5. </span>Exercise 4: Mask the Raster Using a Vector Dataset<a class="headerlink" href="#exercise-4-mask-the-raster-using-a-vector-dataset" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Load a shapefile (e.g., a region of interest) using <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>.</p></li>
-<li><p>Use the shapefile to mask the raster dataset, keeping only the data within the shapefile boundaries.</p></li>
+<li><p>Load the GeoJSON file at <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/raster/Derna_Libya.geojson">opengeos/datasets</a> using <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>.</p></li>
+<li><p>Use the GeoJSON to mask the raster dataset, keeping only the data within the GeoJSON boundaries.</p></li>
 <li><p>Plot the masked raster data.</p></li>
 </ol>
 </section>
 <section id="exercise-5-resample-the-raster-to-a-different-resolution">
-<h3><span class="section-number">13.10.5. </span>Exercise 5: Resample the Raster to a Different Resolution<a class="headerlink" href="#exercise-5-resample-the-raster-to-a-different-resolution" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.13.6. </span>Exercise 5: Resample the Raster to a Different Resolution<a class="headerlink" href="#exercise-5-resample-the-raster-to-a-different-resolution" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Resample the raster dataset to a 1km resolution, using an average resampling method.</p></li>
+<li><p>Resample the raster dataset to a 3m resolution, using an average resampling method.</p></li>
 <li><p>Check the new dimensions and coordinates after resampling.</p></li>
 <li><p>Save the resampled raster dataset as a new GeoTIFF file.</p></li>
 </ol>
 </section>
 </section>
 <section id="summary">
-<h2><span class="section-number">13.11. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.14. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>In this lecture, we have explored the basic functionality of <code class="docutils literal notranslate"><span class="pre">rioxarray</span></code>, a powerful extension of Xarray designed for geospatial raster data. Key points include:</p>
 <ul class="simple">
 <li><p>Loading and inspecting geospatial raster data with CRS and transform metadata.</p></li>
@@ -1415,15 +1567,19 @@ Attributes: (12/96)
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-of-georeferenced-data">13.8. Visualization of Georeferenced Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-data">13.9. Saving Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">13.10. Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-and-inspect-a-raster-dataset">13.10.1. Exercise 1: Load and Inspect a Raster Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-reproject-the-raster-to-a-new-crs">13.10.2. Exercise 2: Reproject the Raster to a New CRS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-clip-the-raster-using-a-bounding-box">13.10.3. Exercise 3: Clip the Raster Using a Bounding Box</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-mask-the-raster-using-a-shapefile">13.10.4. Exercise 4: Mask the Raster Using a Shapefile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-resample-the-raster-to-a-different-resolution">13.10.5. Exercise 5: Resample the Raster to a Different Resolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handling-nodata-values">13.10. Handling NoData Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reproject-to-multiple-crs">13.11. Reproject to Multiple CRS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-band-math-ndvi-calculation">13.12. Basic Band Math (NDVI Calculation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">13.13. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-dataset">13.13.1. Sample Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-load-and-inspect-a-raster-dataset">13.13.2. Exercise 1: Load and Inspect a Raster Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-reproject-the-raster-to-a-new-crs">13.13.3. Exercise 2: Reproject the Raster to a New CRS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-clip-the-raster-using-a-bounding-box">13.13.4. Exercise 3: Clip the Raster Using a Bounding Box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-mask-the-raster-using-a-vector-dataset">13.13.5. Exercise 4: Mask the Raster Using a Vector Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-resample-the-raster-to-a-different-resolution">13.13.6. Exercise 5: Resample the Raster to a Different Resolution</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">13.11. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">13.14. Summary</a></li>
 </ul>
   </nav></div>
 
