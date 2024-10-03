@@ -15,7 +15,7 @@ kernelspec:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/labs/lab_05.ipynb)
 
-## Objective:
+## Objective
 
 This lab introduces you to essential GIS raster operations using Python's rasterio and matplotlib libraries. By the end of this lab, you will have learned to:
 
@@ -24,19 +24,20 @@ This lab introduces you to essential GIS raster operations using Python's raster
 - Perform basic raster operations such as clipping, band math, and reprojection.
 - Work with Digital Elevation Models (DEMs) and multispectral satellite imagery.
 
-## Required Libraries:
+## Required Libraries
+
 Make sure you have the following libraries installed:
 
 ```{code-cell} ipython3
 # %pip install rasterio matplotlib numpy
 ```
 
-**Sample datasets**
+## Sample Datasets
 
 - Singlg-band image (DEM): https://github.com/opengeos/datasets/releases/download/raster/dem_90m.tif
 - Multispectral image (Landsat): https://github.com/opengeos/datasets/releases/download/raster/cog.tif
 
-**Exercise 1: Reading and Exploring Raster Data**
+## Exercise 1: Reading and Exploring Raster Data
 
 1. Open the single-band DEM image using `rasterio`.
 2. Retrieve and print the raster metadata, including the CRS, resolution, bounds, number of bands, and data types.
@@ -46,7 +47,7 @@ Make sure you have the following libraries installed:
 
 ```
 
-**Exercise 2: Visualizing and Manipulating Raster Bands**
+## Exercise 2: Visualizing and Manipulating Raster Bands
 
 1. Visualize the single-band DEM using a custom colormap (e.g., cmap='terrain').
 2. Open the multispectral image and visualize the first band using a suitable colormap.
@@ -56,7 +57,7 @@ Make sure you have the following libraries installed:
 
 ```
 
-**Exercise 3: Raster Clipping with Array Indexing**
+## Exercise 3: Raster Clipping with Array Indexing
 
 1. Open the multispectral image and clip a geographic subset using array indexing (specifying row and column ranges).
 2. Visualize the clipped portion of the image using matplotlib to ensure the subset is correct.
@@ -66,7 +67,7 @@ Make sure you have the following libraries installed:
 
 ```
 
-**Exercise 4: Calculating NDWI (Band Math)**
+## Exercise 4: Calculating NDWI (Band Math)
 
 1. Open the multispectral image and extract the Green and Near-Infrared (NIR) bands.
 2. Compute the Normalized Difference Water Index ([NDWI](https://en.wikipedia.org/wiki/Normalized_difference_water_index)) using the formula:
@@ -80,7 +81,7 @@ Make sure you have the following libraries installed:
 
 ```
 
-**Exercise 5: Reprojecting Raster Data**
+## Exercise 5: Reprojecting Raster Data
 
 1. Reproject the single-band DEM raster from its original CRS to EPSG:4326 (WGS 84) using the `rasterio.warp.reproject` function.
 2. Save the reprojected raster to a new GeoTIFF file named `reprojected_dem.tif`.
