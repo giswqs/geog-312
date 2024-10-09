@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>22. DuckDB &#8212; Introduction to GIS Programming</title>
+    <title>20. DuckDB &#8212; Introduction to GIS Programming</title>
   
   
   
@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Submission Instructions" href="../labs/instructions.html" />
-    <link rel="prev" title="21. HyperCoast" href="hypercoast.html" />
+    <link rel="prev" title="19. HyperCoast" href="hypercoast.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -210,14 +210,12 @@
 <li class="toctree-l1"><a class="reference internal" href="xarray.html">12. Xarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rioxarray.html">13. Rioxarray</a></li>
 <li class="toctree-l1"><a class="reference internal" href="leafmap.html">14. Leafmap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="vector_viz.html">15. Vector Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="raster_viz.html">16. Raster Data Visualization</a></li>
-<li class="toctree-l1"><a class="reference internal" href="maplibre.html">17. MapLibre</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whitebox.html">18. WhiteboxTools</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geemap.html">19. Geemap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="samgeo.html">20. SAMGeo</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">21. HyperCoast</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">22. DuckDB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maplibre.html">15. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whitebox.html">16. WhiteboxTools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap.html">17. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="samgeo.html">18. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hypercoast.html">19. HyperCoast</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">20. DuckDB</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
 <ul class="nav bd-sidenav">
@@ -507,20 +505,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">22.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">22.2. Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">22.3. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#library-import">22.4. Library Import</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-extensions">22.5. Installing Extensions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-sample-data">22.6. Downloading Sample Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-files">22.7. CSV Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-files">22.8. JSON Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes">22.9. DataFrames</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parquet-files">22.10. Parquet Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geojson-files">22.11. GeoJSON Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapefiles">22.12. Shapefiles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoparquet-files">22.13. GeoParquet Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">22.14. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">20.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">20.2. Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">20.3. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#library-import">20.4. Library Import</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-extensions">20.5. Installing Extensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-sample-data">20.6. Downloading Sample Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-files">20.7. CSV Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-files">20.8. JSON Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes">20.9. DataFrames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parquet-files">20.10. Parquet Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geojson-files">20.11. GeoJSON Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapefiles">20.12. Shapefiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoparquet-files">20.13. GeoParquet Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">20.14. References</a></li>
 </ul>
             </nav>
         </div>
@@ -533,14 +531,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="duckdb">
-<h1><span class="section-number">22. </span>DuckDB<a class="headerlink" href="#duckdb" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">20. </span>DuckDB<a class="headerlink" href="#duckdb" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/duckdb.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
 <section id="introduction">
-<h2><span class="section-number">22.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This notebook shows how to import data into a DuckDB database. It uses the <code class="docutils literal notranslate"><span class="pre">duckdb</span></code> Python package to connect to a DuckDB database and import data from various formats, including CSV, JSON, DataFrame, parquet, GeoJSON, Shapefile, GeoParquet, and more.</p>
 </section>
 <section id="datasets">
-<h2><span class="section-number">22.2. </span>Datasets<a class="headerlink" href="#datasets" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.2. </span>Datasets<a class="headerlink" href="#datasets" title="Link to this heading">#</a></h2>
 <p>The following datasets are used in this notebook. You don’t need to download them, they can be accessed directly from the notebook.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://open.gishub.org/data/duckdb/cities.csv">cities.csv</a></p></li>
@@ -548,7 +546,7 @@ document.write(`
 </ul>
 </section>
 <section id="installation">
-<h2><span class="section-number">22.3. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.3. </span>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <p>Uncomment the following cell to install the required packages if needed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -559,7 +557,7 @@ document.write(`
 </div>
 </section>
 <section id="library-import">
-<h2><span class="section-number">22.4. </span>Library Import<a class="headerlink" href="#library-import" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.4. </span>Library Import<a class="headerlink" href="#library-import" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">duckdb</span>
@@ -571,7 +569,7 @@ document.write(`
 </div>
 </section>
 <section id="installing-extensions">
-<h2><span class="section-number">22.5. </span>Installing Extensions<a class="headerlink" href="#installing-extensions" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.5. </span>Installing Extensions<a class="headerlink" href="#installing-extensions" title="Link to this heading">#</a></h2>
 <p>DuckDB’s Python API provides functions for installing and loading extensions, which perform the equivalent operations to running the <code class="docutils literal notranslate"><span class="pre">INSTALL</span></code> and <code class="docutils literal notranslate"><span class="pre">LOAD</span></code> SQL commands, respectively. An example that installs and loads the <a class="reference external" href="https://duckdb.org/docs/extensions/httpfs">httpfs extension</a> looks like follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -598,7 +596,7 @@ document.write(`
 </div>
 </section>
 <section id="downloading-sample-data">
-<h2><span class="section-number">22.6. </span>Downloading Sample Data<a class="headerlink" href="#downloading-sample-data" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.6. </span>Downloading Sample Data<a class="headerlink" href="#downloading-sample-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://open.gishub.org/data/duckdb/cities.zip&quot;</span>
@@ -609,7 +607,7 @@ document.write(`
 </div>
 </section>
 <section id="csv-files">
-<h2><span class="section-number">22.7. </span>CSV Files<a class="headerlink" href="#csv-files" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.7. </span>CSV Files<a class="headerlink" href="#csv-files" title="Link to this heading">#</a></h2>
 <p>CSV files can be read using the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function, called either from within Python or directly from within SQL. By default, the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function attempts to auto-detect the CSV settings by sampling from the provided file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -653,7 +651,7 @@ document.write(`
 </div>
 </section>
 <section id="json-files">
-<h2><span class="section-number">22.8. </span>JSON Files<a class="headerlink" href="#json-files" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.8. </span>JSON Files<a class="headerlink" href="#json-files" title="Link to this heading">#</a></h2>
 <p>JSON files can be read using the <code class="docutils literal notranslate"><span class="pre">read_json</span></code> function, called either from within Python or directly from within SQL. By default, the <code class="docutils literal notranslate"><span class="pre">read_json</span></code> function will automatically detect if a file contains newline-delimited JSON or regular JSON, and will detect the schema of the objects stored within the JSON file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -681,7 +679,7 @@ document.write(`
 </div>
 </section>
 <section id="dataframes">
-<h2><span class="section-number">22.9. </span>DataFrames<a class="headerlink" href="#dataframes" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.9. </span>DataFrames<a class="headerlink" href="#dataframes" title="Link to this heading">#</a></h2>
 <p>DuckDB is automatically able to query a Pandas DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -700,7 +698,7 @@ document.write(`
 </div>
 </section>
 <section id="parquet-files">
-<h2><span class="section-number">22.10. </span>Parquet Files<a class="headerlink" href="#parquet-files" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.10. </span>Parquet Files<a class="headerlink" href="#parquet-files" title="Link to this heading">#</a></h2>
 <p>Parquet files can be read using the <code class="docutils literal notranslate"><span class="pre">read_parquet</span></code> function, called either from within Python or directly from within SQL.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -728,7 +726,7 @@ document.write(`
 </div>
 </section>
 <section id="geojson-files">
-<h2><span class="section-number">22.11. </span>GeoJSON Files<a class="headerlink" href="#geojson-files" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.11. </span>GeoJSON Files<a class="headerlink" href="#geojson-files" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM ST_Drivers()&quot;</span><span class="p">)</span>
@@ -773,7 +771,7 @@ document.write(`
 </div>
 </section>
 <section id="shapefiles">
-<h2><span class="section-number">22.12. </span>Shapefiles<a class="headerlink" href="#shapefiles" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.12. </span>Shapefiles<a class="headerlink" href="#shapefiles" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM ST_Read(&#39;cities.shp&#39;)&quot;</span><span class="p">)</span>
@@ -816,7 +814,7 @@ document.write(`
 </div>
 </section>
 <section id="geoparquet-files">
-<h2><span class="section-number">22.13. </span>GeoParquet Files<a class="headerlink" href="#geoparquet-files" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.13. </span>GeoParquet Files<a class="headerlink" href="#geoparquet-files" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">con</span><span class="o">.</span><span class="n">sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM &#39;cities.parquet&#39;&quot;</span><span class="p">)</span>
@@ -873,7 +871,7 @@ document.write(`
 </div>
 </section>
 <section id="references">
-<h2><span class="section-number">22.14. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">20.14. </span>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://duckdb.org/docs/api/python/data_ingestion">DuckDB Data Ingestion</a></p></li>
 </ul>
@@ -916,7 +914,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">21. </span>HyperCoast</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>HyperCoast</p>
       </div>
     </a>
     <a class="right-next"
@@ -944,20 +942,20 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">22.1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">22.2. Datasets</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">22.3. Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#library-import">22.4. Library Import</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-extensions">22.5. Installing Extensions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-sample-data">22.6. Downloading Sample Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-files">22.7. CSV Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-files">22.8. JSON Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes">22.9. DataFrames</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parquet-files">22.10. Parquet Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geojson-files">22.11. GeoJSON Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapefiles">22.12. Shapefiles</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoparquet-files">22.13. GeoParquet Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">22.14. References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">20.1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">20.2. Datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">20.3. Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#library-import">20.4. Library Import</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-extensions">20.5. Installing Extensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-sample-data">20.6. Downloading Sample Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-files">20.7. CSV Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-files">20.8. JSON Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes">20.9. DataFrames</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parquet-files">20.10. Parquet Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geojson-files">20.11. GeoJSON Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#shapefiles">20.12. Shapefiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geoparquet-files">20.13. GeoParquet Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">20.14. References</a></li>
 </ul>
   </nav></div>
 
