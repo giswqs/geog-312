@@ -13,9 +13,6 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.12"]
-
-    env:
-      USE_MKDOCS: ${{ secrets.USE_MKDOCS }}
     steps:
       - uses: actions/checkout@v4
         with:
