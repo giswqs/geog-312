@@ -77,8 +77,6 @@ m
 
 You can customize the map's center, zoom level, and height. The `center` takes a tuple of latitude and longitude, `zoom` is an integer, and `height` specifies the map height in pixels. The example below centers the map on the U.S. with a zoom level of 4 and a height of 600 pixels:
 
-```python
-
 ```{code-cell} ipython3
 m = leafmap.Map(center=(40, -100), zoom=4, height="600px")
 m
