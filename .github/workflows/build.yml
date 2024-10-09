@@ -13,8 +13,6 @@ jobs:
       matrix:
         python-version: ["3.12"]
 
-    env:
-      USE_MKDOCS: ${{ secrets.USE_MKDOCS }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -46,7 +44,9 @@ jobs:
       - name: Build the book
         run: |
           uv run jupyter-book build .
-
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v3.0
         with:

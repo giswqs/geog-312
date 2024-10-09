@@ -13,9 +13,6 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.12"]
-
-    env:
-      USE_MKDOCS: ${{ secrets.USE_MKDOCS }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -47,7 +44,9 @@ jobs:
       - name: Build the book
         run: |
           uv run jupyter-book build .
-
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       # Deploy the book's HTML to gh-pages branch
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v4
