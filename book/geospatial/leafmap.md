@@ -398,7 +398,7 @@ Download and load a GeoParquet file containing city data:
 ```{code-cell} ipython3
 url = "https://open.gishub.org/data/duckdb/cities.parquet"
 filename = "cities.parquet"
-leafmap.download_file(url, filename)
+leafmap.download_file(url, filename, quiet=True)
 ```
 
 Read the GeoParquet file into a GeoDataFrame and preview the first few rows:
@@ -429,7 +429,7 @@ For polygon data, such as wetlands, you can follow a similar process. Start by d
 ```{code-cell} ipython3
 url = "https://data.source.coop/giswqs/nwi/wetlands/DC_Wetlands.parquet"
 filename = "DC_Wetlands.parquet"
-leafmap.download_file(url, filename)
+leafmap.download_file(url, filename, quiet=True)
 ```
 
 Load the data into a GeoDataFrame and check its coordinate reference system (CRS):
@@ -609,7 +609,7 @@ Start by downloading a sample DEM GeoTIFF file:
 ```{code-cell} ipython3
 dem_url = "https://open.gishub.org/data/raster/srtm90.tif"
 filename = "srtm90.tif"
-leafmap.download_file(dem_url, filename)
+leafmap.download_file(dem_url, filename, quiet=True)
 ```
 
 Next, visualize the raster using the `add_raster()` method with a "terrain" colormap to highlight elevation differences:
@@ -635,7 +635,7 @@ m.add_colormap(cmap="terrain", vmin=15, vmax=4338, label="Elevation (m)")
 ```{code-cell} ipython3
 landsat_url = "https://open.gishub.org/data/raster/cog.tif"
 filename = "cog.tif"
-leafmap.download_file(landsat_url, filename)
+leafmap.download_file(landsat_url, filename, quiet=True)
 ```
 
 ### Visualizing a Multi-Band Raster
@@ -703,15 +703,15 @@ Once the catalog panel is open, you can search for items from the custom STAC AP
 ![](https://i.imgur.com/M8IbRsM.png)
 
 ```{code-cell} ipython3
-m.stac_gdf  # The GeoDataFrame of the STAC search results
+# m.stac_gdf  # The GeoDataFrame of the STAC search results
 ```
 
 ```{code-cell} ipython3
-m.stac_dict  # The STAC search results as a dictionary
+# m.stac_dict  # The STAC search results as a dictionary
 ```
 
 ```{code-cell} ipython3
-m.stac_item  # The selected STAC item of the search result
+# m.stac_item  # The selected STAC item of the search result
 ```
 
 ### AWS S3 Integration
@@ -721,6 +721,10 @@ Leafmap allows you to visualize raster datasets stored in AWS S3. In this exampl
 #### Accessing Datasets in an S3 Bucket
 
 To list and access datasets stored in S3, you need to set up AWS credentials as environment variables. Uncomment the following lines and provide your credentials:
+
+```{code-cell} ipython3
+import os
+```
 
 ```{code-cell} ipython3
 # os.environ["AWS_ACCESS_KEY_ID"] = "YOUR AWS ACCESS ID HERE"
