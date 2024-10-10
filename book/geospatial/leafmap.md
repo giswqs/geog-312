@@ -264,7 +264,7 @@ For a large number of points, you can group them into clusters. This method redu
 ```{code-cell} ipython3
 m = leafmap.Map()
 url = "https://github.com/opengeos/datasets/releases/download/world/world_cities.csv"
-m.add_marker_cluster(url, x="latitude", y="longitude", layer_name="World cities")
+m.add_marker_cluster(url, x="longitude", y="latitude", layer_name="World cities")
 m
 ```
 
