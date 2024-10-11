@@ -505,11 +505,11 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-exploring-a-new-dataset">Exercise 1: Exploring a New Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-exploring-the-sea-surface-temperature-dataset">Exercise 1: Exploring the Sea Surface Temperature Dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-data-selection-and-indexing">Exercise 2: Data Selection and Indexing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-performing-arithmetic-operations">Exercise 3: Performing Arithmetic Operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-groupby-and-resampling">Exercise 4: GroupBy and Resampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-writing-data-to-netcdf">Exercise 5: Writing Data to netCDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-writing-data-to-netcdf">Exercise 5: Writing Data to NetCDF</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-load-and-inspect-a-raster-dataset">Exercise 6: Load and Inspect a Raster Dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-reproject-the-raster-to-a-new-crs">Exercise 7: Reproject the Raster to a New CRS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-clip-the-raster-using-a-bounding-box">Exercise 8: Clip the Raster Using a Bounding Box</a></li>
@@ -540,47 +540,52 @@ document.write(`
 <li><p>Export processed data to various formats such as NetCDF and GeoTIFF.</p></li>
 </ul>
 </section>
-<section id="exercise-1-exploring-a-new-dataset">
-<h2>Exercise 1: Exploring a New Dataset<a class="headerlink" href="#exercise-1-exploring-a-new-dataset" title="Link to this heading">#</a></h2>
+<section id="exercise-1-exploring-the-sea-surface-temperature-dataset">
+<h2>Exercise 1: Exploring the Sea Surface Temperature Dataset<a class="headerlink" href="#exercise-1-exploring-the-sea-surface-temperature-dataset" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Load the Xarray tutorial dataset <code class="docutils literal notranslate"><span class="pre">rasm</span></code>.</p></li>
-<li><p>Inspect the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> object and list all the variables and dimensions.</p></li>
-<li><p>Select the <code class="docutils literal notranslate"><span class="pre">Tair</span></code> variable (air temperature).</p></li>
-<li><p>Print the attributes, dimensions, and coordinates of <code class="docutils literal notranslate"><span class="pre">Tair</span></code>.</p></li>
+<li><p><strong>Load the sea surface temperature dataset</strong> from the NetCDF file (<a class="reference external" href="https://github.com/opengeos/datasets/releases/download/netcdf/sea_surface_temperature.nc"><code class="docutils literal notranslate"><span class="pre">sea_surface_temperature.nc</span></code></a>).</p></li>
+<li><p><strong>Inspect the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> object</strong> and list all the available variables and dimensions in the dataset.</p></li>
+<li><p><strong>Select the <code class="docutils literal notranslate"><span class="pre">sst</span></code> variable</strong> (sea surface temperature).</p></li>
+<li><p><strong>Print the attributes, dimensions, and coordinates</strong> of the <code class="docutils literal notranslate"><span class="pre">sst</span></code> variable to understand the metadata.</p></li>
 </ol>
+<p>This exercise allows you to practice selecting specific subsets of data and visualizing SST patterns over a specified period.</p>
 </section>
 <section id="exercise-2-data-selection-and-indexing">
 <h2>Exercise 2: Data Selection and Indexing<a class="headerlink" href="#exercise-2-data-selection-and-indexing" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Select a subset of the <code class="docutils literal notranslate"><span class="pre">Tair</span></code> data for the date <code class="docutils literal notranslate"><span class="pre">1980-07-01</span></code> and latitude <code class="docutils literal notranslate"><span class="pre">70.0</span></code>.</p></li>
-<li><p>Create a time slice for the entire latitude range between January and March of 1980.</p></li>
-<li><p>Plot the selected time slice as a line plot.</p></li>
+<li><p><strong>Select a subset of the <code class="docutils literal notranslate"><span class="pre">sst</span></code> data</strong> for a specific time (<code class="docutils literal notranslate"><span class="pre">2010-07-01</span></code>) and latitude (<code class="docutils literal notranslate"><span class="pre">0.0</span></code>), which represents the Equator.</p></li>
+<li><p><strong>Create a time slice</strong> for the SST data between January and March 2010 for all latitudes and longitudes.</p></li>
+<li><p><strong>Plot the time slice</strong> as a line plot, showing the latitude-averaged SST over time.</p></li>
 </ol>
+<p>This exercise allows you to practice selecting specific subsets of data and visualizing SST patterns over a specified period.</p>
 </section>
 <section id="exercise-3-performing-arithmetic-operations">
 <h2>Exercise 3: Performing Arithmetic Operations<a class="headerlink" href="#exercise-3-performing-arithmetic-operations" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Compute the mean of the <code class="docutils literal notranslate"><span class="pre">Tair</span></code> data over the <code class="docutils literal notranslate"><span class="pre">time</span></code> dimension.</p></li>
-<li><p>Subtract the computed mean from the original <code class="docutils literal notranslate"><span class="pre">Tair</span></code> dataset to get the temperature anomalies.</p></li>
-<li><p>Plot the mean temperature and the anomalies on separate plots.</p></li>
+<li><p><strong>Compute the mean SST</strong> over the entire time range (2010-2015) to obtain the average sea surface temperature for each spatial location.</p></li>
+<li><p><strong>Calculate the temperature anomalies</strong> by subtracting the computed mean from the original SST values. This helps understand how SST deviates from the mean during the time period.</p></li>
+<li><p><strong>Plot both the mean SST and the anomalies</strong> on separate plots to visualize spatial temperature patterns and deviations. You can select a specific time to display the anomalies.</p></li>
 </ol>
+<p>This exercise introduces arithmetic operations on the dataset, focusing on the concept of temperature anomalies.</p>
 </section>
 <section id="exercise-4-groupby-and-resampling">
 <h2>Exercise 4: GroupBy and Resampling<a class="headerlink" href="#exercise-4-groupby-and-resampling" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> to calculate the seasonal mean temperature (<code class="docutils literal notranslate"><span class="pre">Tair</span></code>).</p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">resample</span></code> to calculate the monthly mean temperature for 1980.</p></li>
-<li><p>Plot the seasonal mean for each season and the monthly mean.</p></li>
+<li><p><strong>Use <code class="docutils literal notranslate"><span class="pre">groupby</span></code> to calculate the seasonal mean SST</strong>. Group the data by season (<code class="docutils literal notranslate"><span class="pre">DJF</span></code>, <code class="docutils literal notranslate"><span class="pre">MAM</span></code>, <code class="docutils literal notranslate"><span class="pre">JJA</span></code>, and <code class="docutils literal notranslate"><span class="pre">SON</span></code>) and compute the average SST for each season.</p></li>
+<li><p><strong>Resample the dataset to compute the monthly mean SST</strong>. This aggregates the data on a monthly basis.</p></li>
+<li><p><strong>Plot the seasonal mean SST and the monthly mean SST</strong> to visualize how sea surface temperature varies by season and by month.</p></li>
 </ol>
+<p>This exercise demonstrates how to group and resample time-series data, commonly used in climate data analysis.</p>
 </section>
 <section id="exercise-5-writing-data-to-netcdf">
-<h2>Exercise 5: Writing Data to netCDF<a class="headerlink" href="#exercise-5-writing-data-to-netcdf" title="Link to this heading">#</a></h2>
+<h2>Exercise 5: Writing Data to NetCDF<a class="headerlink" href="#exercise-5-writing-data-to-netcdf" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Select the temperature anomalies calculated in Exercise 3.</p></li>
-<li><p>Convert the <code class="docutils literal notranslate"><span class="pre">Tair</span></code> variable to <code class="docutils literal notranslate"><span class="pre">float32</span></code> to optimize file size.</p></li>
-<li><p>Write the anomalies data to a new netCDF file named <code class="docutils literal notranslate"><span class="pre">tair_anomalies.nc</span></code>.</p></li>
-<li><p>Load the data back from the file and print its contents.</p></li>
+<li><p><strong>Select the SST anomalies</strong> calculated in Exercise 3 for further analysis and export.</p></li>
+<li><p><strong>Convert the <code class="docutils literal notranslate"><span class="pre">sst</span></code> variable to <code class="docutils literal notranslate"><span class="pre">float32</span></code></strong> to optimize file size before writing the data to a NetCDF file.</p></li>
+<li><p><strong>Write the anomalies data</strong> to a new NetCDF file named <code class="docutils literal notranslate"><span class="pre">sst_anomalies.nc</span></code> for storage and future use.</p></li>
+<li><p><strong>Load the saved NetCDF file</strong> back into memory and print its contents to verify the saved data.</p></li>
 </ol>
+<p>This exercise teaches how to export processed geospatial data to NetCDF, a widely-used file format in climate data analysis.</p>
 </section>
 <section id="exercise-6-load-and-inspect-a-raster-dataset">
 <h2>Exercise 6: Load and Inspect a Raster Dataset<a class="headerlink" href="#exercise-6-load-and-inspect-a-raster-dataset" title="Link to this heading">#</a></h2>
@@ -610,7 +615,7 @@ document.write(`
 <h2>Exercise 9: Mask the Raster Using a Vector Dataset<a class="headerlink" href="#exercise-9-mask-the-raster-using-a-vector-dataset" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Load the GeoJSON file at <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/raster/Derna_Libya.geojson">opengeos/datasets</a> using <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>.</p></li>
-<li><p>Use the GeoJSON to mask the raster dataset, keeping only the data within the GeoJSON boundaries.</p></li>
+<li><p>Use the GeoJSON to mask the reprojected raster dataset, keeping only the data within the GeoJSON boundaries.</p></li>
 <li><p>Plot the masked raster data.</p></li>
 </ol>
 </section>
@@ -680,11 +685,11 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-exploring-a-new-dataset">Exercise 1: Exploring a New Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-exploring-the-sea-surface-temperature-dataset">Exercise 1: Exploring the Sea Surface Temperature Dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-data-selection-and-indexing">Exercise 2: Data Selection and Indexing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-performing-arithmetic-operations">Exercise 3: Performing Arithmetic Operations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-groupby-and-resampling">Exercise 4: GroupBy and Resampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-writing-data-to-netcdf">Exercise 5: Writing Data to netCDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-writing-data-to-netcdf">Exercise 5: Writing Data to NetCDF</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-load-and-inspect-a-raster-dataset">Exercise 6: Load and Inspect a Raster Dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-reproject-the-raster-to-a-new-crs">Exercise 7: Reproject the Raster to a New CRS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-clip-the-raster-using-a-bounding-box">Exercise 8: Clip the Raster Using a Bounding Box</a></li>
