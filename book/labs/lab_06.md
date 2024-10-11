@@ -26,12 +26,14 @@ By the end of this lab, you will have a better understanding of how to:
 * Reproject, clip, mask, and resample raster datasets.
 * Export processed data to various formats such as NetCDF and GeoTIFF.
 
-## Exercise 1: Exploring a New Dataset
+## Exercise 1: Exploring the Sea Surface Temperature Dataset
 
-1. Load the Xarray tutorial dataset `rasm`.
-2. Inspect the `Dataset` object and list all the variables and dimensions.
-3. Select the `Tair` variable (air temperature).
-4. Print the attributes, dimensions, and coordinates of `Tair`.
+1. **Load the sea surface temperature dataset** from the NetCDF file ([`sea_surface_temperature.nc`](https://github.com/opengeos/datasets/releases/download/netcdf/sea_surface_temperature.nc)).
+2. **Inspect the `Dataset` object** and list all the available variables and dimensions in the dataset.
+3. **Select the `sst` variable** (sea surface temperature).
+4. **Print the attributes, dimensions, and coordinates** of the `sst` variable to understand the metadata.
+
+This exercise allows you to practice selecting specific subsets of data and visualizing SST patterns over a specified period.
 
 ```{code-cell} ipython3
 
@@ -39,9 +41,11 @@ By the end of this lab, you will have a better understanding of how to:
 
 ## Exercise 2: Data Selection and Indexing
 
-1. Select a subset of the `Tair` data for the date `1980-07-01` and latitude `70.0`.
-2. Create a time slice for the entire latitude range between January and March of 1980.
-3. Plot the selected time slice as a line plot.
+1. **Select a subset of the `sst` data** for a specific time (`2010-07-01`) and latitude (`0.0`), which represents the Equator.
+2. **Create a time slice** for the SST data between January and March 2010 for all latitudes and longitudes.
+3. **Plot the time slice** as a line plot, showing the latitude-averaged SST over time.
+
+This exercise allows you to practice selecting specific subsets of data and visualizing SST patterns over a specified period.
 
 ```{code-cell} ipython3
 
@@ -49,9 +53,11 @@ By the end of this lab, you will have a better understanding of how to:
 
 ## Exercise 3: Performing Arithmetic Operations
 
-1. Compute the mean of the `Tair` data over the `time` dimension.
-2. Subtract the computed mean from the original `Tair` dataset to get the temperature anomalies.
-3. Plot the mean temperature and the anomalies on separate plots.
+1. **Compute the mean SST** over the entire time range (2010-2015) to obtain the average sea surface temperature for each spatial location.
+2. **Calculate the temperature anomalies** by subtracting the computed mean from the original SST values. This helps understand how SST deviates from the mean during the time period.
+3. **Plot both the mean SST and the anomalies** on separate plots to visualize spatial temperature patterns and deviations. You can select a specific time to display the anomalies.
+
+This exercise introduces arithmetic operations on the dataset, focusing on the concept of temperature anomalies.
 
 ```{code-cell} ipython3
 
@@ -59,20 +65,24 @@ By the end of this lab, you will have a better understanding of how to:
 
 ## Exercise 4: GroupBy and Resampling
 
-1. Use `groupby` to calculate the seasonal mean temperature (`Tair`).
-2. Use `resample` to calculate the monthly mean temperature for 1980.
-3. Plot the seasonal mean for each season and the monthly mean.
+1. **Use `groupby` to calculate the seasonal mean SST**. Group the data by season (`DJF`, `MAM`, `JJA`, and `SON`) and compute the average SST for each season.
+2. **Resample the dataset to compute the monthly mean SST**. This aggregates the data on a monthly basis.
+3. **Plot the seasonal mean SST and the monthly mean SST** to visualize how sea surface temperature varies by season and by month.
+
+This exercise demonstrates how to group and resample time-series data, commonly used in climate data analysis.
 
 ```{code-cell} ipython3
 
 ```
 
-## Exercise 5: Writing Data to netCDF
+## Exercise 5: Writing Data to NetCDF
 
-1. Select the temperature anomalies calculated in Exercise 3.
-2. Convert the `Tair` variable to `float32` to optimize file size.
-3. Write the anomalies data to a new netCDF file named `tair_anomalies.nc`.
-4. Load the data back from the file and print its contents.
+1. **Select the SST anomalies** calculated in Exercise 3 for further analysis and export.
+2. **Convert the `sst` variable to `float32`** to optimize file size before writing the data to a NetCDF file.
+3. **Write the anomalies data** to a new NetCDF file named `sst_anomalies.nc` for storage and future use.
+4. **Load the saved NetCDF file** back into memory and print its contents to verify the saved data.
+
+This exercise teaches how to export processed geospatial data to NetCDF, a widely-used file format in climate data analysis.
 
 ```{code-cell} ipython3
 
@@ -111,7 +121,7 @@ By the end of this lab, you will have a better understanding of how to:
 ## Exercise 9: Mask the Raster Using a Vector Dataset
 
 1. Load the GeoJSON file at https://github.com/opengeos/datasets/releases/download/raster/Derna_Libya.geojson using `geopandas`.
-2. Use the GeoJSON to mask the raster dataset, keeping only the data within the GeoJSON boundaries.
+2. Use the GeoJSON to mask the reprojected raster dataset, keeping only the data within the GeoJSON boundaries.
 3. Plot the masked raster data.
 
 ```{code-cell} ipython3
