@@ -4,7 +4,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.16.2
+    jupytext_version: 1.16.4
 kernelspec:
   display_name: Python 3
   language: python
@@ -111,7 +111,7 @@ This notebook contains exercises based on the lectures on [**String Operations**
 
 ## Exercise 10: Generating and Analyzing Random Coordinates
 
-- Write a program that generates random coordinates (latitude and longitude between -180 and 180 degrees).
+- Write a program that generates random coordinates (latitude between [-90, 90] degrees and longitude between [-180, 180] degrees).
 - Use a `while` loop to keep generating coordinates until a pair with both latitude and longitude greater than 50 is generated.
 - Print each generated coordinate and the final coordinate that meets the condition.
 
