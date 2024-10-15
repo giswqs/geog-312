@@ -6,7 +6,7 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.16.4
 kernelspec:
-  display_name: Python 3 (ipykernel)
+  display_name: geo
   language: python
   name: python3
 ---
@@ -518,7 +518,7 @@ m
 
 ### Visualizing Open Buildings Data with PMTiles
 
-You can also visualize large datasets like the[Google-Microsoft Open Buildings data](https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description) hosted on Source Cooperative. First, check the PMTiles metadata for the building footprints layer:
+You can also visualize large datasets like the [Google-Microsoft Open Buildings data](https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description) hosted on Source Cooperative. First, check the PMTiles metadata for the building footprints layer:
 
 ```{code-cell} ipython3
 url = "https://data.source.coop/vida/google-microsoft-open-buildings/pmtiles/go_ms_building_footprints.pmtiles"
@@ -558,6 +558,49 @@ m.add_pmtiles(
     url, name="Buildings", style=style, overlay=True, show=True, zoom_to_layer=False
 )
 
+m
+```
+
+### Visualizing Overture Maps Data
+
+[Overture](https://overturemaps.org) Maps Foundation provides open-source, high-quality basemaps for web mapping applications. You can visualize Overture Maps data using PMTiles archives. The following example demonstrates how to visualize the building footprints layer from the Overture Maps. For more information, visit the [Overture Maps website](https://docs.overturemaps.org).
+
+```{code-cell} ipython3
+release = "2024-09-18"
+theme = "buildings"
+url = f"https://overturemaps-tiles-us-west-2-beta.s3.amazonaws.com/{release}/{theme}.pmtiles"
+```
+
+```{code-cell} ipython3
+style = {
+    "version": 8,
+    "sources": {
+        "example_source": {
+            "type": "vector",
+            "url": "pmtiles://" + url,
+            "attribution": "PMTiles",
+        }
+    },
+    "layers": [
+        {
+            "id": "Building",
+            "source": "example_source",
+            "source-layer": "building",
+            "type": "fill",
+            "paint": {
+                "fill-color": "#ffff00",
+                "fill-opacity": 0.4,
+                "fill-outline-color": "#ff0000",
+            },
+        },
+    ],
+}
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[47.65350739, -117.59664999], zoom=16)
+m.add_basemap("Satellite")
+m.add_pmtiles(url, style=style, layer_name="Buildings", zoom_to_layer=False)
 m
 ```
 
