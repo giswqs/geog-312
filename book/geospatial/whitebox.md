@@ -22,7 +22,7 @@ kernelspec:
 Uncomment and run the following cell to install necessary packages for this notebook, including leafmap, geopandas, localtileserver, rio-cogeo, pynhd, py3dep.
 
 ```{code-cell} ipython3
-# %pip install "leafmap[raster]" geopandas
+# %pip install "leafmap[raster]" "leafmap[lidar]" geopandas
 ```
 
 ## Import libraries
@@ -32,7 +32,9 @@ import os
 import leafmap
 ```
 
-## Create interactive maps
+## Watershed Analysis
+
+### Create interactive maps
 
 Specify the map center, zoom level, and height.
 
@@ -41,7 +43,7 @@ m = leafmap.Map(center=[40, -100], zoom=4, height="600px")
 m
 ```
 
-## Add basemaps
+### Add basemaps
 
 Add OpenTopoMap, USGS 3DEP Elevation, and USGS Hydrography basemaps.
 
@@ -80,7 +82,7 @@ m.add_legend(builtin_legend="NLCD", title="NLCD Land Cover Type")
 m
 ```
 
-## Get watershed data
+### Get watershed data
 
 Let's download watershed data for the Calapooia River basin in Oregon.
 
@@ -106,7 +108,7 @@ gdf.to_file("basin.geojson", driver="GeoJSON")
 gdf.to_file("basin.shp")
 ```
 
-## Download DEM
+### Download DEM
 
 Download a digital elevation model (DEM) for the watershed from the USGS 3DEP Elevation service. Convert the DEM to a Cloud Optimized GeoTIFF (COG).
 
@@ -123,7 +125,7 @@ m.add_raster("dem.tif", palette="terrain", layer_name="DEM")
 m
 ```
 
-## Get DEM metadata
+### Get DEM metadata
 
 ```{code-cell} ipython3
 metadata = leafmap.image_metadata("dem.tif")
@@ -136,14 +138,14 @@ Get a summary statistics of the DEM.
 metadata["bands"]
 ```
 
-## Add colorbar
+### Add colorbar
 
 ```{code-cell} ipython3
 m.add_colormap(cmap="terrain", vmin="60", vmax=1500, label="Elevation (m)")
 m
 ```
 
-## Initialize WhiteboxTools
+### Initialize WhiteboxTools
 
 Initialize the WhiteboxTools class.
 
@@ -163,14 +165,14 @@ Display the WhiteboxTools interface.
 leafmap.whiteboxgui()
 ```
 
-## Set working directory
+### Set working directory
 
 ```{code-cell} ipython3
 wbt.set_working_dir(os.getcwd())
 wbt.verbose = False
 ```
 
-## Smooth DEM
+### Smooth DEM
 
 All WhiteboxTools functions will return 0 if they are successful, and 1 if they are not.
 
@@ -187,7 +189,7 @@ m.add_geojson("basin.geojson", layer_name="Watershed", info_mode=None)
 m
 ```
 
-## Create hillshade
+### Create hillshade
 
 ```{code-cell} ipython3
 wbt.hillshade("smoothed.tif", "hillshade.tif", azimuth=315, altitude=35)
@@ -200,7 +202,7 @@ m.add_raster("hillshade.tif", layer_name="Hillshade")
 m.layers[-1].opacity = 0.6
 ```
 
-## Find no-flow cells
+### Find no-flow cells
 
 Find cells with undefined flow, i.e. no valid flow direction, based on the D8 flow direction algorithm
 
@@ -215,7 +217,7 @@ m.add_raster("noflow.tif", layer_name="No Flow Cells")
 m
 ```
 
-## Fill depressions
+### Fill depressions
 
 ```{code-cell} ipython3
 wbt.fill_depressions("smoothed.tif", "filled.tif")
@@ -236,13 +238,13 @@ m.add_raster("noflow2.tif", layer_name="No Flow Cells after Breaching")
 m
 ```
 
-## Delineate flow direction
+### Delineate flow direction
 
 ```{code-cell} ipython3
 wbt.d8_pointer("breached.tif", "flow_direction.tif")
 ```
 
-## Calculate flow accumulation
+### Calculate flow accumulation
 
 ```{code-cell} ipython3
 wbt.d8_flow_accumulation("breached.tif", "flow_accum.tif")
@@ -253,7 +255,7 @@ m.add_raster("flow_accum.tif", layer_name="Flow Accumulation")
 m
 ```
 
-## Extract streams
+### Extract streams
 
 ```{code-cell} ipython3
 wbt.extract_streams("flow_accum.tif", "streams.tif", threshold=5000)
@@ -263,7 +265,7 @@ wbt.extract_streams("flow_accum.tif", "streams.tif", threshold=5000)
 m.add_raster("streams.tif", layer_name="Streams")
 ```
 
-## Calculate distance to outlet
+### Calculate distance to outlet
 
 ```{code-cell} ipython3
 wbt.distance_to_outlet(
@@ -275,7 +277,7 @@ wbt.distance_to_outlet(
 m.add_raster("distance_to_outlet.tif", layer_name="Distance to Outlet")
 ```
 
-## Vectorize streams
+### Vectorize streams
 
 ```{code-cell} ipython3
 wbt.raster_streams_to_vector(
@@ -296,7 +298,7 @@ m.add_shp(
 m
 ```
 
-## Delineate basins
+### Delineate basins
 
 ```{code-cell} ipython3
 wbt.basins("flow_direction.tif", "basins.tif")
@@ -306,7 +308,7 @@ wbt.basins("flow_direction.tif", "basins.tif")
 m.add_raster("basins.tif", layer_name="Basins")
 ```
 
-## Delineate the longest flow path
+### Delineate the longest flow path
 
 ```{code-cell} ipython3
 wbt.longest_flowpath(
@@ -331,7 +333,7 @@ m.add_shp(
 m
 ```
 
-## Generate a pour point
+### Generate a pour point
 
 ```{code-cell} ipython3
 if m.user_roi is not None:
@@ -341,7 +343,7 @@ else:
     leafmap.coords_to_vector(coords, output="pour_point.shp", crs="EPSG:3857")
 ```
 
-## Snap pour point to stream
+### Snap pour point to stream
 
 ```{code-cell} ipython3
 wbt.snap_pour_points(
@@ -353,7 +355,7 @@ wbt.snap_pour_points(
 m.add_shp("pour_point_snapped.shp", layer_name="Pour Point")
 ```
 
-## Delineate watershed
+### Delineate watershed
 
 ```{code-cell} ipython3
 wbt.watershed("flow_direction.tif", "pour_point_snapped.shp", "watershed.tif")
@@ -364,7 +366,7 @@ m.add_raster("watershed.tif", layer_name="Watershed")
 m
 ```
 
-## Convert watershed raster to vector
+### Convert watershed raster to vector
 
 ```{code-cell} ipython3
 wbt.raster_to_vector_polygons("watershed.tif", "watershed.shp")
@@ -376,4 +378,125 @@ m.add_shp(
     layer_name="Watershed Vector",
     style={"color": "#ffff00", "weight": 3},
 )
+```
+
+## LiDAR Data Analysis
+
+### Set up whitebox
+
+```{code-cell}
+wbt = whitebox.WhiteboxTools()
+wbt.set_working_dir(os.getcwd())
+wbt.set_verbose_mode(False)
+```
+
+### Download sample data
+
+```{code-cell}
+url = "https://github.com/opengeos/datasets/releases/download/lidar/madison.zip"
+filename = "madison.las"
+```
+
+```{code-cell}
+leafmap.download_file(url, "madison.zip", unzip=True)
+```
+
+### Read LAS/LAZ data
+
+```{code-cell}
+laz = leafmap.read_lidar(filename)
+```
+
+```{code-cell}
+laz
+```
+
+```{code-cell}
+str(laz.header.version)
+```
+
+### Upgrade file version
+
+```{code-cell}
+las = leafmap.convert_lidar(laz, file_version="1.4")
+```
+
+```{code-cell}
+str(las.header.version)
+```
+
+### Write LAS data
+
+```{code-cell}
+leafmap.write_lidar(las, "madison.las")
+```
+
+### Histogram analysis
+
+```{code-cell}
+wbt.lidar_histogram("madison.las", "histogram.html")
+```
+
+### Visualize LiDAR data
+
+```{code-cell}
+leafmap.view_lidar("madison.las")
+```
+
+### Remove outliers
+
+```{code-cell}
+wbt.lidar_elevation_slice("madison.las", "madison_rm.las", minz=0, maxz=450)
+```
+
+### Visualize LiDAR data after removing outliers
+
+```{code-cell}
+leafmap.view_lidar("madison_rm.las", cmap="terrain")
+```
+
+### Create DSM
+
+```{code-cell}
+wbt.lidar_digital_surface_model(
+    "madison_rm.las", "dsm.tif", resolution=1.0, minz=0, maxz=450
+)
+```
+
+```{code-cell}
+:jp-MarkdownHeadingCollapsed: true
+
+leafmap.add_crs("dsm.tif", epsg=2255)
+```
+
+### Visualize DSM
+
+```{code-cell}
+m = leafmap.Map()
+m.add_raster("dsm.tif", palette="terrain", layer_name="DSM")
+m
+```
+
+### Create DEM
+
+```{code-cell}
+wbt.remove_off_terrain_objects("dsm.tif", "dem.tif", filter=25, slope=15.0)
+```
+
+### Visualize DEM
+
+```{code-cell}
+m.add_raster("dem.tif", palette="terrain", layer_name="DEM")
+m
+```
+
+### Create CHM
+
+```{code-cell}
+chm = wbt.subtract("dsm.tif", "dem.tif", "chm.tif")
+```
+
+```{code-cell}
+m.add_raster("chm.tif", palette="gist_earth", layer_name="CHM")
+m
 ```
