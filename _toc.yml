@@ -43,8 +43,8 @@ parts:
       - file: book/geospatial/xarray
       - file: book/geospatial/rioxarray
       - file: book/geospatial/leafmap
-      - file: book/geospatial/maplibre
       - file: book/geospatial/whitebox
+      - file: book/geospatial/maplibre
       - file: book/geospatial/geemap
       - file: book/geospatial/samgeo
       - file: book/geospatial/hypercoast
