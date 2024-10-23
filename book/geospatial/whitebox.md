@@ -75,7 +75,11 @@ There are many tools in Whitebox that you won’t find elsewhere. You can think 
 To get started, we need to install the required packages, such as `leafmap`, and `whitebox`. Uncomment the following lines to install the packages.
 
 ```{code-cell} ipython3
-# %pip install "leafmap[raster]" "leafmap[lidar]"
+# %pip install "leafmap[raster]" "leafmap[lidar]" mapclassify
+```
+
+```{code-cell} ipython3
+# %pip install numpy==1.26.4
 ```
 
 ## Import libraries
