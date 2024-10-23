@@ -6,7 +6,7 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.16.4
 kernelspec:
-  display_name: geo
+  display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
@@ -606,20 +606,49 @@ m
 
 ## Visualizing Raster Data
 
-Leafmap makes it easy to visualize Cloud Optimized GeoTIFFs (COGs) and local GeoTIFF files. In this section, we’ll explore how to add, compare, and style raster data from both online and local sources.
+Leafmap supports various raster data formats, including GeoTIFF, Cloud Optimized GeoTIFF (COG), SpatioTemporal Asset Catalog (STAC), and others. This section demonstrates how to visualize raster data using Leafmap.
 
-### Adding a Cloud Optimized GeoTIFF (COG)
+### Visualizing Cloud Optimized GeoTIFFs (COGs)
+
+A Cloud Optimized GeoTIFF ([COG](https://cogeo.org/)) is a regular GeoTIFF file, aimed at being hosted on a HTTP file server, with an internal organization that enables more efficient workflows on the cloud. It does this by leveraging the ability of clients issuing ​HTTP GET range requests to ask for just the parts of a file they need.
+
+#### Adding a Cloud Optimized GeoTIFF (COG)
 
 You can load remote COGs directly from a URL. In this example, we load pre-event imagery of the 2020 California fire:
 
 ```{code-cell} ipython3
-m = leafmap.Map()
+m = leafmap.Map(center=[39.494897, -108.507278], zoom=10)
 url = "https://opendata.digitalglobe.com/events/california-fire-2020/pre-event/2018-02-16/pine-gulch-fire20/1030010076004E00.tif"
 m.add_cog_layer(url, name="Fire (pre-event)")
 m
 ```
 
-### Adding Multiple COGs
+Under the hood, the `add_cog_layer()` method uses the [TiTiler](https://developmentseed.org/titiler) demo endpoint (https://titiler.xyz) to serve COGs as map tiles. The method also supports custom styling and visualization parameters. Please refer to the [TiTiler documentation](https://developmentseed.org/titiler/endpoints/cog/#api) for more information.
+
+Please note that the `add_cog_layer()` method requires an internet connection to fetch the COG tiles from the TiTiler endpoint. If you need to work offline, you can download the COG and load it as a local GeoTIFF file using the `add_raster()` method covered in the next section.
+
++++
+
+To show the image metadata, use the `cog_info()` method:
+
+```{code-cell} ipython3
+leafmap.cog_info(url)
+```
+
+To check the available bands, use the `cog_bands()` method:
+
+```{code-cell} ipython3
+leafmap.cog_bands(url)
+```
+
+To get the band statistics, use the `cog_stats()` method:
+
+```{code-cell} ipython3
+stats = leafmap.cog_stats(url)
+# stats
+```
+
+#### Adding Multiple COGs
 
 You can visualize and compare multiple COGs by adding them to the same map. Below, we add post-event imagery to the map:
 
@@ -629,29 +658,82 @@ m.add_cog_layer(url2, name="Fire (post-event)")
 m
 ```
 
-### Creating a Split Map for Comparison
+#### Creating a Split Map for Comparison
 
 Leafmap also provides a convenient way to compare two COGs side by side using a split map. In this example, we create a map comparing pre-event and post-event fire imagery:
 
 ```{code-cell} ipython3
-m = leafmap.Map()
+m = leafmap.Map(center=[39.494897, -108.507278], zoom=10)
 m.split_map(
     left_layer=url, right_layer=url2, left_label="Pre-event", right_label="Post-event"
 )
 m
 ```
 
-### Visualizing Local Raster Files
+Here is another example comparing two COGs using a split map:
 
-Leafmap supports visualization of local GeoTIFF files as well. In this example, we download a sample Digital Elevation Model (DEM) dataset and visualize it.
+```{code-cell} ipython3
+m = leafmap.Map(center=[47.653149, -117.59825], zoom=16)
+m.add_basemap("Satellite")
+image1 = "https://github.com/opengeos/datasets/releases/download/places/wa_building_image.tif"
+image2 = "https://github.com/opengeos/datasets/releases/download/places/wa_building_masks.tif"
+m.split_map(
+    image2,
+    image1,
+    left_label="Building Masks",
+    right_label="Aerial Imagery",
+    left_args={"colormap_name": "tab20", "nodata": 0, "opacity": 0.7},
+)
+m
+```
+
+#### Using a Custom Colormap
+
+You can apply a custom colormap to raster data for better visualization. The example below shows how to visualize the [US National Land Cover Database (NLCD)](https://www.mrlc.gov/data/nlcd-2021-land-cover-conus) data with a custom colormap:
+
+```{code-cell} ipython3
+url = "https://github.com/opengeos/datasets/releases/download/raster/nlcd_2021_land_cover_30m.tif"
+colormap = {
+    "11": "#466b9f",
+    "12": "#d1def8",
+    "21": "#dec5c5",
+    "22": "#d99282",
+    "23": "#eb0000",
+    "24": "#ab0000",
+    "31": "#b3ac9f",
+    "41": "#68ab5f",
+    "42": "#1c5f2c",
+    "43": "#b5c58f",
+    "51": "#af963c",
+    "52": "#ccb879",
+    "71": "#dfdfc2",
+    "72": "#d1d182",
+    "73": "#a3cc51",
+    "74": "#82ba9e",
+    "81": "#dcd939",
+    "82": "#ab6c28",
+    "90": "#b8d9eb",
+    "95": "#6c9fb8",
+}
+m = leafmap.Map(center=[40, -100], zoom=4, height="650px")
+m.add_basemap("Satellite")
+m.add_cog_layer(url, colormap=colormap, name="NLCD Land Cover", nodata=0)
+m.add_legend(title="NLCD Land Cover Type", builtin_legend="NLCD")
+m.add_layer_manager()
+m
+```
+
+### Visualizing Local Raster Datasets
+
+Leafmap supports visualizing local GeoTIFF datasets as well. In this example, we download a sample Digital Elevation Model (DEM) dataset and visualize it.
 
 #### Downloading and Visualizing a Local Raster
 
 Start by downloading a sample DEM GeoTIFF file:
 
 ```{code-cell} ipython3
-dem_url = "https://open.gishub.org/data/raster/srtm90.tif"
-filename = "srtm90.tif"
+dem_url = "https://github.com/opengeos/datasets/releases/download/raster/dem_90m.tif"
+filename = "dem_90m.tif"
 leafmap.download_file(dem_url, filename, quiet=True)
 ```
 
@@ -675,27 +757,50 @@ Optionally, add a colormap legend to indicate the range of elevation values:
 m.add_colormap(cmap="terrain", vmin=15, vmax=4338, label="Elevation (m)")
 ```
 
+Keep in mind that the `add_raster()` method works for both local and remote GeoTIFF files. You can use it to visualize COGs available online or local GeoTIFF files stored on your computer. The example below demonstrates how to visualize the same COG from the previous section as a remote file:
+
 ```{code-cell} ipython3
-landsat_url = "https://open.gishub.org/data/raster/cog.tif"
-filename = "cog.tif"
-leafmap.download_file(landsat_url, filename, quiet=True)
+m = leafmap.Map()
+m.add_raster(dem_url, colormap="terrain", layer_name="DEM")
+m
 ```
 
-### Visualizing a Multi-Band Raster
+You can also use a custom colormap to visualize the COG by providing a list of colors as the `colormap` parameter:
+
+```{code-cell} ipython3
+m = leafmap.Map()
+m.add_raster(dem_url, colormap=["blue", "green", "white"], layer_name="DEM")
+m
+```
+
+#### Visualizing a Multi-Band Raster
 
 Multi-band rasters, such as satellite images, can also be visualized. The following example loads a multi-band Landsat image and displays it as an RGB composite:
 
 ```{code-cell} ipython3
+landsat_url = "https://github.com/opengeos/datasets/releases/download/raster/cog.tif"
+filename = "cog.tif"
+leafmap.download_file(landsat_url, filename, quiet=True)
+```
+
+```{code-cell} ipython3
 m = leafmap.Map()
-m.add_raster(filename, bands=[4, 3, 2], layer_name="RGB")
+m.add_raster(filename, indexes=[4, 3, 2], layer_name="RGB")
 m
 ```
 
-![](https://i.imgur.com/euhkajs.png)
+#### Inspecting Pixel Values
 
-+++
+To inspect pixel values interactively, use the `m.add("inspector")` method to add an inspector control to the map. The inspector control displays pixel values when you click on the map:
 
-### isualizing SpatioTemporal Asset Catalog (STAC) Data
+```{code-cell} ipython3
+m = leafmap.Map(center=[53.407089, 6.875480], zoom=13)
+m.add_raster(filename, indexes=[4, 3, 2], layer_name="RGB")
+m.add("inspector")
+m
+```
+
+### Visualizing SpatioTemporal Asset Catalog (STAC) Data
 
 
 The [STAC specification](https://stacspec.org) provides a standardized way to describe geospatial information, enabling easier discovery and use. In this section, we will visualize STAC data using Leafmap.
@@ -710,16 +815,16 @@ leafmap.stac_bands(url)
 
 #### Adding STAC Layers to the Map
 
-Once you have explored the available bands, you can add them to your map. In this example, we visualize both panchromatic and false-color imagery:
+Once you have explored the available bands, you can add them to your map. In this example, we visualize both the panchromatic band and false-color composite of the SPOT Orthoimage:
 
 ```{code-cell} ipython3
-m = leafmap.Map()
+m = leafmap.Map(center=[60.95410, -110.90184], zoom=10)
 m.add_stac_layer(url, bands=["pan"], name="Panchromatic")
 m.add_stac_layer(url, bands=["B3", "B2", "B1"], name="False color")
 m
 ```
 
-### Custom STAC Catalog
+#### Using a Custom STAC Catalog
 
 You can integrate custom STAC API endpoints into your map. Simply provide a dictionary of STAC endpoints, where the keys are names and the values are the API URLs. This example demonstrates how to add custom STAC catalogs:
 
@@ -788,9 +893,27 @@ items[:10]
 Finally, visualize a raster dataset from the S3 bucket by adding it to the map:
 
 ```{code-cell} ipython3
-m = leafmap.Map()
+m = leafmap.Map(center=[37.045802, 35.333319], zoom=14)
 m.add_cog_layer(items[2], name="Maxar")
 m
 ```
 
 ![](https://i.imgur.com/NkTZ6Lj.png)
+
++++
+
+Some S3 buckets may require additional permissions to access the data. For example, for requester pays buckets, you need to set the environment variable `AWS_REQUEST_PAYER` to `requester`:
+
+```{code-cell} ipython3
+os.environ["AWS_REQUEST_PAYER"] = "requester"
+```
+
+The example below shows how to visualize a [NAIP imagery](https://registry.opendata.aws/naip/) from a requester pays bucket:
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[34.979166, -84.920496], zoom=14)
+m.add_basemap("Satellite")
+src = "s3://naip-analytic/tn/2021/60cm/rgbir_cog/34084/m_3408401_ne_16_060_20210404.tif"
+m.add_raster(src, layer_name="NAIP")
+m
+```
