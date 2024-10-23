@@ -22,7 +22,6 @@ kernelspec:
 In this lecture, we will explore the use of [**WhiteboxTools**](https://github.com/jblindsay/whitebox-tools), a powerful open-source library for performing geospatial analysis. Specifically, we will focus on two key applications: **watershed analysis** and **LiDAR data analysis**. You will learn how to manipulate geospatial data using Python, conduct hydrological analysis, and derive digital elevation models (DEMs) and canopy height models (CHMs) from LiDAR data.
 
 This lecture is structured into two main sections:
-
 1. **Watershed Analysis**: Using DEMs and hydrological tools to delineate watersheds, calculate flow accumulation, and extract stream networks.
 2. **LiDAR Data Analysis**: Processing LiDAR point cloud data to derive DEMs, DSMs, and CHMs while removing outliers and improving data quality.
 
@@ -31,13 +30,13 @@ By the end of this session, you will have gained hands-on experience with **Whit
 ## Learning Objectives
 
 By the end of this lecture, you will be able to:
-
 - Install and configure **WhiteboxTools** and **leafmap** for geospatial analysis.
 - Create interactive maps to visualize basemaps and geospatial datasets.
 - Perform watershed analysis by delineating watersheds, flow directions, and stream networks.
 - Manipulate and analyze Digital Elevation Models (DEMs) to conduct hydrological modeling.
 - Process and analyze LiDAR data to generate **Digital Surface Models (DSMs)**, **Digital Elevation Models (DEMs)**, and **Canopy Height Models (CHMs)**.
 - Integrate **WhiteboxTools** with Python workflows to automate geospatial analysis.
+
 
 ## Introduction
 
@@ -56,6 +55,7 @@ Whitebox can be used to perform common GIS and remote sensing analysis tasks. Wh
 Whitebox doesn’t compete with QGIS, ArcGIS/Pro, and ArcPy but rather it extends them. You can plug WhiteboxTools into QGIS and ArcGIS and it’ll provide hundreds of additional tools for analyzing all kinds of geospatial data. You can also call Whitebox functions from Python scripts using [Whitebox Workflows](https://www.whiteboxgeo.com/whitebox-workflows-for-python) (WbW). Combine WbW with ArcPy to more effectively automate your data analysis workflows and streamline your geoprocessing solutions.
 
 There are many tools in Whitebox that you won’t find elsewhere. You can think of Whitebox as a portable, cross-platform GIS analysis powerhouse, allowing you to extend your preferred GIS or to embed Whitebox capabilities into your automated scripted workflows. Oh, and it’s fast, really fast!
+
 
 ## Useful Resources for Whitebox
 
@@ -146,7 +146,12 @@ We download a **Digital Elevation Model (DEM)** from the USGS 3DEP Elevation ser
 
 ```{code-cell} ipython3
 array = leafmap.get_3dep_dem(
-    gdf, resolution=30, output="dem.tif", dst_crs="EPSG:3857", to_cog=True, overwrite=True
+    gdf,
+    resolution=30,
+    output="dem.tif",
+    dst_crs="EPSG:3857",
+    to_cog=True,
+    overwrite=True,
 )
 array
 ```
@@ -351,7 +356,10 @@ leafmap.vector_set_crs(source="streams.shp", output="streams.shp", crs="EPSG:385
 
 ```{code-cell} ipython3
 m.add_shp(
-    "streams.shp", layer_name="Streams Vector", style={"color": "#ff0000", "weight": 3}, info_mode=None
+    "streams.shp",
+    layer_name="Streams Vector",
+    style={"color": "#ff0000", "weight": 3},
+    info_mode=None,
 )
 m
 ```
@@ -453,7 +461,6 @@ m.add_shp(
     layer_name="Watershed Vector",
     style={"color": "#ffff00", "weight": 3},
     info_mode=False,
-
 )
 ```
 
@@ -485,7 +492,7 @@ filename = "madison.las"
 ```
 
 ```{code-cell} ipython3
-leafmap.download_file(url, "madison.zip")
+leafmap.download_file(url, "madison.zip", quiet=False)
 ```
 
 ### Read LAS/LAZ data
@@ -603,6 +610,7 @@ m
 ```
 
 ### Create CHM
+
 
 We can a **Canopy Height Model (CHM)** by subtracting the DEM from the DSM.
 
