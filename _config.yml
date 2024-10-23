@@ -23,7 +23,6 @@ execute:
       "book/geospatial/vector_viz.ipynb",
       "book/geospatial/raster_viz.ipynb",
       "book/geospatial/maplibre.ipynb",
-      "book/geospatial/whitebox.ipynb",
       "book/geospatial/geemap.ipynb",
       "book/geospatial/samgeo.ipynb",
       "book/geospatial/hypercoast.ipynb",
