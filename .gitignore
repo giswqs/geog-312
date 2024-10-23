@@ -37,3 +37,11 @@ book/geospatial/nyc_boroughs.*
 # pixi environments
 .pixi
 *.egg-info
+*.zip
+*.las
+longest_flowpath.*
+pour_point*
+streams*
+watershed*
+histogram*
+book/geospatial/cache/*
