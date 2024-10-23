@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           uv sync --python ${{ matrix.python-version }}
-          uv pip install py3dep "pyvista[all]"
+          uv pip install py3dep
 
       - name: Install optional dependencies
         run: |
