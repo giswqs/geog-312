@@ -492,7 +492,7 @@ filename = "madison.las"
 ```
 
 ```{code-cell} ipython3
-leafmap.download_file(url, "madison.zip", quiet=False)
+leafmap.download_file(url, "madison.zip", quiet=True)
 ```
 
 ### Read LAS/LAZ data
