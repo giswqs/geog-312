@@ -625,3 +625,14 @@ m.add_raster("chm.tif", palette="gist_earth", layer_name="CHM")
 m.add_layer_manager()
 m
 ```
+
+## Summary
+
+This lecture provided a comprehensive introduction to **WhiteboxTools**, an open-source geospatial analysis library with a focus on hydrological and LiDAR data analysis. Through this session, students learned to install and configure WhiteboxTools in Python, integrate it with **leafmap** for interactive mapping, and apply it to specific geospatial tasks.
+
+Key takeaways from this lecture include:
+
+- **Watershed Analysis**: The lecture covered watershed delineation using Digital Elevation Models (DEMs), including techniques like flow direction, flow accumulation, stream extraction, and watershed boundary delineation.
+- **LiDAR Data Processing**: Students were introduced to LiDAR data manipulation, including the derivation of Digital Surface Models (DSMs), Digital Elevation Models (DEMs), and Canopy Height Models (CHMs), along with methods for outlier removal and terrain quality improvement.
+
+By completing the hands-on exercises, students gained practical experience with WhiteboxTools for geospatial processing, preparing them to apply these techniques in varied real-world GIS workflows.
