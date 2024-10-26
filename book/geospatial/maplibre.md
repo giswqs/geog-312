@@ -17,11 +17,18 @@ kernelspec:
 
 ## Overview
 
-The notebook demonstrates how to create 3D maps using the [MapLibre](https://github.com/eodaGmbH/py-maplibregl) Python package. The examples shown in this notebook are based on the [MapLibre documentation](https://eodagmbh.github.io/py-maplibregl/examples/vancouver_blocks/).
+This lecture introduces the [MapLibre](https://github.com/eodaGmbH/py-maplibregl) Python package, a flexible open-source mapping Python package that allows users to create interactive and customizable 3D and 2D maps in Python. By leveraging the MapLibre library, GIS developers can visualize geospatial data with a variety of customization options and mapping styles. The notebook demonstrates essential concepts like creating interactive maps, customizing basemaps, adding various data layers, and implementing map controls for enhanced functionality. Additionally, advanced features, such as 3D building visualization and layer control, provide students with practical tools for real-world geospatial data analysis and visualization.
 
-## Learning Objectives
+## Learning Outcomes
 
-TBA.
+By the end of this lecture, students will be able to:
+
+1. Set up and install MapLibre for geospatial visualization in Python.
+2. Create basic interactive maps and apply different basemap styles.
+3. Customize map features, including markers, lines, polygons, and map controls.
+4. Utilize advanced features such as 3D buildings and choropleth maps.
+5. Integrate and manage multiple data layers, including GeoJSON, raster, and vector layers.
+6. Export map visualizations as standalone HTML files for sharing and deployment.
 
 ## Useful Resources
 
@@ -44,8 +51,6 @@ import leafmap.maplibregl as leafmap
 ```
 
 ## Create interactive maps
-
-### Create a simple map
 
 Let's create a simple interactive map using Leafmap.
 
@@ -88,11 +93,11 @@ m = leafmap.Map(style="liberty")
 m
 ```
 
-### Add map controls
+## Add map controls
 
 The control to add to the map. Can be one of the following: `scale`, `fullscreen`, `geolocate`, `navigation`.
 
-#### Geolocate control
+### Geolocate control
 
 ```{code-cell} ipython3
 m = leafmap.Map()
@@ -100,7 +105,7 @@ m.add_control("geolocate", position="top-left")
 m
 ```
 
-#### Fullscreen control
+### Fullscreen control
 
 ```{code-cell} ipython3
 m = leafmap.Map(center=[11.255, 43.77], zoom=13, style="streets", controls={})
@@ -108,7 +113,7 @@ m.add_control("fullscreen", position="top-right")
 m
 ```
 
-#### Navigation control
+### Navigation control
 
 ```{code-cell} ipython3
 m = leafmap.Map(center=[11.255, 43.77], zoom=13, style="streets", controls={})
@@ -116,7 +121,7 @@ m.add_control("navigation", position="top-left")
 m
 ```
 
-#### Draw control
+### Draw control
 
 Add the default draw control.
 
@@ -201,12 +206,12 @@ m.draw_features_selected
 m.draw_feature_collection_all
 ```
 
-### Disable scroll zoom
-
 ```{code-cell} ipython3
 m = leafmap.Map(center=[-122.65, 45.52], zoom=9, scroll_zoom=False, style="liberty")
 m
 ```
+
+## Add layers
 
 ### Add basemaps
 
@@ -298,7 +303,7 @@ style = {
                 "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg"
             ],
             "tileSize": 256,
-            "attribution": 'Map tiles by Stamen Design; Hosting by Stadia Maps. Data © OpenStreetMap contributors',
+            "attribution": "Map tiles by Stamen Design; Hosting by Stadia Maps. Data © OpenStreetMap contributors",
         }
     },
     "layers": [
@@ -344,9 +349,6 @@ m
 ```
 
 ## MapTiler
-
-## Set up API Key
-
 To run this notebook, you need to set up a MapTiler API key. You can get a free API key by signing up at [https://cloud.maptiler.com/](https://cloud.maptiler.com/).
 
 ```{code-cell} ipython3
@@ -1217,7 +1219,7 @@ You can load local raster data using the `add_raster` method.
 ```{code-cell} ipython3
 url = "https://github.com/opengeos/datasets/releases/download/raster/landsat.tif"
 filepath = "landsat.tif"
-leafmap.download_file(url, filepath)
+leafmap.download_file(url, filepath, quiet=True)
 ```
 
 ```{code-cell} ipython3
@@ -1234,7 +1236,7 @@ m.layer_interact()
 ```{code-cell} ipython3
 url = "https://github.com/opengeos/datasets/releases/download/raster/srtm90.tif"
 filepath = "srtm90.tif"
-leafmap.download_file(url, filepath)
+leafmap.download_file(url, filepath, quiet=True)
 ```
 
 ```{code-cell} ipython3
@@ -1314,6 +1316,13 @@ m
 m = leafmap.Map(
     center=[-74.5, 40], zoom=9, interactive=False, style="streets", controls={}
 )
+m
+```
+
+### Disable scroll zoom
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-122.65, 45.52], zoom=9, scroll_zoom=False, style="liberty")
 m
 ```
 
@@ -1622,255 +1631,6 @@ m
 
 ```{code-cell} ipython3
 m.rotate_to(bearing=180, options={"duration": 10000})
-```
-
-## PMTiles
-
-Leafmap supports the [PMTiles](https://protomaps.com/docs/pmtiles/) format for fast and efficient rendering of vector tiles.
-
-### Protomaps sample data
-
-```{code-cell} ipython3
-url = "https://open.gishub.org/data/pmtiles/protomaps_firenze.pmtiles"
-metadata = leafmap.pmtiles_metadata(url)
-print(f"layer names: {metadata['layer_names']}")
-print(f"bounds: {metadata['bounds']}")
-```
-
-```{code-cell} ipython3
-m = leafmap.Map()
-
-style = {
-    "version": 8,
-    "sources": {
-        "example_source": {
-            "type": "vector",
-            "url": "pmtiles://" + url,
-            "attribution": "PMTiles",
-        }
-    },
-    "layers": [
-        {
-            "id": "buildings",
-            "source": "example_source",
-            "source-layer": "landuse",
-            "type": "fill",
-            "paint": {"fill-color": "steelblue"},
-        },
-        {
-            "id": "roads",
-            "source": "example_source",
-            "source-layer": "roads",
-            "type": "line",
-            "paint": {"line-color": "black"},
-        },
-    ],
-}
-
-# style = leafmap.pmtiles_style(url)  # Use default style
-
-m.add_pmtiles(
-    url,
-    style=style,
-    visible=True,
-    opacity=1.0,
-    tooltip=True,
-)
-m
-```
-
-```{code-cell} ipython3
-m.layer_interact()
-```
-
-### Overture data
-
-You can also visualize Overture data. Inspired by [overture-maps](https://github.com/tebben/overture-maps).
-
-+++
-
-### Source Cooperative
-
-Let's visualize the [Google-Microsoft Open Buildings - combined by VIDA](https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description).
-
-```{code-cell} ipython3
-url = "https://data.source.coop/vida/google-microsoft-open-buildings/pmtiles/go_ms_building_footprints.pmtiles"
-metadata = leafmap.pmtiles_metadata(url)
-print(f"layer names: {metadata['layer_names']}")
-print(f"bounds: {metadata['bounds']}")
-```
-
-```{code-cell} ipython3
-m = leafmap.Map(center=[0, 20], zoom=2, height="800px")
-m.add_basemap("Google Hybrid", visible=False)
-
-style = {
-    "version": 8,
-    "sources": {
-        "example_source": {
-            "type": "vector",
-            "url": "pmtiles://" + url,
-            "attribution": "PMTiles",
-        }
-    },
-    "layers": [
-        {
-            "id": "buildings",
-            "source": "example_source",
-            "source-layer": "building_footprints",
-            "type": "fill",
-            "paint": {"fill-color": "#3388ff", "fill-opacity": 0.5},
-        },
-    ],
-}
-
-# style = leafmap.pmtiles_style(url)  # Use default style
-
-m.add_pmtiles(
-    url,
-    style=style,
-    visible=True,
-    opacity=1.0,
-    tooltip=True,
-)
-m
-```
-
-```{code-cell} ipython3
-m.layer_interact()
-```
-
-### 3D PMTiles
-
-Visualize the global building data in 3D.
-
-```{code-cell} ipython3
-url = "https://data.source.coop/cholmes/overture/overture-buildings.pmtiles"
-metadata = leafmap.pmtiles_metadata(url)
-print(f"layer names: {metadata['layer_names']}")
-print(f"bounds: {metadata['bounds']}")
-```
-
-```{code-cell} ipython3
-m = leafmap.Map(
-    center=[-74.0095, 40.7046], zoom=16, pitch=60, bearing=-17, style="positron"
-)
-m.add_basemap("OpenStreetMap.Mapnik")
-m.add_basemap("Esri.WorldImagery", visible=False)
-
-style = {
-    "layers": [
-        {
-            "id": "buildings",
-            "source": "example_source",
-            "source-layer": "buildings",
-            "type": "fill-extrusion",
-            "filter": [
-                ">",
-                ["get", "height"],
-                0,
-            ],  # only show buildings with height info
-            "paint": {
-                "fill-extrusion-color": [
-                    "interpolate",
-                    ["linear"],
-                    ["get", "height"],
-                    0,
-                    "lightgray",
-                    200,
-                    "royalblue",
-                    400,
-                    "lightblue",
-                ],
-                "fill-extrusion-height": ["*", ["get", "height"], 1],
-            },
-        },
-    ],
-}
-
-m.add_pmtiles(
-    url,
-    style=style,
-    visible=True,
-    opacity=1.0,
-    tooltip=True,
-    template="Height: {{height}}<br>Country: {{country_iso}}",
-    fit_bounds=False,
-)
-m.add_layer_control()
-m
-```
-
-### 3D buildings
-
-```{code-cell} ipython3
-m = leafmap.Map(
-    center=[-74.0095, 40.7046], zoom=16, pitch=60, bearing=-17, style="positron"
-)
-m.add_basemap("Esri.WorldImagery", visible=False)
-m.add_overture_3d_buildings(release="2024-09-18", template="simple")
-m.add_layer_control()
-m
-```
-
-### 2D buildings
-
-```{code-cell} ipython3
-m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
-m.add_basemap("Esri.WorldImagery", visible=False)
-m.add_overture_data(theme="buildings", opacity=0.8)
-m.add_layer_control()
-m
-```
-
-### Transportation
-
-```{code-cell} ipython3
-m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
-m.add_basemap("Esri.WorldImagery", visible=False)
-m.add_overture_data(theme="transportation", opacity=0.8)
-m.add_layer_control()
-m
-```
-
-### Places
-
-```{code-cell} ipython3
-m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
-m.add_basemap("Esri.WorldImagery", visible=False)
-m.add_overture_data(theme="places", opacity=0.8)
-m.add_layer_control()
-m
-```
-
-### Addresses
-
-```{code-cell} ipython3
-m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
-m.add_basemap("Esri.WorldImagery", visible=False)
-m.add_overture_data(theme="addresses", opacity=0.8)
-m.add_layer_control()
-m
-```
-
-### Base
-
-```{code-cell} ipython3
-m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
-m.add_basemap("Esri.WorldImagery", visible=False)
-m.add_overture_data(theme="base", opacity=0.8)
-m.add_layer_control()
-m
-```
-
-### Divisions
-
-```{code-cell} ipython3
-m = leafmap.Map()
-m.add_basemap("Esri.WorldImagery", visible=False)
-m.add_overture_data(theme="divisions", opacity=0.8)
-m.add_layer_control()
-m
 ```
 
 ## Add custom components
@@ -2200,6 +1960,255 @@ coordinates = [
     [-130, 13],
 ]
 m.add_video(urls, coordinates)
+m.add_layer_control()
+m
+```
+
+## PMTiles
+
+Leafmap supports the [PMTiles](https://protomaps.com/docs/pmtiles/) format for fast and efficient rendering of vector tiles.
+
+### Protomaps sample data
+
+```{code-cell} ipython3
+url = "https://open.gishub.org/data/pmtiles/protomaps_firenze.pmtiles"
+metadata = leafmap.pmtiles_metadata(url)
+print(f"layer names: {metadata['layer_names']}")
+print(f"bounds: {metadata['bounds']}")
+```
+
+```{code-cell} ipython3
+m = leafmap.Map()
+
+style = {
+    "version": 8,
+    "sources": {
+        "example_source": {
+            "type": "vector",
+            "url": "pmtiles://" + url,
+            "attribution": "PMTiles",
+        }
+    },
+    "layers": [
+        {
+            "id": "buildings",
+            "source": "example_source",
+            "source-layer": "landuse",
+            "type": "fill",
+            "paint": {"fill-color": "steelblue"},
+        },
+        {
+            "id": "roads",
+            "source": "example_source",
+            "source-layer": "roads",
+            "type": "line",
+            "paint": {"line-color": "black"},
+        },
+    ],
+}
+
+# style = leafmap.pmtiles_style(url)  # Use default style
+
+m.add_pmtiles(
+    url,
+    style=style,
+    visible=True,
+    opacity=1.0,
+    tooltip=True,
+)
+m
+```
+
+```{code-cell} ipython3
+m.layer_interact()
+```
+
+### Overture data
+
+You can also visualize Overture data. Inspired by [overture-maps](https://github.com/tebben/overture-maps).
+
++++
+
+### Source Cooperative
+
+Let's visualize the [Google-Microsoft Open Buildings - combined by VIDA](https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description).
+
+```{code-cell} ipython3
+url = "https://data.source.coop/vida/google-microsoft-open-buildings/pmtiles/go_ms_building_footprints.pmtiles"
+metadata = leafmap.pmtiles_metadata(url)
+print(f"layer names: {metadata['layer_names']}")
+print(f"bounds: {metadata['bounds']}")
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[0, 20], zoom=2, height="800px")
+m.add_basemap("Google Hybrid", visible=False)
+
+style = {
+    "version": 8,
+    "sources": {
+        "example_source": {
+            "type": "vector",
+            "url": "pmtiles://" + url,
+            "attribution": "PMTiles",
+        }
+    },
+    "layers": [
+        {
+            "id": "buildings",
+            "source": "example_source",
+            "source-layer": "building_footprints",
+            "type": "fill",
+            "paint": {"fill-color": "#3388ff", "fill-opacity": 0.5},
+        },
+    ],
+}
+
+# style = leafmap.pmtiles_style(url)  # Use default style
+
+m.add_pmtiles(
+    url,
+    style=style,
+    visible=True,
+    opacity=1.0,
+    tooltip=True,
+)
+m
+```
+
+```{code-cell} ipython3
+m.layer_interact()
+```
+
+### 3D PMTiles
+
+Visualize the global building data in 3D.
+
+```{code-cell} ipython3
+url = "https://data.source.coop/cholmes/overture/overture-buildings.pmtiles"
+metadata = leafmap.pmtiles_metadata(url)
+print(f"layer names: {metadata['layer_names']}")
+print(f"bounds: {metadata['bounds']}")
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(
+    center=[-74.0095, 40.7046], zoom=16, pitch=60, bearing=-17, style="positron"
+)
+m.add_basemap("OpenStreetMap.Mapnik")
+m.add_basemap("Esri.WorldImagery", visible=False)
+
+style = {
+    "layers": [
+        {
+            "id": "buildings",
+            "source": "example_source",
+            "source-layer": "buildings",
+            "type": "fill-extrusion",
+            "filter": [
+                ">",
+                ["get", "height"],
+                0,
+            ],  # only show buildings with height info
+            "paint": {
+                "fill-extrusion-color": [
+                    "interpolate",
+                    ["linear"],
+                    ["get", "height"],
+                    0,
+                    "lightgray",
+                    200,
+                    "royalblue",
+                    400,
+                    "lightblue",
+                ],
+                "fill-extrusion-height": ["*", ["get", "height"], 1],
+            },
+        },
+    ],
+}
+
+m.add_pmtiles(
+    url,
+    style=style,
+    visible=True,
+    opacity=1.0,
+    tooltip=True,
+    template="Height: {{height}}<br>Country: {{country_iso}}",
+    fit_bounds=False,
+)
+m.add_layer_control()
+m
+```
+
+### 3D buildings
+
+```{code-cell} ipython3
+m = leafmap.Map(
+    center=[-74.0095, 40.7046], zoom=16, pitch=60, bearing=-17, style="positron"
+)
+m.add_basemap("Esri.WorldImagery", visible=False)
+m.add_overture_3d_buildings(release="2024-09-18", template="simple")
+m.add_layer_control()
+m
+```
+
+### 2D buildings
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
+m.add_basemap("Esri.WorldImagery", visible=False)
+m.add_overture_data(theme="buildings", opacity=0.8)
+m.add_layer_control()
+m
+```
+
+### Transportation
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
+m.add_basemap("Esri.WorldImagery", visible=False)
+m.add_overture_data(theme="transportation", opacity=0.8)
+m.add_layer_control()
+m
+```
+
+### Places
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
+m.add_basemap("Esri.WorldImagery", visible=False)
+m.add_overture_data(theme="places", opacity=0.8)
+m.add_layer_control()
+m
+```
+
+### Addresses
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
+m.add_basemap("Esri.WorldImagery", visible=False)
+m.add_overture_data(theme="addresses", opacity=0.8)
+m.add_layer_control()
+m
+```
+
+### Base
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-74.0095, 40.7046], zoom=16)
+m.add_basemap("Esri.WorldImagery", visible=False)
+m.add_overture_data(theme="base", opacity=0.8)
+m.add_layer_control()
+m
+```
+
+### Divisions
+
+```{code-cell} ipython3
+m = leafmap.Map()
+m.add_basemap("Esri.WorldImagery", visible=False)
+m.add_overture_data(theme="divisions", opacity=0.8)
 m.add_layer_control()
 m
 ```
@@ -2621,3 +2630,7 @@ m.to_html(
 )
 m
 ```
+
+## Summary
+
+In this lecture, we explored the functionality of the MapLibre library for creating and customizing interactive maps in Python. We covered how to build a map from scratch, add controls, and manage different basemaps. Additionally, we explored more complex visualizations, including 3D building and terrain views, layer customization, and data integration with GeoJSON and raster formats. By understanding and applying these techniques, students are now equipped to develop dynamic geospatial visualizations using MapLibre, enhancing both analytical and presentation capabilities in their GIS projects.
