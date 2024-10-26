@@ -30,6 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           uv sync --python ${{ matrix.python-version }}
+          uv pip install -U leafmap
           uv pip install py3dep
 
       - name: Install optional dependencies
@@ -49,6 +50,7 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          MAPTILER_KEY: ${{ secrets.MAPTILER_KEY }}
       # Deploy the book's HTML to gh-pages branch
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v4
