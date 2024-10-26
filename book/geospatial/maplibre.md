@@ -43,15 +43,6 @@ Import the maplibre mapping backend.
 import leafmap.maplibregl as leafmap
 ```
 
-## Set up API Key
-
-To run this notebook, you need to set up a MapTiler API key. You can get a free API key by signing up at [https://cloud.maptiler.com/](https://cloud.maptiler.com/).
-
-```{code-cell} ipython3
-# import os
-# os.environ["MAPTILER_KEY"] = "YOUR_API_KEY"
-```
-
 ## Create interactive maps
 
 ### Create a simple map
@@ -92,13 +83,128 @@ m = leafmap.Map(style=style)
 m
 ```
 
+```{code-cell} ipython3
+m = leafmap.Map(style="liberty")
+m
+```
+
 ### Add map controls
 
 The control to add to the map. Can be one of the following: `scale`, `fullscreen`, `geolocate`, `navigation`.
 
+#### Geolocate control
+
 ```{code-cell} ipython3
 m = leafmap.Map()
 m.add_control("geolocate", position="top-left")
+m
+```
+
+#### Fullscreen control
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[11.255, 43.77], zoom=13, style="streets", controls={})
+m.add_control("fullscreen", position="top-right")
+m
+```
+
+#### Navigation control
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[11.255, 43.77], zoom=13, style="streets", controls={})
+m.add_control("navigation", position="top-left")
+m
+```
+
+#### Draw control
+
+Add the default draw control.
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-100, 40], zoom=3, style="positron")
+m.add_draw_control(position="top-left")
+m
+```
+
+Only activate a give set of control.
+
+```{code-cell} ipython3
+from maplibre.plugins import MapboxDrawControls, MapboxDrawOptions
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-100, 40], zoom=3, style="positron")
+draw_options = MapboxDrawOptions(
+    display_controls_default=False,
+    controls=MapboxDrawControls(polygon=True, line_string=True, point=True, trash=True),
+)
+m.add_draw_control(draw_options)
+m
+```
+
+Load a GeoJSON FeatureCollection to the draw control.
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-100, 40], zoom=3, style="positron")
+geojson = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "id": "abc",
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    [
+                        [-119.08, 45.95],
+                        [-119.79, 42.08],
+                        [-107.28, 41.43],
+                        [-108.15, 46.44],
+                        [-119.08, 45.95],
+                    ]
+                ],
+                "type": "Polygon",
+            },
+        },
+        {
+            "id": "xyz",
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "coordinates": [
+                    [
+                        [-103.87, 38.08],
+                        [-108.54, 36.44],
+                        [-106.25, 33.00],
+                        [-99.91, 31.79],
+                        [-96.82, 35.48],
+                        [-98.80, 37.77],
+                        [-103.87, 38.08],
+                    ]
+                ],
+                "type": "Polygon",
+            },
+        },
+    ],
+}
+m.add_draw_control(position="top-left", geojson=geojson)
+m
+```
+
+Retrieve the draw features.
+
+```{code-cell} ipython3
+m.draw_features_selected
+```
+
+```{code-cell} ipython3
+m.draw_feature_collection_all
+```
+
+### Disable scroll zoom
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-122.65, 45.52], zoom=9, scroll_zoom=False, style="liberty")
 m
 ```
 
@@ -159,7 +265,94 @@ m.add_legend(builtin_legend="NWI", title="Wetland Type")
 m
 ```
 
-### MapTiler styles
+```{code-cell} ipython3
+m = leafmap.Map(center=[-74.5447, 40.6892], zoom=8, style="streets")
+
+source = {
+    "type": "raster",
+    "tiles": [
+        "https://img.nj.gov/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&transparent=true&width=256&height=256&layers=Natural2015"
+    ],
+    "tileSize": 256,
+}
+layer = {
+    "id": "wms-test-layer",
+    "type": "raster",
+    "source": "wms-test-source",
+    "paint": {},
+}
+m.add_source("wms-test-source", source)
+m.add_layer(layer, before_id="aeroway_fill")
+m
+```
+
+### Add raster tile
+
+```{code-cell} ipython3
+style = {
+    "version": 8,
+    "sources": {
+        "raster-tiles": {
+            "type": "raster",
+            "tiles": [
+                "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg"
+            ],
+            "tileSize": 256,
+            "attribution": 'Map tiles by Stamen Design; Hosting by Stadia Maps. Data © OpenStreetMap contributors',
+        }
+    },
+    "layers": [
+        {
+            "id": "simple-tiles",
+            "type": "raster",
+            "source": "raster-tiles",
+            "minzoom": 0,
+            "maxzoom": 22,
+        }
+    ],
+}
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-74.5, 40], zoom=2, style=style)
+m
+```
+
+### Add a vector tile source
+
+```{code-cell} ipython3
+MAPTILER_KEY = leafmap.get_api_key("MAPTILER_KEY")
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-122.447303, 37.753574], zoom=13, style="streets")
+source = {
+    "type": "vector",
+    "url": f"https://api.maptiler.com/tiles/contours/tiles.json?key={MAPTILER_KEY}",
+}
+layer = {
+    "id": "terrain-data",
+    "type": "line",
+    "source": "contours",
+    "source-layer": "contour",
+    "layout": {"line-join": "round", "line-cap": "round"},
+    "paint": {"line-color": "#ff69b4", "line-width": 1},
+}
+m.add_source("contours", source)
+m.add_layer(layer)
+m
+```
+
+## MapTiler
+
+## Set up API Key
+
+To run this notebook, you need to set up a MapTiler API key. You can get a free API key by signing up at [https://cloud.maptiler.com/](https://cloud.maptiler.com/).
+
+```{code-cell} ipython3
+# import os
+# os.environ["MAPTILER_KEY"] = "YOUR_API_KEY"
+```
 
 You can use any named style from MapTiler by setting the style parameter to the name of the style.
 
@@ -416,6 +609,12 @@ m
 ```
 
 ```{code-cell} ipython3
+m = leafmap.Map(center=[0, 0], zoom=2, style="streets")
+m.add_marker(lng_lat=[0, 0], options={"draggable": True})
+m
+```
+
+```{code-cell} ipython3
 import requests
 ```
 
@@ -449,6 +648,140 @@ layer = {
 m.add_source("point", source)
 m.add_layer(layer)
 m.add_popup("cities")
+m
+```
+
+### Customize marker icon image
+
+```{code-cell} ipython3
+url = (
+    "https://github.com/opengeos/datasets/releases/download/world/world_cities.geojson"
+)
+geojson = requests.get(url).json()
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(style="streets")
+source = {"type": "geojson", "data": geojson}
+
+layer = {
+    "id": "cities",
+    "type": "symbol",
+    "source": "point",
+    "layout": {
+        "icon-image": "marker_15",
+        "icon-size": 1,
+    },
+}
+m.add_source("point", source)
+m.add_layer(layer)
+m.add_popup("cities")
+m
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[0, 0], zoom=1, style="positron")
+image = "https://maplibre.org/maplibre-gl-js/docs/assets/osgeo-logo.png"
+m.add_image("custom-marker", image)
+source = {
+    "type": "geojson",
+    "data": {
+        "type": "FeatureCollection",
+        "features": [
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [100.4933, 13.7551]},
+                "properties": {"year": "2004"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [6.6523, 46.5535]},
+                "properties": {"year": "2006"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [-123.3596, 48.4268]},
+                "properties": {"year": "2007"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [18.4264, -33.9224]},
+                "properties": {"year": "2008"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [151.195, -33.8552]},
+                "properties": {"year": "2009"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [2.1404, 41.3925]},
+                "properties": {"year": "2010"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [-104.8548, 39.7644]},
+                "properties": {"year": "2011"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [-1.1665, 52.9539]},
+                "properties": {"year": "2013"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [-122.6544, 45.5428]},
+                "properties": {"year": "2014"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [126.974, 37.5651]},
+                "properties": {"year": "2015"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [7.1112, 50.7255]},
+                "properties": {"year": "2016"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [-71.0314, 42.3539]},
+                "properties": {"year": "2017"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [39.2794, -6.8173]},
+                "properties": {"year": "2018"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [26.0961, 44.4379]},
+                "properties": {"year": "2019"},
+            },
+            {
+                "type": "Feature",
+                "geometry": {"type": "Point", "coordinates": [-114.0879, 51.0279]},
+                "properties": {"year": "2020"},
+            },
+        ],
+    },
+}
+
+m.add_source("conferences", source)
+layer = {
+    "id": "conferences",
+    "type": "symbol",
+    "source": "conferences",
+    "layout": {
+        "icon-image": "custom-marker",
+        "text-field": ["get", "year"],
+        "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+        "text-offset": [0, 1.25],
+        "text-anchor": "top",
+    },
+}
+
+m.add_layer(layer)
 m
 ```
 
@@ -671,6 +1004,25 @@ leafmap.download_file(url, filepath, quiet=True)
 m.open_geojson()
 ```
 
+### GeoPandas
+
+```{code-cell} ipython3
+import geopandas as gpd
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-100, 40], zoom=3, style="streets")
+url = "https://github.com/opengeos/datasets/releases/download/us/us_states.geojson"
+gdf = gpd.read_file(url)
+paint = {
+    "fill-color": "#3388ff",
+    "fill-opacity": 0.8,
+    "fill-outline-color": "#ffffff",
+}
+m.add_gdf(gdf, layer_type="fill", name="States", paint=paint)
+m
+```
+
 ### Change building color
 
 ```{code-cell} ipython3
@@ -692,105 +1044,168 @@ m
 m.add_call("zoomTo", 19, {"duration": 9000})
 ```
 
-### Live feature update
-
-#### Animate a point along a route
+### Add a new layer below labels
 
 ```{code-cell} ipython3
-import time
-```
-
-```{code-cell} ipython3
-m = leafmap.Map(center=[-100, 40], zoom=3, style="streets")
-url = "https://github.com/opengeos/datasets/releases/download/us/arc_with_bearings.geojson"
-geojson = requests.get(url).json()
-bearings = geojson["features"][0]["properties"]["bearings"]
-coordinates = geojson["features"][0]["geometry"]["coordinates"][:-1]
-m.add_geojson(geojson, name="route")
-
-origin = [-122.414, 37.776]
-destination = [-77.032, 38.913]
-
-point = {
-    "type": "FeatureCollection",
-    "features": [
-        {
-            "type": "Feature",
-            "properties": {},
-            "geometry": {"type": "Point", "coordinates": origin},
-        }
-    ],
-}
-source = {"type": "geojson", "data": point}
-m.add_source("point", source)
-layer = {
-    "id": "point",
-    "source": "point",
-    "type": "symbol",
-    "layout": {
-        "icon-image": "airport_15",
-        "icon-rotate": ["get", "bearing"],
-        "icon-rotation-alignment": "map",
-        "icon-overlap": "always",
-        "icon-ignore-placement": True,
-    },
-}
-m.add_layer(layer)
-m
-```
-
-```{code-cell} ipython3
-for index, coordinate in enumerate(coordinates):
-    point["features"][0]["geometry"]["coordinates"] = coordinate
-    point["features"][0]["properties"]["bearing"] = bearings[index]
-    m.set_data("point", point)
-    time.sleep(0.05)
-```
-
-#### Update a feature in realtime
-
-```{code-cell} ipython3
-m = leafmap.Map(center=[-122.019807, 45.632433], zoom=14, pitch=60, style="3d-terrain")
-m
-```
-
-```{code-cell} ipython3
-import geopandas as gpd
-```
-
-```{code-cell} ipython3
-url = "https://maplibre.org/maplibre-gl-js/docs/assets/hike.geojson"
-gdf = gpd.read_file(url)
-coordinates = list(gdf.geometry[0].coords)
-print(coordinates[:5])
-```
-
-```{code-cell} ipython3
+m = leafmap.Map(center=[-88.137343, 35.137451], zoom=4, style="streets")
 source = {
     "type": "geojson",
-    "data": {
-        "type": "Feature",
-        "geometry": {"type": "LineString", "coordinates": [coordinates[0]]},
-    },
+    "data": "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_urban_areas.geojson",
 }
-m.add_source("trace", source)
+m.add_source("urban-areas", source)
+first_symbol_layer = m.find_first_symbol_layer()
 layer = {
-    "id": "trace",
-    "type": "line",
-    "source": "trace",
-    "paint": {"line-color": "yellow", "line-opacity": 0.75, "line-width": 5},
+    "id": "urban-areas-fill",
+    "type": "fill",
+    "source": "urban-areas",
+    "layout": {},
+    "paint": {"fill-color": "#f08", "fill-opacity": 0.4},
 }
-m.add_layer(layer)
-m.jump_to({"center": coordinates[0], "zoom": 14})
-m.set_pitch(30)
+m.add_layer(layer, before_id=first_symbol_layer["id"])
+m
 ```
 
+### Heat map
+
 ```{code-cell} ipython3
-for coord in coordinates:
-    time.sleep(0.005)
-    source["data"]["geometry"]["coordinates"].append(coord)
-    m.set_data("trace", source["data"])
-    m.pan_to(coord)
+m = leafmap.Map(center=[-120, 50], zoom=2, style="basic")
+source = {
+    "type": "geojson",
+    "data": "https://maplibre.org/maplibre-gl-js/docs/assets/earthquakes.geojson",
+}
+m.add_source("earthquakes", source)
+layer = {
+    "id": "earthquakes-heat",
+    "type": "heatmap",
+    "source": "earthquakes",
+    "maxzoom": 9,
+    "paint": {
+        # Increase the heatmap weight based on frequency and property magnitude
+        "heatmap-weight": ["interpolate", ["linear"], ["get", "mag"], 0, 0, 6, 1],
+        # Increase the heatmap color weight weight by zoom level
+        # heatmap-intensity is a multiplier on top of heatmap-weight
+        "heatmap-intensity": ["interpolate", ["linear"], ["zoom"], 0, 1, 9, 3],
+        # Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+        # Begin color ramp at 0-stop with a 0-transparency color
+        # to create a blur-like effect.
+        "heatmap-color": [
+            "interpolate",
+            ["linear"],
+            ["heatmap-density"],
+            0,
+            "rgba(33,102,172,0)",
+            0.2,
+            "rgb(103,169,207)",
+            0.4,
+            "rgb(209,229,240)",
+            0.6,
+            "rgb(253,219,199)",
+            0.8,
+            "rgb(239,138,98)",
+            1,
+            "rgb(178,24,43)",
+        ],
+        # Adjust the heatmap radius by zoom level
+        "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 0, 2, 9, 20],
+        # Transition from heatmap to circle layer by zoom level
+        "heatmap-opacity": ["interpolate", ["linear"], ["zoom"], 7, 1, 9, 0],
+    },
+}
+m.add_layer(layer, before_id="waterway")
+layer2 = {
+    "id": "earthquakes-point",
+    "type": "circle",
+    "source": "earthquakes",
+    "minzoom": 7,
+    "paint": {
+        # Size circle radius by earthquake magnitude and zoom level
+        "circle-radius": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            7,
+            ["interpolate", ["linear"], ["get", "mag"], 1, 1, 6, 4],
+            16,
+            ["interpolate", ["linear"], ["get", "mag"], 1, 5, 6, 50],
+        ],
+        # Color circle by earthquake magnitude
+        "circle-color": [
+            "interpolate",
+            ["linear"],
+            ["get", "mag"],
+            1,
+            "rgba(33,102,172,0)",
+            2,
+            "rgb(103,169,207)",
+            3,
+            "rgb(209,229,240)",
+            4,
+            "rgb(253,219,199)",
+            5,
+            "rgb(239,138,98)",
+            6,
+            "rgb(178,24,43)",
+        ],
+        "circle-stroke-color": "white",
+        "circle-stroke-width": 1,
+        # Transition from heatmap to circle layer by zoom level
+        "circle-opacity": ["interpolate", ["linear"], ["zoom"], 7, 0, 8, 1],
+    },
+}
+m.add_layer(layer2, before_id="waterway")
+m
+```
+
+### Visualize population density
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[30.0222, -1.9596], zoom=7, style="streets")
+source = {
+    "type": "geojson",
+    "data": "https://maplibre.org/maplibre-gl-js/docs/assets/rwanda-provinces.geojson",
+}
+m.add_source("rwanda-provinces", source)
+layer = {
+    "id": "rwanda-provinces",
+    "type": "fill",
+    "source": "rwanda-provinces",
+    "layout": {},
+    "paint": {
+        "fill-color": [
+            "let",
+            "density",
+            ["/", ["get", "population"], ["get", "sq-km"]],
+            [
+                "interpolate",
+                ["linear"],
+                ["zoom"],
+                8,
+                [
+                    "interpolate",
+                    ["linear"],
+                    ["var", "density"],
+                    274,
+                    ["to-color", "#edf8e9"],
+                    1551,
+                    ["to-color", "#006d2c"],
+                ],
+                10,
+                [
+                    "interpolate",
+                    ["linear"],
+                    ["var", "density"],
+                    274,
+                    ["to-color", "#eff3ff"],
+                    1551,
+                    ["to-color", "#08519c"],
+                ],
+            ],
+        ],
+        "fill-opacity": 0.7,
+    },
+}
+m.add_layer(layer)
+m
 ```
 
 ## Visualize raster data
@@ -858,10 +1273,239 @@ m.layer_interact()
 You can load SpatioTemporal Asset Catalog (STAC) data using the `add_stac_layer` method.
 
 ```{code-cell} ipython3
-m = leafmap.Map()
+m = leafmap.Map(style="streets")
 url = "https://canada-spot-ortho.s3.amazonaws.com/canada_spot_orthoimages/canada_spot5_orthoimages/S5_2007/S5_11055_6057_20070622/S5_11055_6057_20070622.json"
-m.add_stac_layer(url, bands=["B4", "B3", "B2"], name="SPOT", vmin=0, vmax=150, nodata=0)
+m.add_stac_layer(url, bands=["pan"], name="Panchromatic", vmin=0, vmax=150)
+m.add_stac_layer(url, bands=["B4", "B3", "B2"], name="RGB", vmin=0, vmax=150)
 m
+```
+
+```{code-cell} ipython3
+m.layer_interact()
+```
+
+```{code-cell} ipython3
+collection = "landsat-8-c2-l2"
+item = "LC08_L2SP_047027_20201204_02_T1"
+```
+
+```{code-cell} ipython3
+leafmap.stac_assets(collection=collection, item=item, titiler_endpoint="pc")
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(style="streets")
+m.add_stac_layer(
+    collection=collection,
+    item=item,
+    assets=["SR_B5", "SR_B4", "SR_B3"],
+    name="Color infrared",
+)
+m
+```
+
+## Interact with the map
+
++++
+
+### Display a non-interactive map
+
+```{code-cell} ipython3
+m = leafmap.Map(
+    center=[-74.5, 40], zoom=9, interactive=False, style="streets", controls={}
+)
+m
+```
+
+### Fit bounds
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-74.5, 40], zoom=9, style="streets")
+m
+```
+
+Fit to Kenya.
+
+```{code-cell} ipython3
+bounds = [[32.958984, -5.353521], [43.50585, 5.615985]]
+m.fit_bounds(bounds)
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-77.0214, 38.897], zoom=12, style="streets")
+
+geojson = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "LineString",
+                "properties": {},
+                "coordinates": [
+                    [-77.0366048812866, 38.89873175227713],
+                    [-77.03364372253417, 38.89876515143842],
+                    [-77.03364372253417, 38.89549195896866],
+                    [-77.02982425689697, 38.89549195896866],
+                    [-77.02400922775269, 38.89387200688839],
+                    [-77.01519012451172, 38.891416957534204],
+                    [-77.01521158218382, 38.892068305429156],
+                    [-77.00813055038452, 38.892051604275686],
+                    [-77.00832366943358, 38.89143365883688],
+                    [-77.00818419456482, 38.89082405874451],
+                    [-77.00815200805664, 38.88989712255097],
+                ],
+            },
+        }
+    ],
+}
+
+m.add_source("LineString", {"type": "geojson", "data": geojson})
+layer = {
+    "id": "LineString",
+    "type": "line",
+    "source": "LineString",
+    "layout": {"line-join": "round", "line-cap": "round"},
+    "paint": {"line-color": "#BF93E4", "line-width": 5},
+}
+m.add_layer(layer)
+m
+```
+
+```{code-cell} ipython3
+bounds = leafmap.geojson_bounds(geojson)
+bounds
+```
+
+```{code-cell} ipython3
+m.fit_bounds(bounds)
+```
+
+### Restrict map panning to an area
+
+```{code-cell} ipython3
+bounds = [
+    [-74.04728500751165, 40.68392799015035],
+    [-73.91058699000139, 40.87764500765852],
+]
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-73.9978, 40.7209], zoom=13, max_bounds=bounds, style="streets")
+m
+```
+
+### Fly to
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-2.242467, 53.478122], zoom=9, style="streets")
+m
+```
+
+```{code-cell} ipython3
+m.fly_to(lon=-73.983609, lat=40.754368, zoom=12)
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-74.5, 40], zoom=9, style="streets")
+m
+```
+
+```{code-cell} ipython3
+options = {
+    "lon": 74.5,
+    "lat": 40,
+    "zoom": 9,
+    "bearing": 0,
+    "speed": 0.2,
+    "curve": 1,
+    "essential": True,
+}
+
+m.fly_to(**options)
+```
+
+### Jump to a series of locations
+
+```{code-cell} ipython3
+import time
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[100.507, 13.745], zoom=9, style="streets")
+
+cities = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {"type": "Point", "coordinates": [100.507, 13.745]},
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {"type": "Point", "coordinates": [98.993, 18.793]},
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {"type": "Point", "coordinates": [99.838, 19.924]},
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {"type": "Point", "coordinates": [102.812, 17.408]},
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {"type": "Point", "coordinates": [100.458, 7.001]},
+        },
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {"type": "Point", "coordinates": [100.905, 12.935]},
+        },
+    ],
+}
+m
+```
+
+```{code-cell} ipython3
+for index, city in enumerate(cities["features"]):
+    time.sleep(2)
+    coords = city["geometry"]["coordinates"]
+    m.jump_to({"center": coords})
+```
+
+### Get coordinates of the mouse pointer
+
+```{code-cell} ipython3
+import ipywidgets as widgets
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-74.5, 40], zoom=9, style="streets")
+m
+```
+
+```{code-cell} ipython3
+m.clicked
+```
+
+```{code-cell} ipython3
+output = widgets.Output()
+
+
+def log_lng_lat(lng_lat):
+    with output:
+        output.clear_output()
+        print(lng_lat.new)
+
+
+m.observe(log_lng_lat, names="clicked")
+output
 ```
 
 ## Customize layer styles
@@ -912,8 +1556,72 @@ m.add_layer(layer)
 m
 ```
 
-```{code-cell} ipython3
+### Variable label placement
 
+```{code-cell} ipython3
+m = leafmap.Map(center=[-77.04, 38.907], zoom=11, style="streets")
+
+places = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {"description": "Ford's Theater", "icon": "theatre"},
+            "geometry": {"type": "Point", "coordinates": [-77.038659, 38.931567]},
+        },
+        {
+            "type": "Feature",
+            "properties": {"description": "The Gaslight", "icon": "theatre"},
+            "geometry": {"type": "Point", "coordinates": [-77.003168, 38.894651]},
+        },
+        {
+            "type": "Feature",
+            "properties": {"description": "Horrible Harry's", "icon": "bar"},
+            "geometry": {"type": "Point", "coordinates": [-77.090372, 38.881189]},
+        },
+        {
+            "type": "Feature",
+            "properties": {"description": "Bike Party", "icon": "bicycle"},
+            "geometry": {"type": "Point", "coordinates": [-77.052477, 38.943951]},
+        },
+        {
+            "type": "Feature",
+            "properties": {"description": "Rockabilly Rockstars", "icon": "music"},
+            "geometry": {"type": "Point", "coordinates": [-77.031706, 38.914581]},
+        },
+        {
+            "type": "Feature",
+            "properties": {"description": "District Drum Tribe", "icon": "music"},
+            "geometry": {"type": "Point", "coordinates": [-77.020945, 38.878241]},
+        },
+        {
+            "type": "Feature",
+            "properties": {"description": "Motown Memories", "icon": "music"},
+            "geometry": {"type": "Point", "coordinates": [-77.007481, 38.876516]},
+        },
+    ],
+}
+source = {"type": "geojson", "data": places}
+m.add_source("places", source)
+
+layer = {
+    "id": "poi-labels",
+    "type": "symbol",
+    "source": "places",
+    "layout": {
+        "text-field": ["get", "description"],
+        "text-variable-anchor": ["top", "bottom", "left", "right"],
+        "text-radial-offset": 0.5,
+        "text-justify": "auto",
+        "icon-image": ["concat", ["get", "icon"], "_15"],
+    },
+}
+m.add_layer(layer)
+m
+```
+
+```{code-cell} ipython3
+m.rotate_to(bearing=180, options={"duration": 10000})
 ```
 
 ## PMTiles
@@ -1629,6 +2337,247 @@ If you have an Earth Engine, you can uncomment the first two code blocks to add 
 # m.add_legend(builtin_legend="ESA_WorldCover", title="ESA Landcover")
 # m.add_layer_control()
 # m
+```
+
+## Animations
+
+### Animate a line
+
+```{code-cell} ipython3
+import time
+import pandas as pd
+```
+
+```{code-cell} ipython3
+url = "https://github.com/opengeos/datasets/releases/download/world/animated_line_data.csv"
+df = pd.read_csv(url)
+df_sample = df.sample(n=1000, random_state=1).sort_index()
+df_sample.loc[len(df_sample)] = df.iloc[-1]
+df_sample.head()
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[0, 0], zoom=0.5, style="streets")
+geojson = {
+    "type": "FeatureCollection",
+    "features": [
+        {"type": "Feature", "geometry": {"type": "LineString", "coordinates": [[0, 0]]}}
+    ],
+}
+source = {"type": "geojson", "data": geojson}
+m.add_source("line", source)
+layer = {
+    "id": "line-animation",
+    "type": "line",
+    "source": "line",
+    "layout": {"line-cap": "round", "line-join": "round"},
+    "paint": {"line-color": "#ed6498", "line-width": 5, "line-opacity": 0.8},
+}
+m.add_layer(layer)
+m
+```
+
+```{code-cell} ipython3
+run_times = 2
+for i in range(run_times):
+    geojson["features"][0]["geometry"]["coordinates"] = [[0, 0]]
+    for row in df_sample.itertuples():
+        time.sleep(0.005)
+        geojson["features"][0]["geometry"]["coordinates"].append([row.x, row.y])
+        m.set_data("line", geojson)
+```
+
+### Animate map camera around a point
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-87.62712, 41.89033], zoom=15, pitch=45, style="streets")
+layers = m.get_style_layers()
+for layer in layers:
+    if layer["type"] == "symbol" and ("text-field" in layer["layout"]):
+        m.remove_layer(layer["id"])
+layer = {
+    "id": "3d-buildings",
+    "source": "composite",
+    "source-layer": "building",
+    "filter": ["==", "extrude", "true"],
+    "type": "fill-extrusion",
+    "min_zoom": 15,
+    "paint": {
+        "fill-extrusion-color": "#aaa",
+        "fill-extrusion-height": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            15,
+            0,
+            15.05,
+            ["get", "height"],
+        ],
+        "fill-extrusion-base": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            15,
+            0,
+            15.05,
+            ["get", "min_height"],
+        ],
+        "fill-extrusion-opacity": 0.6,
+    },
+}
+m.add_layer(layer)
+m
+```
+
+### Animate a point
+
+```{code-cell} ipython3
+for degree in range(0, 360, 1):
+    m.rotate_to(degree, {"duration": 0})
+    time.sleep(0.1)
+```
+
+```{code-cell} ipython3
+import math
+```
+
+```{code-cell} ipython3
+def point_on_circle(angle, radius):
+    return {
+        "type": "Point",
+        "coordinates": [math.cos(angle) * radius, math.sin(angle) * radius],
+    }
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[0, 0], zoom=2, style="streets")
+radius = 20
+source = {"type": "geojson", "data": point_on_circle(0, radius)}
+m.add_source("point", source)
+layer = {
+    "id": "point",
+    "source": "point",
+    "type": "circle",
+    "paint": {"circle-radius": 10, "circle-color": "#007cbf"},
+}
+m.add_layer(layer)
+m
+```
+
+```{code-cell} ipython3
+def animate_marker(duration, frame_rate, radius):
+    start_time = time.time()
+    while (time.time() - start_time) < duration:
+        timestamp = (time.time() - start_time) * 1000  # Convert to milliseconds
+        angle = timestamp / 1000  # Divisor controls the animation speed
+        point = point_on_circle(angle, radius)
+        m.set_data("point", point)
+        # Wait for the next frame
+        time.sleep(1 / frame_rate)
+```
+
+```{code-cell} ipython3
+duration = 10  # Duration of the animation in seconds
+frame_rate = 30  # Frames per second
+```
+
+```{code-cell} ipython3
+animate_marker(duration, frame_rate, radius)
+```
+
+### Animate a point along a route
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-100, 40], zoom=3, style="streets")
+url = "https://github.com/opengeos/datasets/releases/download/us/arc_with_bearings.geojson"
+geojson = requests.get(url).json()
+bearings = geojson["features"][0]["properties"]["bearings"]
+coordinates = geojson["features"][0]["geometry"]["coordinates"][:-1]
+m.add_geojson(geojson, name="route")
+
+origin = [-122.414, 37.776]
+destination = [-77.032, 38.913]
+
+point = {
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {"type": "Point", "coordinates": origin},
+        }
+    ],
+}
+source = {"type": "geojson", "data": point}
+m.add_source("point", source)
+layer = {
+    "id": "point",
+    "source": "point",
+    "type": "symbol",
+    "layout": {
+        "icon-image": "airport_15",
+        "icon-rotate": ["get", "bearing"],
+        "icon-rotation-alignment": "map",
+        "icon-overlap": "always",
+        "icon-ignore-placement": True,
+    },
+}
+m.add_layer(layer)
+m
+```
+
+```{code-cell} ipython3
+for index, coordinate in enumerate(coordinates):
+    point["features"][0]["geometry"]["coordinates"] = coordinate
+    point["features"][0]["properties"]["bearing"] = bearings[index]
+    m.set_data("point", point)
+    time.sleep(0.05)
+```
+
+### Update a feature in realtime
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-122.019807, 45.632433], zoom=14, pitch=60, style="3d-terrain")
+m
+```
+
+```{code-cell} ipython3
+import geopandas as gpd
+```
+
+```{code-cell} ipython3
+url = "https://maplibre.org/maplibre-gl-js/docs/assets/hike.geojson"
+gdf = gpd.read_file(url)
+coordinates = list(gdf.geometry[0].coords)
+print(coordinates[:5])
+```
+
+```{code-cell} ipython3
+source = {
+    "type": "geojson",
+    "data": {
+        "type": "Feature",
+        "geometry": {"type": "LineString", "coordinates": [coordinates[0]]},
+    },
+}
+m.add_source("trace", source)
+layer = {
+    "id": "trace",
+    "type": "line",
+    "source": "trace",
+    "paint": {"line-color": "yellow", "line-opacity": 0.75, "line-width": 5},
+}
+m.add_layer(layer)
+m.jump_to({"center": coordinates[0], "zoom": 14})
+m.set_pitch(30)
+```
+
+```{code-cell} ipython3
+for coord in coordinates:
+    time.sleep(0.005)
+    source["data"]["geometry"]["coordinates"].append(coord)
+    m.set_data("trace", source["data"])
+    m.pan_to(coord)
 ```
 
 ## To HTML
