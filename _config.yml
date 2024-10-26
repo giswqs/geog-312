@@ -20,6 +20,7 @@ execute:
   execute_notebooks: "auto" # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
   cache: "" # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
   exclude_patterns: [
+      "book/geospatial/maplibre.ipynb",
       "book/geospatial/geemap.ipynb",
       "book/geospatial/samgeo.ipynb",
       "book/geospatial/hypercoast.ipynb",
