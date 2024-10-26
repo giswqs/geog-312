@@ -45,3 +45,4 @@ streams*
 watershed*
 histogram*
 book/geospatial/cache/*
+book/geospatial/*.html

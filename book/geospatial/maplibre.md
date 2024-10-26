@@ -50,7 +50,7 @@ Import the maplibre mapping backend.
 import leafmap.maplibregl as leafmap
 ```
 
-## Create interactive maps
+## Create Interactive Maps
 
 Let's create a simple interactive map using Leafmap.
 
@@ -80,16 +80,16 @@ m = leafmap.Map(style="background-lightgray")
 m
 ```
 
+```{code-cell} ipython3
+m = leafmap.Map(style="liberty")
+m
+```
+
 Alternatively, you can provide a URL to a vector style.
 
 ```{code-cell} ipython3
 style = "https://demotiles.maplibre.org/style.json"
 m = leafmap.Map(style=style)
-m
-```
-
-```{code-cell} ipython3
-m = leafmap.Map(style="liberty")
 m
 ```
 
@@ -206,11 +206,6 @@ m.draw_features_selected
 m.draw_feature_collection_all
 ```
 
-```{code-cell} ipython3
-m = leafmap.Map(center=[-122.65, 45.52], zoom=9, scroll_zoom=False, style="liberty")
-m
-```
-
 ## Add layers
 
 ### Add basemaps
@@ -220,6 +215,7 @@ You can add basemaps to the map using the `add_basemap` method.
 ```{code-cell} ipython3
 m = leafmap.Map()
 m.add_basemap("OpenTopoMap")
+m.add_layer_control()
 m
 ```
 
@@ -254,40 +250,21 @@ m
 You can add WMS layers to the map using the `add_wms_layer` method.
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[-74.5447, 40.6892], zoom=8, style="streets")
+m = leafmap.Map(center=[-74.5447, 40.6892], zoom=8, style="liberty")
 url = "https://img.nj.gov/imagerywms/Natural2015"
 layers = "Natural2015"
 m.add_wms_layer(url, layers=layers, before_id="aeroway_fill")
+m.add_layer_control()
 m
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[-100.307965, 46.98692], zoom=13, pitch=45, style="3d-hybrid")
+m = leafmap.Map(center=[-100.307965, 46.98692], zoom=13, pitch=45, style="liberty")
+m.add_basemap("Esri.WorldImagery")
 url = "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/services/Wetlands/MapServer/WMSServer"
 m.add_wms_layer(url, layers="1", name="NWI", opacity=0.6)
-m.add_layer_control(bg_layers=True)
+m.add_layer_control()
 m.add_legend(builtin_legend="NWI", title="Wetland Type")
-m
-```
-
-```{code-cell} ipython3
-m = leafmap.Map(center=[-74.5447, 40.6892], zoom=8, style="streets")
-
-source = {
-    "type": "raster",
-    "tiles": [
-        "https://img.nj.gov/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&transparent=true&width=256&height=256&layers=Natural2015"
-    ],
-    "tileSize": 256,
-}
-layer = {
-    "id": "wms-test-layer",
-    "type": "raster",
-    "source": "wms-test-source",
-    "paint": {},
-}
-m.add_source("wms-test-source", source)
-m.add_layer(layer, before_id="aeroway_fill")
 m
 ```
 
@@ -323,31 +300,6 @@ m = leafmap.Map(center=[-74.5, 40], zoom=2, style=style)
 m
 ```
 
-### Add a vector tile source
-
-```{code-cell} ipython3
-MAPTILER_KEY = leafmap.get_api_key("MAPTILER_KEY")
-```
-
-```{code-cell} ipython3
-m = leafmap.Map(center=[-122.447303, 37.753574], zoom=13, style="streets")
-source = {
-    "type": "vector",
-    "url": f"https://api.maptiler.com/tiles/contours/tiles.json?key={MAPTILER_KEY}",
-}
-layer = {
-    "id": "terrain-data",
-    "type": "line",
-    "source": "contours",
-    "source-layer": "contour",
-    "layout": {"line-join": "round", "line-cap": "round"},
-    "paint": {"line-color": "#ff69b4", "line-width": 1},
-}
-m.add_source("contours", source)
-m.add_layer(layer)
-m
-```
-
 ## MapTiler
 To run this notebook, you need to set up a MapTiler API key. You can get a free API key by signing up at [https://cloud.maptiler.com/](https://cloud.maptiler.com/).
 
@@ -380,6 +332,31 @@ m = leafmap.Map(style="topo")
 m
 ```
 
+### Add a vector tile source
+
+```{code-cell} ipython3
+MAPTILER_KEY = leafmap.get_api_key("MAPTILER_KEY")
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-122.447303, 37.753574], zoom=13, style="streets")
+source = {
+    "type": "vector",
+    "url": f"https://api.maptiler.com/tiles/contours/tiles.json?key={MAPTILER_KEY}",
+}
+layer = {
+    "id": "terrain-data",
+    "type": "line",
+    "source": "contours",
+    "source-layer": "contour",
+    "layout": {"line-join": "round", "line-cap": "round"},
+    "paint": {"line-color": "#ff69b4", "line-width": 1},
+}
+m.add_source("contours", source)
+m.add_layer(layer)
+m
+```
+
 ## 3D mapping
 
 ### 3D terrain
@@ -387,33 +364,33 @@ m
 MapTiler provides a variety of basemaps and styles that can be used to create 3D maps. You can use any styles from the MapTiler basemap gallery and prefix the style name with `3d-`. For example, `3d-hybrid`, `3d-satellite`, or `3d-topo`. To use the hillshade only, you can use the `3d-hillshade` style.
 
 ```{code-cell} ipython3
-m = leafmap.Map(style="3d-hybrid")
+m = leafmap.Map(center=[-122.1874314, 46.2022386], zoom=13, pitch=60, bearing=220, style="3d-hybrid")
 m.add_layer_control(bg_layers=True)
 m
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(style="3d-satellite")
+m = leafmap.Map(center=[-122.1874314, 46.2022386], zoom=13, pitch=60, bearing=220, style="3d-satellite")
 m.add_layer_control(bg_layers=True)
 m
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(style="3d-topo", exaggeration=1.5, hillshade=False)
-m.add_layer_control(bg_layers=True)
-m
-```
-
-```{code-cell} ipython3
-m = leafmap.Map(style="3d-ocean", exaggeration=1.5, hillshade=True)
+m = leafmap.Map(center=[-122.1874314, 46.2022386], zoom=13, pitch=60, bearing=220, style="3d-topo", exaggeration=1.5, hillshade=False)
 m.add_layer_control(bg_layers=True)
 m
 ```
 
 ```{code-cell} ipython3
 m = leafmap.Map(
-    center=[-122.19861, 46.21168], zoom=13, pitch=60, bearing=150, style="3d-terrain"
+    center=[-122.1874314, 46.2022386], zoom=13, pitch=60, bearing=220, style="3d-terrain"
 )
+m.add_layer_control(bg_layers=True)
+m
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(style="3d-ocean", exaggeration=1.5, hillshade=True)
 m.add_layer_control(bg_layers=True)
 m
 ```
@@ -611,20 +588,14 @@ m
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[0, 0], zoom=2, style="streets")
-m.add_marker(lng_lat=[0, 0], options={"draggable": True})
+m = leafmap.Map(center=[12.550343, 55.665957], zoom=8, style="positron")
+m.add_marker(lng_lat=[12.550343, 55.665957], options={"draggable": True})
 m
 ```
 
 ```{code-cell} ipython3
-import requests
-```
-
-```{code-cell} ipython3
-url = (
-    "https://github.com/opengeos/datasets/releases/download/world/world_cities.geojson"
-)
-geojson = requests.get(url).json()
+url = "https://github.com/opengeos/datasets/releases/download/world/world_cities.geojson"
+geojson = leafmap.read_geojson(url)
 ```
 
 ```{code-cell} ipython3
@@ -656,117 +627,16 @@ m
 ### Customize marker icon image
 
 ```{code-cell} ipython3
-url = (
-    "https://github.com/opengeos/datasets/releases/download/world/world_cities.geojson"
-)
-geojson = requests.get(url).json()
-```
-
-```{code-cell} ipython3
-m = leafmap.Map(style="streets")
-source = {"type": "geojson", "data": geojson}
-
-layer = {
-    "id": "cities",
-    "type": "symbol",
-    "source": "point",
-    "layout": {
-        "icon-image": "marker_15",
-        "icon-size": 1,
-    },
-}
-m.add_source("point", source)
-m.add_layer(layer)
-m.add_popup("cities")
-m
-```
-
-```{code-cell} ipython3
 m = leafmap.Map(center=[0, 0], zoom=1, style="positron")
 image = "https://maplibre.org/maplibre-gl-js/docs/assets/osgeo-logo.png"
 m.add_image("custom-marker", image)
+
+url = "https://github.com/opengeos/datasets/releases/download/places/osgeo_conferences.geojson"
+geojson = leafmap.read_geojson(url)
+
 source = {
     "type": "geojson",
-    "data": {
-        "type": "FeatureCollection",
-        "features": [
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [100.4933, 13.7551]},
-                "properties": {"year": "2004"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [6.6523, 46.5535]},
-                "properties": {"year": "2006"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [-123.3596, 48.4268]},
-                "properties": {"year": "2007"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [18.4264, -33.9224]},
-                "properties": {"year": "2008"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [151.195, -33.8552]},
-                "properties": {"year": "2009"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [2.1404, 41.3925]},
-                "properties": {"year": "2010"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [-104.8548, 39.7644]},
-                "properties": {"year": "2011"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [-1.1665, 52.9539]},
-                "properties": {"year": "2013"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [-122.6544, 45.5428]},
-                "properties": {"year": "2014"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [126.974, 37.5651]},
-                "properties": {"year": "2015"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [7.1112, 50.7255]},
-                "properties": {"year": "2016"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [-71.0314, 42.3539]},
-                "properties": {"year": "2017"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [39.2794, -6.8173]},
-                "properties": {"year": "2018"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [26.0961, 44.4379]},
-                "properties": {"year": "2019"},
-            },
-            {
-                "type": "Feature",
-                "geometry": {"type": "Point", "coordinates": [-114.0879, 51.0279]},
-                "properties": {"year": "2020"},
-            },
-        ],
-    },
+    "data": geojson
 }
 
 m.add_source("conferences", source)
@@ -892,6 +762,25 @@ m.add_geojson(geojson, layer_type="fill", paint=paint)
 m
 ```
 
+```{code-cell} ipython3
+m = leafmap.Map(style="hybrid")
+geojson = "https://github.com/opengeos/datasets/releases/download/places/wa_overture_buildings.geojson"
+paint = {"fill-color": "#ffff00", "fill-opacity": 0.5, "fill-outline-color": "#ff0000"}
+m.add_geojson(geojson, layer_type="fill", paint=paint, name="Fill")
+m
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(style="hybrid")
+geojson = "https://github.com/opengeos/datasets/releases/download/places/wa_overture_buildings.geojson"
+paint_line = {"line-color": "#ff0000", "line-width": 3}
+m.add_geojson(geojson, layer_type="line", paint=paint_line, name="Outline")
+paint_fill = {"fill-color": "#ffff00", "fill-opacity": 0.5}
+m.add_geojson(geojson, layer_type="fill", paint=paint_fill, name="Fill")
+m.add_layer_control()
+m
+```
+
 ### Multiple geometries
 
 ```{code-cell} ipython3
@@ -992,14 +881,14 @@ m
 You can load local vector data interactively using the `open_geojson` method.
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[-100, 40], zoom=3)
-m
-```
-
-```{code-cell} ipython3
 url = "https://github.com/opengeos/datasets/releases/download/us/us_states.geojson"
 filepath = "data/us_states.geojson"
 leafmap.download_file(url, filepath, quiet=True)
+```
+
+```{code-cell} ipython3
+m = leafmap.Map(center=[-100, 40], zoom=3)
+m
 ```
 
 ```{code-cell} ipython3
@@ -1009,13 +898,9 @@ m.open_geojson()
 ### GeoPandas
 
 ```{code-cell} ipython3
-import geopandas as gpd
-```
-
-```{code-cell} ipython3
 m = leafmap.Map(center=[-100, 40], zoom=3, style="streets")
 url = "https://github.com/opengeos/datasets/releases/download/us/us_states.geojson"
-gdf = gpd.read_file(url)
+gdf = leafmap.geojson_to_gdf(url)
 paint = {
     "fill-color": "#3388ff",
     "fill-opacity": 0.8,
@@ -1039,6 +924,7 @@ m.set_paint_property(
     "fill-opacity",
     ["interpolate", ["exponential", 0.5], ["zoom"], 15, 0, 22, 1],
 )
+m.add_layer_control(bg_layers=True)
 m
 ```
 
@@ -1226,6 +1112,7 @@ leafmap.download_file(url, filepath, quiet=True)
 m = leafmap.Map(style="streets")
 m.add_raster(filepath, indexes=[3, 2, 1], vmin=0, vmax=100, name="Landsat-321")
 m.add_raster(filepath, indexes=[4, 3, 2], vmin=0, vmax=100, name="Landsat-432")
+m.add_layer_control()
 m
 ```
 
@@ -1263,6 +1150,7 @@ after = (
 )
 m.add_cog_layer(before, name="Before", attribution="Maxar")
 m.add_cog_layer(after, name="After", attribution="Maxar", fit_bounds=True)
+m.add_layer_control()
 m
 ```
 
@@ -1279,6 +1167,7 @@ m = leafmap.Map(style="streets")
 url = "https://canada-spot-ortho.s3.amazonaws.com/canada_spot_orthoimages/canada_spot5_orthoimages/S5_2007/S5_11055_6057_20070622/S5_11055_6057_20070622.json"
 m.add_stac_layer(url, bands=["pan"], name="Panchromatic", vmin=0, vmax=150)
 m.add_stac_layer(url, bands=["B4", "B3", "B2"], name="RGB", vmin=0, vmax=150)
+m.add_layer_control()
 m
 ```
 
@@ -1296,7 +1185,7 @@ leafmap.stac_assets(collection=collection, item=item, titiler_endpoint="pc")
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(style="streets")
+m = leafmap.Map(style="satellite")
 m.add_stac_layer(
     collection=collection,
     item=item,
@@ -1314,7 +1203,7 @@ m
 
 ```{code-cell} ipython3
 m = leafmap.Map(
-    center=[-74.5, 40], zoom=9, interactive=False, style="streets", controls={}
+    center=[-122.65, 45.52], zoom=9, interactive=False, style="liberty", controls={}
 )
 m
 ```
@@ -1329,7 +1218,7 @@ m
 ### Fit bounds
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[-74.5, 40], zoom=9, style="streets")
+m = leafmap.Map(center=[-74.5, 40], zoom=9, style="liberty")
 m
 ```
 
@@ -1341,7 +1230,7 @@ m.fit_bounds(bounds)
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[-77.0214, 38.897], zoom=12, style="streets")
+m = leafmap.Map(center=[-77.0214, 38.897], zoom=12, style="liberty")
 
 geojson = {
     "type": "FeatureCollection",
@@ -1400,14 +1289,14 @@ bounds = [
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[-73.9978, 40.7209], zoom=13, max_bounds=bounds, style="streets")
+m = leafmap.Map(center=[-73.9978, 40.7209], zoom=13, max_bounds=bounds, style="liberty")
 m
 ```
 
 ### Fly to
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[-2.242467, 53.478122], zoom=9, style="streets")
+m = leafmap.Map(center=[-2.242467, 53.478122], zoom=9, style="liberty")
 m
 ```
 
@@ -1416,7 +1305,7 @@ m.fly_to(lon=-73.983609, lat=40.754368, zoom=12)
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[-74.5, 40], zoom=9, style="streets")
+m = leafmap.Map(center=[-74.5, 40], zoom=9, style="liberty")
 m
 ```
 
@@ -1686,10 +1575,6 @@ m
 ```
 
 ```{code-cell} ipython3
-
-```
-
-```{code-cell} ipython3
 import numpy as np
 
 
@@ -1716,7 +1601,7 @@ image_dict = {
     "data": flat_data.tolist(),
 }
 
-m = leafmap.Map(center=[0, 0], zoom=1, style="streets")
+m = leafmap.Map(center=[0, 0], zoom=1, style="liberty")
 m.add_image("gradient", image_dict)
 source = {
     "type": "geojson",
@@ -1740,14 +1625,10 @@ m.add_layer(layer)
 m
 ```
 
-```{code-cell} ipython3
-
-```
-
 ### Add text
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[-100, 40], zoom=3, style="streets")
+m = leafmap.Map(center=[-100, 40], zoom=3, style="liberty")
 text = "Hello World"
 m.add_text(text, fontsize=20, position="bottom-right")
 text2 = "Awesome Text!"
@@ -1795,39 +1676,37 @@ m
 ### Add colorbar
 
 ```{code-cell} ipython3
-dem = "https://github.com/opengeos/datasets/releases/download/raster/srtm90.tif"
-```
-
-```{code-cell} ipython3
-m = leafmap.Map(style="streets")
+m = leafmap.Map(style="topo")
+dem = "https://github.com/opengeos/datasets/releases/download/raster/dem.tif"
 m.add_cog_layer(
     dem,
     name="DEM",
     colormap_name="terrain",
-    rescale="0, 4000",
+    rescale="0, 1500",
     fit_bounds=True,
-    nodata=0,
+    nodata=np.nan,
 )
 m.add_colorbar(
-    cmap="terrain", vmin=0, vmax=4000, label="Elevation (m)", position="bottom-right"
+    cmap="terrain", vmin=0, vmax=1500, label="Elevation (m)", position="bottom-right"
 )
+m.add_layer_control()
 m
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(style="streets")
+m = leafmap.Map(style="topo")
 m.add_cog_layer(
     dem,
     name="DEM",
     colormap_name="terrain",
-    rescale="0, 4000",
-    nodata=0,
+    rescale="0, 1500",
+    nodata=np.nan,
     fit_bounds=True,
 )
 m.add_colorbar(
     cmap="terrain",
     vmin=0,
-    vmax=4000,
+    vmax=1500,
     label="Elevation (m)",
     position="bottom-right",
     transparent=True,
@@ -1836,19 +1715,19 @@ m
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(style="streets")
+m = leafmap.Map(style="topo")
 m.add_cog_layer(
     dem,
     name="DEM",
     colormap_name="terrain",
-    rescale="0, 4000",
-    nodata=0,
+    rescale="0, 1500",
+    nodata=np.nan,
     fit_bounds=True,
 )
 m.add_colorbar(
     cmap="terrain",
     vmin=0,
-    vmax=4000,
+    vmax=1500,
     label="Elevation (m)",
     position="bottom-right",
     width=0.2,
@@ -2041,7 +1920,7 @@ print(f"bounds: {metadata['bounds']}")
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[0, 20], zoom=2, height="800px")
+m = leafmap.Map(center=[0, 20], zoom=2)
 m.add_basemap("Google Hybrid", visible=False)
 
 style = {
@@ -2246,13 +2125,8 @@ m
 ### Multiple Deck.GL layers
 
 ```{code-cell} ipython3
-import requests
-```
-
-```{code-cell} ipython3
-data = requests.get(
-    "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_airports.geojson"
-).json()
+url = "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_airports.geojson"
+data = leafmap.read_geojson(url)
 ```
 
 ```{code-cell} ipython3
@@ -2335,6 +2209,8 @@ If you have an Earth Engine, you can uncomment the first two code blocks to add 
 
 ```{code-cell} ipython3
 # import ee
+
+# ee.Authenticate()
 # ee.Initialize(project="YOUR-PROJECT-ID")
 ```
 
@@ -2366,7 +2242,7 @@ df_sample.head()
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[0, 0], zoom=0.5, style="streets")
+m = leafmap.Map(center=[0, 0], zoom=0.5, style="liberty")
 geojson = {
     "type": "FeatureCollection",
     "features": [
@@ -2441,7 +2317,7 @@ m
 ### Animate a point
 
 ```{code-cell} ipython3
-for degree in range(0, 360, 1):
+for degree in range(0, 180, 1):
     m.rotate_to(degree, {"duration": 0})
     time.sleep(0.1)
 ```
@@ -2459,7 +2335,7 @@ def point_on_circle(angle, radius):
 ```
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[0, 0], zoom=2, style="streets")
+m = leafmap.Map(center=[0, 0], zoom=2, style="liberty")
 radius = 20
 source = {"type": "geojson", "data": point_on_circle(0, radius)}
 m.add_source("point", source)
@@ -2499,7 +2375,7 @@ animate_marker(duration, frame_rate, radius)
 ```{code-cell} ipython3
 m = leafmap.Map(center=[-100, 40], zoom=3, style="streets")
 url = "https://github.com/opengeos/datasets/releases/download/us/arc_with_bearings.geojson"
-geojson = requests.get(url).json()
+geojson = leafmap.read_geojson(url)
 bearings = geojson["features"][0]["properties"]["bearings"]
 coordinates = geojson["features"][0]["geometry"]["coordinates"][:-1]
 m.add_geojson(geojson, name="route")
@@ -2546,12 +2422,12 @@ for index, coordinate in enumerate(coordinates):
 ### Update a feature in realtime
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[-122.019807, 45.632433], zoom=14, pitch=60, style="3d-terrain")
-m
+import geopandas as gpd
 ```
 
 ```{code-cell} ipython3
-import geopandas as gpd
+m = leafmap.Map(center=[-122.019807, 45.632433], zoom=14, pitch=60, style="3d-terrain")
+m
 ```
 
 ```{code-cell} ipython3
