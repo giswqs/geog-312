@@ -17,24 +17,27 @@ kernelspec:
 
 ## Overview
 
-This lecture introduces the [MapLibre](https://github.com/eodaGmbH/py-maplibregl) Python package, a flexible open-source mapping Python package that allows users to create interactive and customizable 3D and 2D maps in Python. By leveraging the MapLibre library, GIS developers can visualize geospatial data with a variety of customization options and mapping styles. The notebook demonstrates essential concepts like creating interactive maps, customizing basemaps, adding various data layers, and implementing map controls for enhanced functionality. Additionally, advanced features, such as 3D building visualization and layer control, provide students with practical tools for real-world geospatial data analysis and visualization.
+This lecture introduces the [MapLibre](https://github.com/eodaGmbH/py-maplibregl) mapping backend in the Leafmap library—a powerful open-source Python tool for creating customizable 2D and 3D interactive maps. With MapLibre, GIS professionals can develop tailored visualizations that enhance data presentation and geospatial analysis. The provided Jupyter notebook demonstrates foundational skills, including interactive map creation, basemap customization, and data layer integration. Additionally, advanced features such as 3D building visualizations and dynamic map controls equip students with practical skills for effective geospatial data visualization and analysis.
 
 ## Learning Outcomes
 
 By the end of this lecture, students will be able to:
 
-1. Set up and install MapLibre for geospatial visualization in Python.
-2. Create basic interactive maps and apply different basemap styles.
-3. Customize map features, including markers, lines, polygons, and map controls.
-4. Utilize advanced features such as 3D buildings and choropleth maps.
-5. Integrate and manage multiple data layers, including GeoJSON, raster, and vector layers.
-6. Export map visualizations as standalone HTML files for sharing and deployment.
+1. **Set up and install MapLibre** for Python-based geospatial visualization.
+2. **Create interactive maps** and apply various basemap styles.
+3. **Customize map elements**, including markers, lines, polygons, and interactive controls.
+4. **Explore advanced features** like 3D building models and choropleth maps.
+5. **Integrate and manage multiple data layers**, such as GeoJSON, raster, and vector formats.
+6. **Export interactive maps** as standalone HTML files for easy sharing and web deployment.
 
 ## Useful Resources
 
-- Notebooks: https://leafmap.org/maplibre/overview
-- Videos: https://bit.ly/maplibre
-- Demos: https://maps.gishub.org
+- [MapLibre GL JS Documentation](https://maplibre.org/maplibre-gl-js/docs): Comprehensive documentation for MapLibre GL JS.
+- [MapLibre Python Bindings](https://github.com/eoda-dev/py-maplibregl): Information on using MapLibre with Python.
+- [MapLibre in Leafmap](https://leafmap.org/maplibre/overview): Examples and tutorials for MapLibre in Leafmap.
+- [Video Tutorials](https://bit.ly/maplibre): Video guides for practical MapLibre skills.
+- [MapLibre Demos](https://maps.gishub.org): Interactive demos showcasing MapLibre’s capabilities.
+
 
 ## Installation and Setup
 
@@ -54,7 +57,7 @@ import leafmap.maplibregl as leafmap
 
 ### Basic Map Setup
 
-Let’s start by creating a simple interactive map with default settings. This basic setup provides a blank canvas on which you can add data layers, controls, and other customizations.
+Let’s start by creating a simple interactive map with default settings. This basic setup provides simple map with the `dark-matter` style on which you can add data layers, controls, and other customizations.
 
 ```{code-cell} ipython3
 m = leafmap.Map()
@@ -70,6 +73,10 @@ m = leafmap.Map(center=[-100, 40], zoom=3, pitch=0, bearing=0)
 m
 ```
 
+Hold down the `Ctrl` key. Click and drag to pan the map.
+
++++
+
 ### Choosing a Basemap Style
 
 MapLibre supports several pre-defined basemap styles such as `dark-matter`, `positron`, `voyager`, `liberty`, `demotiles`. You can also use custom basemap URLs for unique styling.
@@ -78,6 +85,8 @@ MapLibre supports several pre-defined basemap styles such as `dark-matter`, `pos
 m = leafmap.Map(style="positron")
 m
 ```
+
+[OpenFreeMap](https://openfreemap.org) provides a variety of basemap styles that you can use in your interactive maps. These styles include `liberty`, `bright`, and `positron`.
 
 ```{code-cell} ipython3
 m = leafmap.Map(style="liberty")
@@ -107,9 +116,8 @@ Map controls enhance the usability of the map by allowing users to interact in v
 
 ### Available Controls
 
-- **Scale**: Adds a scale bar to indicate the map’s scale.
-- **Fullscreen**: Expands the map to a full-screen view for better focus.
 - **Geolocate**: Centers the map based on the user’s current location, if available.
+- **Fullscreen**: Expands the map to a full-screen view for better focus.
 - **Navigation**: Provides zoom controls and a compass for reorientation.
 - **Draw**: Allows users to draw and edit shapes on the map.
 
@@ -218,6 +226,10 @@ m.add_draw_control(position="top-left", geojson=geojson)
 m
 ```
 
+![](https://i.imgur.com/w8UFssd.png)
+
++++
+
 Two key methods for accessing drawn features:
 
 - **Selected Features**: Accesses only the currently selected features.
@@ -231,7 +243,7 @@ m.draw_features_selected
 m.draw_feature_collection_all
 ```
 
-## Add Layers
+## Adding Layers
 
 Adding layers to a map enhances the data it presents, allowing different types of basemaps, tile layers, and thematic overlays to be combined for in-depth analysis.
 
@@ -250,12 +262,12 @@ m
 m.add_basemap("Esri.WorldImagery")
 ```
 
+You can also add basemaps interactively, which provides flexibility for selecting the best background for your map content.
+
 ```{code-cell} ipython3
 m = leafmap.Map()
 m
 ```
-
-You can also add basemaps interactively, which provides flexibility for selecting the best background for your map content.
 
 ```{code-cell} ipython3
 m.add_basemap()
@@ -333,7 +345,7 @@ m
 
 ## MapTiler
 
-To use MapTiler with this notebook, you need to set up a MapTiler API key. You can obtain a free API key by signing up at [https://cloud.maptiler.com/](https://cloud.maptiler.com/).
+To use MapTiler with this notebook, you need to set up a MapTiler API key. You can obtain a free API key by signing up at [https://cloud.maptiler.com/](https://cloud.maptiler.com).
 
 ```{code-cell} ipython3
 # import os
@@ -371,7 +383,7 @@ m = leafmap.Map(style="topo")
 m
 ```
 
-### Add a vector tile source
+### Adding a vector tile source
 
 To include vector data from MapTiler, first obtain the MapTiler API key and then set up a vector source with the desired tile data URL. The vector tile source can then be added to a layer to display features such as contour lines, which are styled for better visibility and engagement.
 
@@ -422,6 +434,8 @@ m.add_layer_control(bg_layers=True)
 m
 ```
 
+![](https://i.imgur.com/3Q2Q3CG.png)
+
 ```{code-cell} ipython3
 m = leafmap.Map(
     center=[-122.1874314, 46.2022386],
@@ -433,6 +447,8 @@ m = leafmap.Map(
 m.add_layer_control(bg_layers=True)
 m
 ```
+
+![](https://i.imgur.com/5PNMbAv.png)
 
 ```{code-cell} ipython3
 m = leafmap.Map(
@@ -447,6 +463,8 @@ m = leafmap.Map(
 m.add_layer_control(bg_layers=True)
 m
 ```
+
+![](https://i.imgur.com/y33leIj.png)
 
 ```{code-cell} ipython3
 m = leafmap.Map(
@@ -465,6 +483,10 @@ m = leafmap.Map(style="3d-ocean", exaggeration=1.5, hillshade=True)
 m.add_layer_control(bg_layers=True)
 m
 ```
+
+![](https://i.imgur.com/m6NwSWG.png)
+
++++
 
 ### 3D Buildings
 
@@ -522,6 +544,8 @@ m.add_layer_control()
 m
 ```
 
+![](https://i.imgur.com/9QeicaE.png)
+
 ```{code-cell} ipython3
 m = leafmap.Map(
     center=[-74.01201, 40.70473], zoom=16, pitch=60, bearing=35, style="basic-v2"
@@ -565,6 +589,10 @@ m.add_geojson(
 m.add_layer_control()
 m
 ```
+
+![](https://i.imgur.com/eYhSWaT.png)
+
++++
 
 ### 3D Choropleth Map
 
@@ -619,6 +647,8 @@ m.add_layer_control()
 m
 ```
 
+![](https://i.imgur.com/fLgqYTa.png)
+
 ```{code-cell} ipython3
 m = leafmap.Map(center=[-100, 40], zoom=3, pitch=60, style="basic")
 source = {
@@ -654,7 +684,7 @@ m.add_layer_control()
 m
 ```
 
-## Visualize Vector Data
+## Visualizing Vector Data
 
 Leafmap provides a variety of methods to visualize vector data on a map, allowing you to display points, lines, polygons, and other vector shapes with custom styling and interactivity.
 
@@ -675,6 +705,8 @@ m = leafmap.Map(center=[12.550343, 55.665957], zoom=8, style="positron")
 m.add_marker(lng_lat=[12.550343, 55.665957])
 m
 ```
+
+![](https://i.imgur.com/ufmqTzx.png)
 
 ```{code-cell} ipython3
 m = leafmap.Map(center=[12.550343, 55.665957], zoom=8, style="positron")
@@ -715,7 +747,7 @@ m.add_popup("cities")
 m
 ```
 
-### Customize Marker Icon Image
+### Customizing Marker Icon Image
 
 To further customize point data, an image icon can be used instead of the default marker:
 
@@ -984,6 +1016,10 @@ m.add_geojson(
 m
 ```
 
+![](https://i.imgur.com/VWvJKwl.png)
+
++++
+
 ### Local Vector Data
 
 Local vector files, such as GeoJSON, can be loaded directly into the map. The example downloads a GeoJSON file representing U.S. states and adds it to the map using `open_geojson`.
@@ -1020,7 +1056,7 @@ m.add_gdf(gdf, layer_type="fill", name="States", paint=paint)
 m
 ```
 
-### Change Building Color
+### Changing Building Color
 
 You can customize the color and opacity of buildings based on the map’s zoom level. This example changes building colors from orange at lower zoom levels to lighter shades as the zoom level increases. Additionally, the opacity gradually transitions to fully opaque, making buildings more visible at close-up zoom levels.
 
@@ -1044,7 +1080,11 @@ m
 m.add_call("zoomTo", 19, {"duration": 9000})
 ```
 
-### Add a New Layer Below Labels
+![](https://i.imgur.com/PayiTON.png)
+
++++
+
+### Adding a New Layer Below Labels
 
 A layer can be added below existing labels on the map to enhance clarity without obscuring labels. The urban areas dataset is displayed as a fill layer in a color and opacity that visually distinguishes it from other map elements. The layer is positioned below symbols, allowing place names to remain visible.
 
@@ -1160,7 +1200,11 @@ m.add_layer(layer2, before_id="waterway")
 m
 ```
 
-### Visualize Population Density
+![](https://i.imgur.com/OLCRPKj.png)
+
++++
+
+### Visualizing Population Density
 
 Population density can be calculated and displayed dynamically. This example loads a GeoJSON of Rwandan provinces, calculating density by dividing population by area. The fill color of each province is then adjusted based on density, with different color schemes applied depending on the zoom level.
 
@@ -1214,7 +1258,7 @@ m.add_layer(layer)
 m
 ```
 
-## Visualize Raster Data
+## Visualizing Raster Data
 
 ### Local Raster Data
 
@@ -1242,6 +1286,8 @@ m
 m.layer_interact()
 ```
 
+A Digital Elevation Model (DEM) is also downloaded and visualized with a terrain color scheme. Leafmap’s `layer_interact` method allows interactive adjustments.
+
 ```{code-cell} ipython3
 url = "https://github.com/opengeos/datasets/releases/download/raster/srtm90.tif"
 filepath = "srtm90.tif"
@@ -1253,8 +1299,6 @@ m = leafmap.Map(style="satellite")
 m.add_raster(filepath, colormap="terrain", name="DEM")
 m
 ```
-
-A Digital Elevation Model (DEM) is also downloaded and visualized with a terrain color scheme. Leafmap’s `layer_interact` method allows interactive adjustments.
 
 ```{code-cell} ipython3
 m.layer_interact()
@@ -1299,7 +1343,7 @@ m
 m.layer_interact()
 ```
 
-For more control, the `collection` and `item` parameters let you specify specific assets, such as color infrared bands, for focused analysis.
+Leafmap also supports loading STAC items from the [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com). The example demonstrates how to load a STAC item from the Planetary Computer and display it on the map.
 
 ```{code-cell} ipython3
 collection = "landsat-8-c2-l2"
@@ -1321,12 +1365,12 @@ m.add_stac_layer(
 m
 ```
 
-## Interact with the Map
+## Interacting with the Map
 
 Interactivity allows for a more tailored map experience.
 
 
-### Display a Non-Interactive Map
+### Displaying a Non-Interactive Map
 
 To create a static map, set `interactive=False`. This disables all user interactions, making it ideal for static presentations.
 
@@ -1337,7 +1381,7 @@ m = leafmap.Map(
 m
 ```
 
-### Disable Scroll Zoom
+### Disabling Scroll Zoom
 
 Use `scroll_zoom=False` to prevent map zooming with the scroll wheel, maintaining a fixed zoom level.
 
@@ -1346,7 +1390,7 @@ m = leafmap.Map(center=[-122.65, 45.52], zoom=9, scroll_zoom=False, style="liber
 m
 ```
 
-### Fit Bounds
+### Fitting Bounds
 
 The `fit_bounds` method focuses the map on a specified area. In this example, the map centers on Kenya. Additionally, a GeoJSON line is added to the map, and its bounds are automatically calculated with `geojson_bounds` for a custom zoom fit.
 
@@ -1412,7 +1456,7 @@ bounds
 m.fit_bounds(bounds)
 ```
 
-### Restrict Map Panning to an Area
+### Restricting Map Panning to an Area
 
 To limit map panning to a specific area, define a bounding box. The map is then restricted within the bounds, ensuring users do not accidentally pan away from the area of interest.
 
@@ -1428,7 +1472,7 @@ m = leafmap.Map(center=[-73.9978, 40.7209], zoom=13, max_bounds=bounds, style="l
 m
 ```
 
-### Fly To
+### Flying To
 
 The `fly_to` method smoothly navigates to specified coordinates. Parameters like speed and zoom provide control over the fly-to effect. This example flies from the initial map location to New York City.
 
@@ -1460,7 +1504,7 @@ options = {
 m.fly_to(**options)
 ```
 
-### Jump to a Series of Locations
+### Jumping to a Series of Locations
 
 Using `jump_to`, you can navigate between multiple locations. This example sets up a list of coordinates representing cities and automatically pans to each one in sequence. Adding a delay between transitions enhances the animation effect.
 
@@ -1516,7 +1560,7 @@ for index, city in enumerate(cities["features"]):
     m.jump_to({"center": coords})
 ```
 
-### Get Coordinates of the Mouse Pointer
+### Getting Coordinates of the Mouse Pointer
 
 With widgets, you can display the current mouse pointer coordinates as it moves across the map. This is useful for precision mapping tasks where knowing exact coordinates is essential.
 
@@ -1551,7 +1595,7 @@ output
 
 Customizing layer styles enables personalized map designs.
 
-### Change Layer Color
+### Changing Layer Color
 
 Use `style_layer_interact` to interactively change the color of map layers, such as water bodies. This method provides an interactive palette for immediate style changes.
 
@@ -1564,7 +1608,7 @@ m
 m.style_layer_interact(id="water")
 ```
 
-### Change Case of Labels
+### Changing Case of Labels
 
 This example displays labels in upper or lower case based on their properties. The layout options let you customize font, size, and alignment. For example, facility names are displayed in uppercase, and comments are displayed in lowercase for contrast.
 
@@ -1598,6 +1642,10 @@ layer = {
 m.add_layer(layer)
 m
 ```
+
+![](https://i.imgur.com/FzGOovv.png)
+
++++
 
 ### Variable Label Placement
 
@@ -1673,7 +1721,7 @@ m.rotate_to(bearing=180, options={"duration": 10000})
 
 Enhance your maps by adding custom components such as images, videos, text, color bars, and legends.
 
-### Add Image
+### Adding Image
 
 You can add an image as an overlay or as an icon for a specific layer. For instance:
 - Overlaying an image directly on the map at the "bottom-right" corner.
@@ -1710,6 +1758,8 @@ m.add_source("point", source)
 m.add_layer(layer)
 m
 ```
+
+![](https://i.imgur.com/Nq1uV9d.png)
 
 ```{code-cell} ipython3
 m = leafmap.Map(center=[-100, 40], zoom=3, style="positron")
@@ -1778,7 +1828,11 @@ m.add_layer(layer)
 m
 ```
 
-### Add Text
+![](https://i.imgur.com/qWWlnAm.png)
+
++++
+
+### Adding Text
 
 Add text annotations to the map, specifying parameters like font size and background color. For example:
 - Text "Hello World" in the bottom-right corner with a transparent background.
@@ -1793,7 +1847,11 @@ m.add_text(text2, fontsize=25, bg_color="rgba(255, 255, 255, 0.8)", position="to
 m
 ```
 
-### Add GIF
+![](https://i.imgur.com/UAtlh3r.png)
+
++++
+
+### Adding GIF
 
 GIFs can be added as animated overlays to bring your map to life. Example: add a sloth GIF in the bottom-right and a second GIF in the bottom-left corner, with a text label indicating “I love sloth!” for added character.
 
@@ -1808,7 +1866,11 @@ m.add_image(image=image2, bg_color="transparent", position="bottom-left")
 m
 ```
 
-### Add HTML
+![](https://i.imgur.com/auytBtD.png)
+
++++
+
+### Adding HTML
 
 Embed custom HTML content to display various HTML elements, such as emojis or stylized text. You can also adjust the font size and background transparency for better integration into the map design.
 
@@ -1834,7 +1896,11 @@ m.add_html(html, bg_color="transparent")
 m
 ```
 
-### Add Colorbar
+![](https://i.imgur.com/TgalNOv.png)
+
++++
+
+### Adding Color bar
 
 Adding a color bar enhances data interpretation. In the example:
 1. A Digital Elevation Model (DEM) is displayed with a color ramp from 0 to 1500 meters.
@@ -1858,6 +1924,8 @@ m.add_layer_control()
 m
 ```
 
+Make the color bar background transparent to blend seamlessly with the map.
+
 ```{code-cell} ipython3
 m = leafmap.Map(style="topo")
 m.add_cog_layer(
@@ -1878,6 +1946,8 @@ m.add_colorbar(
 )
 m
 ```
+
+Make the color bar vertical for a different layout.
 
 ```{code-cell} ipython3
 m = leafmap.Map(style="topo")
@@ -1902,7 +1972,7 @@ m.add_colorbar(
 m
 ```
 
-### Add Legend
+### Adding Legend
 
 Custom legends help users understand data classifications. Two methods are shown:
 1. Using built-in legends, such as for NLCD (National Land Cover Database) or wetland types.
@@ -1971,13 +2041,13 @@ m.add_legend(
 m
 ```
 
-### Add Video
+![](https://i.imgur.com/dy60trf.png)
+
++++
+
+### Adding Video
 
 Videos can be added with geographic context by specifying corner coordinates. Videos must be listed in multiple formats to ensure compatibility across browsers. The coordinates array should define the video’s location on the map in the order: top-left, top-right, bottom-right, and bottom-left. This is demonstrated by adding drone footage to a satellite map view, enhancing the user experience with real-world visuals.
-
-
-The `urls` value is an array. For each URL in the array, a video element source will be created. To support the video across browsers, supply URLs in multiple formats.
-The `coordinates` array contains [longitude, latitude] pairs for the video corners listed in clockwise order: top left, top right, bottom right, bottom left.
 
 ```{code-cell} ipython3
 m = leafmap.Map(
@@ -2017,7 +2087,7 @@ m
 
 ## PMTiles
 
-Leafmap supports the [PMTiles](https://protomaps.com/docs/pmtiles/) format, enabling efficient storage and fast rendering of vector tiles directly in the browser.
+Leafmap supports visualizing [PMTiles](https://protomaps.com/docs/pmtiles/), which enables efficient storage and fast rendering of vector tiles directly in the browser.
 
 ### Protomaps Sample Data
 
@@ -2078,9 +2148,7 @@ m.layer_interact()
 
 ### Source Cooperative Data
 
-Visualize the Google-Microsoft Open Buildings dataset, managed by VIDA, in PMTiles format. Fetch metadata to identify available layers, apply custom styles to the building footprints, and render them with semi-transparent colors for a clear visualization.
-
-Let's visualize the [Google-Microsoft Open Buildings - combined by VIDA](https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description).
+Visualize the [Google-Microsoft Open Buildings dataset](https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description), managed by VIDA, in PMTiles format. Fetch metadata to identify available layers, apply custom styles to the building footprints, and render them with semi-transparent colors for a clear visualization.
 
 ```{code-cell} ipython3
 url = "https://data.source.coop/vida/google-microsoft-open-buildings/pmtiles/go_ms_building_footprints.pmtiles"
@@ -2380,7 +2448,11 @@ m
 m.layer_interact()
 ```
 
-You can overlay Earth Engine data with other 3D elements, like buildings, to create a multi-layered, interactive map. If you have an Earth Engine account, authenticate and initialize Earth Engine in your notebook by uncommenting the relevant code.
+![](https://i.imgur.com/oHQDf79.png)
+
++++
+
+You can overlay Earth Engine data with other 3D elements, like buildings, to create a multi-layered, interactive map.
 
 ```{code-cell} ipython3
 m = leafmap.Map(
@@ -2392,7 +2464,11 @@ m.add_legend(builtin_legend="ESA_WorldCover", title="ESA Landcover")
 m
 ```
 
-If you have an Earth Engine, you can uncomment the first two code blocks to add any Earth Engine datasets.
+![](https://i.imgur.com/Y52jep5.png)
+
++++
+
+If you have an Earth Engine account, authenticate and initialize Earth Engine in your notebook by uncommenting the relevant code.
 
 ```{code-cell} ipython3
 # import ee
@@ -2413,7 +2489,7 @@ If you have an Earth Engine, you can uncomment the first two code blocks to add 
 
 ## Animations
 
-### Animate a Line
+### Animating a Line
 
 Using Leafmap’s animation capabilities, you can animate a line by updating the coordinates of a GeoJSON line feature in real-time. The sample includes data loaded from a CSV file, which is sorted and plotted sequentially to show the line’s movement.
 
@@ -2461,7 +2537,11 @@ for i in range(run_times):
         m.set_data("line", geojson)
 ```
 
-### Animate the Map Camera Around a Point
+![](https://i.imgur.com/LRwfBl9.png)
+
++++
+
+### Animating the Map Camera Around a Point
 
 Control the map camera's rotation, zoom, and angle around a given point to create a smooth animation effect. This technique is especially useful for visualizing cityscapes or other 3D environments by making buildings appear dynamic.
 
@@ -2505,7 +2585,11 @@ m.add_layer(layer)
 m
 ```
 
-### Animate a Point
+![](https://i.imgur.com/odCwtjT.png)
+
++++
+
+### Animating a Point
 
 Animate a point along a circular path by computing points on a circle and updating the map. This is ideal for showing circular motion on the map, and can be customized for duration and frame rate to control the animation speed.
 
@@ -2563,7 +2647,11 @@ frame_rate = 30  # Frames per second
 animate_marker(duration, frame_rate, radius)
 ```
 
-### Animate a Point Along a Route
+![](https://i.imgur.com/EAxNQx4.png)
+
++++
+
+### Animating a Point Along a Route
 
 Create a point that follows a route specified by GeoJSON coordinates. For added realism, include rotation properties to simulate the direction of movement along the path. This animation is useful for tracking paths, such as vehicle or drone routes.
 
@@ -2614,7 +2702,11 @@ for index, coordinate in enumerate(coordinates):
     time.sleep(0.05)
 ```
 
-### Update a Feature in Real-Time
+![](https://i.imgur.com/kdP1oT1.png)
+
++++
+
+### Updating a Feature in Real-Time
 
 For applications such as tracking or tracing a path in real time, load data from a source like GeoDataFrame, append coordinates incrementally to a line feature, and update the map display as the path extends.
 
