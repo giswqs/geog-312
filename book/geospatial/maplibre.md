@@ -136,7 +136,7 @@ m
 Fullscreen control enables users to expand the map to full screen, enhancing focus and visual clarity. This is especially useful when viewing complex or large datasets.
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[11.255, 43.77], zoom=13, style="streets", controls={})
+m = leafmap.Map(center=[11.255, 43.77], zoom=13, style="positron", controls={})
 m.add_control("fullscreen", position="top-right")
 m
 ```
@@ -146,7 +146,7 @@ m
 The Navigation control provides buttons for zooming and reorienting the map, improving the user's ability to navigate efficiently.
 
 ```{code-cell} ipython3
-m = leafmap.Map(center=[11.255, 43.77], zoom=13, style="streets", controls={})
+m = leafmap.Map(center=[11.255, 43.77], zoom=13, style="positron", controls={})
 m.add_control("navigation", position="top-left")
 m
 ```
@@ -1037,23 +1037,6 @@ m
 
 ```{code-cell} ipython3
 m.open_geojson()
-```
-
-### Local Vector Data
-
-Local vector files, such as GeoJSON, can be loaded directly into the map. The example downloads a GeoJSON file representing U.S. states and adds it to the map using `open_geojson`.
-
-```{code-cell} ipython3
-m = leafmap.Map(center=[-100, 40], zoom=3, style="streets")
-url = "https://github.com/opengeos/datasets/releases/download/us/us_states.geojson"
-gdf = leafmap.geojson_to_gdf(url)
-paint = {
-    "fill-color": "#3388ff",
-    "fill-opacity": 0.8,
-    "fill-outline-color": "#ffffff",
-}
-m.add_gdf(gdf, layer_type="fill", name="States", paint=paint)
-m
 ```
 
 ### Changing Building Color
