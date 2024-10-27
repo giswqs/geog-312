@@ -552,11 +552,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-geometries">16.10.5. Multiple Geometries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marker-cluster">16.10.6. Marker Cluster</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-vector-data">16.10.7. Local Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">16.10.8. Local Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-building-color">16.10.9. Changing Building Color</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-new-layer-below-labels">16.10.10. Adding a New Layer Below Labels</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-map">16.10.11. Heat Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-population-density">16.10.12. Visualizing Population Density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-building-color">16.10.8. Changing Building Color</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-new-layer-below-labels">16.10.9. Adding a New Layer Below Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-map">16.10.10. Heat Map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-population-density">16.10.11. Visualizing Population Density</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-raster-data">16.11. Visualizing Raster Data</a><ul class="nav section-nav flex-column">
@@ -595,7 +594,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protomaps-sample-data">16.15.1. Protomaps Sample Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-cooperative-data">16.15.2. Source Cooperative Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pmtiles">16.15.3. 3D PMTiles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.15.4. 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">16.15.4. 3D Buildings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings-transportation-and-other-themes">16.15.5. 2D Buildings, Transportation, and Other Themes</a></li>
 </ul>
 </li>
@@ -775,7 +774,7 @@ document.write(`
 <p>Fullscreen control enables users to expand the map to full screen, enhancing focus and visual clarity. This is especially useful when viewing complex or large datasets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">11.255</span><span class="p">,</span> <span class="mf">43.77</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;streets&quot;</span><span class="p">,</span> <span class="n">controls</span><span class="o">=</span><span class="p">{})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">11.255</span><span class="p">,</span> <span class="mf">43.77</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;positron&quot;</span><span class="p">,</span> <span class="n">controls</span><span class="o">=</span><span class="p">{})</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="s2">&quot;fullscreen&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;top-right&quot;</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
@@ -788,7 +787,7 @@ document.write(`
 <p>The Navigation control provides buttons for zooming and reorienting the map, improving the user’s ability to navigate efficiently.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">11.255</span><span class="p">,</span> <span class="mf">43.77</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;streets&quot;</span><span class="p">,</span> <span class="n">controls</span><span class="o">=</span><span class="p">{})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">11.255</span><span class="p">,</span> <span class="mf">43.77</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;positron&quot;</span><span class="p">,</span> <span class="n">controls</span><span class="o">=</span><span class="p">{})</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_control</span><span class="p">(</span><span class="s2">&quot;navigation&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;top-left&quot;</span><span class="p">)</span>
 <span class="n">m</span>
 </pre></div>
@@ -1812,28 +1811,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="id1">
-<h3><span class="section-number">16.10.8. </span>Local Vector Data<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Local vector files, such as GeoJSON, can be loaded directly into the map. The example downloads a GeoJSON file representing U.S. states and adds it to the map using <code class="docutils literal notranslate"><span class="pre">open_geojson</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;streets&quot;</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/opengeos/datasets/releases/download/us/us_states.geojson&quot;</span>
-<span class="n">gdf</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">geojson_to_gdf</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">paint</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;fill-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#3388ff&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;fill-opacity&quot;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span>
-    <span class="s2">&quot;fill-outline-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span>
-<span class="p">}</span>
-<span class="n">m</span><span class="o">.</span><span class="n">add_gdf</span><span class="p">(</span><span class="n">gdf</span><span class="p">,</span> <span class="n">layer_type</span><span class="o">=</span><span class="s2">&quot;fill&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;States&quot;</span><span class="p">,</span> <span class="n">paint</span><span class="o">=</span><span class="n">paint</span><span class="p">)</span>
-<span class="n">m</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="changing-building-color">
-<h3><span class="section-number">16.10.9. </span>Changing Building Color<a class="headerlink" href="#changing-building-color" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.10.8. </span>Changing Building Color<a class="headerlink" href="#changing-building-color" title="Link to this heading">#</a></h3>
 <p>You can customize the color and opacity of buildings based on the map’s zoom level. This example changes building colors from orange at lower zoom levels to lighter shades as the zoom level increases. Additionally, the opacity gradually transitions to fully opaque, making buildings more visible at close-up zoom levels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1864,7 +1843,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/PayiTON.png" /></p>
 </section>
 <section id="adding-a-new-layer-below-labels">
-<h3><span class="section-number">16.10.10. </span>Adding a New Layer Below Labels<a class="headerlink" href="#adding-a-new-layer-below-labels" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.10.9. </span>Adding a New Layer Below Labels<a class="headerlink" href="#adding-a-new-layer-below-labels" title="Link to this heading">#</a></h3>
 <p>A layer can be added below existing labels on the map to enhance clarity without obscuring labels. The urban areas dataset is displayed as a fill layer in a color and opacity that visually distinguishes it from other map elements. The layer is positioned below symbols, allowing place names to remain visible.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1890,7 +1869,7 @@ document.write(`
 </div>
 </section>
 <section id="heat-map">
-<h3><span class="section-number">16.10.11. </span>Heat Map<a class="headerlink" href="#heat-map" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.10.10. </span>Heat Map<a class="headerlink" href="#heat-map" title="Link to this heading">#</a></h3>
 <p>Heatmaps visually represent data density. This example uses earthquake data and configures the heatmap layer with dynamic properties, such as weight, intensity, color, and radius, based on earthquake magnitudes. Circles are added to indicate individual earthquakes, with colors and sizes varying according to their magnitude.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1987,7 +1966,7 @@ document.write(`
 <p><img alt="" src="https://i.imgur.com/OLCRPKj.png" /></p>
 </section>
 <section id="visualizing-population-density">
-<h3><span class="section-number">16.10.12. </span>Visualizing Population Density<a class="headerlink" href="#visualizing-population-density" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.10.11. </span>Visualizing Population Density<a class="headerlink" href="#visualizing-population-density" title="Link to this heading">#</a></h3>
 <p>Population density can be calculated and displayed dynamically. This example loads a GeoJSON of Rwandan provinces, calculating density by dividing population by area. The fill color of each province is then adjusted based on density, with different color schemes applied depending on the zoom level.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3210,8 +3189,8 @@ These layers are added to the map along with controls to toggle them. You can ad
 </div>
 </div>
 </section>
-<section id="id2">
-<h3><span class="section-number">16.15.4. </span>3D Buildings<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h3><span class="section-number">16.15.4. </span>3D Buildings<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>For a simplified setup, the <code class="docutils literal notranslate"><span class="pre">add_overture_3d_buildings</span></code> function quickly adds 3D building data from Overture’s latest release to a basemap, creating depth and spatial realism on the map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3949,11 +3928,10 @@ These layers are added to the map along with controls to toggle them. You can ad
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-geometries">16.10.5. Multiple Geometries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marker-cluster">16.10.6. Marker Cluster</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-vector-data">16.10.7. Local Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">16.10.8. Local Vector Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-building-color">16.10.9. Changing Building Color</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-new-layer-below-labels">16.10.10. Adding a New Layer Below Labels</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-map">16.10.11. Heat Map</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-population-density">16.10.12. Visualizing Population Density</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-building-color">16.10.8. Changing Building Color</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-a-new-layer-below-labels">16.10.9. Adding a New Layer Below Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-map">16.10.10. Heat Map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-population-density">16.10.11. Visualizing Population Density</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-raster-data">16.11. Visualizing Raster Data</a><ul class="nav section-nav flex-column">
@@ -3992,7 +3970,7 @@ These layers are added to the map along with controls to toggle them. You can ad
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protomaps-sample-data">16.15.1. Protomaps Sample Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-cooperative-data">16.15.2. Source Cooperative Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pmtiles">16.15.3. 3D PMTiles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.15.4. 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">16.15.4. 3D Buildings</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings-transportation-and-other-themes">16.15.5. 2D Buildings, Transportation, and Other Themes</a></li>
 </ul>
 </li>
