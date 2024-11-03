@@ -593,10 +593,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pmtiles">16.15. PMTiles</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protomaps-sample-data">16.15.1. Protomaps Sample Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-cooperative-data">16.15.2. Source Cooperative Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pmtiles">16.15.3. 3D PMTiles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">16.15.4. 3D Buildings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings-transportation-and-other-themes">16.15.5. 2D Buildings, Transportation, and Other Themes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-footprint-data">16.15.2. Building Footprint Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields-of-the-world">16.15.3. Fields of The World</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pmtiles">16.15.4. 3D PMTiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">16.15.5. 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings-transportation-and-other-themes">16.15.6. 2D Buildings, Transportation, and Other Themes</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deck-gl-layers">16.16. Deck.GL Layers</a><ul class="nav section-nav flex-column">
@@ -3063,8 +3064,8 @@ These layers are added to the map along with controls to toggle them. You can ad
 </div>
 </div>
 </section>
-<section id="source-cooperative-data">
-<h3><span class="section-number">16.15.2. </span>Source Cooperative Data<a class="headerlink" href="#source-cooperative-data" title="Link to this heading">#</a></h3>
+<section id="building-footprint-data">
+<h3><span class="section-number">16.15.2. </span>Building Footprint Data<a class="headerlink" href="#building-footprint-data" title="Link to this heading">#</a></h3>
 <p>Visualize the <a class="reference external" href="https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description">Google-Microsoft Open Buildings dataset</a>, managed by VIDA, in PMTiles format. Fetch metadata to identify available layers, apply custom styles to the building footprints, and render them with semi-transparent colors for a clear visualization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3123,8 +3124,126 @@ These layers are added to the map along with controls to toggle them. You can ad
 </div>
 </div>
 </section>
+<section id="fields-of-the-world">
+<h3><span class="section-number">16.15.3. </span>Fields of The World<a class="headerlink" href="#fields-of-the-world" title="Link to this heading">#</a></h3>
+<p>Visualize the Agricultural Field Boundary dataset - Fields of The World (<a class="reference external" href="https://fieldsofthe.world">FTW</a>). The dataset is available on Source Cooperative at <a class="reference external" href="https://source.coop/repositories/kerner-lab/fields-of-the-world/description">https://source.coop/repositories/kerner-lab/fields-of-the-world/description</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://data.source.coop/kerner-lab/fields-of-the-world/ftw-sources.pmtiles&quot;</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">pmtiles_metadata</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;layer names: </span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;layer_names&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;bounds: </span><span class="si">{</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;bounds&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="c1"># Define colors for each last digit (0-9)</span>
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;layers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Field Polygon&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;example_source&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;ftw-sources&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;fill-color&quot;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;case&quot;</span><span class="p">,</span>
+                    <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]],</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">0</span><span class="p">],</span>
+                    <span class="s2">&quot;#FF5733&quot;</span><span class="p">,</span>  <span class="c1"># Color for last digit 0</span>
+                    <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]],</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">1</span><span class="p">],</span>
+                    <span class="s2">&quot;#33FF57&quot;</span><span class="p">,</span>  <span class="c1"># Color for last digit 1</span>
+                    <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]],</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">2</span><span class="p">],</span>
+                    <span class="s2">&quot;#3357FF&quot;</span><span class="p">,</span>  <span class="c1"># Color for last digit 2</span>
+                    <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]],</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">3</span><span class="p">],</span>
+                    <span class="s2">&quot;#FF33A1&quot;</span><span class="p">,</span>  <span class="c1"># Color for last digit 3</span>
+                    <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]],</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">4</span><span class="p">],</span>
+                    <span class="s2">&quot;#FF8C33&quot;</span><span class="p">,</span>  <span class="c1"># Color for last digit 4</span>
+                    <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]],</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">5</span><span class="p">],</span>
+                    <span class="s2">&quot;#33FFF6&quot;</span><span class="p">,</span>  <span class="c1"># Color for last digit 5</span>
+                    <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]],</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">6</span><span class="p">],</span>
+                    <span class="s2">&quot;#A833FF&quot;</span><span class="p">,</span>  <span class="c1"># Color for last digit 6</span>
+                    <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]],</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">7</span><span class="p">],</span>
+                    <span class="s2">&quot;#FF333D&quot;</span><span class="p">,</span>  <span class="c1"># Color for last digit 7</span>
+                    <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]],</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">8</span><span class="p">],</span>
+                    <span class="s2">&quot;#33FFBD&quot;</span><span class="p">,</span>  <span class="c1"># Color for last digit 8</span>
+                    <span class="p">[</span><span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;to-number&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">]],</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">9</span><span class="p">],</span>
+                    <span class="s2">&quot;#FF9933&quot;</span><span class="p">,</span>  <span class="c1"># Color for last digit 9</span>
+                    <span class="s2">&quot;#FF0000&quot;</span><span class="p">,</span>  <span class="c1"># Fallback color if no match</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;fill-opacity&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Field Outline&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;example_source&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;ftw-sources&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;line&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;line-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span> <span class="s2">&quot;line-width&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;line-opacity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Satellite&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_pmtiles</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;FTW&quot;</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer_control</span><span class="p">()</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">layer_interact</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">leafmap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">style</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;layers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Field Polygon&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;example_source&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;ftw-sources&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;fill&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;fill-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ffff00&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;fill-opacity&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;Field Outline&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source&quot;</span><span class="p">:</span> <span class="s2">&quot;example_source&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;source-layer&quot;</span><span class="p">:</span> <span class="s2">&quot;ftw-sources&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;line&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;paint&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;line-color&quot;</span><span class="p">:</span> <span class="s2">&quot;#ff0000&quot;</span><span class="p">,</span> <span class="s2">&quot;line-width&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;line-opacity&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="s2">&quot;Satellite&quot;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_pmtiles</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;FTW&quot;</span><span class="p">,</span> <span class="n">zoom_to_layer</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer_control</span><span class="p">()</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">layer_interact</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="d-pmtiles">
-<h3><span class="section-number">16.15.3. </span>3D PMTiles<a class="headerlink" href="#d-pmtiles" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.15.4. </span>3D PMTiles<a class="headerlink" href="#d-pmtiles" title="Link to this heading">#</a></h3>
 <p>Render global building data in 3D for a realistic, textured experience. Set building colors and extrusion heights to create visually compelling cityscapes. For example, apply color gradients and height scaling based on building attributes to differentiate buildings by their heights.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3191,7 +3310,7 @@ These layers are added to the map along with controls to toggle them. You can ad
 </div>
 </section>
 <section id="id1">
-<h3><span class="section-number">16.15.4. </span>3D Buildings<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.15.5. </span>3D Buildings<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <p>For a simplified setup, the <code class="docutils literal notranslate"><span class="pre">add_overture_3d_buildings</span></code> function quickly adds 3D building data from Overture’s latest release to a basemap, creating depth and spatial realism on the map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3208,7 +3327,7 @@ These layers are added to the map along with controls to toggle them. You can ad
 </div>
 </section>
 <section id="d-buildings-transportation-and-other-themes">
-<h3><span class="section-number">16.15.5. </span>2D Buildings, Transportation, and Other Themes<a class="headerlink" href="#d-buildings-transportation-and-other-themes" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">16.15.6. </span>2D Buildings, Transportation, and Other Themes<a class="headerlink" href="#d-buildings-transportation-and-other-themes" title="Link to this heading">#</a></h3>
 <p>Switch between specific Overture themes, such as <code class="docutils literal notranslate"><span class="pre">buildings</span></code>, <code class="docutils literal notranslate"><span class="pre">transportation</span></code>, <code class="docutils literal notranslate"><span class="pre">places</span></code>, or <code class="docutils literal notranslate"><span class="pre">addresses</span></code>, depending on the data focus. Each theme overlays relevant features with adjustable opacity for thematic visualization, providing easy customization for urban planning or transportation studies.</p>
 <p>Building theme:</p>
 <div class="cell docutils container">
@@ -3559,11 +3678,6 @@ These layers are added to the map along with controls to toggle them. You can ad
 </div>
 </div>
 </div>
-<p><img alt="" src="https://i.imgur.com/odCwtjT.png" /></p>
-</section>
-<section id="animating-a-point">
-<h3><span class="section-number">16.18.3. </span>Animating a Point<a class="headerlink" href="#animating-a-point" title="Link to this heading">#</a></h3>
-<p>Animate a point along a circular path by computing points on a circle and updating the map. This is ideal for showing circular motion on the map, and can be customized for duration and frame rate to control the animation speed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">degree</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
@@ -3573,6 +3687,11 @@ These layers are added to the map along with controls to toggle them. You can ad
 </div>
 </div>
 </div>
+<p><img alt="" src="https://i.imgur.com/odCwtjT.png" /></p>
+</section>
+<section id="animating-a-point">
+<h3><span class="section-number">16.18.3. </span>Animating a Point<a class="headerlink" href="#animating-a-point" title="Link to this heading">#</a></h3>
+<p>Animate a point along a circular path by computing points on a circle and updating the map. This is ideal for showing circular motion on the map, and can be customized for duration and frame rate to control the animation speed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -3969,10 +4088,11 @@ These layers are added to the map along with controls to toggle them. You can ad
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pmtiles">16.15. PMTiles</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protomaps-sample-data">16.15.1. Protomaps Sample Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-cooperative-data">16.15.2. Source Cooperative Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pmtiles">16.15.3. 3D PMTiles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">16.15.4. 3D Buildings</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings-transportation-and-other-themes">16.15.5. 2D Buildings, Transportation, and Other Themes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-footprint-data">16.15.2. Building Footprint Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fields-of-the-world">16.15.3. Fields of The World</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-pmtiles">16.15.4. 3D PMTiles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">16.15.5. 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-buildings-transportation-and-other-themes">16.15.6. 2D Buildings, Transportation, and Other Themes</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deck-gl-layers">16.16. Deck.GL Layers</a><ul class="nav section-nav flex-column">
