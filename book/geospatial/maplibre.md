@@ -2882,6 +2882,73 @@ m.to_html(
 m
 ```
 
+## Exercises
+
+### Exercise 1: Setting up MapLibre and Basic Map Creation
+
+   - Initialize a map centered on a country of your choice with an appropriate zoom level and display it with the `dark-matter` basemap.
+   - Change the basemap style to `liberty` and display it again.
+
+
+```{code-cell} ipython3
+
+```
+
+### Exercise 2: Customizing the Map View
+
+   - Create a 3D map of a city of your choice with an appropriate zoom level, pitch and bearing using the `liberty` basemap.
+   - Experiment with MapTiler 3D basemap styles, such as `3d-satellite`, `3d-hybrid`, and `3d-topo`, to visualize a location of your choice in different ways. Please set your MapTiler API key as Colab secret and do NOT expose the API key in the notebook.
+
+```{code-cell} ipython3
+
+```
+
+
+### Exercise 3: Adding Map Controls
+
+   - Create a map centered on a city of your choice and add the following controls to the map:
+     - **Geolocate** control positioned at the top left.
+     - **Fullscreen** control at the top right.
+     - **Draw** control for adding points, lines, and polygons, positioned at the top left.
+
+```{code-cell} ipython3
+
+```
+
+### Exercise 4: Overlaying Data Layers
+
+   - **GeoJSON Layer**: Create a map and add the following GeoJSON data layers to the map with appropriate styles:
+     - NYC buildings: https://github.com/opengeos/datasets/releases/download/places/nyc_buildings.geojson
+     - NYC roads: https://github.com/opengeos/datasets/releases/download/places/nyc_roads.geojson
+   - **Thematic Raster Layer**: Create a map with a satellite basemap and add the following raster data layer to the map with an appropriate legend:
+     - National Land Cover Database (NLCD) 2021: https://github.com/opengeos/datasets/releases/download/raster/nlcd_2021_land_cover_90m.tif
+   - **DEM Layer:** Create a map with a satellite basemap and add the following DEM layer to the map with an appropriate color bar:
+     - DEM: https://github.com/opengeos/datasets/releases/download/raster/dem.tif
+   - **WMS Layer**: Create a map and add the ESA WorldCover WMS layer to the map with an appropriate legend:
+     - url: https://services.terrascope.be/wms/v2
+     - layers: WORLDCOVER_2021_MAP
+
+```{code-cell} ipython3
+
+```
+
+### Exercise 5: Working with 3D Buildings
+
+   - Set up a 3D map centered on a city of your choice with an appropriate zoom level, pitch, and bearing.
+   - Add 3D buildings to the map with extrusions based on their height attributes. Use a custom color gradient for the extrusion color.
+
+```{code-cell} ipython3
+
+```
+
+### Exercise 6: Adding Map Elements
+   - **Image and Text**: Add a logo image of your choice with appropriate text to the map.
+   - **GIF**: Add an animated GIF of your choice to the map.
+
+```{code-cell} ipython3
+
+```
+
 ## Summary
 
 In this lecture, we explored the functionality of the MapLibre library for creating and customizing interactive maps in Python. We covered how to build a map from scratch, add controls, and manage different basemaps. Additionally, we explored more complex visualizations, including 3D building and terrain views, layer customization, and data integration with GeoJSON and raster formats. By understanding and applying these techniques, students are now equipped to develop dynamic geospatial visualizations using MapLibre, enhancing both analytical and presentation capabilities in their GIS projects.
