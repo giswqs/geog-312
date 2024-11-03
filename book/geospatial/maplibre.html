@@ -615,7 +615,16 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-html">16.19. To HTML</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">16.20. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">16.20. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-setting-up-maplibre-and-basic-map-creation">16.20.1. Exercise 1: Setting up MapLibre and Basic Map Creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-customizing-the-map-view">16.20.2. Exercise 2: Customizing the Map View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-controls">16.20.3. Exercise 3: Adding Map Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-overlaying-data-layers">16.20.4. Exercise 4: Overlaying Data Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-working-with-3d-buildings">16.20.5. Exercise 5: Working with 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-adding-map-elements">16.20.6. Exercise 6: Adding Map Elements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">16.21. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -3933,8 +3942,78 @@ These layers are added to the map along with controls to toggle them. You can ad
 </div>
 </div>
 </section>
+<section id="exercises">
+<h2><span class="section-number">16.20. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="exercise-1-setting-up-maplibre-and-basic-map-creation">
+<h3><span class="section-number">16.20.1. </span>Exercise 1: Setting up MapLibre and Basic Map Creation<a class="headerlink" href="#exercise-1-setting-up-maplibre-and-basic-map-creation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Initialize a map centered on a country of your choice with an appropriate zoom level and display it with the <code class="docutils literal notranslate"><span class="pre">dark-matter</span></code> basemap.</p></li>
+<li><p>Change the basemap style to <code class="docutils literal notranslate"><span class="pre">liberty</span></code> and display it again.</p></li>
+</ul>
+</section>
+<section id="exercise-2-customizing-the-map-view">
+<h3><span class="section-number">16.20.2. </span>Exercise 2: Customizing the Map View<a class="headerlink" href="#exercise-2-customizing-the-map-view" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Create a 3D map of a city of your choice with an appropriate zoom level, pitch and bearing using the <code class="docutils literal notranslate"><span class="pre">liberty</span></code> basemap.</p></li>
+<li><p>Experiment with MapTiler 3D basemap styles, such as <code class="docutils literal notranslate"><span class="pre">3d-satellite</span></code>, <code class="docutils literal notranslate"><span class="pre">3d-hybrid</span></code>, and <code class="docutils literal notranslate"><span class="pre">3d-topo</span></code>, to visualize a location of your choice in different ways. Please set your MapTiler API key as Colab secret and do NOT expose the API key in the notebook.</p></li>
+</ul>
+</section>
+<section id="exercise-3-adding-map-controls">
+<h3><span class="section-number">16.20.3. </span>Exercise 3: Adding Map Controls<a class="headerlink" href="#exercise-3-adding-map-controls" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Create a map centered on a city of your choice and add the following controls to the map:</p>
+<ul>
+<li><p><strong>Geolocate</strong> control positioned at the top left.</p></li>
+<li><p><strong>Fullscreen</strong> control at the top right.</p></li>
+<li><p><strong>Draw</strong> control for adding points, lines, and polygons, positioned at the top left.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="exercise-4-overlaying-data-layers">
+<h3><span class="section-number">16.20.4. </span>Exercise 4: Overlaying Data Layers<a class="headerlink" href="#exercise-4-overlaying-data-layers" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>GeoJSON Layer</strong>: Create a map and add the following GeoJSON data layers to the map with appropriate styles:</p>
+<ul>
+<li><p>NYC buildings: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/places/nyc_buildings.geojson">opengeos/datasets</a></p></li>
+<li><p>NYC roads: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/places/nyc_roads.geojson">opengeos/datasets</a></p></li>
+</ul>
+</li>
+<li><p><strong>Thematic Raster Layer</strong>: Create a map with a satellite basemap and add the following raster data layer to the map with an appropriate legend:</p>
+<ul>
+<li><p>National Land Cover Database (NLCD) 2021: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/raster/nlcd_2021_land_cover_90m.tif">opengeos/datasets</a></p></li>
+</ul>
+</li>
+<li><p><strong>DEM Layer:</strong> Create a map with a satellite basemap and add the following DEM layer to the map with an appropriate color bar:</p>
+<ul>
+<li><p>DEM: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/raster/dem.tif">opengeos/datasets</a></p></li>
+</ul>
+</li>
+<li><p><strong>WMS Layer</strong>: Create a map and add the ESA WorldCover WMS layer to the map with an appropriate legend:</p>
+<ul>
+<li><p>url: <a class="reference external" href="https://services.terrascope.be/wms/v2">https://services.terrascope.be/wms/v2</a></p></li>
+<li><p>layers: WORLDCOVER_2021_MAP</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="exercise-5-working-with-3d-buildings">
+<h3><span class="section-number">16.20.5. </span>Exercise 5: Working with 3D Buildings<a class="headerlink" href="#exercise-5-working-with-3d-buildings" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Set up a 3D map centered on a city of your choice with an appropriate zoom level, pitch, and bearing.</p></li>
+<li><p>Add 3D buildings to the map with extrusions based on their height attributes. Use a custom color gradient for the extrusion color.</p></li>
+</ul>
+</section>
+<section id="exercise-6-adding-map-elements">
+<h3><span class="section-number">16.20.6. </span>Exercise 6: Adding Map Elements<a class="headerlink" href="#exercise-6-adding-map-elements" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Image and Text</strong>: Add a logo image of your choice with appropriate text to the map.</p></li>
+<li><p><strong>GIF</strong>: Add an animated GIF of your choice to the map.</p></li>
+</ul>
+</section>
+</section>
 <section id="summary">
-<h2><span class="section-number">16.20. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">16.21. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>In this lecture, we explored the functionality of the MapLibre library for creating and customizing interactive maps in Python. We covered how to build a map from scratch, add controls, and manage different basemaps. Additionally, we explored more complex visualizations, including 3D building and terrain views, layer customization, and data integration with GeoJSON and raster formats. By understanding and applying these techniques, students are now equipped to develop dynamic geospatial visualizations using MapLibre, enhancing both analytical and presentation capabilities in their GIS projects.</p>
 </section>
 </section>
@@ -4110,7 +4189,16 @@ These layers are added to the map along with controls to toggle them. You can ad
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-html">16.19. To HTML</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">16.20. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">16.20. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-setting-up-maplibre-and-basic-map-creation">16.20.1. Exercise 1: Setting up MapLibre and Basic Map Creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-customizing-the-map-view">16.20.2. Exercise 2: Customizing the Map View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-controls">16.20.3. Exercise 3: Adding Map Controls</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-overlaying-data-layers">16.20.4. Exercise 4: Overlaying Data Layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-working-with-3d-buildings">16.20.5. Exercise 5: Working with 3D Buildings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-adding-map-elements">16.20.6. Exercise 6: Adding Map Elements</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">16.21. Summary</a></li>
 </ul>
   </nav></div>
 
