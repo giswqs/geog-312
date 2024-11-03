@@ -2129,7 +2129,7 @@ m
 m.layer_interact()
 ```
 
-### Source Cooperative Data
+### Building Footprint Data
 
 Visualize the [Google-Microsoft Open Buildings dataset](https://beta.source.coop/repositories/vida/google-microsoft-open-buildings/description), managed by VIDA, in PMTiles format. Fetch metadata to identify available layers, apply custom styles to the building footprints, and render them with semi-transparent colors for a clear visualization.
 
@@ -2173,6 +2173,109 @@ m.add_pmtiles(
     opacity=1.0,
     tooltip=True,
 )
+m
+```
+
+```{code-cell} ipython3
+m.layer_interact()
+```
+
+### Fields of The World
+
+Visualize the Agricultural Field Boundary dataset - Fields of The World ([FTW](https://fieldsofthe.world)). The dataset is available on Source Cooperative at https://source.coop/repositories/kerner-lab/fields-of-the-world/description.
+
+```{code-cell} ipython3
+url = "https://data.source.coop/kerner-lab/fields-of-the-world/ftw-sources.pmtiles"
+metadata = leafmap.pmtiles_metadata(url)
+print(f"layer names: {metadata['layer_names']}")
+print(f"bounds: {metadata['bounds']}")
+```
+
+```{code-cell} ipython3
+m = leafmap.Map()
+# Define colors for each last digit (0-9)
+style = {
+    "layers": [
+        {
+            "id": "Field Polygon",
+            "source": "example_source",
+            "source-layer": "ftw-sources",
+            "type": "fill",
+            "paint": {
+                "fill-color": [
+                    "case",
+                    ["==", ["%", ["to-number", ["get", "id"]], 10], 0],
+                    "#FF5733",  # Color for last digit 0
+                    ["==", ["%", ["to-number", ["get", "id"]], 10], 1],
+                    "#33FF57",  # Color for last digit 1
+                    ["==", ["%", ["to-number", ["get", "id"]], 10], 2],
+                    "#3357FF",  # Color for last digit 2
+                    ["==", ["%", ["to-number", ["get", "id"]], 10], 3],
+                    "#FF33A1",  # Color for last digit 3
+                    ["==", ["%", ["to-number", ["get", "id"]], 10], 4],
+                    "#FF8C33",  # Color for last digit 4
+                    ["==", ["%", ["to-number", ["get", "id"]], 10], 5],
+                    "#33FFF6",  # Color for last digit 5
+                    ["==", ["%", ["to-number", ["get", "id"]], 10], 6],
+                    "#A833FF",  # Color for last digit 6
+                    ["==", ["%", ["to-number", ["get", "id"]], 10], 7],
+                    "#FF333D",  # Color for last digit 7
+                    ["==", ["%", ["to-number", ["get", "id"]], 10], 8],
+                    "#33FFBD",  # Color for last digit 8
+                    ["==", ["%", ["to-number", ["get", "id"]], 10], 9],
+                    "#FF9933",  # Color for last digit 9
+                    "#FF0000",  # Fallback color if no match
+                ],
+                "fill-opacity": 0.5,
+            },
+        },
+        {
+            "id": "Field Outline",
+            "source": "example_source",
+            "source-layer": "ftw-sources",
+            "type": "line",
+            "paint": {"line-color": "#ffffff", "line-width": 1, "line-opacity": 1},
+        },
+    ],
+}
+
+m.add_basemap("Satellite")
+m.add_pmtiles(url, style=style, name="FTW", zoom_to_layer=False)
+m.add_layer_control()
+m
+```
+
+```{code-cell} ipython3
+m.layer_interact()
+```
+
+```{code-cell} ipython3
+m = leafmap.Map()
+style = {
+    "layers": [
+        {
+            "id": "Field Polygon",
+            "source": "example_source",
+            "source-layer": "ftw-sources",
+            "type": "fill",
+            "paint": {
+                "fill-color": "#ffff00",
+                "fill-opacity": 0.2,
+            },
+        },
+        {
+            "id": "Field Outline",
+            "source": "example_source",
+            "source-layer": "ftw-sources",
+            "type": "line",
+            "paint": {"line-color": "#ff0000", "line-width": 1, "line-opacity": 1},
+        },
+    ],
+}
+
+m.add_basemap("Satellite")
+m.add_pmtiles(url, style=style, name="FTW", zoom_to_layer=False)
+m.add_layer_control()
 m
 ```
 
@@ -2568,6 +2671,12 @@ m.add_layer(layer)
 m
 ```
 
+```{code-cell} ipython3
+for degree in range(0, 180, 1):
+    m.rotate_to(degree, {"duration": 0})
+    time.sleep(0.1)
+```
+
 ![](https://i.imgur.com/odCwtjT.png)
 
 +++
@@ -2575,12 +2684,6 @@ m
 ### Animating a Point
 
 Animate a point along a circular path by computing points on a circle and updating the map. This is ideal for showing circular motion on the map, and can be customized for duration and frame rate to control the animation speed.
-
-```{code-cell} ipython3
-for degree in range(0, 180, 1):
-    m.rotate_to(degree, {"duration": 0})
-    time.sleep(0.1)
-```
 
 ```{code-cell} ipython3
 import math
