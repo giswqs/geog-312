@@ -19,7 +19,11 @@ By the end of the course, you will have a robust understanding of Python program
 
 ## Course Resources
 
-All course materials, including video recordings, are freely available on the course website: [geog-312.gishub.org](https://geog-312.gishub.org).
+All course materials, including lecture videos, are freely available on the course website: [geog-312.gishub.org](https://geog-312.gishub.org).
+
+## Lecture Videos
+
+The lecture videos are available as a YouTube playlist: <https://bit.ly/intro-gis-programming>
 
 ## Enroll for Certification
 
@@ -28,9 +32,3 @@ Please note that you can access the [course materials](https://geog-312.gishub.o
 [Enroll Now](https://tiny.utk.edu/intro-gis-programming)
 
 [![Introduction to GIS Programming](https://assets.gishub.org/images/intro-gis-programming.webp)](https://tiny.utk.edu/intro-gis-programming)
-
-## Lecture Videos
-
-The lecture videos are available as a YouTube playlist: <https://bit.ly/intro-gis-programming>
-
-<iframe width="800" height="480" src="https://www.youtube.com/embed/videoseries?si=FdG82kU5YHBqGsIc&amp;list=PLAxJ4-o7ZoPfb18kNe2luWX9xKg1233i9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
