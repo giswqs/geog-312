@@ -2889,7 +2889,6 @@ m
    - Initialize a map centered on a country of your choice with an appropriate zoom level and display it with the `dark-matter` basemap.
    - Change the basemap style to `liberty` and display it again.
 
-
 ```{code-cell} ipython3
 
 ```
@@ -2902,7 +2901,6 @@ m
 ```{code-cell} ipython3
 
 ```
-
 
 ### Exercise 3: Adding Map Controls
 
