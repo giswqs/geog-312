@@ -72,7 +72,7 @@ By completing this lab, you will be able to:
 
    - **GeoJSON Layer**: Create a map and add the following GeoJSON data layers to the map with appropriate styles:
      - NYC buildings: https://github.com/opengeos/datasets/releases/download/places/nyc_buildings.geojson
-     - NYC roads: https://github.com/opengeos/datasets/releases/download/places/las_vegas_roads.geojson
+     - NYC roads: https://github.com/opengeos/datasets/releases/download/places/nyc_roads.geojson
    - **Thematic Raster Layer**: Create a map with a satellite basemap and add the following raster data layer to the map with an appropriate legend:
      - National Land Cover Database (NLCD) 2021: https://github.com/opengeos/datasets/releases/download/raster/nlcd_2021_land_cover_90m.tif
    - **DEM Layer:** Create a map with a satellite basemap and add the following DEM layer to the map with an appropriate color bar:
