@@ -6,7 +6,7 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.16.4
 kernelspec:
-  display_name: Python 3 (ipykernel)
+  display_name: geo
   language: python
   name: python3
 ---
@@ -17,32 +17,21 @@ kernelspec:
 
 ## Overview
 
-This lecture introduces cloud-based geospatial analysis using the Google Earth Engine (GEE) API and the geemap Python package. We will explore foundational concepts in geospatial data, visualization techniques, and practical workflows to perform analyses within a Jupyter environment.
+This lecture introduces cloud-based geospatial analysis using the [Google Earth Engine](https://earthengine.google.com) (GEE) API in combination with the [geemap](https://geemap.org) Python package. We will cover core concepts of Earth Engine, visualization techniques, and practical workflows to perform analyses within a Jupyter environment.
 
 ## Learning Objectives
 
-By the end of this session, you will be able to:
-- Understand the Google Earth Engine platform and its data types
-- Set up and configure geemap for cloud-based geospatial analysis
-- Perform basic operations such as filtering, visualizing, and exporting GEE data
-- Explore and manipulate raster and vector data in Earth Engine
-- Create and customize interactive maps in a Jupyter notebook
-
-## Topics Covered
-
-- Introduction to Google Earth Engine
-- Setting up Geemap
-- Exploring Geemap core features
-- Interactive maps and basemap manipulation
-- Accessing and visualizing GEE datasets
-- Analyzing and processing raster and vector data
-- Exporting data from Earth Engine
-- Creating timelapse animations
-- Practical workflows for time series analysis
+By the end of this lecture, you will be able to:
+* Explain the fundamentals of the Google Earth Engine platform, including its data types and cloud-based capabilities
+* Set up and configure the geemap library for conducting geospatial analyses in the cloud
+* Perform essential geospatial operations, including filtering, visualizing, and exporting data from Earth Engine
+* Access and manipulate both raster and vector data using Earth Engine
+* Create timelapse animations from satellite imagery
+* Create interactive charts from Earth Engine data
 
 ### Prerequisites
 
-To get started with `geemap` and the Google Earth Engine (GEE) Python API, follow these steps:
+Before beginning with geemap and Google Earth Engine, ensure the following steps are completed:
 
 - **Register for a Google Earth Engine account**: Go to [https://code.earthengine.google.com/register](https://code.earthengine.google.com/register) to sign up for a GEE account. After registering, you will need to set up a Google Cloud Project and enable the Earth Engine API by following the instructions [here](https://docs.google.com/document/d/1ZGSmrNm6_baqd8CHt33kIBWOlvkh-HLr46bODgJN1h0/edit?usp=sharing). GEE is free for [noncommercial and research use](https://earthengine.google.com/noncommercial).
 
@@ -56,9 +45,9 @@ To get started with `geemap` and the Google Earth Engine (GEE) Python API, follo
 
 Earth Engine is free for [noncommercial and research use](https://earthengine.google.com/noncommercial). Nonprofit organizations, research institutions, educators, Indigenous governments, and government researchers can continue using Earth Engine for free, as they have for more than a decade. However, [commercial users](https://earthengine.google.com/commercial) may require a paid license.
 
-### Geemap Installation
+### Installing Geemap
 
-The geema` package, which simplifies working with GEE in Python, is pre-installed in Google Colab. However, some optional dependencies might need installation. To install the latest version along with dependencies, uncomment the following code block and run it:
+The geemap package simplifies the use of Google Earth Engine in Python, offering an intuitive API for visualization and analysis in Jupyter notebooks. In Google Colab, geemap is pre-installed, but you may need to install additional dependencies for certain features. To install the latest version with optional dependencies, use the following command:
 
 ```{code-cell} ipython3
 # %pip install -U "geemap[workshop]"
@@ -66,7 +55,7 @@ The geema` package, which simplifies working with GEE in Python, is pre-installe
 
 ### Import Libraries
 
-To start, import the necessary libraries for working with Google Earth Engine (GEE) and `geemap`.
+To start, import the necessary libraries for working with Google Earth Engine (GEE) and geemap.
 
 ```{code-cell} ipython3
 import ee
@@ -75,10 +64,16 @@ import geemap
 
 ### Authenticate and Initialize Earth Engine
 
-To authenticate and initialize your Earth Engine environment, you’ll need to create a [Google Cloud Project](https://console.cloud.google.com/projectcreate) and enable the [Earth Engine API](https://console.cloud.google.com/apis/api/earthengine.googleapis.com) for the project. You can find detailed setup instructions [here](https://book.geemap.org/chapters/01_introduction.html#earth-engine-authentication).
+To authenticate and initialize your Earth Engine environment, you’ll need to create a Google Cloud Project and enable the [Earth Engine API](https://console.cloud.google.com/apis/api/earthengine.googleapis.com) for the project if you have not done so already. You can find detailed setup instructions [here](https://developers.google.com/earth-engine/guides/access#a-role-in-a-cloud-project).
 
 ```{code-cell} ipython3
 geemap.ee_initialize()
+```
+
+Running the code above will prompt you to authenticate your Earth Engine account. Follow the instructions to complete the authentication process on Colab. To avoid this step in the future, you can set up a Colab secret with the name `EARTHENGINE_TOKEN` and your Earth Engine token as the value, which can be obtained by running `geemap.get_ee_token()`.
+
+```{code-cell} ipython3
+# geemap.get_ee_token()
 ```
 
 ### Creating Interactive Maps
@@ -104,14 +99,14 @@ To customize the map’s display, you can set various keyword arguments, such as
   To center the map on the contiguous United States, use:
 
 ```{code-cell} ipython3
-m = geemap.Map(center=[40, -100], zoom=4)
+m = geemap.Map(center=[40, -100], zoom=4, height="600px")
 m
 ```
 
 **Map of the state of Tennessee**
 
 ```{code-cell} ipython3
-m = geemap.Map(center=[35.746512, -86.209818], zoom=7)
+m = geemap.Map(center=[35.746512, -86.209818], zoom=8)
 m
 ```
 
@@ -165,23 +160,15 @@ len(geemap.basemaps)
 basemaps[:10]
 ```
 
-Additionally, `geemap` includes a basemap GUI that lets you switch basemaps interactively.
-
-```{code-cell} ipython3
-m = geemap.Map()
-m.add_basemap_widget()
-m
-```
-
 ### Google Basemaps
 
-Due to licensing restrictions, Google basemaps are not included in geemap by default ([source](https://github.com/gee-community/geemap/pull/1681#issuecomment-1707109740)). However, users can add Google basemaps manually at their own discretion using the following URLs:
+Due to licensing restrictions, Google basemaps are not included in geemap by default. However, users can add Google basemaps manually at their own discretion using the following URLs:
 
 ```text
-ROADMAP:  https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}
-SATELLITE: https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}
-TERRAIN: https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}
-HYBRID: https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}
+    ROADMAP:  https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}
+    SATELLITE: https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}
+    TERRAIN: https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}
+    HYBRID: https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}
 ```
 
 For example, to add Google Satellite as a tile layer:
@@ -377,9 +364,6 @@ Earth Engine objects are server-side entities, meaning they are stored and proce
 - **Feature**: A Geometry with associated attributes, used to add descriptive data to vector shapes.
 - **FeatureCollection**: A collection of Features, similar to a shapefile with attribute data.
 
-![Earth Engine Image](https://i.imgur.com/XzsxUgD.jpg)
-![Earth Engine FeatureCollection](https://i.imgur.com/165CykW.jpg)
-
 ## Earth Engine Raster Data
 
 ### Image
@@ -420,7 +404,7 @@ An **ImageCollection** represents a sequence of images, often used for temporal 
 To load an ImageCollection, such as the Sentinel-2 surface reflectance collection:
 
 ```{code-cell} ipython3
-collection = ee.ImageCollection("COPERNICUS/S2_SR")
+collection = ee.ImageCollection("COPERNICUS/S2_SR_HARMONIZED")
 ```
 
 #### Filtering Image Collections
@@ -493,7 +477,7 @@ The [Earth Engine Data Catalog](https://developers.google.com/earth-engine/datas
 ```{code-cell} ipython3
 m = geemap.Map()
 fc = ee.FeatureCollection("TIGER/2016/Roads")
-m.set_center(-86.894547, 41.718934, 12)
+m.set_center(-83.909463, 35.959111, 12)
 m.add_layer(fc, {}, "Census roads")
 m
 ```
@@ -799,8 +783,8 @@ Set up a 2x2 grid of linked maps showing Sentinel-2 imagery in different band co
 
 ```{code-cell} ipython3
 image = (
-    ee.ImageCollection("COPERNICUS/S2")
-    .filterDate("2023-07-01", "2023-09-01")
+    ee.ImageCollection("COPERNICUS/S2_SR_HARMONIZED")
+    .filterDate("2024-07-01", "2024-10-01")
     .filter(ee.Filter.lt("CLOUDY_PIXEL_PERCENTAGE", 5))
     .map(lambda img: img.divide(10000))
     .median()
@@ -824,7 +808,7 @@ geemap.linked_maps(
     rows=2,
     cols=2,
     height="300px",
-    center=[41.718934, -86.894547],
+    center=[35.959111, -83.909463],
     zoom=12,
     ee_objects=[image],
     vis_params=vis_params,
@@ -911,8 +895,8 @@ Add a time slider to visualize Sentinel-2 imagery with specific bands and cloud 
 m = geemap.Map()
 
 collection = (
-    ee.ImageCollection("COPERNICUS/S2_SR")
-    .filterBounds(ee.Geometry.Point([-86.894547, 41.718934]))
+    ee.ImageCollection("COPERNICUS/S2_SR_HARMONIZED")
+    .filterBounds(ee.Geometry.Point([-83.909463, 35.959111]))
     .filterMetadata("CLOUDY_PIXEL_PERCENTAGE", "less_than", 10)
     .filter(ee.Filter.calendarRange(6, 8, "month"))
 )
@@ -920,7 +904,7 @@ collection = (
 vis_params = {"min": 0, "max": 4000, "bands": ["B8", "B4", "B3"]}
 
 m.add_time_slider(collection, vis_params)
-m.set_center(-86.894547, 41.718934, 12)
+m.set_center(-83.909463, 35.959111, 12)
 m
 ```
 
