@@ -3045,7 +3045,6 @@ Generate a timelapse animation using Landsat data to show changes over time for 
 
 ```
 
-
 ## Summary
 
 This lecture introduced **geemap**, a Python library designed to streamline geospatial data visualization and analysis in the **Google Earth Engine (GEE)** environment. Geemap enables users to perform GIS and remote sensing tasks with GEE data interactively in Python notebooks. Key topics included setting up GEE with geemap, loading and manipulating data from the Earth Engine Data Catalog, and processing vector and raster data. Techniques for creating animated timelapses using data from Landsat, Sentinel, MODIS, and GOES illustrated dynamic landscape monitoring, while interactive charting tools, like scatter plots and time series, supported data exploration and trend analysis. The lecture also covered exporting images and features in multiple formats, such as GeoTIFF, Shapefile, and CSV, to facilitate data sharing. Overall, this session provided a foundational understanding of geemap's capabilities, enabling users to efficiently visualize, analyze, and derive insights from Earth observation data in a Python setting.
