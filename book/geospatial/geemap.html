@@ -683,7 +683,16 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">17.17. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">17.17. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-visualizing-dem-data">17.17.1. Exercise 1: Visualizing DEM Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-cloud-free-composite-with-sentinel-2-or-landsat">17.17.2. Exercise 2: Cloud-Free Composite with Sentinel-2 or Landsat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-visualizing-naip-imagery">17.17.3. Exercise 3: Visualizing NAIP Imagery</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-visualizing-watershed-boundaries">17.17.4. Exercise 4: Visualizing Watershed Boundaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-land-cover-change">17.17.5. Exercise 5: Visualizing Land Cover Change</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-creating-a-landsat-timelapse-animation">17.17.6. Exercise 6: Creating a Landsat Timelapse Animation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">17.18. Summary</a></li>
 </ul>
             </nav>
         </div>
@@ -897,6 +906,14 @@ document.write(`
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://mt1.google.com/vt/lyrs=y&amp;x=</span><span class="si">{x}</span><span class="s2">&amp;y=</span><span class="si">{y}</span><span class="s2">&amp;z=</span><span class="si">{z}</span><span class="s2">&quot;</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_tile_layer</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Google Satellite&quot;</span><span class="p">,</span> <span class="n">attribution</span><span class="o">=</span><span class="s2">&quot;Google&quot;</span><span class="p">)</span>
 <span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also add text to the map using the <code class="docutils literal notranslate"><span class="pre">add_text</span></code> method. The text will be displayed at the specified location on the map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">add_text</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello from Earth Engine&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s2">&quot;bottomright&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1324,6 +1341,25 @@ document.write(`
 <span class="n">fc</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;TIGER/2018/States&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="p">{},</span> <span class="s2">&quot;Southeastern U.S.&quot;</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A FeatureCollection can be used to clip an image. The <code class="docutils literal notranslate"><span class="pre">clipToCollection</span></code> method clips an image to the geometry of a feature collection. For example, to clip a Landsat image to the boundary of France:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">),</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">landsat7</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;LANDSAT/LE7_TOA_5YEAR/1999_2003&quot;</span><span class="p">)</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;FAO/GAUL_SIMPLIFIED_500m/2015/level0&quot;</span><span class="p">)</span>
+<span class="n">fc</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;ADM0_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;Germany&quot;</span><span class="p">))</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">landsat7</span><span class="o">.</span><span class="n">clipToCollection</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span>
+    <span class="n">image</span><span class="p">,</span>
+    <span class="p">{</span><span class="s2">&quot;bands&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">],</span> <span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">},</span>
+    <span class="s2">&quot;Landsat 7&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">center_object</span><span class="p">(</span><span class="n">fc</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">m</span>
 </pre></div>
 </div>
 </div>
@@ -4291,8 +4327,42 @@ document.write(`
 </section>
 </section>
 </section>
+<section id="exercises">
+<h2><span class="section-number">17.17. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="exercise-1-visualizing-dem-data">
+<h3><span class="section-number">17.17.1. </span>Exercise 1: Visualizing DEM Data<a class="headerlink" href="#exercise-1-visualizing-dem-data" title="Link to this heading">#</a></h3>
+<p>Find a DEM dataset in the <a class="reference external" href="https://developers.google.com/earth-engine/datasets">Earth Engine Data Catalog</a> and clip it to a specific area (e.g., your country, state, or city). Display it with an appropriate color palette. For example, the sample map below shows the DEM of the state of Colorado.</p>
+<p><img alt="" src="https://i.imgur.com/OLeSt7n.png" /></p>
+</section>
+<section id="exercise-2-cloud-free-composite-with-sentinel-2-or-landsat">
+<h3><span class="section-number">17.17.2. </span>Exercise 2: Cloud-Free Composite with Sentinel-2 or Landsat<a class="headerlink" href="#exercise-2-cloud-free-composite-with-sentinel-2-or-landsat" title="Link to this heading">#</a></h3>
+<p>Use Sentinel-2 or Landsat-9 data to create a cloud-free composite for a specific year in a region of your choice.</p>
+<p>Use <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED">Sentinel-2</a> or <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/landsat-9">Landsat-9 data</a> data to create a cloud-free composite for a specific year in a region of your choice. Display the imagery on the map with a proper band combination. For example, the sample map below shows a cloud-free false-color composite of Sentinel-2 imagery of the year 2021 for the state of Colorado.</p>
+<p><img alt="" src="https://i.imgur.com/xkxpkS1.png" /></p>
+</section>
+<section id="exercise-3-visualizing-naip-imagery">
+<h3><span class="section-number">17.17.3. </span>Exercise 3: Visualizing NAIP Imagery<a class="headerlink" href="#exercise-3-visualizing-naip-imagery" title="Link to this heading">#</a></h3>
+<p>Use <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/USDA_NAIP_DOQQ">NAIP</a> imagery to create a cloud-free imagery for a U.S. county of your choice. For example, the sample map below shows a cloud-free true-color composite of NAIP imagery for Knox County, Tennessee. Keep in mind that there might be some counties with the same name in different states, so make sure to select the correct county for the selected state.</p>
+<p><img alt="" src="https://i.imgur.com/iZSGqGS.png" /></p>
+</section>
+<section id="exercise-4-visualizing-watershed-boundaries">
+<h3><span class="section-number">17.17.4. </span>Exercise 4: Visualizing Watershed Boundaries<a class="headerlink" href="#exercise-4-visualizing-watershed-boundaries" title="Link to this heading">#</a></h3>
+<p>Visualize the <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/USGS_WBD_2017_HUC04">USGS Watershed Boundary Dataset</a> with outline color only, no fill color.</p>
+<p><img alt="" src="https://i.imgur.com/PLlNFq3.png" /></p>
+</section>
+<section id="exercise-5-visualizing-land-cover-change">
+<h3><span class="section-number">17.17.5. </span>Exercise 5: Visualizing Land Cover Change<a class="headerlink" href="#exercise-5-visualizing-land-cover-change" title="Link to this heading">#</a></h3>
+<p>Use the <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/USGS_NLCD_RELEASES_2019_REL_NLCD">USGS National Land Cover Database</a> and <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/TIGER_2018_States">US Census States</a> to create a split-panel map for visualizing land cover change (2001-2019) for a US state of your choice. Make sure you add the NLCD legend to the map.</p>
+<p><img alt="" src="https://i.imgur.com/Au7Q5Ln.png" /></p>
+</section>
+<section id="exercise-6-creating-a-landsat-timelapse-animation">
+<h3><span class="section-number">17.17.6. </span>Exercise 6: Creating a Landsat Timelapse Animation<a class="headerlink" href="#exercise-6-creating-a-landsat-timelapse-animation" title="Link to this heading">#</a></h3>
+<p>Generate a timelapse animation using Landsat data to show changes over time for a selected region.</p>
+<p><img alt="Spain" src="https://github.com/user-attachments/assets/f12839c0-1c30-404d-b0ab-0fa12ce12d24" /></p>
+</section>
+</section>
 <section id="summary">
-<h2><span class="section-number">17.17. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.18. </span>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>This lecture introduced <strong>geemap</strong>, a Python library designed to streamline geospatial data visualization and analysis in the <strong>Google Earth Engine (GEE)</strong> environment. Geemap enables users to perform GIS and remote sensing tasks with GEE data interactively in Python notebooks. Key topics included setting up GEE with geemap, loading and manipulating data from the Earth Engine Data Catalog, and processing vector and raster data. Techniques for creating animated timelapses using data from Landsat, Sentinel, MODIS, and GOES illustrated dynamic landscape monitoring, while interactive charting tools, like scatter plots and time series, supported data exploration and trend analysis. The lecture also covered exporting images and features in multiple formats, such as GeoTIFF, Shapefile, and CSV, to facilitate data sharing. Overall, this session provided a foundational understanding of geemap’s capabilities, enabling users to efficiently visualize, analyze, and derive insights from Earth observation data in a Python setting.</p>
 </section>
 </section>
@@ -4536,7 +4606,16 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">17.17. Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">17.17. Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-visualizing-dem-data">17.17.1. Exercise 1: Visualizing DEM Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-cloud-free-composite-with-sentinel-2-or-landsat">17.17.2. Exercise 2: Cloud-Free Composite with Sentinel-2 or Landsat</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-visualizing-naip-imagery">17.17.3. Exercise 3: Visualizing NAIP Imagery</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-visualizing-watershed-boundaries">17.17.4. Exercise 4: Visualizing Watershed Boundaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-land-cover-change">17.17.5. Exercise 5: Visualizing Land Cover Change</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-creating-a-landsat-timelapse-animation">17.17.6. Exercise 6: Creating a Landsat Timelapse Animation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">17.18. Summary</a></li>
 </ul>
   </nav></div>
 
