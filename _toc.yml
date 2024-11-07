@@ -63,3 +63,4 @@ parts:
       - file: book/labs/lab_06
       - file: book/labs/lab_07
       - file: book/labs/lab_08
+      - file: book/labs/lab_09
