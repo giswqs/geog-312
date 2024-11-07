@@ -47,7 +47,7 @@ Find a DEM dataset in the [Earth Engine Data Catalog](https://developers.google.
 
 Use Sentinel-2 or Landsat-9 data to create a cloud-free composite for a specific year in a region of your choice.
 
-Use [Sentinel-2](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED) or [Landsat-9 data](https://developers.google.com/earth-engine/datasets/catalog/landsat-9) data to create a cloud-free composite for a specific year in a region of your choice. Display the imagery on the map with a proper band combination. For example, the sample map below shows a cloud-free false-color composite of Sentinel-2 imagery of the year 2021 for the state of Colorado. 
+Use [Sentinel-2](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED) or [Landsat-9 data](https://developers.google.com/earth-engine/datasets/catalog/landsat-9) data to create a cloud-free composite for a specific year in a region of your choice. Display the imagery on the map with a proper band combination. For example, the sample map below shows a cloud-free false-color composite of Sentinel-2 imagery of the year 2021 for the state of Colorado.
 
 ![](https://i.imgur.com/xkxpkS1.png)
 

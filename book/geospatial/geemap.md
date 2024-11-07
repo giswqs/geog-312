@@ -17,7 +17,7 @@ kernelspec:
 
 ## Overview
 
-This lecture introduces cloud-based geospatial analysis using the [Google Earth Engine](https://earthengine.google.com) (GEE) API in combination with the [geemap](https://geemap.org) Python package. We will cover core concepts of Earth Engine, visualization techniques, and practical workflows to perform analyses within a Jupyter environment. 
+This lecture introduces cloud-based geospatial analysis using the [Google Earth Engine](https://earthengine.google.com) (GEE) API in combination with the [geemap](https://geemap.org) Python package. We will cover core concepts of Earth Engine, visualization techniques, and practical workflows to perform analyses within a Jupyter environment.
 
 ## Learning Objectives
 
@@ -94,7 +94,7 @@ To customize the map’s display, you can set various keyword arguments, such as
 
 #### Example Maps
 
-**Map of the Contiguous United States**  
+**Map of the Contiguous United States**
 
   To center the map on the contiguous United States, use:
 
@@ -320,7 +320,7 @@ The [Earth Engine Data Catalog](https://developers.google.com/earth-engine/datas
 
 To browse datasets directly on the Earth Engine website:
 
-- View the full catalog: https://developers.google.com/earth-engine/datasets/catalog  
+- View the full catalog: https://developers.google.com/earth-engine/datasets/catalog
 - Search by tags: https://developers.google.com/earth-engine/datasets/tags
 
 ### Searching Datasets Within Geemap
@@ -2997,7 +2997,7 @@ Find a DEM dataset in the [Earth Engine Data Catalog](https://developers.google.
 
 Use Sentinel-2 or Landsat-9 data to create a cloud-free composite for a specific year in a region of your choice.
 
-Use [Sentinel-2](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED) or [Landsat-9 data](https://developers.google.com/earth-engine/datasets/catalog/landsat-9) data to create a cloud-free composite for a specific year in a region of your choice. Display the imagery on the map with a proper band combination. For example, the sample map below shows a cloud-free false-color composite of Sentinel-2 imagery of the year 2021 for the state of Colorado. 
+Use [Sentinel-2](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED) or [Landsat-9 data](https://developers.google.com/earth-engine/datasets/catalog/landsat-9) data to create a cloud-free composite for a specific year in a region of your choice. Display the imagery on the map with a proper band combination. For example, the sample map below shows a cloud-free false-color composite of Sentinel-2 imagery of the year 2021 for the state of Colorado.
 
 ![](https://i.imgur.com/xkxpkS1.png)
 
