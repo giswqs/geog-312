@@ -17,7 +17,7 @@ kernelspec:
 
 ## Overview
 
-This lecture introduces cloud-based geospatial analysis using the [Google Earth Engine](https://earthengine.google.com) (GEE) API in combination with the [geemap](https://geemap.org) Python package. We will cover core concepts of Earth Engine, visualization techniques, and practical workflows to perform analyses within a Jupyter environment.
+This lecture introduces cloud-based geospatial analysis using the [Google Earth Engine](https://earthengine.google.com) (GEE) API in combination with the [geemap](https://geemap.org) Python package. We will cover core concepts of Earth Engine, visualization techniques, and practical workflows to perform analyses within a Jupyter environment. 
 
 ## Learning Objectives
 
@@ -94,7 +94,7 @@ To customize the map’s display, you can set various keyword arguments, such as
 
 #### Example Maps
 
-**Map of the Contiguous United States**
+**Map of the Contiguous United States**  
 
   To center the map on the contiguous United States, use:
 
@@ -205,14 +205,14 @@ The layer manager provides control over layer visibility and transparency. It en
 ```{code-cell} ipython3
 m = geemap.Map(center=(40, -100), zoom=4)
 dem = ee.Image("USGS/SRTMGL1_003")
-countries = ee.FeatureCollection("TIGER/2018/States")
+states = ee.FeatureCollection("TIGER/2018/States")
 vis_params = {
     "min": 0,
     "max": 4000,
     "palette": ["006633", "E5FFCC", "662A00", "D8D8D8", "F5F5F5"],
 }
 m.add_layer(dem, vis_params, "SRTM DEM")
-m.add_layer(countries, {}, "US States")
+m.add_layer(states, {}, "US States")
 m.add("layer_manager")
 m
 ```
@@ -225,7 +225,7 @@ The inspector tool allows you to click on the map to query Earth Engine data at 
 m = geemap.Map(center=(40, -100), zoom=4)
 dem = ee.Image("USGS/SRTMGL1_003")
 landsat7 = ee.Image("LANDSAT/LE7_TOA_5YEAR/1999_2003")
-countries = ee.FeatureCollection("TIGER/2018/States")
+states = ee.FeatureCollection("TIGER/2018/States")
 vis_params = {
     "min": 0,
     "max": 4000,
@@ -237,7 +237,7 @@ m.add_layer(
     {"bands": ["B4", "B3", "B2"], "min": 20, "max": 200, "gamma": 2.0},
     "Landsat 7",
 )
-m.add_layer(countries, {}, "US States")
+m.add_layer(states, {}, "US States")
 m.add("inspector")
 m
 ```
@@ -257,6 +257,7 @@ vis_params = {
     "palette": ["006633", "E5FFCC", "662A00", "D8D8D8", "F5F5F5"],
 }
 m.add_layer(dem, vis_params, "SRTM DEM")
+m.add("layer_editor", layer_dict=m.ee_layers["SRTM DEM"])
 m
 ```
 
@@ -270,6 +271,7 @@ m.add_layer(
     {"bands": ["B4", "B3", "B2"], "min": 20, "max": 200, "gamma": 2.0},
     "Landsat 7",
 )
+m.add("layer_editor", layer_dict=m.ee_layers["Landsat 7"])
 m
 ```
 
@@ -277,8 +279,9 @@ m
 
 ```{code-cell} ipython3
 m = geemap.Map(center=(40, -100), zoom=4)
-countries = ee.FeatureCollection("TIGER/2018/States")
-m.add_layer(countries, {}, "US States")
+states = ee.FeatureCollection("TIGER/2018/States")
+m.add_layer(states, {}, "US States")
+m.add("layer_editor", layer_dict=m.ee_layers["US States"])
 m
 ```
 
@@ -317,7 +320,7 @@ The [Earth Engine Data Catalog](https://developers.google.com/earth-engine/datas
 
 To browse datasets directly on the Earth Engine website:
 
-- View the full catalog: https://developers.google.com/earth-engine/datasets/catalog
+- View the full catalog: https://developers.google.com/earth-engine/datasets/catalog  
 - Search by tags: https://developers.google.com/earth-engine/datasets/tags
 
 ### Searching Datasets Within Geemap
@@ -491,8 +494,8 @@ The `filter` method allows you to filter a FeatureCollection based on certain at
 
 ```{code-cell} ipython3
 m = geemap.Map()
-countries = ee.FeatureCollection("TIGER/2018/States")
-fc = countries.filter(ee.Filter.eq("NAME", "Tennessee"))
+states = ee.FeatureCollection("TIGER/2018/States")
+fc = states.filter(ee.Filter.eq("NAME", "Tennessee"))
 m.add_layer(fc, {}, "Tennessee")
 m.center_object(fc, 7)
 m
@@ -509,6 +512,25 @@ You can also convert a FeatureCollection to a Pandas DataFrame for easier analys
 
 ```{code-cell} ipython3
 geemap.ee_to_df(fc)
+```
+
+```{code-cell} ipython3
+m = geemap.Map()
+states = ee.FeatureCollection("TIGER/2018/States")
+fc = states.filter(ee.Filter.inList("NAME", ["California", "Oregon", "Washington"]))
+m.add_layer(fc, {}, "West Coast")
+m.center_object(fc, 5)
+m
+```
+
+```{code-cell} ipython3
+region = m.user_roi
+if region is None:
+    region = ee.Geometry.BBox(-88.40, 29.88, -77.90, 35.39)
+
+fc = ee.FeatureCollection("TIGER/2018/States").filterBounds(region)
+m.add_layer(fc, {}, "Southeastern U.S.")
+m.center_object(fc, 6)
 ```
 
 A FeatureCollection can be used to clip an image. The `clipToCollection` method clips an image to the geometry of a feature collection. For example, to clip a Landsat image to the boundary of France:
@@ -528,33 +550,14 @@ m.center_object(fc, 6)
 m
 ```
 
-```{code-cell} ipython3
-m = geemap.Map()
-countries = ee.FeatureCollection("TIGER/2018/States")
-fc = countries.filter(ee.Filter.inList("NAME", ["California", "Oregon", "Washington"]))
-m.add_layer(fc, {}, "West Coast")
-m.center_object(fc, 5)
-m
-```
-
-```{code-cell} ipython3
-region = m.user_roi
-if region is None:
-    region = ee.Geometry.BBox(-88.40, 29.88, -77.90, 35.39)
-
-fc = ee.FeatureCollection("TIGER/2018/States").filterBounds(region)
-m.add_layer(fc, {}, "Southeastern U.S.")
-m.center_object(fc, 6)
-```
-
 ### Visualizing Feature Collections
 
 Once loaded, feature collections can be visualized on an interactive map. For example, visualizing U.S. state boundaries from the census data:
 
 ```{code-cell} ipython3
 m = geemap.Map(center=[40, -100], zoom=4)
-countries = ee.FeatureCollection("TIGER/2018/States")
-m.add_layer(countries, {}, "US States")
+states = ee.FeatureCollection("TIGER/2018/States")
+m.add_layer(states, {}, "US States")
 m
 ```
 
@@ -562,9 +565,9 @@ Feature collections can also be styled with additional parameters. To apply a cu
 
 ```{code-cell} ipython3
 m = geemap.Map(center=[40, -100], zoom=4)
-countries = ee.FeatureCollection("TIGER/2018/States")
+states = ee.FeatureCollection("TIGER/2018/States")
 style = {"color": "0000ffff", "width": 2, "lineType": "solid", "fillColor": "FF000080"}
-m.add_layer(countries.style(**style), {}, "US States")
+m.add_layer(states.style(**style), {}, "US States")
 m
 ```
 
@@ -572,7 +575,7 @@ Using `add_styled_vector`, you can apply a color palette to style different feat
 
 ```{code-cell} ipython3
 m = geemap.Map(center=[40, -100], zoom=4)
-countries = ee.FeatureCollection("TIGER/2018/States")
+states = ee.FeatureCollection("TIGER/2018/States")
 vis_params = {
     "color": "000000",
     "colorOpacity": 1,
@@ -584,7 +587,7 @@ vis_params = {
 }
 palette = ["006633", "E5FFCC", "662A00", "D8D8D8", "F5F5F5"]
 m.add_styled_vector(
-    countries, column="NAME", palette=palette, layer_name="Styled vector", **vis_params
+    states, column="NAME", palette=palette, layer_name="Styled vector", **vis_params
 )
 m
 ```
@@ -985,8 +988,8 @@ Filter U.S. state data to select Tennessee and save it as a GeoJSON file, which 
 
 ```{code-cell} ipython3
 m = geemap.Map()
-countries = ee.FeatureCollection("TIGER/2018/States")
-fc = countries.filter(ee.Filter.eq("NAME", "Tennessee"))
+states = ee.FeatureCollection("TIGER/2018/States")
+fc = states.filter(ee.Filter.eq("NAME", "Tennessee"))
 m.add_layer(fc, {}, "Tennessee")
 m.center_object(fc, 7)
 m
@@ -1166,16 +1169,16 @@ landsat_vis = {"bands": ["B4", "B3", "B2"], "gamma": 1.4}
 m.add_layer(landsat, landsat_vis, "Landsat", False)
 
 # Add US Census States
-countries = ee.FeatureCollection("TIGER/2018/States")
+states = ee.FeatureCollection("TIGER/2018/States")
 style = {"fillColor": "00000000"}
-m.add_layer(countries.style(**style), {}, "US States")
+m.add_layer(states.style(**style), {}, "US States")
 m
 ```
 
 ```{code-cell} ipython3
 out_dem_stats = "dem_stats.csv"
 geemap.zonal_stats(
-    dem, countries, out_dem_stats, statistics_type="MEAN", scale=1000, return_fc=False
+    dem, states, out_dem_stats, statistics_type="MEAN", scale=1000, return_fc=False
 )
 ```
 
@@ -1183,7 +1186,7 @@ geemap.zonal_stats(
 out_landsat_stats = "landsat_stats.csv"
 geemap.zonal_stats(
     landsat,
-    countries,
+    states,
     out_landsat_stats,
     statistics_type="MEAN",
     scale=1000,
@@ -1204,9 +1207,9 @@ landcover = dataset.select("landcover")
 m.add_layer(landcover, {}, "NLCD 2019")
 
 # Add US census states
-countries = ee.FeatureCollection("TIGER/2018/States")
+states = ee.FeatureCollection("TIGER/2018/States")
 style = {"fillColor": "00000000"}
-m.add_layer(countries.style(**style), {}, "US States")
+m.add_layer(states.style(**style), {}, "US States")
 
 # Add NLCD legend
 m.add_legend(title="NLCD Land Cover", builtin_legend="NLCD")
@@ -1218,7 +1221,7 @@ nlcd_stats = "nlcd_stats.csv"
 
 geemap.zonal_stats_by_group(
     landcover,
-    countries,
+    states,
     nlcd_stats,
     statistics_type="SUM",
     denominator=1e6,
@@ -1231,7 +1234,7 @@ nlcd_stats = "nlcd_stats_pct.csv"
 
 geemap.zonal_stats_by_group(
     landcover,
-    countries,
+    states,
     nlcd_stats,
     statistics_type="PERCENTAGE",
     denominator=1e6,
@@ -1697,8 +1700,8 @@ Feature collections, such as state boundaries, are exportable in multiple format
 
 ```{code-cell} ipython3
 m = geemap.Map()
-countries = ee.FeatureCollection("TIGER/2018/States")
-fc = countries.filter(ee.Filter.eq("NAME", "Alaska"))
+states = ee.FeatureCollection("TIGER/2018/States")
+fc = states.filter(ee.Filter.eq("NAME", "Alaska"))
 m.add_layer(fc, {}, "Alaska")
 m.center_object(fc, 4)
 m
@@ -2994,7 +2997,7 @@ Find a DEM dataset in the [Earth Engine Data Catalog](https://developers.google.
 
 Use Sentinel-2 or Landsat-9 data to create a cloud-free composite for a specific year in a region of your choice.
 
-Use [Sentinel-2](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED) or [Landsat-9 data](https://developers.google.com/earth-engine/datasets/catalog/landsat-9) data to create a cloud-free composite for a specific year in a region of your choice. Display the imagery on the map with a proper band combination. For example, the sample map below shows a cloud-free false-color composite of Sentinel-2 imagery of the year 2021 for the state of Colorado.
+Use [Sentinel-2](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED) or [Landsat-9 data](https://developers.google.com/earth-engine/datasets/catalog/landsat-9) data to create a cloud-free composite for a specific year in a region of your choice. Display the imagery on the map with a proper band combination. For example, the sample map below shows a cloud-free false-color composite of Sentinel-2 imagery of the year 2021 for the state of Colorado. 
 
 ![](https://i.imgur.com/xkxpkS1.png)
 
@@ -3042,7 +3045,6 @@ Generate a timelapse animation using Landsat data to show changes over time for 
 
 ```
 
-+++
 
 ## Summary
 
