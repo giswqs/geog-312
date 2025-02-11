@@ -69,10 +69,14 @@ Make sure you have the following libraries installed:
 
 ## Exercise 4: Calculating NDWI (Band Math)
 
-1. Open the multispectral image and extract the Green and Near-Infrared (NIR) bands.
+1. Open the multispectral image and extract the Green and Near-Infrared (NIR) bands. This multispectral image has the following band order:
+   - Band 2: Blue
+   - Band 3: Green
+   - Band 4: Red
+   - Band 5: NIR
 2. Compute the Normalized Difference Water Index ([NDWI](https://en.wikipedia.org/wiki/Normalized_difference_water_index)) using the formula:
 
-    NDWI= (Green - NIR) / (Green + NIR)
+   NDWI= (Green - NIR) / (Green + NIR)
 
 3. Visualize the NDWI result using a water-friendly colormap (e.g., cmap='Blues') to highlight water bodies.
 4. Save the resulting NDWI image as a new raster file named ndwi.tif.
