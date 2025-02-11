@@ -586,7 +586,14 @@ document.write(`
 <section id="exercise-4-calculating-ndwi-band-math">
 <h2>Exercise 4: Calculating NDWI (Band Math)<a class="headerlink" href="#exercise-4-calculating-ndwi-band-math" title="Link to this heading">#</a></h2>
 <ol class="arabic">
-<li><p>Open the multispectral image and extract the Green and Near-Infrared (NIR) bands.</p></li>
+<li><p>Open the multispectral image and extract the Green and Near-Infrared (NIR) bands. This multispectral image has the following band order:</p>
+<ul class="simple">
+<li><p>Band 2: Blue</p></li>
+<li><p>Band 3: Green</p></li>
+<li><p>Band 4: Red</p></li>
+<li><p>Band 5: NIR</p></li>
+</ul>
+</li>
 <li><p>Compute the Normalized Difference Water Index (<a class="reference external" href="https://en.wikipedia.org/wiki/Normalized_difference_water_index">NDWI</a>) using the formula:</p>
 <p>NDWI= (Green - NIR) / (Green + NIR)</p>
 </li>
