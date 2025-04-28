@@ -1,0 +1,188 @@
+Traceback (most recent call last):
+  File "/home/runner/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/.local/share/uv/python/cpython-3.12.6-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/home/runner/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+url = "https://open.gishub.org/data/duckdb/cities.parquet"
+filename = "cities.parquet"
+leafmap.download_file(url, filename, quiet=True)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mgaierror[0m                                  Traceback (most recent call last)
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/urllib3/connection.py:174[0m, in [0;36mHTTPConnection._new_conn[0;34m(self)[0m
+[1;32m    173[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 174[0m     conn [38;5;241m=[39m [43mconnection[49m[38;5;241;43m.[39;49m[43mcreate_connection[49m[43m([49m
+[1;32m    175[0m [43m        [49m[43m([49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_dns_host[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mport[49m[43m)[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mtimeout[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mextra_kw[49m
+[1;32m    176[0m [43m    [49m[43m)[49m
+[1;32m    178[0m [38;5;28;01mexcept[39;00m SocketTimeout:
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/urllib3/util/connection.py:72[0m, in [0;36mcreate_connection[0;34m(address, timeout, source_address, socket_options)[0m
+[1;32m     68[0m     [38;5;28;01mreturn[39;00m six[38;5;241m.[39mraise_from(
+[1;32m     69[0m         LocationParseError([38;5;124mu[39m[38;5;124m"[39m[38;5;124m'[39m[38;5;132;01m%s[39;00m[38;5;124m'[39m[38;5;124m, label empty or too long[39m[38;5;124m"[39m [38;5;241m%[39m host), [38;5;28;01mNone[39;00m
+[1;32m     70[0m     )
+[0;32m---> 72[0m [38;5;28;01mfor[39;00m res [38;5;129;01min[39;00m [43msocket[49m[38;5;241;43m.[39;49m[43mgetaddrinfo[49m[43m([49m[43mhost[49m[43m,[49m[43m [49m[43mport[49m[43m,[49m[43m [49m[43mfamily[49m[43m,[49m[43m [49m[43msocket[49m[38;5;241;43m.[39;49m[43mSOCK_STREAM[49m[43m)[49m:
+[1;32m     73[0m     af, socktype, proto, canonname, sa [38;5;241m=[39m res
+
+File [0;32m~/.local/share/uv/python/cpython-3.12.6-linux-x86_64-gnu/lib/python3.12/socket.py:976[0m, in [0;36mgetaddrinfo[0;34m(host, port, family, type, proto, flags)[0m
+[1;32m    975[0m addrlist [38;5;241m=[39m []
+[0;32m--> 976[0m [38;5;28;01mfor[39;00m res [38;5;129;01min[39;00m [43m_socket[49m[38;5;241;43m.[39;49m[43mgetaddrinfo[49m[43m([49m[43mhost[49m[43m,[49m[43m [49m[43mport[49m[43m,[49m[43m [49m[43mfamily[49m[43m,[49m[43m [49m[38;5;28;43mtype[39;49m[43m,[49m[43m [49m[43mproto[49m[43m,[49m[43m [49m[43mflags[49m[43m)[49m:
+[1;32m    977[0m     af, socktype, proto, canonname, sa [38;5;241m=[39m res
+
+[0;31mgaierror[0m: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+[0;31mNewConnectionError[0m                        Traceback (most recent call last)
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:716[0m, in [0;36mHTTPConnectionPool.urlopen[0;34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)[0m
+[1;32m    715[0m [38;5;66;03m# Make the request on the httplib connection object.[39;00m
+[0;32m--> 716[0m httplib_response [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_make_request[49m[43m([49m
+[1;32m    717[0m [43m    [49m[43mconn[49m[43m,[49m
+[1;32m    718[0m [43m    [49m[43mmethod[49m[43m,[49m
+[1;32m    719[0m [43m    [49m[43murl[49m[43m,[49m
+[1;32m    720[0m [43m    [49m[43mtimeout[49m[38;5;241;43m=[39;49m[43mtimeout_obj[49m[43m,[49m
+[1;32m    721[0m [43m    [49m[43mbody[49m[38;5;241;43m=[39;49m[43mbody[49m[43m,[49m
+[1;32m    722[0m [43m    [49m[43mheaders[49m[38;5;241;43m=[39;49m[43mheaders[49m[43m,[49m
+[1;32m    723[0m [43m    [49m[43mchunked[49m[38;5;241;43m=[39;49m[43mchunked[49m[43m,[49m
+[1;32m    724[0m [43m[49m[43m)[49m
+[1;32m    726[0m [38;5;66;03m# If we're going to release the connection in ``finally:``, then[39;00m
+[1;32m    727[0m [38;5;66;03m# the response doesn't need to know about the connection. Otherwise[39;00m
+[1;32m    728[0m [38;5;66;03m# it will also try to release it and we'll have a double-release[39;00m
+[1;32m    729[0m [38;5;66;03m# mess.[39;00m
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:404[0m, in [0;36mHTTPConnectionPool._make_request[0;34m(self, conn, method, url, timeout, chunked, **httplib_request_kw)[0m
+[1;32m    403[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 404[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_validate_conn[49m[43m([49m[43mconn[49m[43m)[49m
+[1;32m    405[0m [38;5;28;01mexcept[39;00m (SocketTimeout, BaseSSLError) [38;5;28;01mas[39;00m e:
+[1;32m    406[0m     [38;5;66;03m# Py2 raises this as a BaseSSLError, Py3 raises it as socket timeout.[39;00m
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:1061[0m, in [0;36mHTTPSConnectionPool._validate_conn[0;34m(self, conn)[0m
+[1;32m   1060[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mgetattr[39m(conn, [38;5;124m"[39m[38;5;124msock[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m):  [38;5;66;03m# AppEngine might not have  `.sock`[39;00m
+[0;32m-> 1061[0m     [43mconn[49m[38;5;241;43m.[39;49m[43mconnect[49m[43m([49m[43m)[49m
+[1;32m   1063[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m conn[38;5;241m.[39mis_verified:
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/urllib3/connection.py:363[0m, in [0;36mHTTPSConnection.connect[0;34m(self)[0m
+[1;32m    361[0m [38;5;28;01mdef[39;00m [38;5;21mconnect[39m([38;5;28mself[39m):
+[1;32m    362[0m     [38;5;66;03m# Add certificate verification[39;00m
+[0;32m--> 363[0m     [38;5;28mself[39m[38;5;241m.[39msock [38;5;241m=[39m conn [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_new_conn[49m[43m([49m[43m)[49m
+[1;32m    364[0m     hostname [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mhost
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/urllib3/connection.py:186[0m, in [0;36mHTTPConnection._new_conn[0;34m(self)[0m
+[1;32m    185[0m [38;5;28;01mexcept[39;00m SocketError [38;5;28;01mas[39;00m e:
+[0;32m--> 186[0m     [38;5;28;01mraise[39;00m NewConnectionError(
+[1;32m    187[0m         [38;5;28mself[39m, [38;5;124m"[39m[38;5;124mFailed to establish a new connection: [39m[38;5;132;01m%s[39;00m[38;5;124m"[39m [38;5;241m%[39m e
+[1;32m    188[0m     )
+[1;32m    190[0m [38;5;28;01mreturn[39;00m conn
+
+[0;31mNewConnectionError[0m: <urllib3.connection.HTTPSConnection object at 0x7fe596e5d4f0>: Failed to establish a new connection: [Errno -2] Name or service not known
+
+During handling of the above exception, another exception occurred:
+
+[0;31mMaxRetryError[0m                             Traceback (most recent call last)
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/requests/adapters.py:667[0m, in [0;36mHTTPAdapter.send[0;34m(self, request, stream, timeout, verify, cert, proxies)[0m
+[1;32m    666[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 667[0m     resp [38;5;241m=[39m [43mconn[49m[38;5;241;43m.[39;49m[43murlopen[49m[43m([49m
+[1;32m    668[0m [43m        [49m[43mmethod[49m[38;5;241;43m=[39;49m[43mrequest[49m[38;5;241;43m.[39;49m[43mmethod[49m[43m,[49m
+[1;32m    669[0m [43m        [49m[43murl[49m[38;5;241;43m=[39;49m[43murl[49m[43m,[49m
+[1;32m    670[0m [43m        [49m[43mbody[49m[38;5;241;43m=[39;49m[43mrequest[49m[38;5;241;43m.[39;49m[43mbody[49m[43m,[49m
+[1;32m    671[0m [43m        [49m[43mheaders[49m[38;5;241;43m=[39;49m[43mrequest[49m[38;5;241;43m.[39;49m[43mheaders[49m[43m,[49m
+[1;32m    672[0m [43m        [49m[43mredirect[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m    673[0m [43m        [49m[43massert_same_host[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m    674[0m [43m        [49m[43mpreload_content[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m    675[0m [43m        [49m[43mdecode_content[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m    676[0m [43m        [49m[43mretries[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mmax_retries[49m[43m,[49m
+[1;32m    677[0m [43m        [49m[43mtimeout[49m[38;5;241;43m=[39;49m[43mtimeout[49m[43m,[49m
+[1;32m    678[0m [43m        [49m[43mchunked[49m[38;5;241;43m=[39;49m[43mchunked[49m[43m,[49m
+[1;32m    679[0m [43m    [49m[43m)[49m
+[1;32m    681[0m [38;5;28;01mexcept[39;00m (ProtocolError, [38;5;167;01mOSError[39;00m) [38;5;28;01mas[39;00m err:
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/urllib3/connectionpool.py:802[0m, in [0;36mHTTPConnectionPool.urlopen[0;34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)[0m
+[1;32m    800[0m     e [38;5;241m=[39m ProtocolError([38;5;124m"[39m[38;5;124mConnection aborted.[39m[38;5;124m"[39m, e)
+[0;32m--> 802[0m retries [38;5;241m=[39m [43mretries[49m[38;5;241;43m.[39;49m[43mincrement[49m[43m([49m
+[1;32m    803[0m [43m    [49m[43mmethod[49m[43m,[49m[43m [49m[43murl[49m[43m,[49m[43m [49m[43merror[49m[38;5;241;43m=[39;49m[43me[49m[43m,[49m[43m [49m[43m_pool[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43m_stacktrace[49m[38;5;241;43m=[39;49m[43msys[49m[38;5;241;43m.[39;49m[43mexc_info[49m[43m([49m[43m)[49m[43m[[49m[38;5;241;43m2[39;49m[43m][49m
+[1;32m    804[0m [43m[49m[43m)[49m
+[1;32m    805[0m retries[38;5;241m.[39msleep()
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/urllib3/util/retry.py:594[0m, in [0;36mRetry.increment[0;34m(self, method, url, response, error, _pool, _stacktrace)[0m
+[1;32m    593[0m [38;5;28;01mif[39;00m new_retry[38;5;241m.[39mis_exhausted():
+[0;32m--> 594[0m     [38;5;28;01mraise[39;00m MaxRetryError(_pool, url, error [38;5;129;01mor[39;00m ResponseError(cause))
+[1;32m    596[0m log[38;5;241m.[39mdebug([38;5;124m"[39m[38;5;124mIncremented Retry for (url=[39m[38;5;124m'[39m[38;5;132;01m%s[39;00m[38;5;124m'[39m[38;5;124m): [39m[38;5;132;01m%r[39;00m[38;5;124m"[39m, url, new_retry)
+
+[0;31mMaxRetryError[0m: HTTPSConnectionPool(host='open.gishub.org', port=443): Max retries exceeded with url: /data/duckdb/cities.parquet (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fe596e5d4f0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+
+During handling of the above exception, another exception occurred:
+
+[0;31mConnectionError[0m                           Traceback (most recent call last)
+Cell [0;32mIn[33], line 3[0m
+[1;32m      1[0m url [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttps://open.gishub.org/data/duckdb/cities.parquet[39m[38;5;124m"[39m
+[1;32m      2[0m filename [38;5;241m=[39m [38;5;124m"[39m[38;5;124mcities.parquet[39m[38;5;124m"[39m
+[0;32m----> 3[0m [43mleafmap[49m[38;5;241;43m.[39;49m[43mdownload_file[49m[43m([49m[43murl[49m[43m,[49m[43m [49m[43mfilename[49m[43m,[49m[43m [49m[43mquiet[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/leafmap/common.py:4563[0m, in [0;36mdownload_file[0;34m(url, output, quiet, proxy, speed, use_cookies, verify, id, fuzzy, resume, unzip, overwrite, subfolder)[0m
+[1;32m   4560[0m [38;5;28;01mif[39;00m [38;5;124m"[39m[38;5;124mhttps://drive.google.com/file/d/[39m[38;5;124m"[39m [38;5;129;01min[39;00m url:
+[1;32m   4561[0m     fuzzy [38;5;241m=[39m [38;5;28;01mTrue[39;00m
+[0;32m-> 4563[0m output [38;5;241m=[39m [43mgdown[49m[38;5;241;43m.[39;49m[43mdownload[49m[43m([49m
+[1;32m   4564[0m [43m    [49m[43murl[49m[43m,[49m[43m [49m[43moutput[49m[43m,[49m[43m [49m[43mquiet[49m[43m,[49m[43m [49m[43mproxy[49m[43m,[49m[43m [49m[43mspeed[49m[43m,[49m[43m [49m[43muse_cookies[49m[43m,[49m[43m [49m[43mverify[49m[43m,[49m[43m [49m[38;5;28;43mid[39;49m[43m,[49m[43m [49m[43mfuzzy[49m[43m,[49m[43m [49m[43mresume[49m
+[1;32m   4565[0m [43m[49m[43m)[49m
+[1;32m   4567[0m [38;5;28;01mif[39;00m unzip:
+[1;32m   4568[0m     [38;5;28;01mif[39;00m output[38;5;241m.[39mendswith([38;5;124m"[39m[38;5;124m.zip[39m[38;5;124m"[39m):
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/gdown/download.py:202[0m, in [0;36mdownload[0;34m(url, output, quiet, proxy, speed, use_cookies, verify, id, fuzzy, resume, format, user_agent, log_messages)[0m
+[1;32m    199[0m     is_gdrive_download_link [38;5;241m=[39m [38;5;28;01mTrue[39;00m
+[1;32m    201[0m [38;5;28;01mwhile[39;00m [38;5;28;01mTrue[39;00m:
+[0;32m--> 202[0m     res [38;5;241m=[39m [43msess[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[43murl[49m[43m,[49m[43m [49m[43mstream[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m[43m [49m[43mverify[49m[38;5;241;43m=[39;49m[43mverify[49m[43m)[49m
+[1;32m    204[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m (gdrive_file_id [38;5;129;01mand[39;00m is_gdrive_download_link):
+[1;32m    205[0m         [38;5;28;01mbreak[39;00m
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/requests/sessions.py:602[0m, in [0;36mSession.get[0;34m(self, url, **kwargs)[0m
+[1;32m    594[0m [38;5;250m[39m[38;5;124mr[39m[38;5;124;03m"""Sends a GET request. Returns :class:`Response` object.[39;00m
+[1;32m    595[0m 
+[1;32m    596[0m [38;5;124;03m:param url: URL for the new :class:`Request` object.[39;00m
+[1;32m    597[0m [38;5;124;03m:param \*\*kwargs: Optional arguments that ``request`` takes.[39;00m
+[1;32m    598[0m [38;5;124;03m:rtype: requests.Response[39;00m
+[1;32m    599[0m [38;5;124;03m"""[39;00m
+[1;32m    601[0m kwargs[38;5;241m.[39msetdefault([38;5;124m"[39m[38;5;124mallow_redirects[39m[38;5;124m"[39m, [38;5;28;01mTrue[39;00m)
+[0;32m--> 602[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mrequest[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mGET[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43murl[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/requests/sessions.py:589[0m, in [0;36mSession.request[0;34m(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)[0m
+[1;32m    584[0m send_kwargs [38;5;241m=[39m {
+[1;32m    585[0m     [38;5;124m"[39m[38;5;124mtimeout[39m[38;5;124m"[39m: timeout,
+[1;32m    586[0m     [38;5;124m"[39m[38;5;124mallow_redirects[39m[38;5;124m"[39m: allow_redirects,
+[1;32m    587[0m }
+[1;32m    588[0m send_kwargs[38;5;241m.[39mupdate(settings)
+[0;32m--> 589[0m resp [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msend[49m[43m([49m[43mprep[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43msend_kwargs[49m[43m)[49m
+[1;32m    591[0m [38;5;28;01mreturn[39;00m resp
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/requests/sessions.py:703[0m, in [0;36mSession.send[0;34m(self, request, **kwargs)[0m
+[1;32m    700[0m start [38;5;241m=[39m preferred_clock()
+[1;32m    702[0m [38;5;66;03m# Send the request[39;00m
+[0;32m--> 703[0m r [38;5;241m=[39m [43madapter[49m[38;5;241;43m.[39;49m[43msend[49m[43m([49m[43mrequest[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    705[0m [38;5;66;03m# Total elapsed time of the request (approximately)[39;00m
+[1;32m    706[0m elapsed [38;5;241m=[39m preferred_clock() [38;5;241m-[39m start
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/requests/adapters.py:700[0m, in [0;36mHTTPAdapter.send[0;34m(self, request, stream, timeout, verify, cert, proxies)[0m
+[1;32m    696[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(e[38;5;241m.[39mreason, _SSLError):
+[1;32m    697[0m         [38;5;66;03m# This branch is for urllib3 v1.22 and later.[39;00m
+[1;32m    698[0m         [38;5;28;01mraise[39;00m SSLError(e, request[38;5;241m=[39mrequest)
+[0;32m--> 700[0m     [38;5;28;01mraise[39;00m [38;5;167;01mConnectionError[39;00m(e, request[38;5;241m=[39mrequest)
+[1;32m    702[0m [38;5;28;01mexcept[39;00m ClosedPoolError [38;5;28;01mas[39;00m e:
+[1;32m    703[0m     [38;5;28;01mraise[39;00m [38;5;167;01mConnectionError[39;00m(e, request[38;5;241m=[39mrequest)
+
+[0;31mConnectionError[0m: HTTPSConnectionPool(host='open.gishub.org', port=443): Max retries exceeded with url: /data/duckdb/cities.parquet (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7fe596e5d4f0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+
