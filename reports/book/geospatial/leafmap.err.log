@@ -90,7 +90,7 @@ File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/urllib3/
 [1;32m    188[0m     )
 [1;32m    190[0m [38;5;28;01mreturn[39;00m conn
 
-[0;31mNewConnectionError[0m: <urllib3.connection.HTTPSConnection object at 0x7f2df1fa7620>: Failed to establish a new connection: [Errno -2] Name or service not known
+[0;31mNewConnectionError[0m: <urllib3.connection.HTTPSConnection object at 0x7f7589f2bef0>: Failed to establish a new connection: [Errno -2] Name or service not known
 
 During handling of the above exception, another exception occurred:
 
@@ -124,7 +124,7 @@ File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/urllib3/
 [0;32m--> 594[0m     [38;5;28;01mraise[39;00m MaxRetryError(_pool, url, error [38;5;129;01mor[39;00m ResponseError(cause))
 [1;32m    596[0m log[38;5;241m.[39mdebug([38;5;124m"[39m[38;5;124mIncremented Retry for (url=[39m[38;5;124m'[39m[38;5;132;01m%s[39;00m[38;5;124m'[39m[38;5;124m): [39m[38;5;132;01m%r[39;00m[38;5;124m"[39m, url, new_retry)
 
-[0;31mMaxRetryError[0m: HTTPSConnectionPool(host='open.gishub.org', port=443): Max retries exceeded with url: /data/duckdb/cities.parquet (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2df1fa7620>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+[0;31mMaxRetryError[0m: HTTPSConnectionPool(host='open.gishub.org', port=443): Max retries exceeded with url: /data/duckdb/cities.parquet (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f7589f2bef0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
 
 During handling of the above exception, another exception occurred:
 
@@ -184,5 +184,5 @@ File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/requests
 [1;32m    702[0m [38;5;28;01mexcept[39;00m ClosedPoolError [38;5;28;01mas[39;00m e:
 [1;32m    703[0m     [38;5;28;01mraise[39;00m [38;5;167;01mConnectionError[39;00m(e, request[38;5;241m=[39mrequest)
 
-[0;31mConnectionError[0m: HTTPSConnectionPool(host='open.gishub.org', port=443): Max retries exceeded with url: /data/duckdb/cities.parquet (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f2df1fa7620>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+[0;31mConnectionError[0m: HTTPSConnectionPool(host='open.gishub.org', port=443): Max retries exceeded with url: /data/duckdb/cities.parquet (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x7f7589f2bef0>: Failed to establish a new connection: [Errno -2] Name or service not known'))
 
