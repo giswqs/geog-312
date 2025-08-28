@@ -23,8 +23,8 @@ This notebook shows how to import data into a DuckDB database. It uses the `duck
 
 The following datasets are used in this notebook. You don't need to download them, they can be accessed directly from the notebook.
 
-- [cities.csv](https://open.gishub.org/data/duckdb/cities.csv)
-- [countries.csv](https://open.gishub.org/data/duckdb/countries.csv)
+- [cities.csv](https://opengeos.org/data/duckdb/cities.csv)
+- [countries.csv](https://opengeos.org/data/duckdb/countries.csv)
 
 ## Installation
 
@@ -63,7 +63,7 @@ con.load_extension("spatial")
 ## Downloading Sample Data
 
 ```{code-cell} ipython3
-url = "https://open.gishub.org/data/duckdb/cities.zip"
+url = "https://opengeos.org/data/duckdb/cities.zip"
 leafmap.download_file(url, unzip=True)
 ```
 

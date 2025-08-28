@@ -38,7 +38,6 @@ By the end of this lecture, students will be able to:
 - [Video Tutorials](https://bit.ly/maplibre): Video guides for practical MapLibre skills.
 - [MapLibre Demos](https://maps.gishub.org): Interactive demos showcasing MapLibre’s capabilities.
 
-
 ## Installation and Setup
 
 To install the required packages, uncomment and run the line below.
@@ -653,7 +652,7 @@ m
 m = leafmap.Map(center=[-100, 40], zoom=3, pitch=60, style="basic")
 source = {
     "type": "geojson",
-    "data": "https://open.gishub.org/data/us/us_counties.geojson",
+    "data": "https://opengeos.org/data/us/us_counties.geojson",
 }
 m.add_source("counties", source)
 layer = {
@@ -1249,7 +1248,7 @@ To visualize local raster files, use the `add_raster` method. In the example, a 
 
 - **Band Combination 3-2-1 (True Color)**: Simulates natural colors in the RGB channels.
 - **Band Combination 4-3-2**: Enhances vegetation, displaying it in red for better visual contrast.
-These layers are added to the map along with controls to toggle them. You can adjust brightness and contrast with the `vmin` and `vmax` arguments to improve clarity.
+  These layers are added to the map along with controls to toggle them. You can adjust brightness and contrast with the `vmin` and `vmax` arguments to improve clarity.
 
 ```{code-cell} ipython3
 url = "https://github.com/opengeos/datasets/releases/download/raster/landsat.tif"
@@ -1351,7 +1350,6 @@ m
 ## Interacting with the Map
 
 Interactivity allows for a more tailored map experience.
-
 
 ### Displaying a Non-Interactive Map
 
@@ -1707,6 +1705,7 @@ Enhance your maps by adding custom components such as images, videos, text, colo
 ### Adding Image
 
 You can add an image as an overlay or as an icon for a specific layer. For instance:
+
 - Overlaying an image directly on the map at the "bottom-right" corner.
 - Adding an icon image to a feature. In the example, a "cat" image is loaded, and a marker is added at coordinates `[0, 0]` with a label "I love kitty!" above the icon.
 
@@ -1818,6 +1817,7 @@ m
 ### Adding Text
 
 Add text annotations to the map, specifying parameters like font size and background color. For example:
+
 - Text "Hello World" in the bottom-right corner with a transparent background.
 - "Awesome Text!" in the top-left corner with a slightly opaque white background, making it stand out.
 
@@ -1886,6 +1886,7 @@ m
 ### Adding Color bar
 
 Adding a color bar enhances data interpretation. In the example:
+
 1. A Digital Elevation Model (DEM) is displayed with a color ramp from 0 to 1500 meters.
 2. `add_colorbar` method is used to create a color bar with labels, adjusting its position, opacity, and orientation for optimal readability.
 
@@ -1958,6 +1959,7 @@ m
 ### Adding Legend
 
 Custom legends help users understand data classifications. Two methods are shown:
+
 1. Using built-in legends, such as for NLCD (National Land Cover Database) or wetland types.
 2. Custom legends are built with a dictionary of land cover types and colors. This legend provides descriptive color-coding for various land cover types, with configurable background opacity to blend with the map.
 
@@ -2077,7 +2079,7 @@ Leafmap supports visualizing [PMTiles](https://protomaps.com/docs/pmtiles/), whi
 Load Protomaps data in PMTiles format for fast, high-resolution vector map data rendering. Use `pmtiles_metadata()` to fetch details like layer names and map bounds, then style and add these tiles to your map. For instance, the example shows two layers: `buildings` styled in "steelblue" and `roads` styled in "black".
 
 ```{code-cell} ipython3
-url = "https://open.gishub.org/data/pmtiles/protomaps_firenze.pmtiles"
+url = "https://opengeos.org/data/pmtiles/protomaps_firenze.pmtiles"
 metadata = leafmap.pmtiles_metadata(url)
 print(f"layer names: {metadata['layer_names']}")
 print(f"bounds: {metadata['bounds']}")
@@ -2457,6 +2459,7 @@ m
 ### Multiple Deck.GL Layers
 
 Combine layers like `GeoJsonLayer` and `ArcLayer` for complex visualizations. For example:
+
 1. Use `GeoJsonLayer` to show airports with varying point sizes based on significance.
 2. Use `ArcLayer` to connect selected airports with London, coloring arcs to represent different paths.
 
@@ -2512,7 +2515,6 @@ m
 ```
 
 The result is a rich, interactive visualization that highlights both point data and relational data connections, useful for airport connectivity or hub-and-spoke modeling.
-
 
 ## Google Earth Engine
 
@@ -2886,8 +2888,8 @@ m
 
 ### Exercise 1: Setting up MapLibre and Basic Map Creation
 
-   - Initialize a map centered on a country of your choice with an appropriate zoom level and display it with the `dark-matter` basemap.
-   - Change the basemap style to `liberty` and display it again.
+- Initialize a map centered on a country of your choice with an appropriate zoom level and display it with the `dark-matter` basemap.
+- Change the basemap style to `liberty` and display it again.
 
 ```{code-cell} ipython3
 
@@ -2895,8 +2897,8 @@ m
 
 ### Exercise 2: Customizing the Map View
 
-   - Create a 3D map of a city of your choice with an appropriate zoom level, pitch and bearing using the `liberty` basemap.
-   - Experiment with MapTiler 3D basemap styles, such as `3d-satellite`, `3d-hybrid`, and `3d-topo`, to visualize a location of your choice in different ways. Please set your MapTiler API key as Colab secret and do NOT expose the API key in the notebook.
+- Create a 3D map of a city of your choice with an appropriate zoom level, pitch and bearing using the `liberty` basemap.
+- Experiment with MapTiler 3D basemap styles, such as `3d-satellite`, `3d-hybrid`, and `3d-topo`, to visualize a location of your choice in different ways. Please set your MapTiler API key as Colab secret and do NOT expose the API key in the notebook.
 
 ```{code-cell} ipython3
 
@@ -2904,10 +2906,10 @@ m
 
 ### Exercise 3: Adding Map Controls
 
-   - Create a map centered on a city of your choice and add the following controls to the map:
-     - **Geolocate** control positioned at the top left.
-     - **Fullscreen** control at the top right.
-     - **Draw** control for adding points, lines, and polygons, positioned at the top left.
+- Create a map centered on a city of your choice and add the following controls to the map:
+  - **Geolocate** control positioned at the top left.
+  - **Fullscreen** control at the top right.
+  - **Draw** control for adding points, lines, and polygons, positioned at the top left.
 
 ```{code-cell} ipython3
 
@@ -2915,16 +2917,16 @@ m
 
 ### Exercise 4: Overlaying Data Layers
 
-   - **GeoJSON Layer**: Create a map and add the following GeoJSON data layers to the map with appropriate styles:
-     - NYC buildings: https://github.com/opengeos/datasets/releases/download/places/nyc_buildings.geojson
-     - NYC roads: https://github.com/opengeos/datasets/releases/download/places/nyc_roads.geojson
-   - **Thematic Raster Layer**: Create a map with a satellite basemap and add the following raster data layer to the map with an appropriate legend:
-     - National Land Cover Database (NLCD) 2021: https://github.com/opengeos/datasets/releases/download/raster/nlcd_2021_land_cover_90m.tif
-   - **DEM Layer:** Create a map with a satellite basemap and add the following DEM layer to the map with an appropriate color bar:
-     - DEM: https://github.com/opengeos/datasets/releases/download/raster/dem.tif
-   - **WMS Layer**: Create a map and add the ESA WorldCover WMS layer to the map with an appropriate legend:
-     - url: https://services.terrascope.be/wms/v2
-     - layers: WORLDCOVER_2021_MAP
+- **GeoJSON Layer**: Create a map and add the following GeoJSON data layers to the map with appropriate styles:
+  - NYC buildings: https://github.com/opengeos/datasets/releases/download/places/nyc_buildings.geojson
+  - NYC roads: https://github.com/opengeos/datasets/releases/download/places/nyc_roads.geojson
+- **Thematic Raster Layer**: Create a map with a satellite basemap and add the following raster data layer to the map with an appropriate legend:
+  - National Land Cover Database (NLCD) 2021: https://github.com/opengeos/datasets/releases/download/raster/nlcd_2021_land_cover_90m.tif
+- **DEM Layer:** Create a map with a satellite basemap and add the following DEM layer to the map with an appropriate color bar:
+  - DEM: https://github.com/opengeos/datasets/releases/download/raster/dem.tif
+- **WMS Layer**: Create a map and add the ESA WorldCover WMS layer to the map with an appropriate legend:
+  - url: https://services.terrascope.be/wms/v2
+  - layers: WORLDCOVER_2021_MAP
 
 ```{code-cell} ipython3
 
@@ -2932,16 +2934,17 @@ m
 
 ### Exercise 5: Working with 3D Buildings
 
-   - Set up a 3D map centered on a city of your choice with an appropriate zoom level, pitch, and bearing.
-   - Add 3D buildings to the map with extrusions based on their height attributes. Use a custom color gradient for the extrusion color.
+- Set up a 3D map centered on a city of your choice with an appropriate zoom level, pitch, and bearing.
+- Add 3D buildings to the map with extrusions based on their height attributes. Use a custom color gradient for the extrusion color.
 
 ```{code-cell} ipython3
 
 ```
 
 ### Exercise 6: Adding Map Elements
-   - **Image and Text**: Add a logo image of your choice with appropriate text to the map.
-   - **GIF**: Add an animated GIF of your choice to the map.
+
+- **Image and Text**: Add a logo image of your choice with appropriate text to the map.
+- **GIF**: Add an animated GIF of your choice to the map.
 
 ```{code-cell} ipython3
 
