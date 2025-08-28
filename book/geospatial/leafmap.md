@@ -15,7 +15,6 @@ kernelspec:
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/geospatial/leafmap.ipynb)
 
-
 ## Overview
 
 This lecture offers a comprehensive introduction to [Leafmap](https://leafmap.org), a powerful, open-source Python package for creating, managing, and analyzing interactive geospatial maps. Leafmap simplifies working with geospatial data by providing a high-level, Pythonic interface that integrates seamlessly with Jupyter environments, such as Google Colab, Jupyter Notebook, and JupyterLab.
@@ -27,6 +26,7 @@ In this lecture, we will explore Leafmap’s key features, including how to crea
 ## Learning Objectives
 
 By the end of this lecture, you will be able to:
+
 - Create and customize interactive maps using Leafmap.
 - Add and configure different basemap layers.
 - Visualize and style vector and raster geospatial data.
@@ -235,7 +235,6 @@ Each of these sections demonstrates different features of the Leafmap library, a
 
 Leafmap makes it easy to visualize various vector data formats such as GeoJSON, Shapefile, GeoPackage, and others supported by [GeoPandas](https://geopandas.org). The following examples demonstrate different ways to add vector data to your map.
 
-
 ### Adding a Marker
 
 You can add individual markers to the map at specific locations. In this example, a draggable marker is placed at the given latitude and longitude.
@@ -396,7 +395,7 @@ import geopandas as gpd
 Download and load a GeoParquet file containing city data:
 
 ```{code-cell} ipython3
-url = "https://open.gishub.org/data/duckdb/cities.parquet"
+url = "https://opengeos.org/data/duckdb/cities.parquet"
 filename = "cities.parquet"
 leafmap.download_file(url, filename, quiet=True)
 ```
@@ -467,7 +466,7 @@ m
 To visualize PMTiles data, first retrieve metadata such as available layers and bounds. Here’s an example using a PMTiles archive of Florence, Italy:
 
 ```{code-cell} ipython3
-url = "https://open.gishub.org/data/pmtiles/protomaps_firenze.pmtiles"
+url = "https://opengeos.org/data/pmtiles/protomaps_firenze.pmtiles"
 metadata = leafmap.pmtiles_metadata(url)
 print(f"layer names: {metadata['layer_names']}")
 print(f"bounds: {metadata['bounds']}")
@@ -801,10 +800,10 @@ m
 
 ### Visualizing SpatioTemporal Asset Catalog (STAC) Data
 
-
 The [STAC specification](https://stacspec.org) provides a standardized way to describe geospatial information, enabling easier discovery and use. In this section, we will visualize STAC data using Leafmap.
 
 #### Exploring STAC Bands
+
 To begin, retrieve the available bands for a STAC item. This example uses the [SPOT Orthoimages of Canada](https://stacindex.org/catalogs/spot-orthoimages-canada-2005):
 
 ```{code-cell} ipython3
@@ -956,8 +955,8 @@ m
 ### Exercise 3: Adding Map Legends
 
 1. Add the [ESA World Cover](https://esa-worldcover.org/en) WMS tile layer to the map.
-    - URL: `https://services.terrascope.be/wms/v2?`
-    - Layer name: `WORLDCOVER_2021_MAP`
+   - URL: `https://services.terrascope.be/wms/v2?`
+   - Layer name: `WORLDCOVER_2021_MAP`
 2. Add a legend to the map using the leafmap built-in `ESA_WorldCover` legend.
 
 ```{code-cell} ipython3
@@ -971,13 +970,13 @@ m
 ### Exercise 4: Creating Marker Clusters
 
 1. Create a marker cluster visualization from a GeoJSON file of building centroids:
-    - URL: https://github.com/opengeos/datasets/releases/download/places/wa_building_centroids.geojson
-    - Hint: Read the GeoJSON file using GeoPandas and add "latitude" and "longitude" columns to the GeoDataFrame.
+   - URL: https://github.com/opengeos/datasets/releases/download/places/wa_building_centroids.geojson
+   - Hint: Read the GeoJSON file using GeoPandas and add "latitude" and "longitude" columns to the GeoDataFrame.
 2. Create circle markers for each building centroid using the `Map.add_circle_markers_from_xy()` method with the following styling:
-    * Radius: 5
-    * Outline color: "red"
-    * Fill color: "yellow"
-    * Fill opacity: 0.8
+   - Radius: 5
+   - Outline color: "red"
+   - Fill color: "yellow"
+   - Fill opacity: 0.8
 
 ```{code-cell} ipython3
 
@@ -996,18 +995,20 @@ m
 ### Exercise 5: Visualizing Vector Data
 
 1. Visualize the building polygons GeoJSON file and style it with:
-    * Outline color: "red"
-    * No fill color
-    * URL: https://github.com/opengeos/datasets/releases/download/places/wa_overture_buildings.geojson
+
+   - Outline color: "red"
+   - No fill color
+   - URL: https://github.com/opengeos/datasets/releases/download/places/wa_overture_buildings.geojson
 
 2. Visualize the road polylines GeoJSON file and style it with:
-    * Line color: "red"
-    * Line width: 2
-    * URL: https://github.com/opengeos/datasets/releases/download/places/las_vegas_roads.geojson
+
+   - Line color: "red"
+   - Line width: 2
+   - URL: https://github.com/opengeos/datasets/releases/download/places/las_vegas_roads.geojson
 
 3. Create a choropleth map of county areas in the US:
-    * URL: https://github.com/opengeos/datasets/releases/download/us/us_counties.geojson
-    * Column: `CENSUSAREA`
+   - URL: https://github.com/opengeos/datasets/releases/download/us/us_counties.geojson
+   - Column: `CENSUSAREA`
 
 ```{code-cell} ipython3
 
@@ -1033,8 +1034,8 @@ m
 
 1. Visualize GeoParquet data of US states:
 
-    - URL: https://github.com/opengeos/datasets/releases/download/us/us_states.parquet
-    - Style: Outline color of "red" with no fill.
+   - URL: https://github.com/opengeos/datasets/releases/download/us/us_states.parquet
+   - Style: Outline color of "red" with no fill.
 
 ```{code-cell} ipython3
 
@@ -1047,8 +1048,8 @@ m
 ### Exercise 7: Visualizing PMTiles
 
 1. Visualize the Overture Maps building dataset using PMTiles:
-    * URL: https://overturemaps-tiles-us-west-2-beta.s3.amazonaws.com/2024-09-18/buildings.pmtiles
-    * Style: Blue fill with 0.4 opacity, red outline.
+   - URL: https://overturemaps-tiles-us-west-2-beta.s3.amazonaws.com/2024-09-18/buildings.pmtiles
+   - Style: Blue fill with 0.4 opacity, red outline.
 
 ```{code-cell} ipython3
 
@@ -1061,8 +1062,8 @@ m
 ### Exercise 8: Visualizing Cloud Optimized GeoTIFFs (COGs)
 
 1. Visualize Digital Elevation Model (DEM) data using the following COG file:
-    - URL: https://github.com/opengeos/datasets/releases/download/raster/dem.tif
-    - Apply a terrain colormap to show elevation values.
+   - URL: https://github.com/opengeos/datasets/releases/download/raster/dem.tif
+   - Apply a terrain colormap to show elevation values.
 
 ```{code-cell} ipython3
 
@@ -1076,8 +1077,8 @@ m
 
 1. Visualize the following raster datasets using the Map.add_raster() method:
 
-    * Aerial Imagery: https://github.com/opengeos/datasets/releases/download/places/wa_building_image.tif
-    * Building Footprints: https://github.com/opengeos/datasets/releases/download/places/wa_building_masks.tif (use the "tab20" colormap and opacity of 0.7)
+   - Aerial Imagery: https://github.com/opengeos/datasets/releases/download/places/wa_building_image.tif
+   - Building Footprints: https://github.com/opengeos/datasets/releases/download/places/wa_building_masks.tif (use the "tab20" colormap and opacity of 0.7)
 
 ```{code-cell} ipython3
 
@@ -1091,8 +1092,8 @@ m
 
 1. Create a split map to compare imagery of Libya before and after the 2023 flood event:
 
-    * Pre-event imagery: https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-07-01.tif
-    * Post-event imagery: https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-09-13.tif
+   - Pre-event imagery: https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-07-01.tif
+   - Post-event imagery: https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-09-13.tif
 
 ```{code-cell} ipython3
 
