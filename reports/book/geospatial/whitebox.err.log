@@ -18,16 +18,343 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-gdf = leafmap.get_wbd(geometry, digit=10, return_geometry=True)
-gdf.explore()
+array = leafmap.get_3dep_dem(
+    gdf,
+    resolution=30,
+    output="dem.tif",
+    dst_crs="EPSG:3857",
+    to_cog=True,
+    overwrite=True,
+)
+array
 ------------------
 
+----- stdout -----
+py3dep is not installed. Installing py3dep...
+----- stdout -----
+Defaulting to user installation because normal site-packages is not writeable
+----- stdout -----
+Collecting py3dep
+Downloading py3dep-0.19.0-py3-none-any.whl.metadata (21 kB)
+Collecting async-retriever<0.20,>=0.19 (from py3dep)
+Downloading async_retriever-0.19.3-py3-none-any.whl.metadata (16 kB)
+Requirement already satisfied: click>=0.7 in /usr/lib/python3/dist-packages (from py3dep) (8.1.6)
+Collecting cytoolz (from py3dep)
+Downloading cytoolz-1.1.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.2 kB)
+----- stdout -----
+Collecting geopandas>=1 (from py3dep)
+Downloading geopandas-1.1.1-py3-none-any.whl.metadata (2.3 kB)
+----- stdout -----
+Collecting numpy>=1.17 (from py3dep)
+Downloading numpy-2.3.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+[?25l     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/62.1 kB[0m [31m?[0m eta [36m-:--:--[0m[2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m62.1/62.1 kB[0m [31m11.0 MB/s[0m eta [36m0:00:00[0m
+[?25hCollecting pygeoogc<0.20,>=0.19 (from py3dep)
+Downloading pygeoogc-0.19.4-py3-none-any.whl.metadata (18 kB)
+----- stdout -----
+Collecting pygeoutils<0.20,>=0.19 (from py3dep)
+Downloading pygeoutils-0.19.5-py3-none-any.whl.metadata (12 kB)
+Collecting rasterio>=1.2 (from py3dep)
+Downloading rasterio-1.4.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.1 kB)
+Collecting rioxarray>=0.11 (from py3dep)
+Downloading rioxarray-0.19.0-py3-none-any.whl.metadata (5.5 kB)
+----- stdout -----
+Collecting shapely>=2 (from py3dep)
+Downloading shapely-2.1.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.8 kB)
+Collecting xarray>=2023.1 (from py3dep)
+Downloading xarray-2025.10.1-py3-none-any.whl.metadata (12 kB)
+Collecting aiodns (from async-retriever<0.20,>=0.19->py3dep)
+Downloading aiodns-3.5.0-py3-none-any.whl.metadata (5.8 kB)
+Collecting aiofiles (from async-retriever<0.20,>=0.19->py3dep)
+Downloading aiofiles-25.1.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting aiohttp-client-cache>=0.12.3 (from async-retriever<0.20,>=0.19->py3dep)
+Downloading aiohttp_client_cache-0.14.1-py3-none-any.whl.metadata (7.0 kB)
+----- stdout -----
+Collecting aiohttp>=3.8.3 (from async-retriever<0.20,>=0.19->py3dep)
+Downloading aiohttp-3.13.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.1 kB)
+Collecting aiosqlite (from async-retriever<0.20,>=0.19->py3dep)
+Downloading aiosqlite-0.21.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting brotli (from async-retriever<0.20,>=0.19->py3dep)
+Downloading Brotli-1.1.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.5 kB)
+----- stdout -----
+Collecting multidict (from async-retriever<0.20,>=0.19->py3dep)
+Downloading multidict-6.7.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+----- stdout -----
+Collecting orjson<4,>=3.10 (from async-retriever<0.20,>=0.19->py3dep)
+Downloading orjson-3.11.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (41 kB)
+[?25l     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/41.9 kB[0m [31m?[0m eta [36m-:--:--[0m[2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m41.9/41.9 kB[0m [31m13.5 MB/s[0m eta [36m0:00:00[0m
+----- stdout -----
+[?25hCollecting yarl (from async-retriever<0.20,>=0.19->py3dep)
+Downloading yarl-1.22.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (75 kB)
+[?25l     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/75.1 kB[0m [31m?[0m eta [36m-:--:--[0m[2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m75.1/75.1 kB[0m [31m23.0 MB/s[0m eta [36m0:00:00[0m
+[?25hCollecting pyogrio>=0.7.2 (from geopandas>=1->py3dep)
+Downloading pyogrio-0.11.1-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+Requirement already satisfied: packaging in /usr/lib/python3/dist-packages (from geopandas>=1->py3dep) (24.0)
+----- stdout -----
+Collecting pandas>=2.0.0 (from geopandas>=1->py3dep)
+Downloading pandas-2.3.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+[?25l     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/91.2 kB[0m [31m?[0m eta [36m-:--:--[0m[2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m91.2/91.2 kB[0m [31m24.6 MB/s[0m eta [36m0:00:00[0m
+[?25hCollecting pyproj>=3.5.0 (from geopandas>=1->py3dep)
+Downloading pyproj-3.7.2-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (31 kB)
+Collecting defusedxml (from pygeoogc<0.20,>=0.19->py3dep)
+Downloading defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+Collecting joblib (from pygeoogc<0.20,>=0.19->py3dep)
+Downloading joblib-1.5.2-py3-none-any.whl.metadata (5.6 kB)
+Collecting owslib>=0.27.2 (from pygeoogc<0.20,>=0.19->py3dep)
+----- stdout -----
+Downloading owslib-0.34.1-py3-none-any.whl.metadata (6.9 kB)
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from pygeoogc<0.20,>=0.19->py3dep) (2.31.0)
+Collecting requests-cache>=0.9.6 (from pygeoogc<0.20,>=0.19->py3dep)
+Downloading requests_cache-1.2.1-py3-none-any.whl.metadata (9.9 kB)
+Requirement already satisfied: typing-extensions in /usr/lib/python3/dist-packages (from pygeoogc<0.20,>=0.19->py3dep) (4.10.0)
+Collecting url-normalize>=1.4 (from pygeoogc<0.20,>=0.19->py3dep)
+Downloading url_normalize-2.2.1-py3-none-any.whl.metadata (5.6 kB)
+Requirement already satisfied: urllib3 in /usr/lib/python3/dist-packages (from pygeoogc<0.20,>=0.19->py3dep) (2.0.7)
+Collecting netcdf4 (from pygeoutils<0.20,>=0.19->py3dep)
+Downloading netcdf4-1.7.3-cp311-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (1.9 kB)
+----- stdout -----
+Collecting scipy (from pygeoutils<0.20,>=0.19->py3dep)
+Downloading scipy-1.16.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (62 kB)
+[?25l     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/62.0 kB[0m [31m?[0m eta [36m-:--:--[0m[2K     [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m62.0/62.0 kB[0m [31m19.4 MB/s[0m eta [36m0:00:00[0m
+[?25hCollecting affine (from rasterio>=1.2->py3dep)
+Downloading affine-2.4.0-py3-none-any.whl.metadata (4.0 kB)
+Requirement already satisfied: attrs in /usr/lib/python3/dist-packages (from rasterio>=1.2->py3dep) (23.2.0)
+Requirement already satisfied: certifi in /usr/lib/python3/dist-packages (from rasterio>=1.2->py3dep) (2023.11.17)
+Collecting cligj>=0.5 (from rasterio>=1.2->py3dep)
+Downloading cligj-0.7.2-py3-none-any.whl.metadata (5.0 kB)
+Collecting click-plugins (from rasterio>=1.2->py3dep)
+Downloading click_plugins-1.1.1.2-py2.py3-none-any.whl.metadata (6.5 kB)
+Requirement already satisfied: pyparsing in /usr/lib/python3/dist-packages (from rasterio>=1.2->py3dep) (3.1.1)
+----- stdout -----
+Collecting packaging (from geopandas>=1->py3dep)
+Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting toolz>=0.8.0 (from cytoolz->py3dep)
+Downloading toolz-1.1.0-py3-none-any.whl.metadata (5.1 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp>=3.8.3->async-retriever<0.20,>=0.19->py3dep)
+Downloading aiohappyeyeballs-2.6.1-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp>=3.8.3->async-retriever<0.20,>=0.19->py3dep)
+Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+----- stdout -----
+Collecting frozenlist>=1.1.1 (from aiohttp>=3.8.3->async-retriever<0.20,>=0.19->py3dep)
+Downloading frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+Collecting propcache>=0.2.0 (from aiohttp>=3.8.3->async-retriever<0.20,>=0.19->py3dep)
+Downloading propcache-0.4.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (13 kB)
+Collecting itsdangerous>=2.0 (from aiohttp-client-cache>=0.12.3->async-retriever<0.20,>=0.19->py3dep)
+Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+----- stdout -----
+Collecting lxml (from owslib>=0.27.2->pygeoogc<0.20,>=0.19->py3dep)
+Downloading lxml-6.0.2-cp312-cp312-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.6 kB)
+Requirement already satisfied: python-dateutil in /usr/lib/python3/dist-packages (from owslib>=0.27.2->pygeoogc<0.20,>=0.19->py3dep) (2.8.2)
+Requirement already satisfied: pyyaml in /usr/lib/python3/dist-packages (from owslib>=0.27.2->pygeoogc<0.20,>=0.19->py3dep) (6.0.1)
+Requirement already satisfied: pytz>=2020.1 in /usr/lib/python3/dist-packages (from pandas>=2.0.0->geopandas>=1->py3dep) (2024.1)
+Collecting tzdata>=2022.7 (from pandas>=2.0.0->geopandas>=1->py3dep)
+Downloading tzdata-2025.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting cattrs>=22.2 (from requests-cache>=0.9.6->pygeoogc<0.20,>=0.19->py3dep)
+Downloading cattrs-25.3.0-py3-none-any.whl.metadata (8.4 kB)
+Requirement already satisfied: platformdirs>=2.5 in /usr/local/lib/python3.12/dist-packages (from requests-cache>=0.9.6->pygeoogc<0.20,>=0.19->py3dep) (4.5.0)
+Requirement already satisfied: idna>=3.3 in /usr/lib/python3/dist-packages (from url-normalize>=1.4->pygeoogc<0.20,>=0.19->py3dep) (3.6)
+----- stdout -----
+Collecting pycares>=4.9.0 (from aiodns->async-retriever<0.20,>=0.19->py3dep)
+Downloading pycares-4.11.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (4.5 kB)
+Collecting cftime (from netcdf4->pygeoutils<0.20,>=0.19->py3dep)
+Downloading cftime-1.6.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (8.7 kB)
+----- stdout -----
+Collecting attrs (from rasterio>=1.2->py3dep)
+Downloading attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+Collecting typing-extensions (from pygeoogc<0.20,>=0.19->py3dep)
+Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+----- stdout -----
+Collecting cffi>=1.5.0 (from pycares>=4.9.0->aiodns->async-retriever<0.20,>=0.19->py3dep)
+Downloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+Collecting pycparser (from cffi>=1.5.0->pycares>=4.9.0->aiodns->async-retriever<0.20,>=0.19->py3dep)
+Downloading pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Downloading py3dep-0.19.0-py3-none-any.whl (25 kB)
+Downloading async_retriever-0.19.3-py3-none-any.whl (18 kB)
+Downloading geopandas-1.1.1-py3-none-any.whl (338 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/338.4 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m338.4/338.4 kB[0m [31m44.1 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading numpy-2.3.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
+----- stdout -----
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/16.6 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [91m━━━━━━━━━[0m[91m╸[0m[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m4.1/16.6 MB[0m [31m122.8 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m[90m━━━━━━━━━━[0m [32m12.5/16.6 MB[0m [31m220.0 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m [32m16.6/16.6 MB[0m [31m258.0 MB/s[0m eta [36m0:00:01[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m16.6/16.6 MB[0m [31m161.6 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading pygeoogc-0.19.4-py3-none-any.whl (34 kB)
+Downloading pygeoutils-0.19.5-py3-none-any.whl (30 kB)
+Downloading rasterio-1.4.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (22.3 MB)
+----- stdout -----
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/22.3 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [91m━━━━━━━[0m[91m╸[0m[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m4.2/22.3 MB[0m [31m274.5 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━[0m[91m╸[0m[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m4.2/22.3 MB[0m [31m274.5 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━[0m[91m╸[0m[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m4.2/22.3 MB[0m [31m274.5 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━━━━━━━━━━━━━━[0m [32m9.5/22.3 MB[0m [31m68.7 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━━━━━[0m [32m14.7/22.3 MB[0m [31m264.2 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━━━━━[0m [32m14.7/22.3 MB[0m [31m264.2 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━━━[0m [32m15.7/22.3 MB[0m [31m93.7 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m [32m22.3/22.3 MB[0m [31m81.3 MB/s[0m eta [36m0:00:01[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m22.3/22.3 MB[0m [31m65.6 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading rioxarray-0.19.0-py3-none-any.whl (62 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/62.2 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m62.2/62.2 kB[0m [31m18.2 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading shapely-2.1.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.1 MB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/3.1 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m3.1/3.1 MB[0m [31m169.0 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading xarray-2025.10.1-py3-none-any.whl (1.4 MB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/1.4 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m1.4/1.4 MB[0m [31m153.0 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading cytoolz-1.1.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (2.9 MB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/2.9 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m2.9/2.9 MB[0m [31m172.3 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading aiohttp-3.13.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/1.8 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m1.8/1.8 MB[0m [31m143.5 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading aiohttp_client_cache-0.14.1-py3-none-any.whl (33 kB)
+Downloading cligj-0.7.2-py3-none-any.whl (7.1 kB)
+Downloading multidict-6.7.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (256 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/256.1 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m256.1/256.1 kB[0m [31m60.9 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading orjson-3.11.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (132 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/132.9 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m132.9/132.9 kB[0m [31m48.4 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading owslib-0.34.1-py3-none-any.whl (240 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/240.6 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m240.6/240.6 kB[0m [31m67.6 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading packaging-25.0-py3-none-any.whl (66 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/66.5 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m66.5/66.5 kB[0m [31m20.9 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading pandas-2.3.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.4 MB)
+----- stdout -----
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/12.4 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━━━[0m [32m8.7/12.4 MB[0m [31m261.8 MB/s[0m eta [36m0:00:01[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m12.4/12.4 MB[0m [31m171.2 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading pyogrio-0.11.1-cp312-cp312-manylinux_2_28_x86_64.whl (27.7 MB)
+----- stdout -----
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/27.7 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [91m━━━━━━━[0m[91m╸[0m[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m5.2/27.7 MB[0m [31m247.8 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━[0m[91m╸[0m[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m8.7/27.7 MB[0m [31m126.9 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m[90m━━━━━━━━━━━━━━━━━━━━[0m [32m13.6/27.7 MB[0m [31m140.0 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m[90m━━━━━━━━━━━━━━━━━━━━[0m [32m13.6/27.7 MB[0m [31m140.0 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━━[0m [32m20.1/27.7 MB[0m [31m104.2 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━[0m [32m25.2/27.7 MB[0m [31m260.4 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m [32m27.1/27.7 MB[0m [31m124.7 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m [32m27.7/27.7 MB[0m [31m123.1 MB/s[0m eta [36m0:00:01[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m27.7/27.7 MB[0m [31m86.0 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading pyproj-3.7.2-cp312-cp312-manylinux_2_28_x86_64.whl (9.6 MB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/9.6 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━[0m [32m7.5/9.6 MB[0m [31m224.4 MB/s[0m eta [36m0:00:01[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m9.6/9.6 MB[0m [31m167.0 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading requests_cache-1.2.1-py3-none-any.whl (61 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/61.4 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m61.4/61.4 kB[0m [31m18.2 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading toolz-1.1.0-py3-none-any.whl (58 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/58.1 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m58.1/58.1 kB[0m [31m18.3 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading url_normalize-2.2.1-py3-none-any.whl (14 kB)
+Downloading yarl-1.22.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (377 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/377.3 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m377.3/377.3 kB[0m [31m88.1 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading affine-2.4.0-py3-none-any.whl (15 kB)
+Downloading aiodns-3.5.0-py3-none-any.whl (8.1 kB)
+Downloading aiofiles-25.1.0-py3-none-any.whl (14 kB)
+Downloading aiosqlite-0.21.0-py3-none-any.whl (15 kB)
+Downloading Brotli-1.1.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.9 MB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/2.9 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m2.9/2.9 MB[0m [31m140.5 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading click_plugins-1.1.1.2-py2.py3-none-any.whl (11 kB)
+Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Downloading joblib-1.5.2-py3-none-any.whl (308 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/308.4 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m308.4/308.4 kB[0m [31m80.9 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading netcdf4-1.7.3-cp311-abi3-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.5 MB)
+----- stdout -----
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/9.5 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━[0m [32m8.8/9.5 MB[0m [31m264.8 MB/s[0m eta [36m0:00:01[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m9.5/9.5 MB[0m [31m180.5 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading scipy-1.16.2-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (35.7 MB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/35.7 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [91m━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m9.1/35.7 MB[0m [31m271.8 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━━━━━━━━━━━[0m [32m18.0/35.7 MB[0m [31m257.7 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━[0m [32m26.9/35.7 MB[0m [31m253.9 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m [32m35.7/35.7 MB[0m [31m264.9 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m [32m35.7/35.7 MB[0m [31m264.9 MB/s[0m eta [36m0:00:01[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m35.7/35.7 MB[0m [31m121.1 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading aiohappyeyeballs-2.6.1-py3-none-any.whl (15 kB)
+Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+----- stdout -----
+Downloading cattrs-25.3.0-py3-none-any.whl (70 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/70.7 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m70.7/70.7 kB[0m [31m20.6 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading attrs-25.4.0-py3-none-any.whl (67 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/67.6 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m67.6/67.6 kB[0m [31m22.9 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/44.6 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m44.6/44.6 kB[0m [31m13.2 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading frozenlist-1.8.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (242 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/242.4 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m242.4/242.4 kB[0m [31m74.2 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Downloading propcache-0.4.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (221 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/221.6 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m221.6/221.6 kB[0m [31m60.6 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading pycares-4.11.0-cp312-cp312-manylinux_2_28_x86_64.whl (641 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/641.1 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m641.1/641.1 kB[0m [31m103.2 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading tzdata-2025.2-py2.py3-none-any.whl (347 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/347.8 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m347.8/347.8 kB[0m [31m88.1 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading cftime-1.6.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (1.6 MB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/1.6 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m1.6/1.6 MB[0m [31m157.6 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading lxml-6.0.2-cp312-cp312-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.3 MB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/5.3 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m5.3/5.3 MB[0m [31m173.3 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (219 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/219.6 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m219.6/219.6 kB[0m [31m53.8 MB/s[0m eta [36m0:00:00[0m
+[?25hDownloading pycparser-2.23-py3-none-any.whl (118 kB)
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/118.1 kB[0m [31m?[0m eta [36m-:--:--[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m118.1/118.1 kB[0m [31m40.9 MB/s[0m eta [36m0:00:00[0m
+----- stdout -----
+[?25hInstalling collected packages: brotli, url-normalize, tzdata, typing-extensions, toolz, pyproj, pycparser, propcache, packaging, orjson, numpy, multidict, lxml, joblib, itsdangerous, frozenlist, defusedxml, cligj, click-plugins, attrs, aiohappyeyeballs, aiofiles, affine, yarl, shapely, scipy, rasterio, pyogrio, pandas, owslib, cytoolz, cftime, cffi, cattrs, aiosqlite, aiosignal, xarray, requests-cache, pycares, netcdf4, geopandas, aiohttp, rioxarray, aiohttp-client-cache, aiodns, pygeoutils, async-retriever, pygeoogc, py3dep
+----- stdout -----
+Successfully installed affine-2.4.0 aiodns-3.5.0 aiofiles-25.1.0 aiohappyeyeballs-2.6.1 aiohttp-3.13.1 aiohttp-client-cache-0.14.1 aiosignal-1.4.0 aiosqlite-0.21.0 async-retriever-0.19.3 attrs-25.4.0 brotli-1.1.0 cattrs-25.3.0 cffi-2.0.0 cftime-1.6.5 click-plugins-1.1.1.2 cligj-0.7.2 cytoolz-1.1.0 defusedxml-0.7.1 frozenlist-1.8.0 geopandas-1.1.1 itsdangerous-2.2.0 joblib-1.5.2 lxml-6.0.2 multidict-6.7.0 netcdf4-1.7.3 numpy-2.3.4 orjson-3.11.3 owslib-0.34.1 packaging-25.0 pandas-2.3.3 propcache-0.4.1 py3dep-0.19.0 pycares-4.11.0 pycparser-2.23 pygeoogc-0.19.4 pygeoutils-0.19.5 pyogrio-0.11.1 pyproj-3.7.2 rasterio-1.4.3 requests-cache-1.2.1 rioxarray-0.19.0 scipy-1.16.2 shapely-2.1.2 toolz-1.1.0 typing-extensions-4.15.0 tzdata-2025.2 url-normalize-2.2.1 xarray-2025.10.1 yarl-1.22.0
+------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mAttributeError[0m                            Traceback (most recent call last)
-Cell [0;32mIn[8], line 2[0m
-[1;32m      1[0m gdf [38;5;241m=[39m leafmap[38;5;241m.[39mget_wbd(geometry, digit[38;5;241m=[39m[38;5;241m10[39m, return_geometry[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
-[0;32m----> 2[0m [43mgdf[49m[38;5;241;43m.[39;49m[43mexplore[49m()
+[0;31mImportError[0m                               Traceback (most recent call last)
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/leafmap/common.py:9851[0m, in [0;36mget_3dep_dem[0;34m(geometry, resolution, src_crs, output, dst_crs, to_cog, overwrite, **kwargs)[0m
+[1;32m   9850[0m [38;5;28;01mtry[39;00m:
+[0;32m-> 9851[0m     [38;5;28;01mimport[39;00m [38;5;21;01mpy3dep[39;00m
+[1;32m   9852[0m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m:
 
-[0;31mAttributeError[0m: 'dict' object has no attribute 'explore'
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/py3dep/__init__.py:7[0m
+[1;32m      5[0m [38;5;28;01mfrom[39;00m [38;5;21;01mimportlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmetadata[39;00m [38;5;28;01mimport[39;00m PackageNotFoundError, version
+[0;32m----> 7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpy3dep[39;00m [38;5;28;01mimport[39;00m exceptions
+[1;32m      8[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpy3dep[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgeoops[39;00m [38;5;28;01mimport[39;00m deg2mpm, fill_depressions
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/py3dep/exceptions.py:5[0m
+[1;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01m__future__[39;00m [38;5;28;01mimport[39;00m annotations
+[0;32m----> 5[0m [38;5;28;01mimport[39;00m [38;5;21;01masync_retriever[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexceptions[39;00m [38;5;28;01mas[39;00m [38;5;21;01mar[39;00m
+[1;32m      6[0m [38;5;28;01mimport[39;00m [38;5;21;01mpygeoogc[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexceptions[39;00m [38;5;28;01mas[39;00m [38;5;21;01mogc[39;00m
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/async_retriever/__init__.py:18[0m
+[1;32m     17[0m [38;5;28;01mfrom[39;00m [38;5;21;01masync_retriever[39;00m[38;5;21;01m.[39;00m[38;5;21;01mprint_versions[39;00m [38;5;28;01mimport[39;00m show_versions
+[0;32m---> 18[0m [38;5;28;01mfrom[39;00m [38;5;21;01masync_retriever[39;00m[38;5;21;01m.[39;00m[38;5;21;01mstreaming[39;00m [38;5;28;01mimport[39;00m generate_filename, stream_write
+[1;32m     20[0m [38;5;28;01mtry[39;00m:
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/async_retriever/streaming.py:13[0m
+[1;32m     12[0m [38;5;28;01mimport[39;00m [38;5;21;01morjson[39;00m
+[0;32m---> 13[0m [38;5;28;01mfrom[39;00m [38;5;21;01maiohttp[39;00m [38;5;28;01mimport[39;00m (
+[1;32m     14[0m     ClientConnectorDNSError,
+[1;32m     15[0m     ClientResponseError,
+[1;32m     16[0m     ClientSession,
+[1;32m     17[0m     ClientTimeout,
+[1;32m     18[0m     TCPConnector,
+[1;32m     19[0m )
+[1;32m     20[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmultidict[39;00m [38;5;28;01mimport[39;00m MultiDict
+
+[0;31mImportError[0m: cannot import name 'ClientConnectorDNSError' from 'aiohttp' (/home/runner/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/aiohttp/__init__.py)
+
+During handling of the above exception, another exception occurred:
+
+[0;31mImportError[0m                               Traceback (most recent call last)
+Cell [0;32mIn[10], line 1[0m
+[0;32m----> 1[0m array [38;5;241m=[39m [43mleafmap[49m[38;5;241;43m.[39;49m[43mget_3dep_dem[49m[43m([49m
+[1;32m      2[0m [43m    [49m[43mgdf[49m[43m,[49m
+[1;32m      3[0m [43m    [49m[43mresolution[49m[38;5;241;43m=[39;49m[38;5;241;43m30[39;49m[43m,[49m
+[1;32m      4[0m [43m    [49m[43moutput[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mdem.tif[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m      5[0m [43m    [49m[43mdst_crs[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mEPSG:3857[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m      6[0m [43m    [49m[43mto_cog[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[1;32m      7[0m [43m    [49m[43moverwrite[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[1;32m      8[0m [43m)[49m
+[1;32m      9[0m array
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/leafmap/common.py:9855[0m, in [0;36mget_3dep_dem[0;34m(geometry, resolution, src_crs, output, dst_crs, to_cog, overwrite, **kwargs)[0m
+[1;32m   9853[0m     [38;5;28mprint[39m([38;5;124m"[39m[38;5;124mpy3dep is not installed. Installing py3dep...[39m[38;5;124m"[39m)
+[1;32m   9854[0m     install_package([38;5;124m"[39m[38;5;124mpy3dep[39m[38;5;124m"[39m)
+[0;32m-> 9855[0m     [38;5;28;01mimport[39;00m [38;5;21;01mpy3dep[39;00m
+[1;32m   9857[0m [38;5;28;01mimport[39;00m [38;5;21;01mgeopandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mgpd[39;00m
+[1;32m   9859[0m [38;5;28;01mif[39;00m output [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m os[38;5;241m.[39mpath[38;5;241m.[39mexists(output) [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m overwrite:
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/py3dep/__init__.py:7[0m
+[1;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01m__future__[39;00m [38;5;28;01mimport[39;00m annotations
+[1;32m      5[0m [38;5;28;01mfrom[39;00m [38;5;21;01mimportlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmetadata[39;00m [38;5;28;01mimport[39;00m PackageNotFoundError, version
+[0;32m----> 7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpy3dep[39;00m [38;5;28;01mimport[39;00m exceptions
+[1;32m      8[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpy3dep[39;00m[38;5;21;01m.[39;00m[38;5;21;01mgeoops[39;00m [38;5;28;01mimport[39;00m deg2mpm, fill_depressions
+[1;32m      9[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpy3dep[39;00m[38;5;21;01m.[39;00m[38;5;21;01mprint_versions[39;00m [38;5;28;01mimport[39;00m show_versions
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/py3dep/exceptions.py:5[0m
+[1;32m      1[0m [38;5;124;03m"""Customized Py3DEP exceptions."""[39;00m
+[1;32m      3[0m [38;5;28;01mfrom[39;00m [38;5;21;01m__future__[39;00m [38;5;28;01mimport[39;00m annotations
+[0;32m----> 5[0m [38;5;28;01mimport[39;00m [38;5;21;01masync_retriever[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexceptions[39;00m [38;5;28;01mas[39;00m [38;5;21;01mar[39;00m
+[1;32m      6[0m [38;5;28;01mimport[39;00m [38;5;21;01mpygeoogc[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexceptions[39;00m [38;5;28;01mas[39;00m [38;5;21;01mogc[39;00m
+[1;32m      9[0m [38;5;28;01mclass[39;00m [38;5;21;01mInputTypeError[39;00m(ar[38;5;241m.[39mInputTypeError):
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/async_retriever/__init__.py:18[0m
+[1;32m     10[0m [38;5;28;01mfrom[39;00m [38;5;21;01masync_retriever[39;00m[38;5;21;01m.[39;00m[38;5;21;01masync_retriever[39;00m [38;5;28;01mimport[39;00m (
+[1;32m     11[0m     delete_url_cache,
+[1;32m     12[0m     retrieve,
+[0;32m   (...)[0m
+[1;32m     15[0m     retrieve_text,
+[1;32m     16[0m )
+[1;32m     17[0m [38;5;28;01mfrom[39;00m [38;5;21;01masync_retriever[39;00m[38;5;21;01m.[39;00m[38;5;21;01mprint_versions[39;00m [38;5;28;01mimport[39;00m show_versions
+[0;32m---> 18[0m [38;5;28;01mfrom[39;00m [38;5;21;01masync_retriever[39;00m[38;5;21;01m.[39;00m[38;5;21;01mstreaming[39;00m [38;5;28;01mimport[39;00m generate_filename, stream_write
+[1;32m     20[0m [38;5;28;01mtry[39;00m:
+[1;32m     21[0m     __version__ [38;5;241m=[39m version([38;5;124m"[39m[38;5;124masync_retriever[39m[38;5;124m"[39m)
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/async_retriever/streaming.py:13[0m
+[1;32m     11[0m [38;5;28;01mimport[39;00m [38;5;21;01maiofiles[39;00m
+[1;32m     12[0m [38;5;28;01mimport[39;00m [38;5;21;01morjson[39;00m
+[0;32m---> 13[0m [38;5;28;01mfrom[39;00m [38;5;21;01maiohttp[39;00m [38;5;28;01mimport[39;00m (
+[1;32m     14[0m     ClientConnectorDNSError,
+[1;32m     15[0m     ClientResponseError,
+[1;32m     16[0m     ClientSession,
+[1;32m     17[0m     ClientTimeout,
+[1;32m     18[0m     TCPConnector,
+[1;32m     19[0m )
+[1;32m     20[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmultidict[39;00m [38;5;28;01mimport[39;00m MultiDict
+[1;32m     21[0m [38;5;28;01mfrom[39;00m [38;5;21;01myarl[39;00m [38;5;28;01mimport[39;00m URL
+
+[0;31mImportError[0m: cannot import name 'ClientConnectorDNSError' from 'aiohttp' (/home/runner/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/aiohttp/__init__.py)
 
