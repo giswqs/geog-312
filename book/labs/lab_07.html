@@ -1,0 +1,831 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lab 7 &#8212; Introduction to GIS Programming</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/labs/lab_07';</script>
+    <link rel="canonical" href="https://geog-312.gishub.org/book/labs/lab_07.html" />
+    <link rel="icon" href="../../_static/fav.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 8" href="lab_08.html" />
+    <link rel="prev" title="Lab 6" href="lab_06.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Introduction to GIS Programming - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Introduction to GIS Programming - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/instructor.html">Instructor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/schedule.html">Schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/textbooks.html">Textbooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/videos.html">Videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/acknowledgments.html">Acknowledgments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Software</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../software/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/miniconda.html">Miniconda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/vscode.html">Visual Studio Code</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../software/git.html">Git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/colab.html">Google Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../software/jupyterlab.html">JupyterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python Basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python/01_get_started.html">1. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/02_variables.html">2. Variables and Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/03_data_structures.html">3. Data Structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/04_string_operations.html">4. String Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/05_looping.html">5. Looping and Control Statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/06_functions_classes.html">6. Functions and Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/07_files.html">7. Files and Exception Handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/08_numpy_pandas.html">8. Intro to NumPy and Pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GeoPython</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/get_started.html">9. Get Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/geopandas.html">10. GeoPandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/rasterio.html">11. Rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/xarray.html">12. Xarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/rioxarray.html">13. Rioxarray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/leafmap.html">14. Leafmap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/whitebox.html">15. Whitebox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/maplibre.html">16. MapLibre</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/geemap.html">17. Geemap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/samgeo.html">18. SAMGeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/hypercoast.html">19. HyperCoast</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geospatial/duckdb.html">20. DuckDB</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Labs</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="instructions.html">Submission Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_01.html">Lab 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_02.html">Lab 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_03.html">Lab 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_04.html">Lab 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_05.html">Lab 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_06.html">Lab 6</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_08.html">Lab 8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_09.html">Lab 9</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/giswqs/geog-312/main?urlpath=tree/book/labs/lab_07.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/labs/lab_07.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312/edit/main/book/labs/lab_07.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/giswqs/geog-312/issues/new?title=Issue%20on%20page%20%2Fbook/labs/lab_07.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/book/labs/lab_07.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 7</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-an-interactive-map">Exercise 1: Creating an Interactive Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-adding-xyz-and-wms-tile-layers">Exercise 2: Adding XYZ and WMS Tile Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-legends">Exercise 3: Adding Map Legends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-creating-marker-clusters">Exercise 4: Creating Marker Clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-vector-data">Exercise 5: Visualizing Vector Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-visualizing-geoparquet-data">Exercise 6: Visualizing GeoParquet Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-visualizing-pmtiles">Exercise 7: Visualizing PMTiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-visualizing-cloud-optimized-geotiffs-cogs">Exercise 8: Visualizing Cloud Optimized GeoTIFFs (COGs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-visualizing-local-raster-data">Exercise 9: Visualizing Local Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-creating-a-split-map">Exercise 10: Creating a Split Map</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-7">
+<h1>Lab 7<a class="headerlink" href="#lab-7" title="Link to this heading">#</a></h1>
+<p><a class="reference external" href="https://colab.research.google.com/github/giswqs/geog-312/blob/main/book/labs/lab_07.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>In this lab, you will delve deeper into Leafmap, a powerful Python package for interactive geospatial mapping and analysis. You will explore how to work with various types of raster and vector data, customize basemaps and map layers, and visualize data using Cloud Optimized GeoTIFFs (COGs), PMTiles, GeoParquet, and other formats. You will also learn how to enhance your maps with advanced features like legends, colorbars, marker clusters, and split maps for comparison.</p>
+</section>
+<section id="objective">
+<h2>Objective<a class="headerlink" href="#objective" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Create and customize interactive maps using Leafmap.</p></li>
+<li><p>Add and configure basemaps, XYZ tile layers, and WMS layers.</p></li>
+<li><p>Visualize various raster formats such as GeoTIFF, Cloud Optimized GeoTIFF (COG), and multi-band imagery.</p></li>
+<li><p>Explore vector data visualization, including marker clusters and choropleth maps.</p></li>
+<li><p>Implement advanced mapping features like legends, colorbars, and split map comparisons.</p></li>
+</ul>
+</section>
+<section id="exercise-1-creating-an-interactive-map">
+<h2>Exercise 1: Creating an Interactive Map<a class="headerlink" href="#exercise-1-creating-an-interactive-map" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Create an interactive map with search functionality that allows users to search for places and zoom to them. Disable the draw control on the map.</p></li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/b930fb63-3bd1-4d7e-9bf8-87e6d398e5c3" /></p>
+</section>
+<section id="exercise-2-adding-xyz-and-wms-tile-layers">
+<h2>Exercise 2: Adding XYZ and WMS Tile Layers<a class="headerlink" href="#exercise-2-adding-xyz-and-wms-tile-layers" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Add a custom XYZ tile layer (<a class="reference external" href="https://apps.nationalmap.gov/services">USGS Topographic basemap</a>) using the following URL:</p>
+<ul class="simple">
+<li><p>URL: <code class="docutils literal notranslate"><span class="pre">https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}</span></code></p></li>
+</ul>
+</li>
+<li><p>Add two WMS layers to visualize NAIP imagery and NDVI using a USGS WMS service.</p>
+<ul class="simple">
+<li><p>URL: <code class="docutils literal notranslate"><span class="pre">https://imagery.nationalmap.gov/arcgis/services/USGSNAIPImagery/ImageServer/WMSServer?</span></code></p></li>
+<li><p>Layer names: <code class="docutils literal notranslate"><span class="pre">USGSNAIPImagery:FalseColorComposite</span></code>, <code class="docutils literal notranslate"><span class="pre">USGSNAIPImagery:NDVI_Color</span></code></p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/28dd8511-a0ac-4b44-ab02-9ed791817043" /></p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/719c1e07-f955-42d6-985c-b5842c9eac4c" /></p>
+</section>
+<section id="exercise-3-adding-map-legends">
+<h2>Exercise 3: Adding Map Legends<a class="headerlink" href="#exercise-3-adding-map-legends" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Add the <a class="reference external" href="https://esa-worldcover.org/en">ESA World Cover</a> WMS tile layer to the map.</p>
+<ul class="simple">
+<li><p>URL: <code class="docutils literal notranslate"><span class="pre">https://services.terrascope.be/wms/v2?</span></code></p></li>
+<li><p>Layer name: <code class="docutils literal notranslate"><span class="pre">WORLDCOVER_2021_MAP</span></code></p></li>
+</ul>
+</li>
+<li><p>Add a legend to the map using the leafmap built-in <code class="docutils literal notranslate"><span class="pre">ESA_WorldCover</span></code> legend.</p></li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/be5a9b07-4f6c-4245-9737-31db2df14f7f" /></p>
+</section>
+<section id="exercise-4-creating-marker-clusters">
+<h2>Exercise 4: Creating Marker Clusters<a class="headerlink" href="#exercise-4-creating-marker-clusters" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Create a marker cluster visualization from a GeoJSON file of building centroids:</p>
+<ul class="simple">
+<li><p>URL: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/places/wa_building_centroids.geojson">opengeos/datasets</a></p></li>
+<li><p>Hint: Read the GeoJSON file using GeoPandas and add “latitude” and “longitude” columns to the GeoDataFrame.</p></li>
+</ul>
+</li>
+<li><p>Create circle markers for each building centroid using the <code class="docutils literal notranslate"><span class="pre">Map.add_circle_markers_from_xy()</span></code> method with the following styling:</p>
+<ul class="simple">
+<li><p>Radius: 5</p></li>
+<li><p>Outline color: “red”</p></li>
+<li><p>Fill color: “yellow”</p></li>
+<li><p>Fill opacity: 0.8</p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/d60cbfc7-b8c9-4cab-8852-bc34e82fd665" /></p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/637e00ae-89af-495e-84b4-e668e16cce88" /></p>
+</section>
+<section id="exercise-5-visualizing-vector-data">
+<h2>Exercise 5: Visualizing Vector Data<a class="headerlink" href="#exercise-5-visualizing-vector-data" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Visualize the building polygons GeoJSON file and style it with:</p>
+<ul class="simple">
+<li><p>Outline color: “red”</p></li>
+<li><p>No fill color</p></li>
+<li><p>URL: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/places/wa_overture_buildings.geojson">opengeos/datasets</a></p></li>
+</ul>
+</li>
+<li><p>Visualize the road polylines GeoJSON file and style it with:</p>
+<ul class="simple">
+<li><p>Line color: “red”</p></li>
+<li><p>Line width: 2</p></li>
+<li><p>URL: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/places/las_vegas_roads.geojson">opengeos/datasets</a></p></li>
+</ul>
+</li>
+<li><p>Create a choropleth map of county areas in the US:</p>
+<ul class="simple">
+<li><p>URL: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/us/us_counties.geojson">opengeos/datasets</a></p></li>
+<li><p>Column: <code class="docutils literal notranslate"><span class="pre">CENSUSAREA</span></code></p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/069eb704-c409-44ee-af9e-7582d1ab23a5" /></p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/f28d19a6-4f60-484c-b2f7-c1ecce7ecb26" /></p>
+<p><img alt="image" src="https://github.com/user-attachments/assets/3aa9f54f-64d7-4788-89f1-f3ab88c1aa2e" /></p>
+</section>
+<section id="exercise-6-visualizing-geoparquet-data">
+<h2>Exercise 6: Visualizing GeoParquet Data<a class="headerlink" href="#exercise-6-visualizing-geoparquet-data" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Visualize GeoParquet data of US states:</p>
+<ul class="simple">
+<li><p>URL: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/us/us_states.parquet">opengeos/datasets</a></p></li>
+<li><p>Style: Outline color of “red” with no fill.</p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/b6d9ec09-035b-4df7-8ab7-a7b4588f1e71" /></p>
+</section>
+<section id="exercise-7-visualizing-pmtiles">
+<h2>Exercise 7: Visualizing PMTiles<a class="headerlink" href="#exercise-7-visualizing-pmtiles" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Visualize the Overture Maps building dataset using PMTiles:</p>
+<ul class="simple">
+<li><p>URL: <a class="reference external" href="https://overturemaps-tiles-us-west-2-beta.s3.amazonaws.com/2024-09-18/buildings.pmtiles">https://overturemaps-tiles-us-west-2-beta.s3.amazonaws.com/2024-09-18/buildings.pmtiles</a></p></li>
+<li><p>Style: Blue fill with 0.4 opacity, red outline.</p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/4ee08461-c962-4c37-8979-7105f588842a" /></p>
+</section>
+<section id="exercise-8-visualizing-cloud-optimized-geotiffs-cogs">
+<h2>Exercise 8: Visualizing Cloud Optimized GeoTIFFs (COGs)<a class="headerlink" href="#exercise-8-visualizing-cloud-optimized-geotiffs-cogs" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Visualize Digital Elevation Model (DEM) data using the following COG file:</p>
+<ul class="simple">
+<li><p>URL: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/raster/dem.tif">opengeos/datasets</a></p></li>
+<li><p>Apply a terrain colormap to show elevation values.</p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/21e1f7dd-466e-4880-94a5-0365bf1495dc" /></p>
+</section>
+<section id="exercise-9-visualizing-local-raster-data">
+<h2>Exercise 9: Visualizing Local Raster Data<a class="headerlink" href="#exercise-9-visualizing-local-raster-data" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Visualize the following raster datasets using the Map.add_raster() method:</p>
+<ul class="simple">
+<li><p>Aerial Imagery: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/places/wa_building_image.tif">opengeos/datasets</a></p></li>
+<li><p>Building Footprints: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/places/wa_building_masks.tif">opengeos/datasets</a> (use the “tab20” colormap and opacity of 0.7)</p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/faf7c345-6a3f-4ca0-8eca-7417e6568867" /></p>
+</section>
+<section id="exercise-10-creating-a-split-map">
+<h2>Exercise 10: Creating a Split Map<a class="headerlink" href="#exercise-10-creating-a-split-map" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Create a split map to compare imagery of Libya before and after the 2023 flood event:</p>
+<ul class="simple">
+<li><p>Pre-event imagery: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-07-01.tif">opengeos/datasets</a></p></li>
+<li><p>Post-event imagery: <a class="github reference external" href="https://github.com/opengeos/datasets/releases/download/raster/Libya-2023-09-13.tif">opengeos/datasets</a></p></li>
+</ul>
+</li>
+</ol>
+<p><img alt="image" src="https://github.com/user-attachments/assets/8cab4f1c-2dba-4652-a644-3ce6be4bbbd2" /></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "giswqs/geog-312",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./book/labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_06.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 6</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab_08.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 8</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-creating-an-interactive-map">Exercise 1: Creating an Interactive Map</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-adding-xyz-and-wms-tile-layers">Exercise 2: Adding XYZ and WMS Tile Layers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-adding-map-legends">Exercise 3: Adding Map Legends</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-creating-marker-clusters">Exercise 4: Creating Marker Clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-5-visualizing-vector-data">Exercise 5: Visualizing Vector Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-visualizing-geoparquet-data">Exercise 6: Visualizing GeoParquet Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-7-visualizing-pmtiles">Exercise 7: Visualizing PMTiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-8-visualizing-cloud-optimized-geotiffs-cogs">Exercise 8: Visualizing Cloud Optimized GeoTIFFs (COGs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-9-visualizing-local-raster-data">Exercise 9: Visualizing Local Raster Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-10-creating-a-split-map">Exercise 10: Creating a Split Map</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Qiusheng Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
