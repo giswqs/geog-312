@@ -1,6 +1,6 @@
 geospatial==0.11.*
 ghp-import==2.1.*
 jupyter-book==1.0.*
-jupytext==1.18.*
+jupytext==1.19.*
 pmtiles==3.5.*
 py3dep
