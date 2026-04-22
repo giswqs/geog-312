@@ -10,27 +10,13 @@ This course offers a comprehensive exploration of GIS programming, centered arou
 
 Wu, Q. (2025). _Introduction to GIS Programming: A Practical Python Guide to Open Source Geospatial Tools_. Independently published. ISBN 979-8286979455. <https://amazon.com/dp/B0FFW34LL3>
 
-- 🇺🇸 **Full-Color Print Edition (556 pages):** Now available on Amazon ([link](https://amazon.com/dp/B0FFW34LL3))
+### Print Edition
 
-- 🇺🇸 **English PDF Edition (553 pages):** Available on Leanpub ([link](https://leanpub.com/gispro))
+- 🇺🇸 English Full-Color Print Edition (556 pages) is available on Amazon ([link](https://amazon.com/dp/B0FFW34LL3))
 
-- 🇨🇳 **Chinese PDF Edition (540 pages):** 中文电子版可在 Leanpub 购买 ([link](https://leanpub.com/gispro-zh))
+### PDF and EPUB Editions
 
-- 🇯🇵 **Japanese PDF Edition (573 pages):** 日本語版が Leanpub で利用可能 ([link](https://leanpub.com/gispro-ja))
-
-- 🇰🇷 **Korean PDF Edition (555 pages):** 한국어판 Leanpub에서 이용 가능 ([link](https://leanpub.com/gispro-ko))
-
-- 🇲🇽 **Spanish PDF Edition (572 pages):** Edición en español disponible en Leanpub ([link](https://leanpub.com/gispro-es))
-
-- 🇫🇷 **French PDF Edition (581 pages):** Édition française disponible sur Leanpub ([link](https://leanpub.com/gispro-fr))
-
-- 🇵🇹 **Portuguese PDF Edition (569 pages):** Edição em português disponível na Leanpub ([link](https://leanpub.com/gispro-pt))
-
-- 🇮🇩 **Indonesian PDF Edition (565 pages):** Edisi bahasa Indonesia tersedia di Leanpub ([link](https://leanpub.com/gispro-id))
-
-- 🇩🇪 **German PDF Edition (582 pages):** Deutschsprachige Edition auf Leanpub verfügbar ([link](https://leanpub.com/gispro-de))
-
-- 🇷🇺 **Russian PDF Edition (599 pages):** Российская версия на Leanpub доступна ([link](https://leanpub.com/gispro-ru))
+🇺🇸 [English](https://opengeopub.com/books/gispro) | 🇨🇳 [Chinese](https://opengeopub.com/books/gispro-zh) | 🇯🇵 [Japanese](https://opengeopub.com/books/gispro-ja) | 🇰🇷 [Korean](https://opengeopub.com/books/gispro-ko) | 🇲🇽 [Spanish](https://opengeopub.com/books/gispro-es) | 🇫🇷 [French](https://opengeopub.com/books/gispro-fr) | 🇵🇹 [Portuguese](https://opengeopub.com/books/gispro-pt) | 🇮🇩 [Indonesian](https://opengeopub.com/books/gispro-id) | 🇩🇪 [German](https://opengeopub.com/books/gispro-de) | 🇷🇺 [Russian](https://opengeopub.com/books/gispro-ru) | 🇮🇹 [Italian](https://opengeopub.com/books/gispro-it) | 🇨🇿 [Czech](https://opengeopub.com/books/gispro-cs)
 
 ![book cover](https://assets.gishub.org/images/gispro-book-cover.png)
 
