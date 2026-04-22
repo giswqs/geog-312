@@ -18,65 +18,97 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-url = "https://opengeos.org/data/pmtiles/protomaps_firenze.pmtiles"
-metadata = leafmap.pmtiles_metadata(url)
-print(f"layer names: {metadata['layer_names']}")
-print(f"bounds: {metadata['bounds']}")
+gdf = gpd.read_parquet(filename)
+gdf.head()
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mIndexError[0m                                Traceback (most recent call last)
-Cell [0;32mIn[42], line 2[0m
-[1;32m      1[0m url [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhttps://opengeos.org/data/pmtiles/protomaps_firenze.pmtiles[39m[38;5;124m"[39m
-[0;32m----> 2[0m metadata [38;5;241m=[39m [43mleafmap[49m[38;5;241;43m.[39;49m[43mpmtiles_metadata[49m[43m([49m[43murl[49m[43m)[49m
-[1;32m      3[0m [38;5;28mprint[39m([38;5;124mf[39m[38;5;124m"[39m[38;5;124mlayer names: [39m[38;5;132;01m{[39;00mmetadata[[38;5;124m'[39m[38;5;124mlayer_names[39m[38;5;124m'[39m][38;5;132;01m}[39;00m[38;5;124m"[39m)
-[1;32m      4[0m [38;5;28mprint[39m([38;5;124mf[39m[38;5;124m"[39m[38;5;124mbounds: [39m[38;5;132;01m{[39;00mmetadata[[38;5;124m'[39m[38;5;124mbounds[39m[38;5;124m'[39m][38;5;132;01m}[39;00m[38;5;124m"[39m)
+[0;31mArrowInvalid[0m                              Traceback (most recent call last)
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/geopandas/io/arrow.py:653[0m, in [0;36m_read_parquet_schema_and_metadata[0;34m(path, filesystem)[0m
+[1;32m    652[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 653[0m     schema [38;5;241m=[39m [43mparquet[49m[38;5;241;43m.[39;49m[43mParquetDataset[49m[43m([49m[43mpath[49m[43m,[49m[43m [49m[43mfilesystem[49m[38;5;241;43m=[39;49m[43mfilesystem[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m[38;5;241m.[39mschema
+[1;32m    654[0m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
 
-File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/leafmap/common.py:11640[0m, in [0;36mpmtiles_metadata[0;34m(input_file)[0m
-[1;32m  11637[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m urlparse(input_file)[38;5;241m.[39mpath[38;5;241m.[39mendswith([38;5;124m"[39m[38;5;124m.pmtiles[39m[38;5;124m"[39m):
-[1;32m  11638[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mInput file must be a .pmtiles file.[39m[38;5;124m"[39m)
-[0;32m> 11640[0m header [38;5;241m=[39m [43mpmtiles_header[49m[43m([49m[43minput_file[49m[43m)[49m
-[1;32m  11641[0m metadata_offset [38;5;241m=[39m header[[38;5;124m"[39m[38;5;124mmetadata_offset[39m[38;5;124m"[39m]
-[1;32m  11642[0m metadata_length [38;5;241m=[39m header[[38;5;124m"[39m[38;5;124mmetadata_length[39m[38;5;124m"[39m]
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/pyarrow/parquet/core.py:1371[0m, in [0;36mParquetDataset.__init__[0;34m(self, path_or_paths, filesystem, schema, filters, read_dictionary, memory_map, buffer_size, partitioning, ignore_prefixes, pre_buffer, coerce_int96_timestamp_unit, decryption_properties, thrift_string_size_limit, thrift_container_size_limit, page_checksum_verification, use_legacy_dataset)[0m
+[1;32m   1368[0m     partitioning [38;5;241m=[39m ds[38;5;241m.[39mHivePartitioning[38;5;241m.[39mdiscover(
+[1;32m   1369[0m         infer_dictionary[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+[0;32m-> 1371[0m [38;5;28mself[39m[38;5;241m.[39m_dataset [38;5;241m=[39m [43mds[49m[38;5;241;43m.[39;49m[43mdataset[49m[43m([49m[43mpath_or_paths[49m[43m,[49m[43m [49m[43mfilesystem[49m[38;5;241;43m=[39;49m[43mfilesystem[49m[43m,[49m
+[1;32m   1372[0m [43m                           [49m[43mschema[49m[38;5;241;43m=[39;49m[43mschema[49m[43m,[49m[43m [49m[38;5;28;43mformat[39;49m[38;5;241;43m=[39;49m[43mparquet_format[49m[43m,[49m
+[1;32m   1373[0m [43m                           [49m[43mpartitioning[49m[38;5;241;43m=[39;49m[43mpartitioning[49m[43m,[49m
+[1;32m   1374[0m [43m                           [49m[43mignore_prefixes[49m[38;5;241;43m=[39;49m[43mignore_prefixes[49m[43m)[49m
 
-File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/leafmap/common.py:11575[0m, in [0;36mpmtiles_header[0;34m(input_file)[0m
-[1;32m  11573[0m     headers [38;5;241m=[39m {[38;5;124m"[39m[38;5;124mRange[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124mbytes=0-127[39m[38;5;124m"[39m}
-[1;32m  11574[0m     response [38;5;241m=[39m requests[38;5;241m.[39mget(input_file, headers[38;5;241m=[39mheaders)
-[0;32m> 11575[0m     header [38;5;241m=[39m [43mdeserialize_header[49m[43m([49m[43mresponse[49m[38;5;241;43m.[39;49m[43mcontent[49m[43m)[49m
-[1;32m  11577[0m [38;5;28;01melse[39;00m:
-[1;32m  11578[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m os[38;5;241m.[39mpath[38;5;241m.[39mexists(input_file):
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/pyarrow/dataset.py:794[0m, in [0;36mdataset[0;34m(source, schema, format, filesystem, partitioning, partition_base_dir, exclude_invalid_files, ignore_prefixes)[0m
+[1;32m    793[0m [38;5;28;01mif[39;00m _is_path_like(source):
+[0;32m--> 794[0m     [38;5;28;01mreturn[39;00m [43m_filesystem_dataset[49m[43m([49m[43msource[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    795[0m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(source, ([38;5;28mtuple[39m, [38;5;28mlist[39m)):
 
-File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/pmtiles/tile.py:275[0m, in [0;36mdeserialize_header[0;34m(buf)[0m
-[1;32m    249[0m [38;5;28;01mdef[39;00m [38;5;21mread_int32[39m(pos):
-[1;32m    250[0m     [38;5;28;01mreturn[39;00m [38;5;28mint[39m[38;5;241m.[39mfrom_bytes(buf[pos : pos [38;5;241m+[39m [38;5;241m4[39m], byteorder[38;5;241m=[39m[38;5;124m"[39m[38;5;124mlittle[39m[38;5;124m"[39m, signed[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
-[1;32m    252[0m [38;5;28;01mreturn[39;00m {
-[1;32m    253[0m     [38;5;124m"[39m[38;5;124mversion[39m[38;5;124m"[39m: buf[[38;5;241m7[39m],
-[1;32m    254[0m     [38;5;124m"[39m[38;5;124mroot_offset[39m[38;5;124m"[39m: read_uint64([38;5;241m8[39m),
-[1;32m    255[0m     [38;5;124m"[39m[38;5;124mroot_length[39m[38;5;124m"[39m: read_uint64([38;5;241m16[39m),
-[1;32m    256[0m     [38;5;124m"[39m[38;5;124mmetadata_offset[39m[38;5;124m"[39m: read_uint64([38;5;241m24[39m),
-[1;32m    257[0m     [38;5;124m"[39m[38;5;124mmetadata_length[39m[38;5;124m"[39m: read_uint64([38;5;241m32[39m),
-[1;32m    258[0m     [38;5;124m"[39m[38;5;124mleaf_directory_offset[39m[38;5;124m"[39m: read_uint64([38;5;241m40[39m),
-[1;32m    259[0m     [38;5;124m"[39m[38;5;124mleaf_directory_length[39m[38;5;124m"[39m: read_uint64([38;5;241m48[39m),
-[1;32m    260[0m     [38;5;124m"[39m[38;5;124mtile_data_offset[39m[38;5;124m"[39m: read_uint64([38;5;241m56[39m),
-[1;32m    261[0m     [38;5;124m"[39m[38;5;124mtile_data_length[39m[38;5;124m"[39m: read_uint64([38;5;241m64[39m),
-[1;32m    262[0m     [38;5;124m"[39m[38;5;124maddressed_tiles_count[39m[38;5;124m"[39m: read_uint64([38;5;241m72[39m),
-[1;32m    263[0m     [38;5;124m"[39m[38;5;124mtile_entries_count[39m[38;5;124m"[39m: read_uint64([38;5;241m80[39m),
-[1;32m    264[0m     [38;5;124m"[39m[38;5;124mtile_contents_count[39m[38;5;124m"[39m: read_uint64([38;5;241m88[39m),
-[1;32m    265[0m     [38;5;124m"[39m[38;5;124mclustered[39m[38;5;124m"[39m: buf[[38;5;241m96[39m] [38;5;241m==[39m [38;5;241m0x1[39m,
-[1;32m    266[0m     [38;5;124m"[39m[38;5;124minternal_compression[39m[38;5;124m"[39m: Compression(buf[[38;5;241m97[39m]),
-[1;32m    267[0m     [38;5;124m"[39m[38;5;124mtile_compression[39m[38;5;124m"[39m: Compression(buf[[38;5;241m98[39m]),
-[1;32m    268[0m     [38;5;124m"[39m[38;5;124mtile_type[39m[38;5;124m"[39m: TileType(buf[[38;5;241m99[39m]),
-[1;32m    269[0m     [38;5;124m"[39m[38;5;124mmin_zoom[39m[38;5;124m"[39m: buf[[38;5;241m100[39m],
-[1;32m    270[0m     [38;5;124m"[39m[38;5;124mmax_zoom[39m[38;5;124m"[39m: buf[[38;5;241m101[39m],
-[1;32m    271[0m     [38;5;124m"[39m[38;5;124mmin_lon_e7[39m[38;5;124m"[39m: read_int32([38;5;241m102[39m),
-[1;32m    272[0m     [38;5;124m"[39m[38;5;124mmin_lat_e7[39m[38;5;124m"[39m: read_int32([38;5;241m106[39m),
-[1;32m    273[0m     [38;5;124m"[39m[38;5;124mmax_lon_e7[39m[38;5;124m"[39m: read_int32([38;5;241m110[39m),
-[1;32m    274[0m     [38;5;124m"[39m[38;5;124mmax_lat_e7[39m[38;5;124m"[39m: read_int32([38;5;241m114[39m),
-[0;32m--> 275[0m     [38;5;124m"[39m[38;5;124mcenter_zoom[39m[38;5;124m"[39m: [43mbuf[49m[43m[[49m[38;5;241;43m118[39;49m[43m][49m,
-[1;32m    276[0m     [38;5;124m"[39m[38;5;124mcenter_lon_e7[39m[38;5;124m"[39m: read_int32([38;5;241m119[39m),
-[1;32m    277[0m     [38;5;124m"[39m[38;5;124mcenter_lat_e7[39m[38;5;124m"[39m: read_int32([38;5;241m123[39m),
-[1;32m    278[0m }
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/pyarrow/dataset.py:486[0m, in [0;36m_filesystem_dataset[0;34m(source, schema, filesystem, partitioning, format, partition_base_dir, exclude_invalid_files, selector_ignore_prefixes)[0m
+[1;32m    484[0m factory [38;5;241m=[39m FileSystemDatasetFactory(fs, paths_or_selector, [38;5;28mformat[39m, options)
+[0;32m--> 486[0m [38;5;28;01mreturn[39;00m [43mfactory[49m[38;5;241;43m.[39;49m[43mfinish[49m[43m([49m[43mschema[49m[43m)[49m
 
-[0;31mIndexError[0m: index out of bounds on dimension 1
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/pyarrow/_dataset.pyx:3089[0m, in [0;36mpyarrow._dataset.DatasetFactory.finish[0;34m()[0m
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/pyarrow/error.pxi:155[0m, in [0;36mpyarrow.lib.pyarrow_internal_check_status[0;34m()[0m
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/pyarrow/error.pxi:92[0m, in [0;36mpyarrow.lib.check_status[0;34m()[0m
+
+[0;31mArrowInvalid[0m: Error creating dataset. Could not read schema from 'cities.parquet'. Is this a 'parquet' file?: Could not open Parquet input source 'cities.parquet': Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file.
+
+During handling of the above exception, another exception occurred:
+
+[0;31mArrowInvalid[0m                              Traceback (most recent call last)
+Cell [0;32mIn[34], line 1[0m
+[0;32m----> 1[0m gdf [38;5;241m=[39m [43mgpd[49m[38;5;241;43m.[39;49m[43mread_parquet[49m[43m([49m[43mfilename[49m[43m)[49m
+[1;32m      2[0m gdf[38;5;241m.[39mhead()
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/geopandas/io/arrow.py:751[0m, in [0;36m_read_parquet[0;34m(path, columns, storage_options, bbox, **kwargs)[0m
+[1;32m    747[0m filesystem, path [38;5;241m=[39m _get_filesystem_path(
+[1;32m    748[0m     path, filesystem[38;5;241m=[39mfilesystem, storage_options[38;5;241m=[39mstorage_options
+[1;32m    749[0m )
+[1;32m    750[0m path [38;5;241m=[39m _expand_user(path)
+[0;32m--> 751[0m schema, metadata [38;5;241m=[39m [43m_read_parquet_schema_and_metadata[49m[43m([49m[43mpath[49m[43m,[49m[43m [49m[43mfilesystem[49m[43m)[49m
+[1;32m    753[0m geo_metadata [38;5;241m=[39m _validate_and_decode_metadata(metadata)
+[1;32m    755[0m bbox_filter [38;5;241m=[39m (
+[1;32m    756[0m     _get_parquet_bbox_filter(geo_metadata, bbox) [38;5;28;01mif[39;00m bbox [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;28;01melse[39;00m [38;5;28;01mNone[39;00m
+[1;32m    757[0m )
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/geopandas/io/arrow.py:655[0m, in [0;36m_read_parquet_schema_and_metadata[0;34m(path, filesystem)[0m
+[1;32m    653[0m     schema [38;5;241m=[39m parquet[38;5;241m.[39mParquetDataset(path, filesystem[38;5;241m=[39mfilesystem, [38;5;241m*[39m[38;5;241m*[39mkwargs)[38;5;241m.[39mschema
+[1;32m    654[0m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
+[0;32m--> 655[0m     schema [38;5;241m=[39m [43mparquet[49m[38;5;241;43m.[39;49m[43mread_schema[49m[43m([49m[43mpath[49m[43m,[49m[43m [49m[43mfilesystem[49m[38;5;241;43m=[39;49m[43mfilesystem[49m[43m)[49m
+[1;32m    657[0m metadata [38;5;241m=[39m schema[38;5;241m.[39mmetadata
+[1;32m    659[0m [38;5;66;03m# read metadata separately to get the raw Parquet FileMetaData metadata[39;00m
+[1;32m    660[0m [38;5;66;03m# (pyarrow doesn't properly exposes those in schema.metadata for files[39;00m
+[1;32m    661[0m [38;5;66;03m# created by GDAL - https://issues.apache.org/jira/browse/ARROW-16688)[39;00m
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/pyarrow/parquet/core.py:2345[0m, in [0;36mread_schema[0;34m(where, memory_map, decryption_properties, filesystem)[0m
+[1;32m   2342[0m     file_ctx [38;5;241m=[39m where [38;5;241m=[39m filesystem[38;5;241m.[39mopen_input_file(where)
+[1;32m   2344[0m [38;5;28;01mwith[39;00m file_ctx:
+[0;32m-> 2345[0m     file [38;5;241m=[39m [43mParquetFile[49m[43m([49m
+[1;32m   2346[0m [43m        [49m[43mwhere[49m[43m,[49m[43m [49m[43mmemory_map[49m[38;5;241;43m=[39;49m[43mmemory_map[49m[43m,[49m
+[1;32m   2347[0m [43m        [49m[43mdecryption_properties[49m[38;5;241;43m=[39;49m[43mdecryption_properties[49m[43m)[49m
+[1;32m   2348[0m     [38;5;28;01mreturn[39;00m file[38;5;241m.[39mschema[38;5;241m.[39mto_arrow_schema()
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/pyarrow/parquet/core.py:317[0m, in [0;36mParquetFile.__init__[0;34m(self, source, metadata, common_metadata, read_dictionary, memory_map, buffer_size, pre_buffer, coerce_int96_timestamp_unit, decryption_properties, thrift_string_size_limit, thrift_container_size_limit, filesystem, page_checksum_verification)[0m
+[1;32m    314[0m     [38;5;28mself[39m[38;5;241m.[39m_close_source [38;5;241m=[39m [38;5;28;01mTrue[39;00m  [38;5;66;03m# We opened it here, ensure we close it.[39;00m
+[1;32m    316[0m [38;5;28mself[39m[38;5;241m.[39mreader [38;5;241m=[39m ParquetReader()
+[0;32m--> 317[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mreader[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m
+[1;32m    318[0m [43m    [49m[43msource[49m[43m,[49m[43m [49m[43muse_memory_map[49m[38;5;241;43m=[39;49m[43mmemory_map[49m[43m,[49m
+[1;32m    319[0m [43m    [49m[43mbuffer_size[49m[38;5;241;43m=[39;49m[43mbuffer_size[49m[43m,[49m[43m [49m[43mpre_buffer[49m[38;5;241;43m=[39;49m[43mpre_buffer[49m[43m,[49m
+[1;32m    320[0m [43m    [49m[43mread_dictionary[49m[38;5;241;43m=[39;49m[43mread_dictionary[49m[43m,[49m[43m [49m[43mmetadata[49m[38;5;241;43m=[39;49m[43mmetadata[49m[43m,[49m
+[1;32m    321[0m [43m    [49m[43mcoerce_int96_timestamp_unit[49m[38;5;241;43m=[39;49m[43mcoerce_int96_timestamp_unit[49m[43m,[49m
+[1;32m    322[0m [43m    [49m[43mdecryption_properties[49m[38;5;241;43m=[39;49m[43mdecryption_properties[49m[43m,[49m
+[1;32m    323[0m [43m    [49m[43mthrift_string_size_limit[49m[38;5;241;43m=[39;49m[43mthrift_string_size_limit[49m[43m,[49m
+[1;32m    324[0m [43m    [49m[43mthrift_container_size_limit[49m[38;5;241;43m=[39;49m[43mthrift_container_size_limit[49m[43m,[49m
+[1;32m    325[0m [43m    [49m[43mpage_checksum_verification[49m[38;5;241;43m=[39;49m[43mpage_checksum_verification[49m[43m,[49m
+[1;32m    326[0m [43m[49m[43m)[49m
+[1;32m    327[0m [38;5;28mself[39m[38;5;241m.[39mcommon_metadata [38;5;241m=[39m common_metadata
+[1;32m    328[0m [38;5;28mself[39m[38;5;241m.[39m_nested_paths_by_prefix [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_build_nested_paths()
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/pyarrow/_parquet.pyx:1501[0m, in [0;36mpyarrow._parquet.ParquetReader.open[0;34m()[0m
+
+File [0;32m~/work/geog-312/geog-312/.venv/lib/python3.12/site-packages/pyarrow/error.pxi:92[0m, in [0;36mpyarrow.lib.check_status[0;34m()[0m
+
+[0;31mArrowInvalid[0m: Parquet magic bytes not found in footer. Either the file is corrupted or this is not a parquet file.
 
